@@ -1,0 +1,25 @@
+
+/*  App Translations.xlsx - Common - Static resources  */
+"first_onboarding_title_key" = "Не ждите";
+"first_onboarding_subtitle_key" = "ДЕЛАТЬ";
+"second_onboarding_title_key" = "Легкая книга";
+"second_onboarding_subtitle_key" = "Выберите свой любимый бизнес, выбрать услугу, которую вы хотели бы иметь и забронировать тот час, что хорошо для вас.";
+"third_onboarding_title_key" = "Уведомления";
+"third_onboarding_subtitle_key" = "Уведомление будет отправлено вам за 30 минут до назначенного времени.";
+"welcome_to_turno_key" = "Добро пожаловать в Turno";
+"benefits_text_key" = "Бронирование он-лайн платформу. Не тратьте время и заказывайте назначение.";
+"agree_to_terms_key" = "Путем выбора Продолжить, вы соглашаетесь с нашими условиями и нашей политики.";
+"continue_key" = "Продолжить";
+"privacy_policy_key" = "политика конфиденциальности";
+"name_key" = "имя";
+"phone_number_key" = "Номер телефона";
+"phone_number_question_key" = "Это ваш номер телефона?";
+"edit_key" = "РЕДАКТИРОВАТЬ";
+"yes_key" = "ДА";
+"activate_your_account_key" = "Активировать Ваш подсчет";
+"sms_sent_key" = "Мы послали свой телефонный номер кода с помощью SMS";
+"wrong_number_key" = "Неправильный номер?";
+"six_digit_code_key" = "Ваш код 6 цифр";
+"resend_sms_key" = "Resend SMS";
+"activate_by_call_key" = "Активировать вызов";
+"finish_key" = "Конец";
