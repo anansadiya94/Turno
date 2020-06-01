@@ -1,0 +1,25 @@
+
+/*  App Translations.xlsx - Common - Static resources  */
+"first_onboarding_title_key" = "لا تنتظر";
+"first_onboarding_subtitle_key" = "لكى يفعل";
+"second_onboarding_title_key" = "كتاب سهل";
+"second_onboarding_subtitle_key" = "اختيار الأعمال المفضلة لديك، واختيار الخدمات التي سوف ترغب في الحصول على وحجز ساعة ما هو جيد لك.";
+"third_onboarding_title_key" = "إشعارات";
+"third_onboarding_subtitle_key" = "سيتم إرسال إشعار لك قبل 30 دقيقة من الموعد المحدد.";
+"welcome_to_turno_key" = "مرحبا بكم في Turno";
+"benefits_text_key" = "حجز منصة على الانترنت. لا تضيعوا وقتكم وحجز موعدك القادم.";
+"agree_to_terms_key" = "اختيار المتابعة، فإنك توافق على شروطنا وسياساتنا.";
+"continue_key" = "استمر";
+"privacy_policy_key" = "سياسة الخصوصية";
+"name_key" = "اسم";
+"phone_number_key" = "رقم الهاتف";
+"phone_number_question_key" = "هذا هو رقم هاتفك؟";
+"edit_key" = "تعديل";
+"yes_key" = "نعم";
+"activate_your_account_key" = "تفعيل حساب الخاص بك";
+"sms_sent_key" = "لقد قمنا بإرسال رقم الهاتف رمز الخاص بك عن طريق SMS";
+"wrong_number_key" = "رقم غير صحيح؟";
+"six_digit_code_key" = "أكواد 6 أرقام";
+"resend_sms_key" = "اعادة الرسال الرسالة";
+"activate_by_call_key" = "تنشيط عن طريق مكالمة";
+"finish_key" = "إنهاء";
