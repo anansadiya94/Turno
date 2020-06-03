@@ -6,6 +6,8 @@
 "second_onboarding_subtitle_key" = "اختيار الأعمال المفضلة لديك، واختيار الخدمات التي سوف ترغب في الحصول على وحجز ساعة ما هو جيد لك.";
 "third_onboarding_title_key" = "إشعارات";
 "third_onboarding_subtitle_key" = "سيتم إرسال إشعار لك قبل 30 دقيقة من الموعد المحدد.";
+"next_key" = "التالى";
+"done_key" = "منجز";
 "welcome_to_turno_key" = "مرحبا بكم في Turno";
 "benefits_text_key" = "حجز منصة على الانترنت. لا تضيعوا وقتكم وحجز موعدك القادم.";
 "agree_to_terms_key" = "اختيار المتابعة، فإنك توافق على شروطنا وسياساتنا.";

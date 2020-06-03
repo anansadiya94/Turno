@@ -37,5 +37,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Light.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>OpenSans-SemiBold.ttf</string>
+		<string>Cairo-Bold.ttf</string>
+		<string>Cairo-Light.ttf</string>
+		<string>Cairo-Regular.ttf</string>
+		<string>Cairo-SemiBold.ttf</string>
+		<string>Assistant-Bold.ttf</string>
+		<string>Assistant-Light.ttf</string>
+		<string>Assistant-Regular.ttf</string>
+		<string>Assistant-SemiBold.ttf</string>
+	</array>
 </dict>
 </plist>
