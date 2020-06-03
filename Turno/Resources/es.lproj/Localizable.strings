@@ -1,7 +1,7 @@
 
 /*  App Translations.xlsx - Common - Static resources  */
 "first_onboarding_title_key" = "No espere";
-"first_onboarding_subtitle_key" = "QUE HACER";
+"first_onboarding_subtitle_key" = "Oye";
 "second_onboarding_title_key" = "libro fácil";
 "second_onboarding_subtitle_key" = "Elija su negocio preferido, escoger el servicio que le gustaría tener y reservar la hora que es bueno para ti.";
 "third_onboarding_title_key" = "Notificaciones";
@@ -11,6 +11,7 @@
 "agree_to_terms_key" = "Al seleccionar Continuar, usted está de acuerdo con nuestros términos y nuestras políticas.";
 "continue_key" = "Seguir";
 "privacy_policy_key" = "Política de privacidad";
+"installation_key" = "Instalación";
 "name_key" = "Nombre";
 "phone_number_key" = "Número de teléfono";
 "phone_number_question_key" = "Este es su número de teléfono?";

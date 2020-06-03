@@ -1,7 +1,7 @@
 
 /*  App Translations.xlsx - Common - Static resources  */
 "first_onboarding_title_key" = "Не ждите";
-"first_onboarding_subtitle_key" = "ДЕЛАТЬ";
+"first_onboarding_subtitle_key" = "Привет";
 "second_onboarding_title_key" = "Легкая книга";
 "second_onboarding_subtitle_key" = "Выберите свой любимый бизнес, выбрать услугу, которую вы хотели бы иметь и забронировать тот час, что хорошо для вас.";
 "third_onboarding_title_key" = "Уведомления";
@@ -11,6 +11,7 @@
 "agree_to_terms_key" = "Путем выбора Продолжить, вы соглашаетесь с нашими условиями и нашей политики.";
 "continue_key" = "Продолжить";
 "privacy_policy_key" = "политика конфиденциальности";
+"installation_key" = "Установка";
 "name_key" = "имя";
 "phone_number_key" = "Номер телефона";
 "phone_number_question_key" = "Это ваш номер телефона?";

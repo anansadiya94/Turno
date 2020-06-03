@@ -1,7 +1,7 @@
 
 /*  App Translations.xlsx - Common - Static resources  */
 "first_onboarding_title_key" = "لا تنتظر";
-"first_onboarding_subtitle_key" = "لكى يفعل";
+"first_onboarding_subtitle_key" = "مهلا";
 "second_onboarding_title_key" = "كتاب سهل";
 "second_onboarding_subtitle_key" = "اختيار الأعمال المفضلة لديك، واختيار الخدمات التي سوف ترغب في الحصول على وحجز ساعة ما هو جيد لك.";
 "third_onboarding_title_key" = "إشعارات";
@@ -11,6 +11,7 @@
 "agree_to_terms_key" = "اختيار المتابعة، فإنك توافق على شروطنا وسياساتنا.";
 "continue_key" = "استمر";
 "privacy_policy_key" = "سياسة الخصوصية";
+"installation_key" = "التركيب";
 "name_key" = "اسم";
 "phone_number_key" = "رقم الهاتف";
 "phone_number_question_key" = "هذا هو رقم هاتفك؟";
