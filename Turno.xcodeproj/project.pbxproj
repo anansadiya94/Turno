@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C124880CE900F7952A /* ErrorsConstants.swift */; };
 		9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB14F3B2485048B0085E885 /* AppDelegate.swift */; };
 		9EB14F452485048C0085E885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB14F442485048C0085E885 /* Assets.xcassets */; };
 		9EB14F482485048C0085E885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB14F462485048C0085E885 /* LaunchScreen.storyboard */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		26B861CAA643CE1819EB03EB /* Pods-Turno.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.release.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.release.xcconfig"; sourceTree = "<group>"; };
 		60536D8BBF639461D5CB90FC /* Pods_Turno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EA657C124880CE900F7952A /* ErrorsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsConstants.swift; sourceTree = "<group>"; };
 		9EB14F382485048B0085E885 /* Turno.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turno.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB14F3B2485048B0085E885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EB14F442485048C0085E885 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				9EB17D7324850EF7004E5FBD /* LocalizableConstants.swift */,
+				9EA657C124880CE900F7952A /* ErrorsConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
+				9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */,
 				9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
