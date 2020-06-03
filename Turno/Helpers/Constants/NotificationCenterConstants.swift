@@ -1,5 +1,5 @@
 //
-//  ErrorsConstants.swift
+//  NotificationCenterConstants.swift
 //  Turno
 //
 //  Created by Anan Sadiya on 03/06/2020.
@@ -8,5 +8,5 @@
 
 import Foundation
 
-let kIncorrectColorFormat = "Incorrect color format"
-let kNilCollectionView = "CollectionView must be not nil"
+//ONBOADING:
+let kNotificaitonButtonOnboardingCellTapped = "buttonOnBoardingCellTapped"

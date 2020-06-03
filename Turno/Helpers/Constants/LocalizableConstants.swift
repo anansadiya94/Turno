@@ -16,11 +16,14 @@ enum LocalizedConstants: String {
     case    second_onboarding_subtitle_key
     case    third_onboarding_title_key
     case    third_onboarding_subtitle_key
+    case    next_key
+    case    done_key
     case    welcome_to_turno_key
     case    benefits_text_key
     case    agree_to_terms_key
     case    continue_key
     case    privacy_policy_key
+    case    installation_key
     case    name_key
     case    phone_number_key
     case    phone_number_question_key

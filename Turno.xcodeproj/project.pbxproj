@@ -39,6 +39,17 @@
 		9EA658132488185B00F7952A /* Assistant-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EA6580F2488185B00F7952A /* Assistant-SemiBold.ttf */; };
 		9EA658142488185B00F7952A /* Assistant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EA658102488185B00F7952A /* Assistant-Bold.ttf */; };
 		9EA658152488185B00F7952A /* Assistant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EA658112488185B00F7952A /* Assistant-Regular.ttf */; };
+		9EA658182488193A00F7952A /* RoundedCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA658172488193A00F7952A /* RoundedCustomButton.swift */; };
+		9EA6581A2488194300F7952A /* RoundedCustomButtonThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA658192488194300F7952A /* RoundedCustomButtonThemes.swift */; };
+		9EA6581C2488197700F7952A /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6581B2488197700F7952A /* Fonts.swift */; };
+		9EA6581E248819EA00F7952A /* OnBoardingViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6581D248819EA00F7952A /* OnBoardingViewController+UICollectionView.swift */; };
+		9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6581F24881A0200F7952A /* UICollectionViewExtension.swift */; };
+		9EA6582324881AB700F7952A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582224881AB700F7952A /* AppCoordinator.swift */; };
+		9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582424881ACD00F7952A /* OnBoardingCoordinator.swift */; };
+		9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582624881AF000F7952A /* ScreenFactory.swift */; };
+		9EA6582924881B5700F7952A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582824881B5700F7952A /* App.swift */; };
+		9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582A24881BBD00F7952A /* WelcomeCoordinator.swift */; };
+		9EA6582F24881C6300F7952A /* OnboardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA6582E24881C6300F7952A /* OnboardingCollectionViewCell.xib */; };
 		9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB14F3B2485048B0085E885 /* AppDelegate.swift */; };
 		9EB14F452485048C0085E885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB14F442485048C0085E885 /* Assets.xcassets */; };
 		9EB14F482485048C0085E885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB14F462485048C0085E885 /* LaunchScreen.storyboard */; };
@@ -82,6 +93,17 @@
 		9EA6580F2488185B00F7952A /* Assistant-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-SemiBold.ttf"; sourceTree = "<group>"; };
 		9EA658102488185B00F7952A /* Assistant-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-Bold.ttf"; sourceTree = "<group>"; };
 		9EA658112488185B00F7952A /* Assistant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-Regular.ttf"; sourceTree = "<group>"; };
+		9EA658172488193A00F7952A /* RoundedCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButton.swift; sourceTree = "<group>"; };
+		9EA658192488194300F7952A /* RoundedCustomButtonThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButtonThemes.swift; sourceTree = "<group>"; };
+		9EA6581B2488197700F7952A /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		9EA6581D248819EA00F7952A /* OnBoardingViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnBoardingViewController+UICollectionView.swift"; sourceTree = "<group>"; };
+		9EA6581F24881A0200F7952A /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		9EA6582224881AB700F7952A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		9EA6582424881ACD00F7952A /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
+		9EA6582624881AF000F7952A /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
+		9EA6582824881B5700F7952A /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		9EA6582A24881BBD00F7952A /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
+		9EA6582E24881C6300F7952A /* OnboardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		9EB14F382485048B0085E885 /* Turno.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turno.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB14F3B2485048B0085E885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EB14F442485048C0085E885 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,9 +174,11 @@
 		9EA657CF248814D800F7952A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9EA657F32488175400F7952A /* CustomLabelViews */,
-				9EA657F02488172900F7952A /* CollectionViewCellViews */,
+				9EA6582D24881C5300F7952A /* Xibs */,
 				9EA657D22488150F00F7952A /* ViewControllersViews */,
+				9EA657F02488172900F7952A /* CollectionViewCellViews */,
+				9EA657F32488175400F7952A /* CustomLabelViews */,
+				9EA658162488193000F7952A /* RoundedCustomButtonViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +223,7 @@
 				9EA657D82488157300F7952A /* AutoLayout.swift */,
 				9EA657E52488165E00F7952A /* Notification+Name.swift */,
 				9EA657E92488169200F7952A /* Storage.swift */,
+				9EA6582824881B5700F7952A /* App.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -208,6 +233,7 @@
 			children = (
 				9EA657DC2488159400F7952A /* UIColor+Color.swift */,
 				9EA657F82488179B00F7952A /* String+Localized.swift */,
+				9EA6581B2488197700F7952A /* Fonts.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -223,7 +249,9 @@
 		9EA657ED248816F300F7952A /* Extension+CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				9EA6581F24881A0200F7952A /* UICollectionViewExtension.swift */,
 				9EA657EE2488170300F7952A /* PresenterOnboarding+UICollectionView.swift */,
+				9EA6581D248819EA00F7952A /* OnBoardingViewController+UICollectionView.swift */,
 			);
 			path = "Extension+CollectionView";
 			sourceTree = "<group>";
@@ -288,6 +316,42 @@
 			path = Assistant;
 			sourceTree = "<group>";
 		};
+		9EA658162488193000F7952A /* RoundedCustomButtonViews */ = {
+			isa = PBXGroup;
+			children = (
+				9EA658172488193A00F7952A /* RoundedCustomButton.swift */,
+				9EA658192488194300F7952A /* RoundedCustomButtonThemes.swift */,
+			);
+			path = RoundedCustomButtonViews;
+			sourceTree = "<group>";
+		};
+		9EA6582124881AA500F7952A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9EA6582224881AB700F7952A /* AppCoordinator.swift */,
+				9EA6582624881AF000F7952A /* ScreenFactory.swift */,
+				9EA6582424881ACD00F7952A /* OnBoardingCoordinator.swift */,
+				9EA6582A24881BBD00F7952A /* WelcomeCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9EA6582C24881C4E00F7952A /* CollectionViewNibs */ = {
+			isa = PBXGroup;
+			children = (
+				9EA6582E24881C6300F7952A /* OnboardingCollectionViewCell.xib */,
+			);
+			path = CollectionViewNibs;
+			sourceTree = "<group>";
+		};
+		9EA6582D24881C5300F7952A /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				9EA6582C24881C4E00F7952A /* CollectionViewNibs */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
 		9EB14F2F2485048B0085E885 = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +376,7 @@
 				9EB14F3B2485048B0085E885 /* AppDelegate.swift */,
 				9EB14F462485048C0085E885 /* LaunchScreen.storyboard */,
 				9EB14F492485048C0085E885 /* Info.plist */,
+				9EA6582124881AA500F7952A /* Coordinator */,
 				9EA657CB2488149C00F7952A /* Controllers */,
 				9EA657CF248814D800F7952A /* Views */,
 				9EA657C6248813AA00F7952A /* Models */,
@@ -434,6 +499,7 @@
 				9EA658132488185B00F7952A /* Assistant-SemiBold.ttf in Resources */,
 				9EB14F482485048C0085E885 /* LaunchScreen.storyboard in Resources */,
 				9EA65802248817E400F7952A /* OpenSans-Regular.ttf in Resources */,
+				9EA6582F24881C6300F7952A /* OnboardingCollectionViewCell.xib in Resources */,
 				9EA6580B2488184A00F7952A /* Cairo-Regular.ttf in Resources */,
 				9EA658122488185B00F7952A /* Assistant-Light.ttf in Resources */,
 				9EA658142488185B00F7952A /* Assistant-Bold.ttf in Resources */,
@@ -499,18 +565,28 @@
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
 				9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */,
 				9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */,
+				9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */,
 				9EA657D92488157300F7952A /* AutoLayout.swift in Sources */,
+				9EA6581E248819EA00F7952A /* OnBoardingViewController+UICollectionView.swift in Sources */,
 				9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */,
+				9EA658182488193A00F7952A /* RoundedCustomButton.swift in Sources */,
+				9EA6581C2488197700F7952A /* Fonts.swift in Sources */,
 				9EA657CD248814AE00F7952A /* OnboardingViewController.swift in Sources */,
+				9EA6582924881B5700F7952A /* App.swift in Sources */,
 				9EA657F22488173100F7952A /* OnboardingCollectionViewCell.swift in Sources */,
 				9EA657E82488167200F7952A /* NotificationCenterConstants.swift in Sources */,
 				9EA657E32488161C00F7952A /* PresenterOnboarding.swift in Sources */,
 				9EA657D52488152700F7952A /* OnBoardingView.swift in Sources */,
+				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
+				9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */,
 				9EA657CA248813D200F7952A /* AssetsConstants.swift in Sources */,
 				9EA657F52488176000F7952A /* CustomLabel.swift in Sources */,
 				9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */,
 				9EA657DD2488159400F7952A /* UIColor+Color.swift in Sources */,
+				9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */,
 				9EA657F72488177600F7952A /* CustomLabelThemes.swift in Sources */,
+				9EA6581A2488194300F7952A /* RoundedCustomButtonThemes.swift in Sources */,
+				9EA6582324881AB700F7952A /* AppCoordinator.swift in Sources */,
 				9EA657E62488165E00F7952A /* Notification+Name.swift in Sources */,
 				9EA657EA2488169200F7952A /* Storage.swift in Sources */,
 				9EA657EF2488170300F7952A /* PresenterOnboarding+UICollectionView.swift in Sources */,
