@@ -1,5 +1,5 @@
 //
-//  PresenterOnboarding+UICollectionView.swift
+//  UICollectionView+PresenterOnboarding.swift
 //  Turno
 //
 //  Created by Anan Sadiya on 03/06/2020.

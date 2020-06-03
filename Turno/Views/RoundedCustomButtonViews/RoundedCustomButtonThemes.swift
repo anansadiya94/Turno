@@ -26,7 +26,7 @@ struct OnboardingTheme: RoundedCustomButtonTheme {
     var buttonImageName: String?
     var label: String
     var backgroundColor: UIColor = .primary
-    var titleColor: UIColor = .white
+    var titleColor: UIColor = .black
     var font: UIFont = Fonts.Bold14
     var label2: String?
     var button2ImageName: String?

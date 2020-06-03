@@ -13,8 +13,4 @@ extension UICollectionView {
     func getCurrentPage() -> Int {
         return Int(round(self.contentOffset.x / self.frame.size.width))
     }
-
-    func getCurrentPage(byWidth: CGFloat) -> Int {
-        return Int(round(self.contentOffset.x / byWidth))
-    }
 }

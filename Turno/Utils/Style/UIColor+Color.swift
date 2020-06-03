@@ -36,4 +36,8 @@ extension UIColor {
     static var primary: UIColor {
         return hexStringToUIColor(hex: "#2A8671")
     }
+    
+    static var primaryAlpha20: UIColor {
+        return hexStringToUIColor(hex: "#2A8671").withAlphaComponent(0.20)
+    }
 }

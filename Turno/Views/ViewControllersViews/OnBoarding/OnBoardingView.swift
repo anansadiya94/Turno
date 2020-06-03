@@ -44,7 +44,7 @@ class OnBoardingView: UIView {
 
     private func setupPageControl() {
         pageControl.currentPageIndicatorTintColor = .primary
-        pageControl.pageIndicatorTintColor = .gray
+        pageControl.pageIndicatorTintColor = .primaryAlpha20
         pageControl.isEnabled = false
 
         self.insertSubview(pageControl, at: 0)

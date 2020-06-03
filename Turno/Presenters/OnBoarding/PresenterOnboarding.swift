@@ -56,6 +56,7 @@ class PresenterOnboarding: NSObject {
     // MARK: - UI interaction methods
     func buttonCellTappedAction(amILast: Bool) {
         if amILast {
+            AppData.onBoardingCompleted = true
             delegate?.didSelectOnboardingButton()
         } else {
             self.view?.nextCell()
