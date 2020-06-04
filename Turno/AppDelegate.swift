@@ -16,11 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .red
+        AppData.onBoardingCompleted = false
         
-        window?.rootViewController = viewController
+        setAppFont()
+        let appCoordinator: AppCoordinator!
+        appCoordinator = AppCoordinator(window: window!, navigationController: UINavigationController())
+        appCoordinator.start()
+        
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    private func setAppFont() {
+        let language = Locale.current.languageCode
+        if language == "ar" {
+            AppData.appFont = "Cairo"
+        } else if language == "he" {
+            AppData.appFont = "Assistant"
+        } else {
+            AppData.appFont = "OpenSans"
+        }
     }
 }

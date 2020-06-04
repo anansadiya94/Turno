@@ -1,16 +1,19 @@
 
 /*  App Translations.xlsx - Common - Static resources  */
 "first_onboarding_title_key" = "No espere";
-"first_onboarding_subtitle_key" = "QUE HACER";
+"first_onboarding_subtitle_key" = "Oye";
 "second_onboarding_title_key" = "libro fácil";
 "second_onboarding_subtitle_key" = "Elija su negocio preferido, escoger el servicio que le gustaría tener y reservar la hora que es bueno para ti.";
 "third_onboarding_title_key" = "Notificaciones";
 "third_onboarding_subtitle_key" = "La notificación será enviada a usted 30 minutos antes de su cita.";
+"next_key" = "próximo";
+"done_key" = "Hecho";
 "welcome_to_turno_key" = "Bienvenido a Turno";
 "benefits_text_key" = "Reserva plataforma en línea. No pierda su tiempo y reserve su próxima cita.";
 "agree_to_terms_key" = "Al seleccionar Continuar, usted está de acuerdo con nuestros términos y nuestras políticas.";
 "continue_key" = "Seguir";
 "privacy_policy_key" = "Política de privacidad";
+"installation_key" = "Instalación";
 "name_key" = "Nombre";
 "phone_number_key" = "Número de teléfono";
 "phone_number_question_key" = "Este es su número de teléfono?";

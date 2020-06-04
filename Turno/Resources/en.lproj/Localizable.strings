@@ -1,16 +1,19 @@
 
 /*  App Translations.xlsx - Common - Static resources  */
 "first_onboarding_title_key" = "Don't wait";
-"first_onboarding_subtitle_key" = "TODO";
+"first_onboarding_subtitle_key" = "Hey";
 "second_onboarding_title_key" = "Easy book";
 "second_onboarding_subtitle_key" = "Choose your favorite business, pick the service that you will like to have and book the hour that is good to you.";
 "third_onboarding_title_key" = "Notifications";
 "third_onboarding_subtitle_key" = "Notification will be send to you 30 minutes before your appointment.";
+"next_key" = "Next";
+"done_key" = "Done";
 "welcome_to_turno_key" = "Welcome to Turno";
 "benefits_text_key" = "Booking online platform. Don’t waste your time and book your next appointment.";
 "agree_to_terms_key" = "By selecting Continue, you agree to our terms and our policies.";
 "continue_key" = "Continue";
 "privacy_policy_key" = "Privacy Policy";
+"installation_key" = "Installation";
 "name_key" = "Name";
 "phone_number_key" = "Phone number";
 "phone_number_question_key" = "This is your phone number?";

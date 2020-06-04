@@ -1,16 +1,19 @@
 
 /*  App Translations.xlsx - Common - Static resources  */
 "first_onboarding_title_key" = "אל תחכו";
-"first_onboarding_subtitle_key" = "לעשות";
+"first_onboarding_subtitle_key" = "היי";
 "second_onboarding_title_key" = "ספר קל";
 "second_onboarding_subtitle_key" = "בחר העסק האהוב עליך, לאסוף את השירות שאתה רוצה שיהיה להזמין השעה כי הוא טוב לך.";
 "third_onboarding_title_key" = "התראות";
 "third_onboarding_subtitle_key" = "התראה תהיה לשלוח לך 30 דקות לפני המינוי שלך.";
+"next_key" = "הבא";
+"done_key" = "בוצע";
 "welcome_to_turno_key" = "ברוכים הבאים טורנו פסיפיקו";
 "benefits_text_key" = "הזמנת פלטפורמה מקוונת. אל תבזבזו את הזמן שלכם להזמין לפגישה הבאה שלך.";
 "agree_to_terms_key" = "על ידי בחירת המשך, אתה מסכים לתנאים שלנו והמדיניות שלנו.";
 "continue_key" = "המשך";
 "privacy_policy_key" = "מדיניות פרטיות";
+"installation_key" = "התקנה";
 "name_key" = "שם";
 "phone_number_key" = "מספר טלפון";
 "phone_number_question_key" = "זהו מספר הטלפון שלך?";
