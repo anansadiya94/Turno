@@ -11,12 +11,8 @@ import Foundation
 import UIKit
 
 struct Fonts {
-    static let Bold10 = UIFont(name: "OpenSans-Bold", size: 10) ?? .boldSystemFont(ofSize: 10)
-    static let Bold12 = UIFont(name: "OpenSans-Bold", size: 12) ?? .boldSystemFont(ofSize: 12)
-    static let Bold14 = UIFont(name: "OpenSans-Bold", size: 14) ?? .boldSystemFont(ofSize: 14)
-    static let Bold15 = UIFont(name: "OpenSans-Bold", size: 15) ?? .boldSystemFont(ofSize: 15)
-    static let Medium10 = UIFont(name: "OpenSans-Medium", size: 10) ?? .boldSystemFont(ofSize: 10)
-    static let Medium12 = UIFont(name: "OpenSans-Medium", size: 12) ?? .boldSystemFont(ofSize: 12)
-    static let Medium15 = UIFont(name: "OpenSans-Medium", size: 15) ?? .boldSystemFont(ofSize: 15)
-    static let Regular12 = UIFont(name: "OpenSans-Regular", size: 12) ?? .boldSystemFont(ofSize: 15)
+    static let Bold20 = UIFont(name: ServiceAppFont.boldFont, size: 20) ?? .boldSystemFont(ofSize: 20)
+    static let SemiBold20 = UIFont(name: ServiceAppFont.semiBoldFont, size: 20) ?? .boldSystemFont(ofSize: 20)
+    static let Regular20 = UIFont(name: ServiceAppFont.regularFont, size: 20) ?? .boldSystemFont(ofSize: 20)
+    static let Light20 = UIFont(name: ServiceAppFont.lightFont, size: 20) ?? .boldSystemFont(ofSize: 20)
 }

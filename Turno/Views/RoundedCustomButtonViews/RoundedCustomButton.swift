@@ -39,6 +39,6 @@ class RoundedCustomButton: UIButton {
     private func setup() {
         layer.cornerRadius = 20
         layer.borderWidth = 1
-        titleLabel?.font = Fonts.Bold14
+        titleLabel?.font = Fonts.Bold20
     }
 }

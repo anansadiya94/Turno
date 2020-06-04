@@ -32,3 +32,8 @@ struct AppData {
     @Storage(key: kOnBoardingCompleted, defaultValue: false)
     static var onBoardingCompleted: Bool
 }
+
+extension AppData {
+    @Storage(key: KAppFont, defaultValue: "")
+    static var appFont: String
+}

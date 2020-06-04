@@ -28,7 +28,7 @@ struct BoldTheme: CustomLabelTheme {
 
     init(label: String, fontSize: CGFloat, textColor: UIColor, textAlignment: NSTextAlignment, numberOfLines: Int = 0, adjustsFontSizeToFitWidth: Bool = false) {
         self.label = label.localized
-        self.font = UIFont(name: "Montserrat-Bold", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
+        self.font = UIFont(name: ServiceAppFont.boldFont, size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
         self.textColor = textColor
         self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
@@ -36,7 +36,7 @@ struct BoldTheme: CustomLabelTheme {
     }
 }
 
-struct MediumTheme: CustomLabelTheme {
+struct SemiBoldTheme: CustomLabelTheme {
     var textAlignment: NSTextAlignment
     var label: String
     var font: UIFont
@@ -46,7 +46,7 @@ struct MediumTheme: CustomLabelTheme {
 
     init(label: String, fontSize: CGFloat, textColor: UIColor, textAlignment: NSTextAlignment, numberOfLines: Int = 0, adjustsFontSizeToFitWidth: Bool = false) {
         self.label = label.localized
-        self.font = UIFont(name: "Montserrat-Medium", size: fontSize) ?? .systemFont(ofSize: fontSize)
+        self.font = UIFont(name: ServiceAppFont.semiBoldFont, size: fontSize) ?? .systemFont(ofSize: fontSize)
         self.textColor = textColor
         self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
@@ -64,7 +64,25 @@ struct RegularTheme: CustomLabelTheme {
 
     init(label: String, fontSize: CGFloat, textColor: UIColor, textAlignment: NSTextAlignment, numberOfLines: Int = 0, adjustsFontSizeToFitWidth: Bool = false) {
         self.label = label.localized
-        self.font = UIFont(name: "Montserrat-Regular", size: fontSize) ?? .systemFont(ofSize: fontSize)
+        self.font = UIFont(name: ServiceAppFont.regularFont, size: fontSize) ?? .systemFont(ofSize: fontSize)
+        self.textColor = textColor
+        self.textAlignment = textAlignment
+        self.numberOfLines = numberOfLines
+        self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+    }
+}
+
+struct Lightheme: CustomLabelTheme {
+    var textAlignment: NSTextAlignment
+    var label: String
+    var font: UIFont
+    var textColor: UIColor
+    var numberOfLines: Int
+    var adjustsFontSizeToFitWidth: Bool
+
+    init(label: String, fontSize: CGFloat, textColor: UIColor, textAlignment: NSTextAlignment, numberOfLines: Int = 0, adjustsFontSizeToFitWidth: Bool = false) {
+        self.label = label.localized
+        self.font = UIFont(name: ServiceAppFont.lightFont, size: fontSize) ?? .systemFont(ofSize: fontSize)
         self.textColor = textColor
         self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines

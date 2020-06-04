@@ -43,8 +43,8 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     func setUp(modelOnboarding: ModelOnboarding) {
         self.amILast = modelOnboarding.amILast
         imageView.image = UIImage(named: modelOnboarding.backgroungImage)
-        titleLabel.labelTheme = BoldTheme(label: modelOnboarding.title, fontSize: 35, textColor: .black, textAlignment: .center)
-        subTitleLabel.labelTheme = RegularTheme(label: modelOnboarding.subTitle, fontSize: 20, textColor: .black, textAlignment: .center)
+        titleLabel.labelTheme = BoldTheme(label: modelOnboarding.title, fontSize: 30, textColor: .black, textAlignment: .center)
+        subTitleLabel.labelTheme = RegularTheme(label: modelOnboarding.subTitle, fontSize: 15, textColor: .black, textAlignment: .center)
         actionButton.tag = modelOnboarding.id
         actionButton.buttonTheme = OnboardingTheme(label: modelOnboarding.actionTitle, isLast: modelOnboarding.amILast)
     }

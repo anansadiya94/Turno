@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E0B75A02489837E00B25313 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B759F2489837E00B25313 /* Fonts.swift */; };
+		9E0B75A2248985C200B25313 /* ServiceAppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75A1248985C200B25313 /* ServiceAppFont.swift */; };
 		9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */; };
 		9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C124880CE900F7952A /* ErrorsConstants.swift */; };
 		9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C42488105E00F7952A /* ServiceOnboarding.swift */; };
@@ -42,7 +44,6 @@
 		9EA658152488185B00F7952A /* Assistant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EA658112488185B00F7952A /* Assistant-Regular.ttf */; };
 		9EA658182488193A00F7952A /* RoundedCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA658172488193A00F7952A /* RoundedCustomButton.swift */; };
 		9EA6581A2488194300F7952A /* RoundedCustomButtonThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA658192488194300F7952A /* RoundedCustomButtonThemes.swift */; };
-		9EA6581C2488197700F7952A /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6581B2488197700F7952A /* Fonts.swift */; };
 		9EA6581E248819EA00F7952A /* UICollectionView+OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6581D248819EA00F7952A /* UICollectionView+OnBoardingViewController.swift */; };
 		9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6581F24881A0200F7952A /* UICollectionViewExtension.swift */; };
 		9EA6582324881AB700F7952A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582224881AB700F7952A /* AppCoordinator.swift */; };
@@ -62,6 +63,8 @@
 /* Begin PBXFileReference section */
 		26B861CAA643CE1819EB03EB /* Pods-Turno.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.release.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.release.xcconfig"; sourceTree = "<group>"; };
 		60536D8BBF639461D5CB90FC /* Pods_Turno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E0B759F2489837E00B25313 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		9E0B75A1248985C200B25313 /* ServiceAppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAppFont.swift; sourceTree = "<group>"; };
 		9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift"; sourceTree = "<group>"; };
 		9EA657C124880CE900F7952A /* ErrorsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsConstants.swift; sourceTree = "<group>"; };
 		9EA657C42488105E00F7952A /* ServiceOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOnboarding.swift; sourceTree = "<group>"; };
@@ -97,7 +100,6 @@
 		9EA658112488185B00F7952A /* Assistant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-Regular.ttf"; sourceTree = "<group>"; };
 		9EA658172488193A00F7952A /* RoundedCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButton.swift; sourceTree = "<group>"; };
 		9EA658192488194300F7952A /* RoundedCustomButtonThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButtonThemes.swift; sourceTree = "<group>"; };
-		9EA6581B2488197700F7952A /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		9EA6581D248819EA00F7952A /* UICollectionView+OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+OnBoardingViewController.swift"; sourceTree = "<group>"; };
 		9EA6581F24881A0200F7952A /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		9EA6582224881AB700F7952A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				9EA657C42488105E00F7952A /* ServiceOnboarding.swift */,
+				9E0B75A1248985C200B25313 /* ServiceAppFont.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -235,7 +238,7 @@
 			children = (
 				9EA657DC2488159400F7952A /* UIColor+Color.swift */,
 				9EA657F82488179B00F7952A /* String+Localized.swift */,
-				9EA6581B2488197700F7952A /* Fonts.swift */,
+				9E0B759F2489837E00B25313 /* Fonts.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -573,7 +576,6 @@
 				9EA6581E248819EA00F7952A /* UICollectionView+OnBoardingViewController.swift in Sources */,
 				9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */,
 				9EA658182488193A00F7952A /* RoundedCustomButton.swift in Sources */,
-				9EA6581C2488197700F7952A /* Fonts.swift in Sources */,
 				9EA657CD248814AE00F7952A /* OnboardingViewController.swift in Sources */,
 				9EA6582924881B5700F7952A /* App.swift in Sources */,
 				9EA657F22488173100F7952A /* OnboardingCollectionViewCell.swift in Sources */,
@@ -588,7 +590,9 @@
 				9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */,
 				9EA657DD2488159400F7952A /* UIColor+Color.swift in Sources */,
 				9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */,
+				9E0B75A2248985C200B25313 /* ServiceAppFont.swift in Sources */,
 				9EA657F72488177600F7952A /* CustomLabelThemes.swift in Sources */,
+				9E0B75A02489837E00B25313 /* Fonts.swift in Sources */,
 				9EA6581A2488194300F7952A /* RoundedCustomButtonThemes.swift in Sources */,
 				9EA6582324881AB700F7952A /* AppCoordinator.swift in Sources */,
 				9EA657E62488165E00F7952A /* Notification+Name.swift in Sources */,

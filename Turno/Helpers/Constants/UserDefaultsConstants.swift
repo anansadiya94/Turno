@@ -9,3 +9,4 @@
 import Foundation
 
 let kOnBoardingCompleted = "onBoardingCompleted"
+let KAppFont = "appFont"

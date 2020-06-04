@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class ServiceAppFont {
+    static let boldFont = AppData.appFont+"-Bold"
+    static let semiBoldFont = AppData.appFont+"-SemiBold"
+    static let regularFont = AppData.appFont+"-Regular"
+    static let lightFont = AppData.appFont+"-light"
+}

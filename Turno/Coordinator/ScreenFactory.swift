@@ -25,6 +25,7 @@ struct ScreenFactory {
         onBoardingViewController.presenterOnboarding = presenter
         return onBoardingViewController
     }
+    
     //WELCOME:
     static func makeWelcomeScreen(navigationController: UINavigationController, delegate: SelectButtonWelcome) -> UIViewController {
         let welcomeViewController = UIViewController()
