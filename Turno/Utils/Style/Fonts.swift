@@ -13,6 +13,6 @@ import UIKit
 struct Fonts {
     static let Bold20 = UIFont(name: ServiceAppFont.boldFont, size: 20) ?? .boldSystemFont(ofSize: 20)
     static let SemiBold20 = UIFont(name: ServiceAppFont.semiBoldFont, size: 20) ?? .boldSystemFont(ofSize: 20)
-    static let Regular20 = UIFont(name: ServiceAppFont.regularFont, size: 20) ?? .boldSystemFont(ofSize: 20)
+    static let Regular15 = UIFont(name: ServiceAppFont.regularFont, size: 15) ?? .boldSystemFont(ofSize: 15)
     static let Light20 = UIFont(name: ServiceAppFont.lightFont, size: 20) ?? .boldSystemFont(ofSize: 20)
 }

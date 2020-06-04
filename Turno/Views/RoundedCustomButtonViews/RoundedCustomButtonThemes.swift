@@ -38,3 +38,19 @@ struct OnboardingTheme: RoundedCustomButtonTheme {
         self.titleColor = isLast ? .white : .primary
     }
 }
+
+struct RoundedBaseTheme: RoundedCustomButtonTheme {
+    var borderColor: CGColor? = UIColor.clear.cgColor
+    var buttonImageName: String?
+    var label: String
+    var backgroundColor: UIColor = .primary
+    var titleColor: UIColor = .black
+    var font: UIFont = Fonts.Bold20
+    var label2: String?
+    var button2ImageName: String?
+    var isBlurBackground: Bool = false
+    
+    init(label: String) {
+        self.label = label.localized
+    }
+}

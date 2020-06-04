@@ -8,6 +8,9 @@
 
 import Foundation
 
+// Common
+let kLogo = "logo"
+
 // Onboarding
 let kFirstOnboardingBackgroundImage = "firstOnboarding"
 let kSecondOnboardingBackgroundImage = "secondOnboarding"
