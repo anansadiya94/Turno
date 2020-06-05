@@ -19,6 +19,10 @@
 		9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD53248A9864004F401B /* InstallationViewController.swift */; };
 		9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD55248A98C8004F401B /* InstallationView.swift */; };
 		9E55BD58248A98D6004F401B /* PresenterInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD57248A98D6004F401B /* PresenterInstallation.swift */; };
+		9E55BD5A248AC8C1004F401B /* UIViewController+SetBackBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD59248AC8C1004F401B /* UIViewController+SetBackBarButton.swift */; };
+		9E55BD5D248ACF7A004F401B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD5C248ACF7A004F401B /* CustomTextField.swift */; };
+		9E55BD60248ACFCC004F401B /* CustomTextFieldThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD5F248ACFCC004F401B /* CustomTextFieldThemes.swift */; };
+		9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */; };
 		9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */; };
 		9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C124880CE900F7952A /* ErrorsConstants.swift */; };
 		9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C42488105E00F7952A /* ServiceOnboarding.swift */; };
@@ -85,6 +89,10 @@
 		9E55BD53248A9864004F401B /* InstallationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationViewController.swift; sourceTree = "<group>"; };
 		9E55BD55248A98C8004F401B /* InstallationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationView.swift; sourceTree = "<group>"; };
 		9E55BD57248A98D6004F401B /* PresenterInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterInstallation.swift; sourceTree = "<group>"; };
+		9E55BD59248AC8C1004F401B /* UIViewController+SetBackBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SetBackBarButton.swift"; sourceTree = "<group>"; };
+		9E55BD5C248ACF7A004F401B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		9E55BD5F248ACFCC004F401B /* CustomTextFieldThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldThemes.swift; sourceTree = "<group>"; };
+		9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboardWhenTappedAround.swift"; sourceTree = "<group>"; };
 		9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButtonWithMargin.swift; sourceTree = "<group>"; };
 		9EA657C124880CE900F7952A /* ErrorsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsConstants.swift; sourceTree = "<group>"; };
 		9EA657C42488105E00F7952A /* ServiceOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOnboarding.swift; sourceTree = "<group>"; };
@@ -199,6 +207,15 @@
 			path = CustomButton;
 			sourceTree = "<group>";
 		};
+		9E55BD5B248ACF6D004F401B /* CustomTextFieldViews */ = {
+			isa = PBXGroup;
+			children = (
+				9E55BD5C248ACF7A004F401B /* CustomTextField.swift */,
+				9E55BD5F248ACFCC004F401B /* CustomTextFieldThemes.swift */,
+			);
+			path = CustomTextFieldViews;
+			sourceTree = "<group>";
+		};
 		9EA657C32488104E00F7952A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +259,7 @@
 				9EA657F32488175400F7952A /* CustomLabelViews */,
 				9E0B75AC24898D9700B25313 /* CustomButton */,
 				9EA658162488193000F7952A /* RoundedCustomButtonViews */,
+				9E55BD5B248ACF6D004F401B /* CustomTextFieldViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -278,6 +296,7 @@
 				9EA657ED248816F300F7952A /* Extension+CollectionView */,
 				9EA657DB2488158600F7952A /* Style */,
 				9EA657D72488156200F7952A /* App */,
+				9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -300,6 +319,7 @@
 				9EA657F82488179B00F7952A /* String+Localized.swift */,
 				9E0B759F2489837E00B25313 /* Fonts.swift */,
 				9E0B75B124898E5300B25313 /* UIButton+Underline.swift */,
+				9E55BD59248AC8C1004F401B /* UIViewController+SetBackBarButton.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -634,6 +654,7 @@
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,
 				9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */,
 				9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */,
+				9E55BD5D248ACF7A004F401B /* CustomTextField.swift in Sources */,
 				9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */,
 				9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */,
 				9EA657D92488157300F7952A /* AutoLayout.swift in Sources */,
@@ -650,6 +671,7 @@
 				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
 				9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */,
 				9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */,
+				9E55BD5A248AC8C1004F401B /* UIViewController+SetBackBarButton.swift in Sources */,
 				9EA657CA248813D200F7952A /* AssetsConstants.swift in Sources */,
 				9E0B75AE24898DB000B25313 /* CustomButton.swift in Sources */,
 				9EA657F52488176000F7952A /* CustomLabel.swift in Sources */,
@@ -670,8 +692,10 @@
 				9EA657EF2488170300F7952A /* UICollectionView+PresenterOnboarding.swift in Sources */,
 				9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,
+				9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */,
 				9EA657EC248816A800F7952A /* UserDefaultsConstants.swift in Sources */,
 				9EA657DF248815CB00F7952A /* CellsConstants.swift in Sources */,
+				9E55BD60248ACFCC004F401B /* CustomTextFieldThemes.swift in Sources */,
 				9EA657F92488179B00F7952A /* String+Localized.swift in Sources */,
 				9EA657E1248815DF00F7952A /* NibsConstants.swift in Sources */,
 			);

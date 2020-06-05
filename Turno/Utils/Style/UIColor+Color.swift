@@ -40,4 +40,8 @@ extension UIColor {
     static var primaryAlpha20: UIColor {
         return hexStringToUIColor(hex: "#2A8671").withAlphaComponent(0.20)
     }
+    
+    static var lightGray: UIColor {
+        return hexStringToUIColor(hex: "#EBF0FF")
+    }
 }

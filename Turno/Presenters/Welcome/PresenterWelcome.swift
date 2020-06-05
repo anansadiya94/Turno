@@ -26,7 +26,7 @@ class PresenterWelcome: NSObject {
         delegate.didSelectWelcomeContinueButton()
     }
 
-    //TODO: FIX ME
+    //TODO: Where to?
     func privacyPolicyButtonTapped() {
         print("privacyPolicyButtonTapped")
     }

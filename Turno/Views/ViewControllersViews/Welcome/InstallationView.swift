@@ -11,12 +11,13 @@ import UIKit
 class InstallationView: UIView {
     
     // MARK: - Properties
-    @UseAutoLayout var nameTextField = UITextField()
-    @UseAutoLayout var phoneNumberTextField = UITextField()
+    @UseAutoLayout var nameTextField = CustomTextField()
+    @UseAutoLayout var phoneNumberTextField = CustomTextField()
     @UseAutoLayout var continueButton = RoundedCustomButtonWithMargin()
     
     // MARK: - Constraints constants
     private var kSuperViewMargin: CGFloat = 16
+    private var kTextFieldHeight: CGFloat = 44
     
     // MARK: - UIView
     override init(frame: CGRect) {
@@ -32,8 +33,8 @@ class InstallationView: UIView {
     // MARK: - Private methods
     private func configureUI() {
         addSubviews()
-//        addNameTextField()
-//        addPhoneNumberTextField()
+        addNameTextField()
+        addPhoneNumberTextField()
         addContinueButton()
     }
 
@@ -43,24 +44,25 @@ class InstallationView: UIView {
         self.addSubview(continueButton)
     }
     
-//    private func addNameTextField() {
-//        continueLabel.labelTheme = RegularTheme(label: LocalizedConstants.agree_to_terms_key.localized,
-//                                                fontSize: 15, textColor: .black, textAlignment: .center)
-//        NSLayoutConstraint.activate([
-//            continueLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-//            continueLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            continueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
-//            continueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
-//        ])
-//    }
-//
-//    private func addPhoneNumberTextField() {
-//        continueButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.continue_key.localized)
-//        NSLayoutConstraint.activate([
-//            continueButton.topAnchor.constraint(equalTo: continueLabel.bottomAnchor, constant: kSuperViewMargin),
-//            continueButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-//        ])
-//    }
+    private func addNameTextField() {
+        nameTextField.textFieldTheme = NameTheme(placeholder: LocalizedConstants.name_key.localized, icon: kName)
+        NSLayoutConstraint.activate([
+            nameTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: kSuperViewMargin),
+            nameTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            nameTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
+            nameTextField.heightAnchor.constraint(equalToConstant: kTextFieldHeight)
+        ])
+    }
+
+    private func addPhoneNumberTextField() {
+        phoneNumberTextField.textFieldTheme = PhoneNumberTheme(placeholder: LocalizedConstants.phone_number_key.localized, icon: kPhoneNumber)
+        NSLayoutConstraint.activate([
+            phoneNumberTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: kSuperViewMargin),
+            phoneNumberTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            phoneNumberTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
+            phoneNumberTextField.heightAnchor.constraint(equalToConstant: kTextFieldHeight)
+        ])
+    }
     
     private func addContinueButton() {
         continueButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.continue_key.localized)

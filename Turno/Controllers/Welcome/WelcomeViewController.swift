@@ -30,6 +30,7 @@ class WelcomeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        setBackBarButton()
     }
     
     // MARK: - Private methods

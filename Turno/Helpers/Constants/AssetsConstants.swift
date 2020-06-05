@@ -15,3 +15,7 @@ let kLogo = "logo"
 let kFirstOnboardingBackgroundImage = "firstOnboarding"
 let kSecondOnboardingBackgroundImage = "secondOnboarding"
 let kThirdOnboardingBackgroundImage = "thirdOnboarding"
+
+// Textfields
+let kName = "name"
+let kPhoneNumber = "phoneNumber"
