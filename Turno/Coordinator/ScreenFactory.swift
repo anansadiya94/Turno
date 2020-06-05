@@ -28,10 +28,9 @@ struct ScreenFactory {
     
     //WELCOME:
     static func makeWelcomeScreen(navigationController: UINavigationController, delegate: SelectButtonWelcome) -> UIViewController {
-        let welcomeViewController = UIViewController()
-        welcomeViewController.view.backgroundColor = .red
-//        let presenter = PresenterWelcome(view: welcomeViewController, delegate: delegate)
-//        welcomeViewController.presenterWelcome = presenter
+        let welcomeViewController = WelcomeViewController()
+        let presenter = PresenterWelcome(view: welcomeViewController, delegate: delegate)
+        welcomeViewController.presenterWelcome = presenter
         navigationController.viewControllers = [welcomeViewController]
         return navigationController
     }
