@@ -15,15 +15,12 @@ class WelcomeView: UIView {
     @UseAutoLayout var welcomeLabel = CustomLabel()
     @UseAutoLayout var benefintsLabel = CustomLabel()
     @UseAutoLayout var continueLabel = CustomLabel()
-    @UseAutoLayout var continueButton = RoundedCustomButton()
+    @UseAutoLayout var continueButton = RoundedCustomButtonWithMargin()
     @UseAutoLayout var footerLabel = CustomLabel()
     @UseAutoLayout var privacyPolicyButton = CustomButton()
     
     // MARK: - Constraints constants
-    private var kSuperViewMargin: CGFloat = 32
-    private var kSuperViewTopMargin: CGFloat = 16
-    private var kHeightAnchor: CGFloat = 50
-    private var kLeftRightAnchor: CGFloat = 55
+    private var kSuperViewMargin: CGFloat = 16
     
     // MARK: - UIView
     override init(frame: CGRect) {
@@ -61,16 +58,15 @@ class WelcomeView: UIView {
         NSLayoutConstraint.activate([
             continueLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             continueLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            continueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewTopMargin),
-            continueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewTopMargin)
+            continueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            continueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
         ])
     }
      
     private func addContinueButton() {
         continueButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.continue_key.localized)
         NSLayoutConstraint.activate([
-            continueButton.widthAnchor.constraint(equalToConstant: 200),
-            continueButton.topAnchor.constraint(equalTo: continueLabel.bottomAnchor, constant: kSuperViewTopMargin),
+            continueButton.topAnchor.constraint(equalTo: continueLabel.bottomAnchor, constant: kSuperViewMargin),
             continueButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
@@ -80,9 +76,9 @@ class WelcomeView: UIView {
                                               fontSize: 15, textColor: .black, textAlignment: .center)
         NSLayoutConstraint.activate([
             benefintsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            benefintsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewTopMargin),
-            benefintsLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewTopMargin),
-            benefintsLabel.bottomAnchor.constraint(equalTo: continueLabel.topAnchor, constant: -kSuperViewTopMargin)
+            benefintsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            benefintsLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
+            benefintsLabel.bottomAnchor.constraint(equalTo: continueLabel.topAnchor, constant: -kSuperViewMargin*2)
         ])
     }
     
@@ -91,9 +87,9 @@ class WelcomeView: UIView {
                                                fontSize: 25, textColor: .black, textAlignment: .center)
         NSLayoutConstraint.activate([
             welcomeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            welcomeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewTopMargin),
-            welcomeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewTopMargin),
-            welcomeLabel.bottomAnchor.constraint(equalTo: benefintsLabel.topAnchor, constant: -kSuperViewTopMargin)
+            welcomeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            welcomeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
+            welcomeLabel.bottomAnchor.constraint(equalTo: benefintsLabel.topAnchor, constant: -kSuperViewMargin)
         ])
     }
     
@@ -102,7 +98,7 @@ class WelcomeView: UIView {
         NSLayoutConstraint.activate([
             logoImageView.heightAnchor.constraint(equalToConstant: 100),
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
-            logoImageView.bottomAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: -kSuperViewTopMargin),
+            logoImageView.bottomAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: -kSuperViewMargin*2),
             logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
@@ -117,7 +113,7 @@ class WelcomeView: UIView {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.spacing = -8
+        stackView.spacing = 2
     
         stackView.addArrangedSubview(footerLabel)
         stackView.addArrangedSubview(privacyPolicyButton)
@@ -126,6 +122,6 @@ class WelcomeView: UIView {
           
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -kSuperViewTopMargin).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -kSuperViewMargin).isActive = true
     }
 }
