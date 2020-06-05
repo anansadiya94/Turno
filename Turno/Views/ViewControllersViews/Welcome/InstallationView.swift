@@ -45,7 +45,9 @@ class InstallationView: UIView {
     }
     
     private func addNameTextField() {
-        nameTextField.textFieldTheme = NameTheme(placeholder: LocalizedConstants.name_key.localized, icon: kName)
+        nameTextField.textFieldTheme = NameTheme(placeholder: LocalizedConstants.name_key.localized,
+                                                 icon: kName, returnKeyType: .next)
+        nameTextField.returnKeyType = .next
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: kSuperViewMargin),
             nameTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
@@ -55,7 +57,8 @@ class InstallationView: UIView {
     }
 
     private func addPhoneNumberTextField() {
-        phoneNumberTextField.textFieldTheme = PhoneNumberTheme(placeholder: LocalizedConstants.phone_number_key.localized, icon: kPhoneNumber)
+        phoneNumberTextField.textFieldTheme = PhoneNumberTheme(placeholder: LocalizedConstants.phone_number_key.localized,
+                                                               icon: kPhoneNumber, returnKeyType: .done)
         NSLayoutConstraint.activate([
             phoneNumberTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: kSuperViewMargin),
             phoneNumberTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),

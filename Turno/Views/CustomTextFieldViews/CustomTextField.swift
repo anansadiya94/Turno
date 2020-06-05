@@ -23,6 +23,7 @@ class CustomTextField: UITextField {
                                                        attributes: [NSAttributedString.Key.foregroundColor: textFieldTheme.textColor])
             textContentType = textFieldTheme.textContentType
             keyboardType = textFieldTheme.keyboardType
+            returnKeyType = textFieldTheme.returnKeyType
             setLeftView(image: textFieldTheme.icon)
         }
     }
@@ -47,7 +48,7 @@ class CustomTextField: UITextField {
     
     private func setLeftView(image: String) {
         self.leftViewMode = .always
-        let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 24, height: 24))
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         let image = UIImage(named: image)
         imageView.image = image
         self.leftView = imageView

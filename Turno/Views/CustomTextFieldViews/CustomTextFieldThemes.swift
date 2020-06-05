@@ -15,6 +15,7 @@ protocol CustomTextFieldTheme {
     var textContentType: UITextContentType {get}
     var keyboardType: UIKeyboardType {get}
     var icon: String {get}
+    var returnKeyType: UIReturnKeyType {get}
 }
 
 struct NameTheme: CustomTextFieldTheme {
@@ -23,10 +24,12 @@ struct NameTheme: CustomTextFieldTheme {
     var textContentType: UITextContentType = .name
     var keyboardType: UIKeyboardType = .default
     var icon: String
+    var returnKeyType: UIReturnKeyType
     
-    init(placeholder: String, icon: String) {
+    init(placeholder: String, icon: String, returnKeyType: UIReturnKeyType) {
         self.placeholder = placeholder.localized
         self.icon = icon
+        self.returnKeyType = returnKeyType
     }
 }
 
@@ -36,9 +39,11 @@ struct PhoneNumberTheme: CustomTextFieldTheme {
     var textContentType: UITextContentType = .telephoneNumber
     var keyboardType: UIKeyboardType = .phonePad
     var icon: String
+    var returnKeyType: UIReturnKeyType
 
-    init(placeholder: String, icon: String) {
+    init(placeholder: String, icon: String, returnKeyType: UIReturnKeyType) {
         self.placeholder = placeholder.localized
         self.icon = icon
+        self.returnKeyType = returnKeyType
     }
 }
