@@ -23,5 +23,20 @@ class WelcomeCoordinator: Coordinator {
     }
 }
 
+extension WelcomeCoordinator {
+    
+    func showInstallationScreen(delegate: SelectButtonWelcome) {
+        let screen = ScreenFactory.makeInstallationScreen(delegate: delegate)
+        navigationController.pushViewController(screen, animated: true)
+    }
+}
+
 extension WelcomeCoordinator: SelectButtonWelcome {
+    func didSelectWelcomeContinueButton() {
+        showInstallationScreen(delegate: self)
+    }
+    
+    func didSelectInstallationContinueButton() {
+        //TODO
+    }
 }
