@@ -23,7 +23,7 @@ class InstallationViewController: UIViewController {
         addTargets()
         hideKeyboardWhenTappedAround()
         configureTextFields()
-        addCancelAndButtonsOnKeyboard()
+        addToolBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,33 +51,15 @@ class InstallationViewController: UIViewController {
         installationView?.phoneNumberTextField.delegate = self
     }
     
-    //TODO Extension or add to CustomTextField class
-    private func addCancelAndButtonsOnKeyboard() {
-        let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        toolbar.barStyle = .default
-
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancel: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain,
-                                                      target: self, action: #selector(self.cancelButtonTapped))
-        let done: UIBarButtonItem = UIBarButtonItem(title: LocalizedConstants.continue_key.localized, style: .done,
-                                                    target: self, action: #selector(self.continueButtonTapped))
-        
-        cancel.tintColor = .primary
-        done.tintColor = .primary
-
-        let items = [cancel, flexSpace, done]
-        toolbar.items = items
-        toolbar.sizeToFit()
-
-        installationView?.phoneNumberTextField.inputAccessoryView = toolbar
+    private func addToolBar() {
+        addCancelAndButtonsOnKeyboard(textField: installationView?.phoneNumberTextField)
     }
-
     // MARK: - UI interaction methods
     @objc func continueButtonTapped() {
         print("continue was tapped")
         installationView?.phoneNumberTextField.resignFirstResponder()
-        //TODO Validate and push screen
-        presenterInstallation.continueButtonTapped()
+        presenterInstallation.continueButtonTapped(name: installationView?.nameTextField.text,
+                                                   phoneNumber: installationView?.phoneNumberTextField.text ?? "")
     }
     
     @objc func cancelButtonTapped() {
@@ -90,5 +72,27 @@ extension InstallationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         installationView?.phoneNumberTextField.becomeFirstResponder()
         return false
+    }
+}
+
+extension InstallationViewController {
+    func addCancelAndButtonsOnKeyboard(textField: UITextField?) {
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        toolbar.barStyle = .default
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancel: UIBarButtonItem = UIBarButtonItem(title: LocalizedConstants.cancel_key.localized, style: .plain,
+                                                      target: self, action: #selector(self.cancelButtonTapped))
+        let done: UIBarButtonItem = UIBarButtonItem(title: LocalizedConstants.continue_key.localized, style: .done,
+                                                    target: self, action: #selector(self.continueButtonTapped))
+        
+        cancel.tintColor = .primary
+        done.tintColor = .primary
+
+        let items = [cancel, flexSpace, done]
+        toolbar.items = items
+        toolbar.sizeToFit()
+
+        textField?.inputAccessoryView = toolbar
     }
 }

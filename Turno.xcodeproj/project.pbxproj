@@ -24,6 +24,16 @@
 		9E55BD60248ACFCC004F401B /* CustomTextFieldThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD5F248ACFCC004F401B /* CustomTextFieldThemes.swift */; };
 		9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */; };
 		9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */; };
+		9E9880DD248BAFCC00D78959 /* AlertPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880DC248BAFCC00D78959 /* AlertPopupViewController.swift */; };
+		9E9880E0248BAFEF00D78959 /* PresenterAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880DF248BAFEF00D78959 /* PresenterAlertPopup.swift */; };
+		9E9880E3248BB01200D78959 /* AlertPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E2248BB01200D78959 /* AlertPopupView.swift */; };
+		9E9880E5248BB9AD00D78959 /* ModelAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E4248BB9AD00D78959 /* ModelAlertPopup.swift */; };
+		9E9880E7248BB9E500D78959 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E6248BB9E500D78959 /* User.swift */; };
+		9E9880E9248BBAA500D78959 /* ActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E8248BBAA500D78959 /* ActivationView.swift */; };
+		9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880EA248BBAB000D78959 /* ActivationViewController.swift */; };
+		9E9880ED248BBABD00D78959 /* PresenterActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880EC248BBABD00D78959 /* PresenterActivation.swift */; };
+		9E9880EF248BC24B00D78959 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880EE248BC24B00D78959 /* Preferences.swift */; };
+		9E9880F1248BC28F00D78959 /* PrefsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880F0248BC28F00D78959 /* PrefsConstants.swift */; };
 		9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C124880CE900F7952A /* ErrorsConstants.swift */; };
 		9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C42488105E00F7952A /* ServiceOnboarding.swift */; };
 		9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C7248813B700F7952A /* ModelOnboarding.swift */; };
@@ -94,6 +104,16 @@
 		9E55BD5F248ACFCC004F401B /* CustomTextFieldThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldThemes.swift; sourceTree = "<group>"; };
 		9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboardWhenTappedAround.swift"; sourceTree = "<group>"; };
 		9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButtonWithMargin.swift; sourceTree = "<group>"; };
+		9E9880DC248BAFCC00D78959 /* AlertPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupViewController.swift; sourceTree = "<group>"; };
+		9E9880DF248BAFEF00D78959 /* PresenterAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterAlertPopup.swift; sourceTree = "<group>"; };
+		9E9880E2248BB01200D78959 /* AlertPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupView.swift; sourceTree = "<group>"; };
+		9E9880E4248BB9AD00D78959 /* ModelAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAlertPopup.swift; sourceTree = "<group>"; };
+		9E9880E6248BB9E500D78959 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9E9880E8248BBAA500D78959 /* ActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationView.swift; sourceTree = "<group>"; };
+		9E9880EA248BBAB000D78959 /* ActivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationViewController.swift; sourceTree = "<group>"; };
+		9E9880EC248BBABD00D78959 /* PresenterActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterActivation.swift; sourceTree = "<group>"; };
+		9E9880EE248BC24B00D78959 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		9E9880F0248BC28F00D78959 /* PrefsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsConstants.swift; sourceTree = "<group>"; };
 		9EA657C124880CE900F7952A /* ErrorsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsConstants.swift; sourceTree = "<group>"; };
 		9EA657C42488105E00F7952A /* ServiceOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOnboarding.swift; sourceTree = "<group>"; };
 		9EA657C7248813B700F7952A /* ModelOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOnboarding.swift; sourceTree = "<group>"; };
@@ -176,6 +196,7 @@
 			children = (
 				9E0B75A6248986AF00B25313 /* WelcomeViewController.swift */,
 				9E55BD53248A9864004F401B /* InstallationViewController.swift */,
+				9E9880EA248BBAB000D78959 /* ActivationViewController.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -185,6 +206,7 @@
 			children = (
 				9E0B75A8248986BA00B25313 /* WelcomeView.swift */,
 				9E55BD55248A98C8004F401B /* InstallationView.swift */,
+				9E9880E8248BBAA500D78959 /* ActivationView.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -194,6 +216,7 @@
 			children = (
 				9E0B75AA248986CD00B25313 /* PresenterWelcome.swift */,
 				9E55BD57248A98D6004F401B /* PresenterInstallation.swift */,
+				9E9880EC248BBABD00D78959 /* PresenterActivation.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -216,11 +239,36 @@
 			path = CustomTextFieldViews;
 			sourceTree = "<group>";
 		};
+		9E9880DB248BAFBF00D78959 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				9E9880DC248BAFCC00D78959 /* AlertPopupViewController.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		9E9880DE248BAFDA00D78959 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				9E9880DF248BAFEF00D78959 /* PresenterAlertPopup.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		9E9880E1248BB00700D78959 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				9E9880E2248BB01200D78959 /* AlertPopupView.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		9EA657C32488104E00F7952A /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				9EA657C42488105E00F7952A /* ServiceOnboarding.swift */,
 				9E0B75A1248985C200B25313 /* ServiceAppFont.swift */,
+				9E9880EE248BC24B00D78959 /* Preferences.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -229,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				9EA657C7248813B700F7952A /* ModelOnboarding.swift */,
+				9E9880E4248BB9AD00D78959 /* ModelAlertPopup.swift */,
+				9E9880E6248BB9E500D78959 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +286,7 @@
 		9EA657CB2488149C00F7952A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9E9880DB248BAFBF00D78959 /* Alerts */,
 				9E0B75A32489867D00B25313 /* Welcome */,
 				9EA657CE248814C700F7952A /* OnBoarding */,
 			);
@@ -267,6 +318,7 @@
 		9EA657D0248814E200F7952A /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				9E9880DE248BAFDA00D78959 /* Alerts */,
 				9E0B75A52489869800B25313 /* Welcome */,
 				9EA657E42488162000F7952A /* OnBoarding */,
 			);
@@ -276,6 +328,7 @@
 		9EA657D22488150F00F7952A /* ViewControllersViews */ = {
 			isa = PBXGroup;
 			children = (
+				9E9880E1248BB00700D78959 /* Alerts */,
 				9E0B75A42489868B00B25313 /* Welcome */,
 				9EA657D32488151D00F7952A /* OnBoarding */,
 			);
@@ -505,6 +558,7 @@
 				9EA657E0248815DF00F7952A /* NibsConstants.swift */,
 				9EA657E72488167200F7952A /* NotificationCenterConstants.swift */,
 				9EA657EB248816A800F7952A /* UserDefaultsConstants.swift */,
+				9E9880F0248BC28F00D78959 /* PrefsConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -650,7 +704,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E9880DD248BAFCC00D78959 /* AlertPopupViewController.swift in Sources */,
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
+				9E9880E0248BAFEF00D78959 /* PresenterAlertPopup.swift in Sources */,
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,
 				9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */,
 				9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */,
@@ -670,17 +726,22 @@
 				9EA657D52488152700F7952A /* OnBoardingView.swift in Sources */,
 				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
 				9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */,
+				9E9880ED248BBABD00D78959 /* PresenterActivation.swift in Sources */,
 				9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */,
 				9E55BD5A248AC8C1004F401B /* UIViewController+SetBackBarButton.swift in Sources */,
+				9E9880E9248BBAA500D78959 /* ActivationView.swift in Sources */,
 				9EA657CA248813D200F7952A /* AssetsConstants.swift in Sources */,
 				9E0B75AE24898DB000B25313 /* CustomButton.swift in Sources */,
 				9EA657F52488176000F7952A /* CustomLabel.swift in Sources */,
+				9E9880EF248BC24B00D78959 /* Preferences.swift in Sources */,
 				9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */,
 				9EA657DD2488159400F7952A /* UIColor+Color.swift in Sources */,
 				9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */,
 				9E0B75A2248985C200B25313 /* ServiceAppFont.swift in Sources */,
 				9EA657F72488177600F7952A /* CustomLabelThemes.swift in Sources */,
+				9E9880E3248BB01200D78959 /* AlertPopupView.swift in Sources */,
 				9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */,
+				9E9880E7248BB9E500D78959 /* User.swift in Sources */,
 				9E0B75A02489837E00B25313 /* Fonts.swift in Sources */,
 				9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */,
 				9EA6581A2488194300F7952A /* RoundedCustomButtonThemes.swift in Sources */,
@@ -689,8 +750,11 @@
 				9EA6582324881AB700F7952A /* AppCoordinator.swift in Sources */,
 				9EA657E62488165E00F7952A /* Notification+Name.swift in Sources */,
 				9EA657EA2488169200F7952A /* Storage.swift in Sources */,
+				9E9880F1248BC28F00D78959 /* PrefsConstants.swift in Sources */,
 				9EA657EF2488170300F7952A /* UICollectionView+PresenterOnboarding.swift in Sources */,
 				9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */,
+				9E9880E5248BB9AD00D78959 /* ModelAlertPopup.swift in Sources */,
+				9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,
 				9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */,
 				9EA657EC248816A800F7952A /* UserDefaultsConstants.swift in Sources */,

@@ -19,10 +19,11 @@
 "phone_number_question_key" = "זהו מספר הטלפון שלך?";
 "edit_key" = "עריכה";
 "yes_key" = "כן";
-"activate_your_account_key" = "הפעל הספירה שלך";
+"activate_your_account_key" = "הפעל את חשבונך";
 "sms_sent_key" = "שלחנו קוד מספר הטלפון שלך באמצעות SMS";
 "wrong_number_key" = "טעות במספר?";
 "six_digit_code_key" = "קוד בן 6 ספרות";
 "resend_sms_key" = "שלח שוב את הודעת SMS";
 "activate_by_call_key" = "הפעל ידי שיחה";
 "finish_key" = "סיים";
+"cancel_key" = "לבטל";

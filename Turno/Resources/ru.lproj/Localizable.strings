@@ -19,10 +19,11 @@
 "phone_number_question_key" = "Это ваш номер телефона?";
 "edit_key" = "РЕДАКТИРОВАТЬ";
 "yes_key" = "ДА";
-"activate_your_account_key" = "Активировать Ваш подсчет";
+"activate_your_account_key" = "Активируйте вашу учетную запись";
 "sms_sent_key" = "Мы послали свой телефонный номер кода с помощью SMS";
 "wrong_number_key" = "Неправильный номер?";
 "six_digit_code_key" = "Ваш код 6 цифр";
 "resend_sms_key" = "Resend SMS";
 "activate_by_call_key" = "Активировать вызов";
 "finish_key" = "Конец";
+"cancel_key" = "Отмена";

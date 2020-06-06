@@ -44,4 +44,8 @@ extension UIColor {
     static var lightGray: UIColor {
         return hexStringToUIColor(hex: "#EBF0FF")
     }
+    
+    static var overlay: UIColor {
+        return hexStringToUIColor(hex: "#050505").withAlphaComponent(0.5)
+    }
 }
