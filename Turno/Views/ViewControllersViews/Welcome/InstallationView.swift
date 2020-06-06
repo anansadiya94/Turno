@@ -101,6 +101,11 @@ class InstallationView: UIView {
         ])
     }
     
+    func setTextFieldLabel(textFieldLabel: CustomLabel?, message: String = "", isHidden: Bool) {
+        textFieldLabel?.text = message
+        textFieldLabel?.isHidden = isHidden
+    }
+    
     func setTextFieldLayer(textField: UITextField?, isValid: Bool) {
         textField?.layer.borderColor = isValid ? UIColor.primary.cgColor : UIColor.red.cgColor
     }

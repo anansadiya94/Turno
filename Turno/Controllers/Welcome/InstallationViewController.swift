@@ -57,7 +57,6 @@ class InstallationViewController: UIViewController {
     // MARK: - UI interaction methods
     @objc func continueButtonTapped() {
         print("continue was tapped")
-        installationView?.phoneNumberTextField.resignFirstResponder()
         presenterInstallation.continueButtonTapped(name: installationView?.nameTextField.text,
                                                    phoneNumber: installationView?.phoneNumberTextField.text ?? "")
     }
@@ -104,6 +103,8 @@ extension InstallationViewController: PresenterInstallationView {
         var isValid: Bool = true
         var message = ""
         switch type {
+        case .valid:
+            installationView?.setTextFieldLabel(textFieldLabel: installationView?.phoneNumberTextFieldLabel, isHidden: true)
         case .empty_field_key:
             isValid = false
             message = LocalizedConstants.empty_field_key.localized
@@ -113,8 +114,7 @@ extension InstallationViewController: PresenterInstallationView {
         default:
             break
         }
-        installationView?.nameTextFieldLabel.text = message
-        installationView?.nameTextFieldLabel.isHidden = false
+        installationView?.setTextFieldLabel(textFieldLabel: installationView?.nameTextFieldLabel, message: message, isHidden: false)
         installationView?.setTextFieldLayer(textField: installationView?.nameTextField, isValid: isValid)
     }
     
@@ -122,6 +122,8 @@ extension InstallationViewController: PresenterInstallationView {
         var isValid: Bool = true
         var message = ""
         switch type {
+        case .valid:
+            installationView?.setTextFieldLabel(textFieldLabel: installationView?.phoneNumberTextFieldLabel, isHidden: true)
         case .empty_field_key:
             isValid = false
             message = LocalizedConstants.empty_field_key.localized
@@ -131,8 +133,7 @@ extension InstallationViewController: PresenterInstallationView {
         default:
             break
         }
-        installationView?.phoneNumberTextFieldLabel.text = message
-        installationView?.phoneNumberTextFieldLabel.isHidden = false
+        installationView?.setTextFieldLabel(textFieldLabel: installationView?.phoneNumberTextFieldLabel, message: message, isHidden: false)
         installationView?.setTextFieldLayer(textField: installationView?.phoneNumberTextField, isValid: isValid)
     }
 }
