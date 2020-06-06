@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol PresenterActivationView: class {
+    func popViewController()
+}
+
 class PresenterActivation: NSObject {
     
     // MARK: - Properties
@@ -19,5 +23,20 @@ class PresenterActivation: NSObject {
         super.init()
         self.view = view
         self.delegate = delegate
+    }
+    
+    // MARK: - UI interaction methods
+    func wrongNumberButtonTapped() {
+        view?.popViewController()
+    }
+    
+    //TODO
+    func resendSMSButtonTapped() {
+        print("resendSMSButtonTapped")
+    }
+    
+    //TODO
+    func activateByCallButtonTapped() {
+        print("activateByCallButtonTapped")
     }
 }

@@ -16,11 +16,13 @@ class WelcomeView: UIView {
     @UseAutoLayout var benefintsLabel = CustomLabel()
     @UseAutoLayout var continueLabel = CustomLabel()
     @UseAutoLayout var continueButton = RoundedCustomButtonWithMargin()
+    @UseAutoLayout var footerView = UIView()
     @UseAutoLayout var footerLabel = CustomLabel()
     @UseAutoLayout var privacyPolicyButton = CustomButton()
     
     // MARK: - Constraints constants
     private var kSuperViewMargin: CGFloat = 16
+    private var kSpaceBetweenElements: CGFloat = 2
     
     // MARK: - UIView
     override init(frame: CGRect) {
@@ -50,6 +52,7 @@ class WelcomeView: UIView {
         self.addSubview(benefintsLabel)
         self.addSubview(continueLabel)
         self.addSubview(continueButton)
+        self.addSubview(footerView)
     }
     
     private func addContinueLabel() {
@@ -108,20 +111,19 @@ class WelcomeView: UIView {
         footerLabel.labelTheme = RegularTheme(label: "@2020 Turno", fontSize: 15,
                                               textColor: .black, textAlignment: .center)
         privacyPolicyButton.buttonTheme = BaseTheme(label: LocalizedConstants.privacy_policy_key.localized, underLine: true)
-        
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .fill
-        stackView.spacing = 2
+
+        footerView.addSubview(footerLabel)
+        footerView.addSubview(privacyPolicyButton)
     
-        stackView.addArrangedSubview(footerLabel)
-        stackView.addArrangedSubview(privacyPolicyButton)
-          
-        self.addSubview(stackView)
-          
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -kSuperViewMargin).isActive = true
+        NSLayoutConstraint.activate([
+            footerLabel.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
+            privacyPolicyButton.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
+            footerLabel.leftAnchor.constraint(equalTo: footerView.leftAnchor),
+            footerLabel.rightAnchor.constraint(equalTo: privacyPolicyButton.leftAnchor, constant: -kSpaceBetweenElements),
+            privacyPolicyButton.rightAnchor.constraint(equalTo: footerView.rightAnchor),
+            footerView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            footerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -kSuperViewMargin),
+            footerView.heightAnchor.constraint(equalToConstant: kSuperViewMargin)
+        ])
     }
 }

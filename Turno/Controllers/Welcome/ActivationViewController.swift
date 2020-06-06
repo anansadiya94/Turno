@@ -22,6 +22,7 @@ class ActivationViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setWelcomeView()
+        addTargets()
         configureProgressView()
     }
     
@@ -38,6 +39,12 @@ class ActivationViewController: UIViewController {
     private func setWelcomeView() {
         activationView = ActivationView(frame: view.frame)
         self.view = activationView
+    }
+    
+    private func addTargets() {
+        activationView?.wrongNumberButton.addTarget(self, action: #selector(wrongNumberButtonTapped), for: .touchUpInside)
+        activationView?.resendSMSButton.addTarget(self, action: #selector(resendSMSButtonTapped), for: .touchUpInside)
+        activationView?.activateByCallButton.addTarget(self, action: #selector(activateByCallButtonTapped), for: .touchUpInside)
     }
     
     private func configureProgressView() {
@@ -57,5 +64,26 @@ class ActivationViewController: UIViewController {
             self.progress.completedUnitCount += 1
             self.activationView?.progressView.setProgress(Float(self.progress.fractionCompleted), animated: true)
         }
+    }
+    
+    // MARK: - UI interaction methods
+    @objc func wrongNumberButtonTapped() {
+        presenterActivation.wrongNumberButtonTapped()
+    }
+    
+    @objc func resendSMSButtonTapped() {
+        presenterActivation.resendSMSButtonTapped()
+    }
+    
+    @objc func activateByCallButtonTapped() {
+        presenterActivation.activateByCallButtonTapped()
+    }
+}
+
+// MARK: - PresenterActivationView methods
+extension ActivationViewController: PresenterActivationView {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }
