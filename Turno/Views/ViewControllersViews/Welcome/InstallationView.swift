@@ -12,7 +12,9 @@ class InstallationView: UIView {
     
     // MARK: - Properties
     @UseAutoLayout var nameTextField = CustomTextField()
+    @UseAutoLayout var nameTextFieldLabel = CustomLabel()
     @UseAutoLayout var phoneNumberTextField = CustomTextField()
+    @UseAutoLayout var phoneNumberTextFieldLabel = CustomLabel()
     @UseAutoLayout var continueButton = RoundedCustomButtonWithMargin()
     
     // MARK: - Constraints constants
@@ -34,25 +36,38 @@ class InstallationView: UIView {
     private func configureUI() {
         addSubviews()
         addNameTextField()
+        addNameTextFieldLabel()
         addPhoneNumberTextField()
+        addPhoneNumberTextFieldLabel()
         addContinueButton()
     }
 
     func addSubviews() {
         self.addSubview(nameTextField)
+        self.addSubview(nameTextFieldLabel)
         self.addSubview(phoneNumberTextField)
+        self.addSubview(phoneNumberTextFieldLabel)
         self.addSubview(continueButton)
     }
     
     private func addNameTextField() {
         nameTextField.textFieldTheme = NameTheme(placeholder: LocalizedConstants.name_key.localized,
                                                  icon: kName, returnKeyType: .next)
-        nameTextField.returnKeyType = .next
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: kSuperViewMargin),
             nameTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
             nameTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
             nameTextField.heightAnchor.constraint(equalToConstant: kTextFieldHeight)
+        ])
+    }
+    
+    private func addNameTextFieldLabel() {
+        nameTextFieldLabel.isHidden = true
+        nameTextFieldLabel.labelTheme = Lightheme(label: "", fontSize: 10, textColor: .red, textAlignment: .left)
+        NSLayoutConstraint.activate([
+            nameTextFieldLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor),
+            nameTextFieldLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            nameTextFieldLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
         ])
     }
 
@@ -67,6 +82,16 @@ class InstallationView: UIView {
         ])
     }
     
+    private func addPhoneNumberTextFieldLabel() {
+        phoneNumberTextFieldLabel.isHidden = true
+        phoneNumberTextFieldLabel.labelTheme = Lightheme(label: "", fontSize: 10, textColor: .red, textAlignment: .left)
+        NSLayoutConstraint.activate([
+            phoneNumberTextFieldLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor),
+            phoneNumberTextFieldLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            phoneNumberTextFieldLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
+        ])
+    }
+    
     private func addContinueButton() {
         continueButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.continue_key.localized)
         NSLayoutConstraint.activate([
@@ -74,5 +99,9 @@ class InstallationView: UIView {
             continueButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin*2),
             continueButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -kSuperViewMargin*2)
         ])
+    }
+    
+    func setTextFieldLayer(textField: UITextField?, isValid: Bool) {
+        textField?.layer.borderColor = isValid ? UIColor.primary.cgColor : UIColor.red.cgColor
     }
 }

@@ -67,14 +67,7 @@ class InstallationViewController: UIViewController {
     }
 }
 
-// MARK: - UITextFieldDelegate methods
-extension InstallationViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        installationView?.phoneNumberTextField.becomeFirstResponder()
-        return false
-    }
-}
-
+//TOOD IMPROVE ME
 extension InstallationViewController {
     func addCancelAndButtonsOnKeyboard(textField: UITextField?) {
         let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
@@ -94,5 +87,52 @@ extension InstallationViewController {
         toolbar.sizeToFit()
 
         textField?.inputAccessoryView = toolbar
+    }
+}
+
+// MARK: - UITextFieldDelegate methods
+extension InstallationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        installationView?.phoneNumberTextField.becomeFirstResponder()
+        return false
+    }
+}
+
+// MARK: - PresenterInstallationView methods
+extension InstallationViewController: PresenterInstallationView {
+    func showNameTextFieldLabel(type: TextFieldErrorType) {
+        var isValid: Bool = true
+        var message = ""
+        switch type {
+        case .empty_field_key:
+            isValid = false
+            message = LocalizedConstants.empty_field_key.localized
+        case .invalid_name_key:
+            isValid = false
+            message = LocalizedConstants.name_key.localized
+        default:
+            break
+        }
+        installationView?.nameTextFieldLabel.text = message
+        installationView?.nameTextFieldLabel.isHidden = false
+        installationView?.setTextFieldLayer(textField: installationView?.nameTextField, isValid: isValid)
+    }
+    
+    func showPhoneNumberTextFieldLabel(type: TextFieldErrorType) {
+        var isValid: Bool = true
+        var message = ""
+        switch type {
+        case .empty_field_key:
+            isValid = false
+            message = LocalizedConstants.empty_field_key.localized
+        case .invalid_phoneNumber_key:
+            isValid = false
+            message = LocalizedConstants.invalid_phoneNumber_key.localized
+        default:
+            break
+        }
+        installationView?.phoneNumberTextFieldLabel.text = message
+        installationView?.phoneNumberTextFieldLabel.isHidden = false
+        installationView?.setTextFieldLayer(textField: installationView?.phoneNumberTextField, isValid: isValid)
     }
 }

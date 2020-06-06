@@ -27,3 +27,6 @@
 "activate_by_call_key" = "Activar mediante una llamada";
 "finish_key" = "Terminar";
 "cancel_key" = "Cancelar";
+"empty_field_key" = "Este campo no puede estar vacío";
+"invalid_name_key" = "El campo nombre debe ser de entre 2 y 30 caracteres";
+"invalid_phoneNumber_key" = "Por favor ingrese un número de teléfono válido";

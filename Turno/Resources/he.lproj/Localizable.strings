@@ -27,3 +27,6 @@
 "activate_by_call_key" = "הפעל ידי שיחה";
 "finish_key" = "סיים";
 "cancel_key" = "לבטל";
+"empty_field_key" = "שדה זה לא יכול להיות ריק";
+"invalid_name_key" = "שדה השם חייב להיות בין 2 ל -30 תווים";
+"invalid_phoneNumber_key" = "בבקשה הכנס מספר טלפון תקין";

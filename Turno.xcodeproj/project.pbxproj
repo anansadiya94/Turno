@@ -34,6 +34,7 @@
 		9E9880ED248BBABD00D78959 /* PresenterActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880EC248BBABD00D78959 /* PresenterActivation.swift */; };
 		9E9880EF248BC24B00D78959 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880EE248BC24B00D78959 /* Preferences.swift */; };
 		9E9880F1248BC28F00D78959 /* PrefsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880F0248BC28F00D78959 /* PrefsConstants.swift */; };
+		9E9880F3248BCD8E00D78959 /* ServiceTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880F2248BCD8E00D78959 /* ServiceTextFieldValidation.swift */; };
 		9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C124880CE900F7952A /* ErrorsConstants.swift */; };
 		9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C42488105E00F7952A /* ServiceOnboarding.swift */; };
 		9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C7248813B700F7952A /* ModelOnboarding.swift */; };
@@ -114,6 +115,7 @@
 		9E9880EC248BBABD00D78959 /* PresenterActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterActivation.swift; sourceTree = "<group>"; };
 		9E9880EE248BC24B00D78959 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		9E9880F0248BC28F00D78959 /* PrefsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsConstants.swift; sourceTree = "<group>"; };
+		9E9880F2248BCD8E00D78959 /* ServiceTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTextFieldValidation.swift; sourceTree = "<group>"; };
 		9EA657C124880CE900F7952A /* ErrorsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsConstants.swift; sourceTree = "<group>"; };
 		9EA657C42488105E00F7952A /* ServiceOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOnboarding.swift; sourceTree = "<group>"; };
 		9EA657C7248813B700F7952A /* ModelOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOnboarding.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				9EA657C42488105E00F7952A /* ServiceOnboarding.swift */,
 				9E0B75A1248985C200B25313 /* ServiceAppFont.swift */,
 				9E9880EE248BC24B00D78959 /* Preferences.swift */,
+				9E9880F2248BCD8E00D78959 /* ServiceTextFieldValidation.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,
 				9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */,
 				9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */,
+				9E9880F3248BCD8E00D78959 /* ServiceTextFieldValidation.swift in Sources */,
 				9E55BD5D248ACF7A004F401B /* CustomTextField.swift in Sources */,
 				9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */,
 				9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */,

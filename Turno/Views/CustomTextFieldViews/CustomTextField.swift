@@ -44,6 +44,9 @@ class CustomTextField: UITextField {
         autocorrectionType = .no
         clearButtonMode = .whileEditing
         contentVerticalAlignment = .center
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.overlay.cgColor
+        layer.cornerRadius = 5
     }
     
     private func setLeftView(image: String) {

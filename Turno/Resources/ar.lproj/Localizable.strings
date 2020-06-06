@@ -27,3 +27,6 @@
 "activate_by_call_key" = "تنشيط عن طريق مكالمة";
 "finish_key" = "إنهاء";
 "cancel_key" = "إلغاء";
+"empty_field_key" = "هذا المجال لا يمكن أن يكون فارغا";
+"invalid_name_key" = "يجب أن يكون حقل الاسم في الفترة ما بين 2 و 30 حرفا";
+"invalid_phoneNumber_key" = "يرجى إدخال رقم هاتف صالح";
