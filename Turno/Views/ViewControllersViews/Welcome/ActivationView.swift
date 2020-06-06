@@ -11,6 +11,7 @@ import UIKit
 class ActivationView: UIView {
     
     // MARK: - Properties
+    @UseAutoLayout var progressView = UIProgressView()
     @UseAutoLayout var finishButton = RoundedCustomButtonWithMargin()
     
     // MARK: - Constraints constants
@@ -31,13 +32,24 @@ class ActivationView: UIView {
     // MARK: - Private methods
     private func configureUI() {
         addSubviews()
+        addProgressView()
         addFinishButton()
     }
 
-    func addSubviews() {
+    private func addSubviews() {
+        self.addSubview(progressView)
         self.addSubview(finishButton)
     }
 
+    private func addProgressView() {
+        progressView.tintColor = .primary
+        NSLayoutConstraint.activate([
+            progressView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: kSuperViewMargin),
+            progressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            progressView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
+        ])
+    }
+    
     private func addFinishButton() {
         finishButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.finish_key.localized)
         NSLayoutConstraint.activate([

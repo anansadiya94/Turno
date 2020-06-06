@@ -44,7 +44,7 @@ class WelcomeView: UIView {
         addFooterView()
     }
 
-    func addSubviews() {
+    private func addSubviews() {
         self.addSubview(logoImageView)
         self.addSubview(welcomeLabel)
         self.addSubview(benefintsLabel)
