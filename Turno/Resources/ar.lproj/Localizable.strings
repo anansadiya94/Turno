@@ -19,10 +19,14 @@
 "phone_number_question_key" = "هذا هو رقم هاتفك؟";
 "edit_key" = "تعديل";
 "yes_key" = "نعم";
-"activate_your_account_key" = "تفعيل حساب الخاص بك";
+"activate_your_account_key" = "فعل حسابك";
 "sms_sent_key" = "لقد قمنا بإرسال رقم الهاتف رمز الخاص بك عن طريق SMS";
 "wrong_number_key" = "رقم غير صحيح؟";
 "six_digit_code_key" = "أكواد 6 أرقام";
 "resend_sms_key" = "اعادة الرسال الرسالة";
 "activate_by_call_key" = "تنشيط عن طريق مكالمة";
 "finish_key" = "إنهاء";
+"cancel_key" = "إلغاء";
+"empty_field_key" = "هذا المجال لا يمكن أن يكون فارغا";
+"invalid_name_key" = "يجب أن يكون حقل الاسم في الفترة ما بين 2 و 30 حرفا";
+"invalid_phoneNumber_key" = "يرجى إدخال رقم هاتف صالح";

@@ -19,10 +19,14 @@
 "phone_number_question_key" = "This is your phone number?";
 "edit_key" = "EDIT";
 "yes_key" = "YES";
-"activate_your_account_key" = "Activate your count";
+"activate_your_account_key" = "Activate your account";
 "sms_sent_key" = "We have sent your phone number a code by SMS";
 "wrong_number_key" = "Wrong number?";
 "six_digit_code_key" = "Your 6 digit code";
 "resend_sms_key" = "Resend SMS";
 "activate_by_call_key" = "Activate by call";
 "finish_key" = "Finish";
+"cancel_key" = "Cancel";
+"empty_field_key" = "This field can’t be empty";
+"invalid_name_key" = "The name field must be at between 2 and 30 characters";
+"invalid_phoneNumber_key" = "Please enter a valid phone number";

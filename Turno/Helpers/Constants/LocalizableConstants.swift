@@ -36,6 +36,10 @@ enum LocalizedConstants: String {
     case    resend_sms_key
     case    activate_by_call_key
     case    finish_key
+    case    cancel_key
+    case    empty_field_key
+    case    invalid_name_key
+    case    invalid_phoneNumber_key
 }
 
 extension LocalizedConstants {

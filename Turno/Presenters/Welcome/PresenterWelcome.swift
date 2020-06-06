@@ -20,13 +20,13 @@ class PresenterWelcome: NSObject {
         self.view = view
         self.delegate = delegate
     }
-
-    //TODO: FIX ME
+    
+    // MARK: - UI interaction methods
     func continueButtonTapped() {
-        print("continueButtonTapped")
+        delegate.didSelectWelcomeContinueButton()
     }
 
-    //TODO: FIX ME
+    //TODO: Where to?
     func privacyPolicyButtonTapped() {
         print("privacyPolicyButtonTapped")
     }

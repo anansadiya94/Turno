@@ -12,12 +12,10 @@ class ServiceOnboarding {
     
     // MARK: - Private functions
     static private func fetchDataWithNetwork(callback: ([ModelOnboarding]) -> Void) {
-        print("Fetching dynamic data from the service")
         callback([ModelOnboarding]())
     }
     
     static func fetchDataWithoutNetwork() -> [ModelOnboarding] {
-        print("Fetching static data")
         let firstOnboarding = ModelOnboarding(id: 1, backgroungImage: kFirstOnboardingBackgroundImage,
                                               title: LocalizedConstants.first_onboarding_title_key.localized,
                                               subTitle: LocalizedConstants.first_onboarding_subtitle_key.localized,

@@ -23,26 +23,26 @@ class OnBoardingCoordinator: Coordinator {
         if AppData.onBoardingCompleted {
             switch App.state {
             case .unregistered:
-                showWelcomeScene()
+                showWelcomeScreen()
             case .loggedIn:
                 showMainScreen()
             case .sessionExpired:
-                showWelcomeScene()
+                showWelcomeScreen()
             }
         } else {
-            showOnboardingScene()
+            showOnboardingScreen()
         }
     }
 }
 
 extension OnBoardingCoordinator {
     
-    func showOnboardingScene() {
+    func showOnboardingScreen() {
         let screen = ScreenFactory.makeOnboardingScreen(delegate: self)
         window.rootViewController = screen
     }
     
-    func showWelcomeScene() {
+    func showWelcomeScreen() {
         let welcomeCoordinator = WelcomeCoordinator(window: window, navigationController: navigationController)
         let screen = ScreenFactory.makeWelcomeScreen(navigationController: navigationController, delegate: welcomeCoordinator)
         window.rootViewController = screen
@@ -55,6 +55,6 @@ extension OnBoardingCoordinator {
 
 extension OnBoardingCoordinator: SelectButtonOnboarding {
     func didSelectOnboardingButton() {
-        showWelcomeScene()
+        showWelcomeScreen()
     }
 }

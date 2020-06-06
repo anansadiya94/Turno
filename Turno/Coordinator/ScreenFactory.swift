@@ -13,8 +13,11 @@ import  UIKit
 protocol SelectButtonOnboarding: class {
     func didSelectOnboardingButton()
 }
+
 protocol SelectButtonWelcome: class {
-    
+    func didSelectWelcomeContinueButton()
+    func showAlert(view: UIViewController, modelAlertPopup: ModelAlertPopup)
+    func didSelectAlertYesButton()
 }
 
 struct ScreenFactory {
@@ -33,5 +36,27 @@ struct ScreenFactory {
         welcomeViewController.presenterWelcome = presenter
         navigationController.viewControllers = [welcomeViewController]
         return navigationController
+    }
+    
+    static func makeInstallationScreen(delegate: SelectButtonWelcome) -> UIViewController {
+        let viewController = InstallationViewController()
+        let presenter = PresenterInstallation(view: viewController, delegate: delegate)
+        viewController.presenterInstallation = presenter
+        return viewController
+    }
+    
+    static func makeActivationScreen(delegate: SelectButtonWelcome) -> UIViewController {
+        let viewController = ActivationViewController()
+        let presenter = PresenterActivation(view: viewController, delegate: delegate)
+        viewController.presenterActivation = presenter
+        return viewController
+    }
+    
+    //ALERT:
+    static func makeAlertPopupScreen(delegate: SelectButtonWelcome, modelAlertPopup: ModelAlertPopup) -> UIViewController {
+        let viewController = AlertPopupViewController()
+        let presnter = PresenterAlertPopup(view: viewController, delegate: delegate, modelAlertPopup: modelAlertPopup)
+        viewController.presenterAlertPopup = presnter
+        return viewController
     }
 }

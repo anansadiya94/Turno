@@ -19,10 +19,14 @@
 "phone_number_question_key" = "Este es su número de teléfono?";
 "edit_key" = "EDITAR";
 "yes_key" = "SI";
-"activate_your_account_key" = "Active su recuento";
+"activate_your_account_key" = "activa tu cuenta";
 "sms_sent_key" = "Hemos enviado el código de número de un teléfono por SMS";
 "wrong_number_key" = "¿Número equivocado?";
 "six_digit_code_key" = "Su código de 6 dígitos";
 "resend_sms_key" = "Reenviar SMS";
 "activate_by_call_key" = "Activar mediante una llamada";
 "finish_key" = "Terminar";
+"cancel_key" = "Cancelar";
+"empty_field_key" = "Este campo no puede estar vacío";
+"invalid_name_key" = "El campo nombre debe ser de entre 2 y 30 caracteres";
+"invalid_phoneNumber_key" = "Por favor ingrese un número de teléfono válido";

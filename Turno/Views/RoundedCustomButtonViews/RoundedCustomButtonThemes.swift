@@ -44,7 +44,7 @@ struct RoundedBaseTheme: RoundedCustomButtonTheme {
     var buttonImageName: String?
     var label: String
     var backgroundColor: UIColor = .primary
-    var titleColor: UIColor = .black
+    var titleColor: UIColor = .white
     var font: UIFont = Fonts.Bold20
     var label2: String?
     var button2ImageName: String?

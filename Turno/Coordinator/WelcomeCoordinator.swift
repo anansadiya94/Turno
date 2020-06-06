@@ -23,5 +23,36 @@ class WelcomeCoordinator: Coordinator {
     }
 }
 
+extension WelcomeCoordinator {
+    
+    func showInstallationScreen(delegate: SelectButtonWelcome) {
+        let screen = ScreenFactory.makeInstallationScreen(delegate: delegate)
+        navigationController.pushViewController(screen, animated: true)
+    }
+    
+    func showAlertPopupScreen(view: UIViewController, modelAlertPopup: ModelAlertPopup) {
+        let screen = ScreenFactory.makeAlertPopupScreen(delegate: self, modelAlertPopup: modelAlertPopup)
+        screen.modalPresentationStyle = .overCurrentContext
+        screen.modalTransitionStyle = .crossDissolve
+        view.present(screen, animated: true, completion: nil)
+    }
+    
+    func showActivationScreen(delegate: SelectButtonWelcome) {
+        let screen = ScreenFactory.makeActivationScreen(delegate: delegate)
+        navigationController.pushViewController(screen, animated: true)
+    }
+}
+
 extension WelcomeCoordinator: SelectButtonWelcome {
+    func didSelectWelcomeContinueButton() {
+        showInstallationScreen(delegate: self)
+    }
+    
+    func showAlert(view: UIViewController, modelAlertPopup: ModelAlertPopup) {
+        showAlertPopupScreen(view: view, modelAlertPopup: modelAlertPopup)
+    }
+    
+    func didSelectAlertYesButton() {
+        showActivationScreen(delegate: self)
+    }
 }
