@@ -105,6 +105,7 @@ class AlertPopupView: UIView {
         stackView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor, constant: -kSuperViewMargin).isActive = true
     }
     
+    // MARK: - Public Interface
     func setAlertDataView(modelAlertPopup: ModelAlertPopup) {
         self.alertTitle.text = modelAlertPopup.title ?? ""
         self.alertMessage.text = modelAlertPopup.message ?? ""

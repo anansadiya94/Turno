@@ -101,6 +101,7 @@ class InstallationView: UIView {
         ])
     }
     
+    // MARK: - Public Interface
     func setTextFieldLabel(textFieldLabel: CustomLabel?, message: String = "", isHidden: Bool) {
         textFieldLabel?.text = message
         textFieldLabel?.isHidden = isHidden

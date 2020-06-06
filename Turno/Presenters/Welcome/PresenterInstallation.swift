@@ -79,4 +79,8 @@ class PresenterInstallation {
             showAlert()
         }
     }
+    
+    func alertYesButtonTapped() {
+        delegate.didSelectAlertYesButton()
+    }
 }

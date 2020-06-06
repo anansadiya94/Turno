@@ -20,7 +20,8 @@ class InstallationViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setWelcomeView()
-        addTargets()
+        addTarget()
+        addObservers()
         hideKeyboardWhenTappedAround()
         configureTextFields()
         addToolBar()
@@ -42,8 +43,15 @@ class InstallationViewController: UIViewController {
         self.view = installationView
     }
     
-    private func addTargets() {
+    private func addTarget() {
         installationView?.continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+    }
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(alertButton1TappedAction),
+                                               name: Alert.alertButton1Tapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(alertButton2TappedAction),
+                                               name: Alert.alertButton2Tapped, object: nil)
     }
     
     private func configureTextFields() {
@@ -54,15 +62,24 @@ class InstallationViewController: UIViewController {
     private func addToolBar() {
         addCancelAndButtonsOnKeyboard(textField: installationView?.phoneNumberTextField)
     }
+    
     // MARK: - UI interaction methods
     @objc func continueButtonTapped() {
-        print("continue was tapped")
+        installationView?.phoneNumberTextField.resignFirstResponder()
         presenterInstallation.continueButtonTapped(name: installationView?.nameTextField.text,
                                                    phoneNumber: installationView?.phoneNumberTextField.text ?? "")
     }
     
     @objc func cancelButtonTapped() {
         installationView?.phoneNumberTextField.resignFirstResponder()
+    }
+    
+    @objc func alertButton1TappedAction() {
+        installationView?.phoneNumberTextField.becomeFirstResponder()
+    }
+    
+    @objc func alertButton2TappedAction() {
+        presenterInstallation.alertYesButtonTapped()
     }
 }
 

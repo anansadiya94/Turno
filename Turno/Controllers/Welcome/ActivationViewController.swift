@@ -29,7 +29,7 @@ class ActivationViewController: UIViewController {
     // MARK: - Private methods
     private func setNavigationBar() {
         navigationItem.title = LocalizedConstants.activate_your_account_key.localized
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.setHidesBackButton(true, animated: false)
     }
     
     private func setWelcomeView() {

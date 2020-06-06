@@ -30,10 +30,11 @@ class PresenterAlertPopup: NSObject {
     // MARK: - Public Interface
     func button1AlertTapped() {
         view?.popViewController()
+        NotificationCenter.default.post(name: Alert.alertButton1Tapped, object: nil)
     }
     
     func button2AlertTapped() {
         view?.popViewController()
-        delegate.didSelectAlertYesButton()
+        NotificationCenter.default.post(name: Alert.alertButton2Tapped, object: nil)
     }
 }
