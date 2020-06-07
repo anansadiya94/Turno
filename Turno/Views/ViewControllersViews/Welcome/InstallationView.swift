@@ -42,7 +42,7 @@ class InstallationView: UIView {
         addContinueButton()
     }
 
-    func addSubviews() {
+    private func addSubviews() {
         self.addSubview(nameTextField)
         self.addSubview(nameTextFieldLabel)
         self.addSubview(phoneNumberTextField)

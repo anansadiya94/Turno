@@ -26,8 +26,10 @@ struct BaseTheme: CustomButtonTheme {
     var titleColor: UIColor = .black
     var contentHorizontalAlignment: UIControl.ContentHorizontalAlignment = .center
 
-    init(label: String, underLine: Bool = false) {
+    init(label: String, underLine: Bool = false, titleColor: UIColor = .black, contentHorizontalAlignment: UIControl.ContentHorizontalAlignment = .center) {
         self.label = label.localized
         self.underLine = underLine
+        self.titleColor = titleColor
+        self.contentHorizontalAlignment = contentHorizontalAlignment
     }
 }

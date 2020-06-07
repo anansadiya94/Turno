@@ -55,4 +55,8 @@ extension WelcomeCoordinator: SelectButtonWelcome {
     func didSelectAlertYesButton() {
         showActivationScreen(delegate: self)
     }
+    
+    func didSelectFinishButton() {
+        //TODO Open main screen
+    }
 }
