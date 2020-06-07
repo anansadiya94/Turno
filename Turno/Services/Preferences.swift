@@ -10,6 +10,28 @@ import Foundation
 
 class Preferences {
     
+    // MARK: - AppState
+    
+    /// Returns the preferences value associated with the key kPrefsAppState.
+    /// - returns: The string containing app state.
+    static func getPrefsAppState() -> AppState? {
+        guard let state = UserDefaults.standard.value(forKey: kPrefsAppState) as? String else {
+            return nil
+        }
+        return AppState(rawValue: state)
+    }
+    
+    /// Sets the value associated with the key kPrefsAppState.
+    /// - parameter value: The new value.
+    static func setPrefsAppState(value: AppState) {
+        UserDefaults.standard.set(value.rawValue, forKey: kPrefsAppState)
+    }
+    
+    /// Delete the value associated with the key kPrefsAppState
+    static func removePrefsAppState() {
+        UserDefaults.standard.removeObject(forKey: kPrefsAppState)
+    }
+    
     // MARK: - User
     
     /// Sets the value associated with the key kPrefsUser.

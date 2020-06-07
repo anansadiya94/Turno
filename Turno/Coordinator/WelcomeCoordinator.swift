@@ -41,6 +41,12 @@ extension WelcomeCoordinator {
         let screen = ScreenFactory.makeActivationScreen(delegate: delegate)
         navigationController.pushViewController(screen, animated: true)
     }
+    
+    func showMainScreen() {
+        navigationController.isNavigationBarHidden = true
+        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController)
+        window.rootViewController = screen
+    }
 }
 
 extension WelcomeCoordinator: SelectButtonWelcome {
@@ -57,6 +63,6 @@ extension WelcomeCoordinator: SelectButtonWelcome {
     }
     
     func didSelectFinishButton() {
-        //TODO Open main screen
+        showMainScreen()
     }
 }

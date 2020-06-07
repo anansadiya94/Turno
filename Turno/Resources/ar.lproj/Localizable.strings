@@ -30,3 +30,7 @@
 "empty_field_key" = "هذا المجال لا يمكن أن يكون فارغا";
 "invalid_name_key" = "يجب أن يكون حقل الاسم في الفترة ما بين 2 و 30 حرفا";
 "invalid_phoneNumber_key" = "يرجى إدخال رقم هاتف صالح";
+"home_key" = "الصفحة الرئيسية";
+"my_turns_key" = "بلدي يتحول";
+"favorites_key" = "المفضلة";
+"settings_key" = "الإعدادات";

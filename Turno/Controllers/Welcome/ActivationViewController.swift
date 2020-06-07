@@ -32,10 +32,6 @@ class ActivationViewController: UIViewController {
         configureOPTView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
-    
     // MARK: - Private methods
     private func setNavigationBar() {
         navigationItem.title = LocalizedConstants.activate_your_account_key.localized

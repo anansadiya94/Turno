@@ -30,3 +30,7 @@
 "empty_field_key" = "שדה זה לא יכול להיות ריק";
 "invalid_name_key" = "שדה השם חייב להיות בין 2 ל -30 תווים";
 "invalid_phoneNumber_key" = "בבקשה הכנס מספר טלפון תקין";
+"home_key" = "בית";
+"my_turns_key" = "הפניות שלי";
+"favorites_key" = "מועדפים";
+"settings_key" = "הגדרות";

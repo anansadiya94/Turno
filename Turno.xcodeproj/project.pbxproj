@@ -38,6 +38,21 @@
 		9E9880EF248BC24B00D78959 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880EE248BC24B00D78959 /* Preferences.swift */; };
 		9E9880F1248BC28F00D78959 /* PrefsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880F0248BC28F00D78959 /* PrefsConstants.swift */; };
 		9E9880F3248BCD8E00D78959 /* ServiceTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880F2248BCD8E00D78959 /* ServiceTextFieldValidation.swift */; };
+		9E9B87D3248D3430009B1448 /* PresenterMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87D2248D3430009B1448 /* PresenterMain.swift */; };
+		9E9B87D6248D3466009B1448 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87D5248D3466009B1448 /* MainViewController.swift */; };
+		9E9B87E5248D35E9009B1448 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9B87E0248D35E9009B1448 /* Home.storyboard */; };
+		9E9B87E6248D35E9009B1448 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9B87E1248D35E9009B1448 /* Settings.storyboard */; };
+		9E9B87E7248D35E9009B1448 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9B87E2248D35E9009B1448 /* Main.storyboard */; };
+		9E9B87E8248D35E9009B1448 /* Appointments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9B87E3248D35E9009B1448 /* Appointments.storyboard */; };
+		9E9B87E9248D35E9009B1448 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9B87E4248D35E9009B1448 /* Favorites.storyboard */; };
+		9E9B87EB248D360F009B1448 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87EA248D360F009B1448 /* HomeViewController.swift */; };
+		9E9B87ED248D361A009B1448 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87EC248D361A009B1448 /* AppointmentsViewController.swift */; };
+		9E9B87EF248D3623009B1448 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87EE248D3623009B1448 /* FavoritesViewController.swift */; };
+		9E9B87F1248D362A009B1448 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87F0248D362A009B1448 /* SettingsViewController.swift */; };
+		9E9B87F3248D3702009B1448 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87F2248D3702009B1448 /* ServiceViewController.swift */; };
+		9E9B87F5248D374E009B1448 /* ViewControllersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87F4248D374E009B1448 /* ViewControllersConstants.swift */; };
+		9E9B87F7248D375D009B1448 /* StoryBoardsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87F6248D375D009B1448 /* StoryBoardsConstants.swift */; };
+		9E9B87FB248D4B6A009B1448 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B87FA248D4B6A009B1448 /* AppState.swift */; };
 		9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C124880CE900F7952A /* ErrorsConstants.swift */; };
 		9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C42488105E00F7952A /* ServiceOnboarding.swift */; };
 		9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA657C7248813B700F7952A /* ModelOnboarding.swift */; };
@@ -77,7 +92,6 @@
 		9EA6582324881AB700F7952A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582224881AB700F7952A /* AppCoordinator.swift */; };
 		9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582424881ACD00F7952A /* OnBoardingCoordinator.swift */; };
 		9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582624881AF000F7952A /* ScreenFactory.swift */; };
-		9EA6582924881B5700F7952A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582824881B5700F7952A /* App.swift */; };
 		9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582A24881BBD00F7952A /* WelcomeCoordinator.swift */; };
 		9EA6582F24881C6300F7952A /* OnboardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA6582E24881C6300F7952A /* OnboardingCollectionViewCell.xib */; };
 		9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB14F3B2485048B0085E885 /* AppDelegate.swift */; };
@@ -122,6 +136,21 @@
 		9E9880EE248BC24B00D78959 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		9E9880F0248BC28F00D78959 /* PrefsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsConstants.swift; sourceTree = "<group>"; };
 		9E9880F2248BCD8E00D78959 /* ServiceTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTextFieldValidation.swift; sourceTree = "<group>"; };
+		9E9B87D2248D3430009B1448 /* PresenterMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterMain.swift; sourceTree = "<group>"; };
+		9E9B87D5248D3466009B1448 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9E9B87E0248D35E9009B1448 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		9E9B87E1248D35E9009B1448 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		9E9B87E2248D35E9009B1448 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9E9B87E3248D35E9009B1448 /* Appointments.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Appointments.storyboard; sourceTree = "<group>"; };
+		9E9B87E4248D35E9009B1448 /* Favorites.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
+		9E9B87EA248D360F009B1448 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9E9B87EC248D361A009B1448 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
+		9E9B87EE248D3623009B1448 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		9E9B87F0248D362A009B1448 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9E9B87F2248D3702009B1448 /* ServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
+		9E9B87F4248D374E009B1448 /* ViewControllersConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersConstants.swift; sourceTree = "<group>"; };
+		9E9B87F6248D375D009B1448 /* StoryBoardsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardsConstants.swift; sourceTree = "<group>"; };
+		9E9B87FA248D4B6A009B1448 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9EA657C124880CE900F7952A /* ErrorsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsConstants.swift; sourceTree = "<group>"; };
 		9EA657C42488105E00F7952A /* ServiceOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOnboarding.swift; sourceTree = "<group>"; };
 		9EA657C7248813B700F7952A /* ModelOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOnboarding.swift; sourceTree = "<group>"; };
@@ -161,7 +190,6 @@
 		9EA6582224881AB700F7952A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9EA6582424881ACD00F7952A /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		9EA6582624881AF000F7952A /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
-		9EA6582824881B5700F7952A /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		9EA6582A24881BBD00F7952A /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
 		9EA6582E24881C6300F7952A /* OnboardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		9EB14F382485048B0085E885 /* Turno.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turno.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +300,47 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		9E9B87D1248D3425009B1448 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9E9B87D2248D3430009B1448 /* PresenterMain.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9E9B87D4248D3443009B1448 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9E9B87D5248D3466009B1448 /* MainViewController.swift */,
+				9E9B87EA248D360F009B1448 /* HomeViewController.swift */,
+				9E9B87EC248D361A009B1448 /* AppointmentsViewController.swift */,
+				9E9B87EE248D3623009B1448 /* FavoritesViewController.swift */,
+				9E9B87F0248D362A009B1448 /* SettingsViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9E9B87DC248D3572009B1448 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				9E9B87DF248D35E0009B1448 /* Main */,
+				9EB14F462485048C0085E885 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9E9B87DF248D35E0009B1448 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9E9B87E2248D35E9009B1448 /* Main.storyboard */,
+				9E9B87E0248D35E9009B1448 /* Home.storyboard */,
+				9E9B87E3248D35E9009B1448 /* Appointments.storyboard */,
+				9E9B87E4248D35E9009B1448 /* Favorites.storyboard */,
+				9E9B87E1248D35E9009B1448 /* Settings.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		9EA657C32488104E00F7952A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +348,7 @@
 				9E0B75A1248985C200B25313 /* ServiceAppFont.swift */,
 				9E9880EE248BC24B00D78959 /* Preferences.swift */,
 				9E9880F2248BCD8E00D78959 /* ServiceTextFieldValidation.swift */,
+				9E9B87F2248D3702009B1448 /* ServiceViewController.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -289,6 +359,7 @@
 				9EA657C7248813B700F7952A /* ModelOnboarding.swift */,
 				9E9880E4248BB9AD00D78959 /* ModelAlertPopup.swift */,
 				9E9880E6248BB9E500D78959 /* User.swift */,
+				9E9B87FA248D4B6A009B1448 /* AppState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,6 +367,7 @@
 		9EA657CB2488149C00F7952A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9E9B87D4248D3443009B1448 /* Main */,
 				9E9880DB248BAFBF00D78959 /* Alerts */,
 				9E0B75A32489867D00B25313 /* Welcome */,
 				9EA657CE248814C700F7952A /* OnBoarding */,
@@ -314,6 +386,7 @@
 		9EA657CF248814D800F7952A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9E9B87DC248D3572009B1448 /* Storyboards */,
 				9EA6582D24881C5300F7952A /* Xibs */,
 				9EA657D22488150F00F7952A /* ViewControllersViews */,
 				9EA657F02488172900F7952A /* CollectionViewCellViews */,
@@ -328,6 +401,7 @@
 		9EA657D0248814E200F7952A /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				9E9B87D1248D3425009B1448 /* Main */,
 				9E9880DE248BAFDA00D78959 /* Alerts */,
 				9E0B75A52489869800B25313 /* Welcome */,
 				9EA657E42488162000F7952A /* OnBoarding */,
@@ -372,7 +446,6 @@
 				9EA657D82488157300F7952A /* AutoLayout.swift */,
 				9EA657E52488165E00F7952A /* Notification+Name.swift */,
 				9EA657E92488169200F7952A /* Storage.swift */,
-				9EA6582824881B5700F7952A /* App.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -527,7 +600,6 @@
 			isa = PBXGroup;
 			children = (
 				9EB14F3B2485048B0085E885 /* AppDelegate.swift */,
-				9EB14F462485048C0085E885 /* LaunchScreen.storyboard */,
 				9EB14F492485048C0085E885 /* Info.plist */,
 				9EA6582124881AA500F7952A /* Coordinator */,
 				9EA657CB2488149C00F7952A /* Controllers */,
@@ -571,6 +643,8 @@
 				9EA657E72488167200F7952A /* NotificationCenterConstants.swift */,
 				9EA657EB248816A800F7952A /* UserDefaultsConstants.swift */,
 				9E9880F0248BC28F00D78959 /* PrefsConstants.swift */,
+				9E9B87F4248D374E009B1448 /* ViewControllersConstants.swift */,
+				9E9B87F6248D375D009B1448 /* StoryBoardsConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -656,12 +730,17 @@
 				9EA6582F24881C6300F7952A /* OnboardingCollectionViewCell.xib in Resources */,
 				9EA6580B2488184A00F7952A /* Cairo-Regular.ttf in Resources */,
 				9EA658122488185B00F7952A /* Assistant-Light.ttf in Resources */,
+				9E9B87E6248D35E9009B1448 /* Settings.storyboard in Resources */,
 				9EA658142488185B00F7952A /* Assistant-Bold.ttf in Resources */,
 				9EB17D6A24850D5A004E5FBD /* Localizable.strings in Resources */,
+				9E9B87E5248D35E9009B1448 /* Home.storyboard in Resources */,
 				9EA65800248817E400F7952A /* OpenSans-Bold.ttf in Resources */,
 				9EA658092488184A00F7952A /* Cairo-Bold.ttf in Resources */,
 				9EA6580A2488184A00F7952A /* Cairo-Light.ttf in Resources */,
+				9E9B87E9248D35E9009B1448 /* Favorites.storyboard in Resources */,
 				9EA658152488185B00F7952A /* Assistant-Regular.ttf in Resources */,
+				9E9B87E7248D35E9009B1448 /* Main.storyboard in Resources */,
+				9E9B87E8248D35E9009B1448 /* Appointments.storyboard in Resources */,
 				9EB14F452485048C0085E885 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -716,6 +795,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E9B87F5248D374E009B1448 /* ViewControllersConstants.swift in Sources */,
 				9E9880DD248BAFCC00D78959 /* AlertPopupViewController.swift in Sources */,
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
 				9E9880E0248BAFEF00D78959 /* PresenterAlertPopup.swift in Sources */,
@@ -723,21 +803,23 @@
 				9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */,
 				9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */,
 				9E9880F3248BCD8E00D78959 /* ServiceTextFieldValidation.swift in Sources */,
+				9E9B87FB248D4B6A009B1448 /* AppState.swift in Sources */,
 				9E55BD5D248ACF7A004F401B /* CustomTextField.swift in Sources */,
 				9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */,
 				9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */,
 				9EA657D92488157300F7952A /* AutoLayout.swift in Sources */,
 				9EA6581E248819EA00F7952A /* UICollectionView+OnBoardingViewController.swift in Sources */,
+				9E9B87F3248D3702009B1448 /* ServiceViewController.swift in Sources */,
 				9E0B75A7248986AF00B25313 /* WelcomeViewController.swift in Sources */,
 				9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */,
 				9EA658182488193A00F7952A /* RoundedCustomButton.swift in Sources */,
 				9EA657CD248814AE00F7952A /* OnboardingViewController.swift in Sources */,
-				9EA6582924881B5700F7952A /* App.swift in Sources */,
 				9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */,
 				9EA657F22488173100F7952A /* OnboardingCollectionViewCell.swift in Sources */,
 				9EA657E82488167200F7952A /* NotificationCenterConstants.swift in Sources */,
 				9EA657E32488161C00F7952A /* PresenterOnboarding.swift in Sources */,
 				9EA657D52488152700F7952A /* OnBoardingView.swift in Sources */,
+				9E9B87F1248D362A009B1448 /* SettingsViewController.swift in Sources */,
 				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
 				9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */,
 				9E9880ED248BBABD00D78959 /* PresenterActivation.swift in Sources */,
@@ -747,16 +829,19 @@
 				9EA657CA248813D200F7952A /* AssetsConstants.swift in Sources */,
 				9E0B75AE24898DB000B25313 /* CustomButton.swift in Sources */,
 				9E23F432248CD0DE003D031F /* Double+Rounded.swift in Sources */,
+				9E9B87EB248D360F009B1448 /* HomeViewController.swift in Sources */,
 				9EA657F52488176000F7952A /* CustomLabel.swift in Sources */,
 				9E9880EF248BC24B00D78959 /* Preferences.swift in Sources */,
 				9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */,
 				9EA657DD2488159400F7952A /* UIColor+Color.swift in Sources */,
 				9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */,
 				9E0B75A2248985C200B25313 /* ServiceAppFont.swift in Sources */,
+				9E9B87F7248D375D009B1448 /* StoryBoardsConstants.swift in Sources */,
 				9E23F434248CED4E003D031F /* OTPTextField.swift in Sources */,
 				9EA657F72488177600F7952A /* CustomLabelThemes.swift in Sources */,
 				9E9880E3248BB01200D78959 /* AlertPopupView.swift in Sources */,
 				9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */,
+				9E9B87EF248D3623009B1448 /* FavoritesViewController.swift in Sources */,
 				9E9880E7248BB9E500D78959 /* User.swift in Sources */,
 				9E0B75A02489837E00B25313 /* Fonts.swift in Sources */,
 				9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */,
@@ -764,17 +849,20 @@
 				9E55BD58248A98D6004F401B /* PresenterInstallation.swift in Sources */,
 				9E0B75B224898E5300B25313 /* UIButton+Underline.swift in Sources */,
 				9EA6582324881AB700F7952A /* AppCoordinator.swift in Sources */,
+				9E9B87D3248D3430009B1448 /* PresenterMain.swift in Sources */,
 				9EA657E62488165E00F7952A /* Notification+Name.swift in Sources */,
 				9EA657EA2488169200F7952A /* Storage.swift in Sources */,
 				9E9880F1248BC28F00D78959 /* PrefsConstants.swift in Sources */,
 				9EA657EF2488170300F7952A /* UICollectionView+PresenterOnboarding.swift in Sources */,
 				9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */,
 				9E9880E5248BB9AD00D78959 /* ModelAlertPopup.swift in Sources */,
+				9E9B87D6248D3466009B1448 /* MainViewController.swift in Sources */,
 				9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,
 				9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */,
 				9EA657EC248816A800F7952A /* UserDefaultsConstants.swift in Sources */,
 				9EA657DF248815CB00F7952A /* CellsConstants.swift in Sources */,
+				9E9B87ED248D361A009B1448 /* AppointmentsViewController.swift in Sources */,
 				9E55BD60248ACFCC004F401B /* CustomTextFieldThemes.swift in Sources */,
 				9EA657F92488179B00F7952A /* String+Localized.swift in Sources */,
 				9EA657E1248815DF00F7952A /* NibsConstants.swift in Sources */,

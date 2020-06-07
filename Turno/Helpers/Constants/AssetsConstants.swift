@@ -19,3 +19,9 @@ let kThirdOnboardingBackgroundImage = "thirdOnboarding"
 // Textfields
 let kName = "name"
 let kPhoneNumber = "phoneNumber"
+
+// Tab bar
+let kHomeTabBarIcon = "tabBarHome"
+let kAppointmentsTabBarIcon = "tabBarAppointments"
+let kFavoritesTabBatIcon = "tabBarFavorites"
+let kSettingsTabBarIcon = "tabBarSettings"
