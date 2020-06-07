@@ -17,6 +17,7 @@ class ActivationView: UIView {
     @UseAutoLayout var phoneNumberLabel = CustomLabel()
     @UseAutoLayout var wrongNumberButton = CustomButton()
     @UseAutoLayout var sixDigitCodeLabel = CustomLabel()
+    @UseAutoLayout var countDownLabel = CustomLabel()
     @UseAutoLayout var resendSMSButton = CustomButton()
     @UseAutoLayout var activateByCallButton = CustomButton()
     @UseAutoLayout var finishButton = RoundedCustomButtonWithMargin()
@@ -44,6 +45,7 @@ class ActivationView: UIView {
         addTitleLabel()
         addSubTitleView()
         addSixDigitCodeLabel()
+        addCountDownLabel()
         addCenterButtons()
         addFinishButton()
     }
@@ -53,6 +55,7 @@ class ActivationView: UIView {
         self.addSubview(titleLabel)
         self.addSubview(subTitleView)
         self.addSubview(sixDigitCodeLabel)
+        self.addSubview(countDownLabel)
         self.addSubview(finishButton)
     }
 
@@ -105,6 +108,14 @@ class ActivationView: UIView {
         ])
     }
     
+    private func addCountDownLabel() {
+       countDownLabel.labelTheme = RegularTheme(label: "", fontSize: 20, textColor: .black, textAlignment: .center)
+       NSLayoutConstraint.activate([
+           countDownLabel.topAnchor.constraint(equalTo: sixDigitCodeLabel.bottomAnchor, constant: kSuperViewMargin*2),
+           countDownLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+       ])
+   }
+
     private func addCenterButtons() {
         resendSMSButton.buttonTheme = BaseTheme(label: LocalizedConstants.resend_sms_key.localized,
                                                 titleColor: .primary, contentHorizontalAlignment: .left)
@@ -135,5 +146,10 @@ class ActivationView: UIView {
             finishButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin*2),
             finishButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -kSuperViewMargin*2)
         ])
+    }
+    
+    // MARK: - Public Interface
+    func updateCountDownLabel(time: Double) {
+        countDownLabel.text = String(time)
     }
 }

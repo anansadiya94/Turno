@@ -9,13 +9,17 @@
 import Foundation
 import UIKit
 
+let kSeconds: Int = 10
+
 class ActivationViewController: UIViewController {
     
     // MARK: - Properties
     var presenterActivation: PresenterActivation!
     var activationView: ActivationView?
     
-    let progress = Progress(totalUnitCount: 10)
+    let progress = Progress(totalUnitCount: Int64(kSeconds))
+    var seconds: Double = Double(kSeconds)
+    var start: Float = 0
     
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -54,15 +58,22 @@ class ActivationViewController: UIViewController {
     private func startCount() {
         activationView?.progressView.progress = 0.0
         progress.completedUnitCount = 0
+        progress.totalUnitCount = Int64(kSeconds)
 
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
-            guard self.progress.isFinished == false else {
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timer) in
+            if self.start <= Float(kSeconds) {
+                // Progress view
+                self.start += 0.01
+                self.activationView?.progressView.setProgress(self.start/Float(10), animated: true)
+                // Count down label
+                self.seconds -= 0.01
+                self.activationView?.updateCountDownLabel(time: self.seconds.rounded(toPlaces: 2))
+            } else {
                 timer.invalidate()
+                self.activationView?.updateCountDownLabel(time: 0.00)
                 //TODO When finished?
                 return
             }
-            self.progress.completedUnitCount += 1
-            self.activationView?.progressView.setProgress(Float(self.progress.fractionCompleted), animated: true)
         }
     }
     

@@ -15,6 +15,7 @@
 		9E0B75AE24898DB000B25313 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75AD24898DB000B25313 /* CustomButton.swift */; };
 		9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75AF24898DC100B25313 /* CustomButtonTheme.swift */; };
 		9E0B75B224898E5300B25313 /* UIButton+Underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75B124898E5300B25313 /* UIButton+Underline.swift */; };
+		9E23F432248CD0DE003D031F /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F431248CD0DE003D031F /* Double+Rounded.swift */; };
 		9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */; };
 		9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD53248A9864004F401B /* InstallationViewController.swift */; };
 		9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD55248A98C8004F401B /* InstallationView.swift */; };
@@ -96,6 +97,7 @@
 		9E0B75AD24898DB000B25313 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9E0B75AF24898DC100B25313 /* CustomButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTheme.swift; sourceTree = "<group>"; };
 		9E0B75B124898E5300B25313 /* UIButton+Underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Underline.swift"; sourceTree = "<group>"; };
+		9E23F431248CD0DE003D031F /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
 		9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift"; sourceTree = "<group>"; };
 		9E55BD53248A9864004F401B /* InstallationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationViewController.swift; sourceTree = "<group>"; };
 		9E55BD55248A98C8004F401B /* InstallationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationView.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				9EA657DB2488158600F7952A /* Style */,
 				9EA657D72488156200F7952A /* App */,
 				9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */,
+				9E23F431248CD0DE003D031F /* Double+Rounded.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				9E9880E9248BBAA500D78959 /* ActivationView.swift in Sources */,
 				9EA657CA248813D200F7952A /* AssetsConstants.swift in Sources */,
 				9E0B75AE24898DB000B25313 /* CustomButton.swift in Sources */,
+				9E23F432248CD0DE003D031F /* Double+Rounded.swift in Sources */,
 				9EA657F52488176000F7952A /* CustomLabel.swift in Sources */,
 				9E9880EF248BC24B00D78959 /* Preferences.swift in Sources */,
 				9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */,
