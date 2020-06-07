@@ -16,11 +16,14 @@ class ActivationView: UIView {
     @UseAutoLayout var subTitleView = UIView()
     @UseAutoLayout var phoneNumberLabel = CustomLabel()
     @UseAutoLayout var wrongNumberButton = CustomButton()
-    @UseAutoLayout var sixDigitCodeLabel = CustomLabel()
+    @UseAutoLayout var otpLabel = CustomLabel()
+    @UseAutoLayout var otpView = UIView()
     @UseAutoLayout var countDownLabel = CustomLabel()
     @UseAutoLayout var resendSMSButton = CustomButton()
     @UseAutoLayout var activateByCallButton = CustomButton()
     @UseAutoLayout var finishButton = RoundedCustomButtonWithMargin()
+
+    let otpStackView = OTPStackView()
     
     // MARK: - Constraints constants
     private var kSuperViewMargin: CGFloat = 16
@@ -44,7 +47,8 @@ class ActivationView: UIView {
         addProgressView()
         addTitleLabel()
         addSubTitleView()
-        addSixDigitCodeLabel()
+        addOTPLabel()
+        addOTPView()
         addCountDownLabel()
         addCenterButtons()
         addFinishButton()
@@ -54,7 +58,8 @@ class ActivationView: UIView {
         self.addSubview(progressView)
         self.addSubview(titleLabel)
         self.addSubview(subTitleView)
-        self.addSubview(sixDigitCodeLabel)
+        self.addSubview(otpLabel)
+        self.addSubview(otpView)
         self.addSubview(countDownLabel)
         self.addSubview(finishButton)
     }
@@ -99,19 +104,33 @@ class ActivationView: UIView {
         ])
     }
     
-    private func addSixDigitCodeLabel() {
-        sixDigitCodeLabel.labelTheme = RegularTheme(label: LocalizedConstants.six_digit_code_key.localized,
+    private func addOTPLabel() {
+        otpLabel.labelTheme = RegularTheme(label: LocalizedConstants.six_digit_code_key.localized,
                                                     fontSize: 20, textColor: .black, textAlignment: .center)
         NSLayoutConstraint.activate([
-            sixDigitCodeLabel.topAnchor.constraint(equalTo: wrongNumberButton.bottomAnchor, constant: kSuperViewMargin*2),
-            sixDigitCodeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            otpLabel.topAnchor.constraint(equalTo: wrongNumberButton.bottomAnchor, constant: kSuperViewMargin*2),
+            otpLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
     
+    private func addOTPView() {
+        otpView.backgroundColor = .clear
+        NSLayoutConstraint.activate([
+            otpView.heightAnchor.constraint(equalToConstant: 44.0),
+            otpView.topAnchor.constraint(equalTo: otpLabel.bottomAnchor, constant: kSuperViewMargin*2),
+            otpView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
+        otpView.addSubview(otpStackView)
+        otpStackView.translatesAutoresizingMaskIntoConstraints = false
+        otpStackView.heightAnchor.constraint(equalTo: otpView.heightAnchor).isActive = true
+        otpStackView.centerXAnchor.constraint(equalTo: otpView.centerXAnchor).isActive = true
+        otpStackView.centerYAnchor.constraint(equalTo: otpView.centerYAnchor).isActive = true
+    }
+    
     private func addCountDownLabel() {
-       countDownLabel.labelTheme = RegularTheme(label: "", fontSize: 20, textColor: .black, textAlignment: .center)
+       countDownLabel.labelTheme = RegularTheme(label: "", fontSize: 10, textColor: .black, textAlignment: .center)
        NSLayoutConstraint.activate([
-           countDownLabel.topAnchor.constraint(equalTo: sixDigitCodeLabel.bottomAnchor, constant: kSuperViewMargin*2),
+           countDownLabel.topAnchor.constraint(equalTo: otpView.bottomAnchor, constant: kSuperViewMargin),
            countDownLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
        ])
    }
@@ -134,7 +153,7 @@ class ActivationView: UIView {
         self.addSubview(stackView)
           
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: countDownLabel.bottomAnchor, constant: kSuperViewMargin*4).isActive = true
         stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin).isActive = true
         stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin).isActive = true
     }

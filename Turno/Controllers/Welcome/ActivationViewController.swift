@@ -20,6 +20,7 @@ class ActivationViewController: UIViewController {
     let progress = Progress(totalUnitCount: Int64(kSeconds))
     var seconds: Double = Double(kSeconds)
     var start: Float = 0
+    var timer: Timer?
     
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -27,7 +28,8 @@ class ActivationViewController: UIViewController {
         setNavigationBar()
         setWelcomeView()
         addTargets()
-        configureProgressView()
+        fireTimer()
+        configureOPTView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,16 +53,12 @@ class ActivationViewController: UIViewController {
         activationView?.activateByCallButton.addTarget(self, action: #selector(activateByCallButtonTapped), for: .touchUpInside)
     }
     
-    private func configureProgressView() {
-        startCount()
-    }
-
-    private func startCount() {
+    private func fireTimer() {
         activationView?.progressView.progress = 0.0
         progress.completedUnitCount = 0
         progress.totalUnitCount = Int64(kSeconds)
 
-        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timer) in
             if self.start <= Float(kSeconds) {
                 // Progress view
                 self.start += 0.01
@@ -75,6 +73,10 @@ class ActivationViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    private func configureOPTView() {
+        activationView?.otpStackView.delegate = self
     }
     
     // MARK: - UI interaction methods
@@ -96,5 +98,15 @@ extension ActivationViewController: PresenterActivationView {
     func popViewController() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - ActivationViewController methods
+extension ActivationViewController: OTPDelegate {
+    func didChangeValidity(isValid: Bool) {
+        if isValid, let otp = activationView?.otpStackView.getOTP() {
+            timer?.invalidate()
+            print("Code is: \(otp)")
+        }
     }
 }
