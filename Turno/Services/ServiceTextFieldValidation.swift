@@ -19,7 +19,7 @@ class ServiceTextFieldValidation {
     // MARK: - Public Interface
     static func validateName(_ text: String?) -> TextFieldErrorType {
         guard let name = text, name.isEmpty == false else { return .empty_field_key }
-        let nameRegEx = "^[A-zÀ-ú ]{2,30}$"
+        let nameRegEx = "^[A-zÀ-ú\\u0621-\\u064A\\u0590-\\u05fe\\u0400-\\u04ff ]{2,30}$"
         let namePred = NSPredicate(format: "SELF MATCHES %@", nameRegEx)
         return namePred.evaluate(with: name) ? .valid : .invalid_name_key
     }
