@@ -51,6 +51,7 @@ class ActivationViewController: UIViewController {
         activationView?.wrongNumberButton.addTarget(self, action: #selector(wrongNumberButtonTapped), for: .touchUpInside)
         activationView?.resendSMSButton.addTarget(self, action: #selector(resendSMSButtonTapped), for: .touchUpInside)
         activationView?.activateByCallButton.addTarget(self, action: #selector(activateByCallButtonTapped), for: .touchUpInside)
+        activationView?.finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
     }
     
     private func fireTimer() {
@@ -90,6 +91,10 @@ class ActivationViewController: UIViewController {
     
     @objc func activateByCallButtonTapped() {
         presenterActivation.activateByCallButtonTapped()
+    }
+    
+    @objc func finishButtonTapped() {
+        presenterActivation.finishButtonTapped()
     }
 }
 

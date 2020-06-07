@@ -39,4 +39,8 @@ class PresenterActivation: NSObject {
     func activateByCallButtonTapped() {
         print("activateByCallButtonTapped")
     }
+    
+    func finishButtonTapped() {
+        delegate.didSelectFinishButton()
+    }
 }

@@ -18,6 +18,7 @@ protocol SelectButtonWelcome: class {
     func didSelectWelcomeContinueButton()
     func showAlert(view: UIViewController, modelAlertPopup: ModelAlertPopup)
     func didSelectAlertYesButton()
+    func didSelectFinishButton()
 }
 
 struct ScreenFactory {

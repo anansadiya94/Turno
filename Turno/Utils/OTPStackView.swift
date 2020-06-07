@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol OTPDelegate: class {
-    //always triggers when the OTP field is valid
     func didChangeValidity(isValid: Bool)
 }
 
@@ -86,9 +85,11 @@ class OTPStackView: UIStackView {
     //checks if all the OTPfields are filled
     private final func checkForValidity() {
         for fields in textFieldsCollection {
-            if (fields.text == "") {
-                delegate?.didChangeValidity(isValid: false)
-                return
+            if let text = fields.text {
+                if text.isEmpty {
+                    delegate?.didChangeValidity(isValid: false)
+                    return
+                }
             }
         }
         delegate?.didChangeValidity(isValid: true)
@@ -152,7 +153,7 @@ extension OTPStackView: UITextFieldDelegate {
             autoFillTextField(with: string)
             return false
         } else {
-            if (range.length == 0) {
+            if range.length == 0 {
                 if textField.nextTextField == nil {
                     textField.text? = string
                     textField.resignFirstResponder()
@@ -161,8 +162,9 @@ extension OTPStackView: UITextFieldDelegate {
                     textField.nextTextField?.becomeFirstResponder()
                 }
                 return false
+            } else {
+                return true
             }
-            return true
         }
     }
     
