@@ -127,7 +127,7 @@ extension InstallationViewController: PresenterInstallationView {
             message = LocalizedConstants.empty_field_key.localized
         case .invalid_name_key:
             isValid = false
-            message = LocalizedConstants.name_key.localized
+            message = LocalizedConstants.invalid_name_key.localized
         default:
             break
         }

@@ -80,6 +80,6 @@ extension UIView {
                                attribute: .width, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: contentView,
                                attribute: .height, multiplier: 1.0, constant: 0.0)
-            ])
+        ])
     }
 }

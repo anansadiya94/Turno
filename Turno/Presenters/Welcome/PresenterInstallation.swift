@@ -68,7 +68,12 @@ class PresenterInstallation {
                                               message: Preferences.getPrefsUser()?.phoneNumber,
                                               action1: LocalizedConstants.edit_key.localized,
                                               action2: LocalizedConstants.yes_key.localized)
-        delegate.showAlert(view: view, modelAlertPopup: modelAlertPopUp)
+//        delegate.showAlert(view: view, modelAlertPopup: modelAlertPopUp)
+        self.view.showPopup(withTitle: modelAlertPopUp.title, withText: modelAlertPopUp.message,
+                            withButton: modelAlertPopUp.action1, button2: modelAlertPopUp.action2,
+                            completion: { _ in
+                                self.alertYesButtonTapped()
+        })
     }
     
     // MARK: - UI interaction methods
