@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class InstallationViewController: UIViewController {
+class InstallationViewController: ParentViewController {
     
     // MARK: - Properties
     var presenterInstallation: PresenterInstallation!

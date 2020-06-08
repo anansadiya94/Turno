@@ -7,5 +7,6 @@ target 'Turno' do
 
   # Pods for Turno
   pod 'SwiftLint'
+  pod 'lottie-ios'
 
 end

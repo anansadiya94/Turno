@@ -81,6 +81,11 @@ class PresenterInstallation {
     }
     
     func alertYesButtonTapped() {
-        delegate.didSelectAlertYesButton()
+        self.view.startWaiting()
+        //TODO CALL SERVER
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.view.stopWaiting()
+            self.delegate.didSelectAlertYesButton()
+        }
     }
 }
