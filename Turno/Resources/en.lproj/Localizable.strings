@@ -30,3 +30,7 @@
 "empty_field_key" = "This field can’t be empty";
 "invalid_name_key" = "The name field must be at between 2 and 30 characters";
 "invalid_phoneNumber_key" = "Please enter a valid phone number";
+"home_key" = "Home";
+"my_turns_key" = "My turns";
+"favorites_key" = "Favorites";
+"settings_key" = "Settings";

@@ -40,6 +40,10 @@ enum LocalizedConstants: String {
     case    empty_field_key
     case    invalid_name_key
     case    invalid_phoneNumber_key
+    case    home_key
+    case    my_turns_key
+    case    favorites_key
+    case    settings_key
 }
 
 extension LocalizedConstants {

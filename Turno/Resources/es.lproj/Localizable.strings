@@ -30,3 +30,7 @@
 "empty_field_key" = "Este campo no puede estar vacío";
 "invalid_name_key" = "El campo nombre debe ser de entre 2 y 30 caracteres";
 "invalid_phoneNumber_key" = "Por favor ingrese un número de teléfono válido";
+"home_key" = "Casa";
+"my_turns_key" = "Mis vueltas";
+"favorites_key" = "favoritos";
+"settings_key" = "ajustes";

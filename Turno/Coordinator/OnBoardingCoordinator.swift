@@ -21,7 +21,8 @@ class OnBoardingCoordinator: Coordinator {
     
     func start() {
         if AppData.onBoardingCompleted {
-            switch App.state {
+            guard let appState = Preferences.getPrefsAppState() else { return }
+            switch appState {
             case .unregistered:
                 showWelcomeScreen()
             case .loggedIn:
@@ -38,6 +39,7 @@ class OnBoardingCoordinator: Coordinator {
 extension OnBoardingCoordinator {
     
     func showOnboardingScreen() {
+        Preferences.setPrefsAppState(value: .unregistered)
         let screen = ScreenFactory.makeOnboardingScreen(delegate: self)
         window.rootViewController = screen
     }
@@ -49,7 +51,9 @@ extension OnBoardingCoordinator {
     }
     
     func showMainScreen() {
-        
+        navigationController.isNavigationBarHidden = true
+        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController)
+        window.rootViewController = screen
     }
 }
 

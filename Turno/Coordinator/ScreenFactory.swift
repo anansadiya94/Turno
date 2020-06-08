@@ -21,6 +21,10 @@ protocol SelectButtonWelcome: class {
     func didSelectFinishButton()
 }
 
+protocol SelectButtonHome: class {
+    func didSelectButton()
+}
+
 struct ScreenFactory {
     //ONBOARDING:
     static func makeOnboardingScreen(delegate: SelectButtonOnboarding) -> UIViewController {
@@ -59,5 +63,24 @@ struct ScreenFactory {
         let presnter = PresenterAlertPopup(view: viewController, delegate: delegate, modelAlertPopup: modelAlertPopup)
         viewController.presenterAlertPopup = presnter
         return viewController
+    }
+    
+    //MAIN:
+    static func makeMainScreen(navigationController: UINavigationController) -> UIViewController {
+        let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(sbName: kMainStoryboardName,
+                                                                                               vcID: kMainViewControllerID) as? MainViewController
+        
+        if let mainVC = mainViewController {
+//            if let viewController = mainVC.viewControllers?[0] as? UINavigationController {
+//                if let homeVC = viewController.topViewController as? HomeViewController {
+//                    let presnter = PresenterExplore(view: exploreVC, delegate: delegate)
+//                    exploreVC.presenterExplore = presnter
+//                }
+//            }
+            let presenter = PresenterMain(view: mainVC)
+            mainVC.presenterMain = presenter
+            navigationController.viewControllers = [mainVC]
+        }
+        return navigationController
     }
 }
