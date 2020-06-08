@@ -61,10 +61,9 @@ class LoadingViewController: UIViewController {
                 self?.animationView.alpha = 0.0
                 self?.animationView.stop()
                 self?.view.alpha = 0.0
-            }, completion: { [weak self] (_) in
-                self?.view.removeFromSuperview()
-            })
+            }, completion: nil)
         }
+        view.removeFromSuperview()
     }
 }
 
@@ -80,6 +79,6 @@ extension UIView {
                                attribute: .width, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: contentView,
                                attribute: .height, multiplier: 1.0, constant: 0.0)
-            ])
+        ])
     }
 }
