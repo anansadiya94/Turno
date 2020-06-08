@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingViewController" customModule="Turno" customModuleProvider="target">
+            <connections>
+                <outlet property="animationView" destination="8Ra-Kd-Mv6" id="YbQ-jr-TlM"/>
+                <outlet property="view" destination="dTq-kn-cAs" id="SRa-UD-e5F"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" alpha="0.0" contentMode="scaleToFill" id="dTq-kn-cAs">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSt-fy-dOz">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ra-Kd-Mv6" customClass="AnimationView" customModule="Lottie">
+                    <rect key="frame" x="107" y="348" width="200" height="200"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="5PN-Ci-5av"/>
+                        <constraint firstAttribute="width" constant="200" id="XGR-8k-JYC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="cSt-fy-dOz" firstAttribute="leading" secondItem="dTq-kn-cAs" secondAttribute="leading" id="1Gd-47-wQv"/>
+                <constraint firstItem="8Ra-Kd-Mv6" firstAttribute="centerX" secondItem="dTq-kn-cAs" secondAttribute="centerX" id="VQx-GG-K1r"/>
+                <constraint firstItem="cSt-fy-dOz" firstAttribute="top" secondItem="dTq-kn-cAs" secondAttribute="top" id="adW-04-ZcZ"/>
+                <constraint firstAttribute="bottom" secondItem="cSt-fy-dOz" secondAttribute="bottom" id="b9S-eF-fec"/>
+                <constraint firstAttribute="trailing" secondItem="cSt-fy-dOz" secondAttribute="trailing" id="kvn-Mh-OKd"/>
+                <constraint firstItem="8Ra-Kd-Mv6" firstAttribute="centerY" secondItem="dTq-kn-cAs" secondAttribute="centerY" id="x4X-M8-Az7"/>
+            </constraints>
+            <point key="canvasLocation" x="90" y="-118"/>
+        </view>
+    </objects>
+</document>

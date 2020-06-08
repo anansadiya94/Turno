@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,10 @@
 		9E55BD60248ACFCC004F401B /* CustomTextFieldThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD5F248ACFCC004F401B /* CustomTextFieldThemes.swift */; };
 		9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */; };
 		9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */; };
+		9E764472248E919600CDAF89 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E764471248E919600CDAF89 /* ParentViewController.swift */; };
+		9E764474248E91F800CDAF89 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E764473248E91F800CDAF89 /* LoadingViewController.swift */; };
+		9E764476248E923300CDAF89 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E764475248E923300CDAF89 /* LoadingViewController.xib */; };
+		9E764479248E93EA00CDAF89 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E764478248E93EA00CDAF89 /* loading.json */; };
 		9E9880DD248BAFCC00D78959 /* AlertPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880DC248BAFCC00D78959 /* AlertPopupViewController.swift */; };
 		9E9880E0248BAFEF00D78959 /* PresenterAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880DF248BAFEF00D78959 /* PresenterAlertPopup.swift */; };
 		9E9880E3248BB01200D78959 /* AlertPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E2248BB01200D78959 /* AlertPopupView.swift */; };
@@ -125,6 +129,10 @@
 		9E55BD5F248ACFCC004F401B /* CustomTextFieldThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldThemes.swift; sourceTree = "<group>"; };
 		9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboardWhenTappedAround.swift"; sourceTree = "<group>"; };
 		9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButtonWithMargin.swift; sourceTree = "<group>"; };
+		9E764471248E919600CDAF89 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		9E764473248E91F800CDAF89 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		9E764475248E923300CDAF89 /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		9E764478248E93EA00CDAF89 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		9E9880DC248BAFCC00D78959 /* AlertPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupViewController.swift; sourceTree = "<group>"; };
 		9E9880DF248BAFEF00D78959 /* PresenterAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterAlertPopup.swift; sourceTree = "<group>"; };
 		9E9880E2248BB01200D78959 /* AlertPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupView.swift; sourceTree = "<group>"; };
@@ -276,6 +284,14 @@
 			path = CustomTextFieldViews;
 			sourceTree = "<group>";
 		};
+		9E764477248E93C800CDAF89 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				9E764478248E93EA00CDAF89 /* loading.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		9E9880DB248BAFBF00D78959 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +383,8 @@
 		9EA657CB2488149C00F7952A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9E764471248E919600CDAF89 /* ParentViewController.swift */,
+				9E764473248E91F800CDAF89 /* LoadingViewController.swift */,
 				9E9B87D4248D3443009B1448 /* Main */,
 				9E9880DB248BAFBF00D78959 /* Alerts */,
 				9E0B75A32489867D00B25313 /* Welcome */,
@@ -573,6 +591,7 @@
 		9EA6582D24881C5300F7952A /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				9E764475248E923300CDAF89 /* LoadingViewController.xib */,
 				9EA6582C24881C4E00F7952A /* CollectionViewNibs */,
 			);
 			path = Xibs;
@@ -617,6 +636,7 @@
 		9EB17D6924850D3B004E5FBD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9E764477248E93C800CDAF89 /* Animations */,
 				9EA657FA248817BA00F7952A /* Fonts */,
 				9EB14F442485048C0085E885 /* Assets.xcassets */,
 				9EB17D6C24850D5A004E5FBD /* Localizable.strings */,
@@ -669,6 +689,7 @@
 				9EB14F342485048B0085E885 /* Sources */,
 				9EB14F352485048B0085E885 /* Frameworks */,
 				9EB14F362485048B0085E885 /* Resources */,
+				3D657F8C5B2022B9E2C1BC45 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -726,6 +747,7 @@
 				9EA657FF248817E400F7952A /* OpenSans-SemiBold.ttf in Resources */,
 				9EA658132488185B00F7952A /* Assistant-SemiBold.ttf in Resources */,
 				9EB14F482485048C0085E885 /* LaunchScreen.storyboard in Resources */,
+				9E764476248E923300CDAF89 /* LoadingViewController.xib in Resources */,
 				9EA65802248817E400F7952A /* OpenSans-Regular.ttf in Resources */,
 				9EA6582F24881C6300F7952A /* OnboardingCollectionViewCell.xib in Resources */,
 				9EA6580B2488184A00F7952A /* Cairo-Regular.ttf in Resources */,
@@ -735,6 +757,7 @@
 				9EB17D6A24850D5A004E5FBD /* Localizable.strings in Resources */,
 				9E9B87E5248D35E9009B1448 /* Home.storyboard in Resources */,
 				9EA65800248817E400F7952A /* OpenSans-Bold.ttf in Resources */,
+				9E764479248E93EA00CDAF89 /* loading.json in Resources */,
 				9EA658092488184A00F7952A /* Cairo-Bold.ttf in Resources */,
 				9EA6580A2488184A00F7952A /* Cairo-Light.ttf in Resources */,
 				9E9B87E9248D35E9009B1448 /* Favorites.storyboard in Resources */,
@@ -768,6 +791,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D657F8C5B2022B9E2C1BC45 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Turno/Pods-Turno-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Turno/Pods-Turno-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Turno/Pods-Turno-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9EB14F4F248506FE0085E885 /* SwiftLint */ = {
@@ -814,6 +854,7 @@
 				9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */,
 				9EA658182488193A00F7952A /* RoundedCustomButton.swift in Sources */,
 				9EA657CD248814AE00F7952A /* OnboardingViewController.swift in Sources */,
+				9E764474248E91F800CDAF89 /* LoadingViewController.swift in Sources */,
 				9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */,
 				9EA657F22488173100F7952A /* OnboardingCollectionViewCell.swift in Sources */,
 				9EA657E82488167200F7952A /* NotificationCenterConstants.swift in Sources */,
@@ -857,6 +898,7 @@
 				9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */,
 				9E9880E5248BB9AD00D78959 /* ModelAlertPopup.swift in Sources */,
 				9E9B87D6248D3466009B1448 /* MainViewController.swift in Sources */,
+				9E764472248E919600CDAF89 /* ParentViewController.swift in Sources */,
 				9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,
 				9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */,
