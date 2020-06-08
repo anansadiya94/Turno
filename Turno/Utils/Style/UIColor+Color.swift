@@ -48,4 +48,8 @@ extension UIColor {
     static var overlay: UIColor {
         return hexStringToUIColor(hex: "#050505").withAlphaComponent(0.5)
     }
+    
+    static var blackAlpha15: UIColor {
+        return UIColor.black.withAlphaComponent(0.15)
+    }
 }

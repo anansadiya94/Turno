@@ -48,7 +48,7 @@ class ParentViewController: UIViewController {
             
             // Obscure background
             let alphaView = UIView(frame: self.view.frame)
-            alphaView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
+            alphaView.backgroundColor = .blackAlpha15
             alphaView.alpha = 1.0
             self.view.addSubview(alphaView)
             

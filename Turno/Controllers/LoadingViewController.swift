@@ -61,10 +61,9 @@ class LoadingViewController: UIViewController {
                 self?.animationView.alpha = 0.0
                 self?.animationView.stop()
                 self?.view.alpha = 0.0
-            }, completion: { [weak self] (_) in
-                self?.view.removeFromSuperview()
-            })
+            }, completion: nil)
         }
+        view.removeFromSuperview()
     }
 }
 
