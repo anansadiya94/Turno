@@ -56,7 +56,7 @@ class OnBoardingView: UIView {
         NSLayoutConstraint.activate([
             pageControl.leftAnchor.constraint(equalTo: self.leftAnchor),
             pageControl.rightAnchor.constraint(equalTo: self.rightAnchor),
-            pageControl.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            pageControl.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
