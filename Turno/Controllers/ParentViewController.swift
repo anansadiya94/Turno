@@ -42,7 +42,7 @@ class ParentViewController: UIViewController {
     /// - parameter button: String containing the button title.
     /// - parameter button2: String containing the second button title (if needed).
     /// - parameter completion: Callback.
-    func showPopup(withTitle title: String?, withText text: String?, withButton button: String?, button2: String? = nil, completion: ((Bool) -> Void)?) {
+    func showPopup(withTitle title: String?, withText text: String?, withButton button: String?, button2: String? = nil, completion: ((Bool?, Bool?) -> Void)?) {
         if !isShownPopup, presentedViewController == nil, UIApplication.shared.applicationState == .active {
             isShownPopup = true
             
@@ -59,7 +59,7 @@ class ParentViewController: UIViewController {
             alert.addAction(UIAlertAction(title: button, style: .default, handler: { [weak self] _ in
                 self?.view.subviews.last?.removeFromSuperview()
                 self?.isShownPopup = false
-                completion?(true)
+                completion?(true, nil)
             }))
             
             // Second Action
@@ -67,7 +67,7 @@ class ParentViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: button2, style: .default, handler: { [weak self] _ in
                     self?.view.subviews.last?.removeFromSuperview()
                     self?.isShownPopup = false
-                    completion?(true)
+                    completion?(nil, true)
                 }))
             }
             

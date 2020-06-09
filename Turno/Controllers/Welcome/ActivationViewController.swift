@@ -90,6 +90,7 @@ class ActivationViewController: UIViewController {
     }
     
     @objc func finishButtonTapped() {
+        //BUTTON SHOULD BE DELETED
         presenterActivation.finishButtonTapped()
     }
 }
@@ -108,6 +109,7 @@ extension ActivationViewController: OTPDelegate {
         if isValid, let otp = activationView?.otpStackView.getOTP() {
             timer?.invalidate()
             print("Code is: \(otp)")
+            presenterActivation.finishButtonTapped()
         }
     }
 }

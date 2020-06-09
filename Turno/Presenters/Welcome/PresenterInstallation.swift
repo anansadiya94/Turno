@@ -71,8 +71,11 @@ class PresenterInstallation {
 //        delegate.showAlert(view: view, modelAlertPopup: modelAlertPopUp)
         self.view.showPopup(withTitle: modelAlertPopUp.title, withText: modelAlertPopUp.message,
                             withButton: modelAlertPopUp.action1, button2: modelAlertPopUp.action2,
-                            completion: { _ in
-                                self.alertYesButtonTapped()
+                            completion: { (_, action2) in
+                                if action2 != nil {
+                                    self.alertYesButtonTapped()
+                                }
+                                
         })
     }
     

@@ -122,7 +122,7 @@ class WelcomeView: UIView {
             footerLabel.rightAnchor.constraint(equalTo: privacyPolicyButton.leftAnchor, constant: -kSpaceBetweenElements),
             privacyPolicyButton.rightAnchor.constraint(equalTo: footerView.rightAnchor),
             footerView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            footerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -kSuperViewMargin),
+            footerView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -kSuperViewMargin),
             footerView.heightAnchor.constraint(equalToConstant: kSuperViewMargin)
         ])
     }
