@@ -52,5 +52,7 @@
 		<string>Assistant-Regular.ttf</string>
 		<string>Assistant-SemiBold.ttf</string>
 	</array>
+	<key>PrivacyPolicyUrl</key>
+	<string>https://www.google.com/</string>
 </dict>
 </plist>
