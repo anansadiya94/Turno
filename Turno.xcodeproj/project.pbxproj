@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E00041D2490012500E41A9A /* UIViewController+OpenUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00041C2490012500E41A9A /* UIViewController+OpenUrl.swift */; };
+		9E00041F249001D000E41A9A /* UIApplication+AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00041E249001D000E41A9A /* UIApplication+AppConstants.swift */; };
 		9E0B75A02489837E00B25313 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B759F2489837E00B25313 /* Fonts.swift */; };
 		9E0B75A2248985C200B25313 /* ServiceAppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75A1248985C200B25313 /* ServiceAppFont.swift */; };
 		9E0B75A7248986AF00B25313 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75A6248986AF00B25313 /* WelcomeViewController.swift */; };
@@ -109,6 +111,8 @@
 /* Begin PBXFileReference section */
 		26B861CAA643CE1819EB03EB /* Pods-Turno.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.release.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.release.xcconfig"; sourceTree = "<group>"; };
 		60536D8BBF639461D5CB90FC /* Pods_Turno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E00041C2490012500E41A9A /* UIViewController+OpenUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+OpenUrl.swift"; sourceTree = "<group>"; };
+		9E00041E249001D000E41A9A /* UIApplication+AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+AppConstants.swift"; sourceTree = "<group>"; };
 		9E0B759F2489837E00B25313 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		9E0B75A1248985C200B25313 /* ServiceAppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAppFont.swift; sourceTree = "<group>"; };
 		9E0B75A6248986AF00B25313 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -454,6 +458,7 @@
 				9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */,
 				9E23F431248CD0DE003D031F /* Double+Rounded.swift */,
 				9E23F435248CED7D003D031F /* OTPStackView.swift */,
+				9E00041C2490012500E41A9A /* UIViewController+OpenUrl.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				9EA657D82488157300F7952A /* AutoLayout.swift */,
 				9EA657E52488165E00F7952A /* Notification+Name.swift */,
 				9EA657E92488169200F7952A /* Storage.swift */,
+				9E00041E249001D000E41A9A /* UIApplication+AppConstants.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -857,6 +863,7 @@
 				9E764474248E91F800CDAF89 /* LoadingViewController.swift in Sources */,
 				9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */,
 				9EA657F22488173100F7952A /* OnboardingCollectionViewCell.swift in Sources */,
+				9E00041D2490012500E41A9A /* UIViewController+OpenUrl.swift in Sources */,
 				9EA657E82488167200F7952A /* NotificationCenterConstants.swift in Sources */,
 				9EA657E32488161C00F7952A /* PresenterOnboarding.swift in Sources */,
 				9EA657D52488152700F7952A /* OnBoardingView.swift in Sources */,
@@ -871,6 +878,7 @@
 				9E0B75AE24898DB000B25313 /* CustomButton.swift in Sources */,
 				9E23F432248CD0DE003D031F /* Double+Rounded.swift in Sources */,
 				9E9B87EB248D360F009B1448 /* HomeViewController.swift in Sources */,
+				9E00041F249001D000E41A9A /* UIApplication+AppConstants.swift in Sources */,
 				9EA657F52488176000F7952A /* CustomLabel.swift in Sources */,
 				9E9880EF248BC24B00D78959 /* Preferences.swift in Sources */,
 				9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */,

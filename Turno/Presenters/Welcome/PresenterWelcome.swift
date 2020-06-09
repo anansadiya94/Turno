@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PresenterWelcome: NSObject {
     
@@ -26,8 +27,9 @@ class PresenterWelcome: NSObject {
         delegate.didSelectWelcomeContinueButton()
     }
 
-    //TODO: Where to?
     func privacyPolicyButtonTapped() {
-        print("privacyPolicyButtonTapped")
+        if let privacyPolicyUrl = UIApplication.privacyPolicyUrl {
+            self.view.openUrl(privacyPolicyUrl)
+        }
     }
 }
