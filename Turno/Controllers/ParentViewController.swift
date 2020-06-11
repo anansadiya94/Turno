@@ -13,8 +13,24 @@ class ParentViewController: UIViewController {
     var waitingView: LoadingViewController?
     private var isShownPopup = false
     
+    var navBarTitle: String {
+        return ""
+    }
+    
+    var isNavBarBackButtonHidden: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
+    }
+    
+    func setNavigationBar() {
+        navigationController?.navigationBar.tintColor = .primary
+        navigationItem.title = navBarTitle
+        navigationItem.setHidesBackButton(isNavBarBackButtonHidden, animated: false)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     /// Prompts the waiting views and animation.

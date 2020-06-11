@@ -15,11 +15,14 @@ class InstallationViewController: ParentViewController {
     var presenterInstallation: PresenterInstallation!
     var installationView: InstallationView?
     
+    override var navBarTitle: String {
+        return LocalizedConstants.installation_key.localized
+    }
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
-        setWelcomeView()
+        setInstallationView()
         addTarget()
         hideKeyboardWhenTappedAround()
         configureTextFields()
@@ -31,13 +34,8 @@ class InstallationViewController: ParentViewController {
         installationView?.nameTextField.becomeFirstResponder()
     }
     
-    // MARK: - Private methods
-    private func setNavigationBar() {
-        navigationItem.title = LocalizedConstants.installation_key.localized
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
-    private func setWelcomeView() {
+    // MARK: - Private methods    
+    private func setInstallationView() {
         installationView = InstallationView(frame: view.frame)
         self.view = installationView
     }

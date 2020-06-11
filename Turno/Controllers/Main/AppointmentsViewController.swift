@@ -8,17 +8,17 @@
 
 import UIKit
 
-class AppointmentsViewController: UIViewController {
-
+class AppointmentsViewController: ParentViewController {
+    
+    // MARK: - Properties
+    override var navBarTitle: String {
+        return LocalizedConstants.my_turns_key.localized
+    }
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
         setNavigationBar()
-    }
-        
-    // MARK: - Private methods
-    private func setNavigationBar() {
-        navigationItem.title = LocalizedConstants.my_turns_key.localized
     }
 }
