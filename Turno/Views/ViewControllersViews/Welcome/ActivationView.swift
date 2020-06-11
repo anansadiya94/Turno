@@ -21,7 +21,6 @@ class ActivationView: UIView {
     @UseAutoLayout var countDownLabel = CustomLabel()
     @UseAutoLayout var resendSMSButton = CustomButton()
     @UseAutoLayout var activateByCallButton = CustomButton()
-    @UseAutoLayout var finishButton = RoundedCustomButtonWithMargin()
 
     let otpStackView = OTPStackView()
     
@@ -51,7 +50,6 @@ class ActivationView: UIView {
         addOTPView()
         addCountDownLabel()
         addCenterButtons()
-        addFinishButton()
     }
 
     private func addSubviews() {
@@ -61,7 +59,6 @@ class ActivationView: UIView {
         self.addSubview(otpLabel)
         self.addSubview(otpView)
         self.addSubview(countDownLabel)
-        self.addSubview(finishButton)
     }
 
     private func addProgressView() {
@@ -156,15 +153,6 @@ class ActivationView: UIView {
         stackView.topAnchor.constraint(equalTo: countDownLabel.bottomAnchor, constant: kSuperViewMargin*4).isActive = true
         stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin).isActive = true
         stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin).isActive = true
-    }
-
-    private func addFinishButton() {
-        finishButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.finish_key.localized)
-        NSLayoutConstraint.activate([
-            finishButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin*2),
-            finishButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin*2),
-            finishButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -kSuperViewMargin*2)
-        ])
     }
     
     // MARK: - Public Interface

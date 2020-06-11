@@ -11,6 +11,7 @@ import Foundation
 protocol PresenterInstallationView: class {
     func showNameTextFieldLabel(type: TextFieldErrorType)
     func showPhoneNumberTextFieldLabel(type: TextFieldErrorType)
+    func showAlert()
 }
 
 class PresenterInstallation {
@@ -63,28 +64,12 @@ class PresenterInstallation {
         }
     }
     
-    private func showAlert() {
-        let modelAlertPopUp = ModelAlertPopup(title: LocalizedConstants.phone_number_question_key.localized,
-                                              message: Preferences.getPrefsUser()?.phoneNumber,
-                                              action1: LocalizedConstants.edit_key.localized,
-                                              action2: LocalizedConstants.yes_key.localized)
-//        delegate.showAlert(view: view, modelAlertPopup: modelAlertPopUp)
-        self.view.showPopup(withTitle: modelAlertPopUp.title, withText: modelAlertPopUp.message,
-                            withButton: modelAlertPopUp.action1, button2: modelAlertPopUp.action2,
-                            completion: { (_, action2) in
-                                if action2 != nil {
-                                    self.alertYesButtonTapped()
-                                }
-                                
-        })
-    }
-    
     // MARK: - UI interaction methods
     func continueButtonTapped(name: String?, phoneNumber: String?) {
         if isValid(name: name, phoneNumber: phoneNumber) {
             let user = User(name: name, phoneNumber: phoneNumber)
             Preferences.setPrefsUser(user: user)
-            showAlert()
+            view?.showAlert()
         }
     }
     
