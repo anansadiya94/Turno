@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: ParentViewController {
     
     // MARK: - Properties
     var presenterWelcome: PresenterWelcome!
@@ -30,7 +30,6 @@ class WelcomeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        setBackBarButton()
     }
     
     // MARK: - Private methods

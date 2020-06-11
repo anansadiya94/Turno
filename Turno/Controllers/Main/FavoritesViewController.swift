@@ -8,17 +8,17 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: ParentViewController {
 
+    // MARK: - Properties
+    override var navBarTitle: String {
+        return LocalizedConstants.favorites_key.localized
+    }
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
         setNavigationBar()
-    }
-    
-    // MARK: - Private methods
-    private func setNavigationBar() {
-        navigationItem.title = LocalizedConstants.favorites_key.localized
     }
 }

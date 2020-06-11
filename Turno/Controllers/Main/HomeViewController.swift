@@ -8,17 +8,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: ParentViewController {
 
+    // MARK: - Properties
+    override var navBarTitle: String {
+        return LocalizedConstants.home_key.localized
+    }
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         setNavigationBar()
-    }
-    
-    // MARK: - Private methods
-    private func setNavigationBar() {
-        navigationItem.title = LocalizedConstants.home_key.localized
     }
 }

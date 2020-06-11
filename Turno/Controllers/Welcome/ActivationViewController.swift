@@ -11,7 +11,7 @@ import UIKit
 
 let kSeconds: Int = 10
 
-class ActivationViewController: UIViewController {
+class ActivationViewController: ParentViewController {
     
     // MARK: - Properties
     var presenterActivation: PresenterActivation!
@@ -22,23 +22,25 @@ class ActivationViewController: UIViewController {
     var start: Float = 0
     var timer: Timer?
     
+    override var navBarTitle: String {
+        return LocalizedConstants.activate_your_account_key.localized
+    }
+    
+    override var isNavBarBackButtonHidden: Bool {
+        return true
+    }
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
-        setWelcomeView()
+        setActivationView()
         addTargets()
         fireTimer()
         configureOPTView()
     }
     
     // MARK: - Private methods
-    private func setNavigationBar() {
-        navigationItem.title = LocalizedConstants.activate_your_account_key.localized
-        navigationItem.setHidesBackButton(true, animated: false)
-    }
-    
-    private func setWelcomeView() {
+    private func setActivationView() {
         activationView = ActivationView(frame: view.frame)
         self.view = activationView
     }
