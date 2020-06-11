@@ -21,7 +21,6 @@ class InstallationViewController: ParentViewController {
         setNavigationBar()
         setWelcomeView()
         addTarget()
-        addObservers()
         hideKeyboardWhenTappedAround()
         configureTextFields()
         addToolBar()
@@ -47,13 +46,6 @@ class InstallationViewController: ParentViewController {
         installationView?.continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
     }
     
-    private func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(alertButton1TappedAction),
-                                               name: Alert.alertButton1Tapped, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(alertButton2TappedAction),
-                                               name: Alert.alertButton2Tapped, object: nil)
-    }
-    
     private func configureTextFields() {
         installationView?.nameTextField.delegate = self
         installationView?.phoneNumberTextField.delegate = self
@@ -72,14 +64,6 @@ class InstallationViewController: ParentViewController {
     
     @objc func cancelButtonTapped() {
         installationView?.phoneNumberTextField.resignFirstResponder()
-    }
-    
-    @objc func alertButton1TappedAction() {
-        installationView?.phoneNumberTextField.becomeFirstResponder()
-    }
-    
-    @objc func alertButton2TappedAction() {
-        presenterInstallation.alertYesButtonTapped()
     }
 }
 
@@ -152,5 +136,23 @@ extension InstallationViewController: PresenterInstallationView {
         }
         installationView?.setTextFieldLabel(textFieldLabel: installationView?.phoneNumberTextFieldLabel, message: message, isHidden: false)
         installationView?.setTextFieldLayer(textField: installationView?.phoneNumberTextField, isValid: isValid)
+    }
+    
+    func showAlert() {
+        let modelAlertPopUp = ModelAlertPopup(title: LocalizedConstants.phone_number_question_key.localized,
+                                              message: Preferences.getPrefsUser()?.phoneNumber,
+                                              action1: LocalizedConstants.edit_key.localized,
+                                              action2: LocalizedConstants.yes_key.localized)
+        self.showPopup(withTitle: modelAlertPopUp.title, withText: modelAlertPopUp.message,
+                            withButton: modelAlertPopUp.action1, button2: modelAlertPopUp.action2,
+                            completion: { (action1, action2) in
+                                if action1 != nil && action1 == true {
+                                    self.installationView?.phoneNumberTextField.becomeFirstResponder()
+                                }
+                                if action2 != nil && action2 == true {
+                                    self.presenterInstallation.alertYesButtonTapped()
+                                }
+                                
+        })
     }
 }

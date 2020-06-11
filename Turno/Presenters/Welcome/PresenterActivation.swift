@@ -40,9 +40,9 @@ class PresenterActivation: NSObject {
         print("activateByCallButtonTapped")
     }
     
-    func finishButtonTapped() {
+    func OPTTapped() {
         //TODO Call server and save token
         Preferences.setPrefsAppState(value: .loggedIn)
-        delegate.didSelectFinishButton()
+        delegate.didOPTTapped()
     }
 }

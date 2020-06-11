@@ -47,7 +47,6 @@ class ActivationViewController: UIViewController {
         activationView?.wrongNumberButton.addTarget(self, action: #selector(wrongNumberButtonTapped), for: .touchUpInside)
         activationView?.resendSMSButton.addTarget(self, action: #selector(resendSMSButtonTapped), for: .touchUpInside)
         activationView?.activateByCallButton.addTarget(self, action: #selector(activateByCallButtonTapped), for: .touchUpInside)
-        activationView?.finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
     }
     
     private func fireTimer() {
@@ -88,11 +87,6 @@ class ActivationViewController: UIViewController {
     @objc func activateByCallButtonTapped() {
         presenterActivation.activateByCallButtonTapped()
     }
-    
-    @objc func finishButtonTapped() {
-        //BUTTON SHOULD BE DELETED
-        presenterActivation.finishButtonTapped()
-    }
 }
 
 // MARK: - PresenterActivationView methods
@@ -109,7 +103,7 @@ extension ActivationViewController: OTPDelegate {
         if isValid, let otp = activationView?.otpStackView.getOTP() {
             timer?.invalidate()
             print("Code is: \(otp)")
-            presenterActivation.finishButtonTapped()
+            presenterActivation.OPTTapped()
         }
     }
 }

@@ -33,9 +33,6 @@
 		9E764474248E91F800CDAF89 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E764473248E91F800CDAF89 /* LoadingViewController.swift */; };
 		9E764476248E923300CDAF89 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E764475248E923300CDAF89 /* LoadingViewController.xib */; };
 		9E764479248E93EA00CDAF89 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E764478248E93EA00CDAF89 /* loading.json */; };
-		9E9880DD248BAFCC00D78959 /* AlertPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880DC248BAFCC00D78959 /* AlertPopupViewController.swift */; };
-		9E9880E0248BAFEF00D78959 /* PresenterAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880DF248BAFEF00D78959 /* PresenterAlertPopup.swift */; };
-		9E9880E3248BB01200D78959 /* AlertPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E2248BB01200D78959 /* AlertPopupView.swift */; };
 		9E9880E5248BB9AD00D78959 /* ModelAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E4248BB9AD00D78959 /* ModelAlertPopup.swift */; };
 		9E9880E7248BB9E500D78959 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E6248BB9E500D78959 /* User.swift */; };
 		9E9880E9248BBAA500D78959 /* ActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9880E8248BBAA500D78959 /* ActivationView.swift */; };
@@ -137,9 +134,6 @@
 		9E764473248E91F800CDAF89 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		9E764475248E923300CDAF89 /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		9E764478248E93EA00CDAF89 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
-		9E9880DC248BAFCC00D78959 /* AlertPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupViewController.swift; sourceTree = "<group>"; };
-		9E9880DF248BAFEF00D78959 /* PresenterAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterAlertPopup.swift; sourceTree = "<group>"; };
-		9E9880E2248BB01200D78959 /* AlertPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupView.swift; sourceTree = "<group>"; };
 		9E9880E4248BB9AD00D78959 /* ModelAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAlertPopup.swift; sourceTree = "<group>"; };
 		9E9880E6248BB9E500D78959 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9E9880E8248BBAA500D78959 /* ActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationView.swift; sourceTree = "<group>"; };
@@ -296,30 +290,6 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
-		9E9880DB248BAFBF00D78959 /* Alerts */ = {
-			isa = PBXGroup;
-			children = (
-				9E9880DC248BAFCC00D78959 /* AlertPopupViewController.swift */,
-			);
-			path = Alerts;
-			sourceTree = "<group>";
-		};
-		9E9880DE248BAFDA00D78959 /* Alerts */ = {
-			isa = PBXGroup;
-			children = (
-				9E9880DF248BAFEF00D78959 /* PresenterAlertPopup.swift */,
-			);
-			path = Alerts;
-			sourceTree = "<group>";
-		};
-		9E9880E1248BB00700D78959 /* Alerts */ = {
-			isa = PBXGroup;
-			children = (
-				9E9880E2248BB01200D78959 /* AlertPopupView.swift */,
-			);
-			path = Alerts;
-			sourceTree = "<group>";
-		};
 		9E9B87D1248D3425009B1448 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,7 +360,6 @@
 				9E764471248E919600CDAF89 /* ParentViewController.swift */,
 				9E764473248E91F800CDAF89 /* LoadingViewController.swift */,
 				9E9B87D4248D3443009B1448 /* Main */,
-				9E9880DB248BAFBF00D78959 /* Alerts */,
 				9E0B75A32489867D00B25313 /* Welcome */,
 				9EA657CE248814C700F7952A /* OnBoarding */,
 			);
@@ -424,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				9E9B87D1248D3425009B1448 /* Main */,
-				9E9880DE248BAFDA00D78959 /* Alerts */,
 				9E0B75A52489869800B25313 /* Welcome */,
 				9EA657E42488162000F7952A /* OnBoarding */,
 			);
@@ -434,7 +402,6 @@
 		9EA657D22488150F00F7952A /* ViewControllersViews */ = {
 			isa = PBXGroup;
 			children = (
-				9E9880E1248BB00700D78959 /* Alerts */,
 				9E0B75A42489868B00B25313 /* Welcome */,
 				9EA657D32488151D00F7952A /* OnBoarding */,
 			);
@@ -842,9 +809,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E9B87F5248D374E009B1448 /* ViewControllersConstants.swift in Sources */,
-				9E9880DD248BAFCC00D78959 /* AlertPopupViewController.swift in Sources */,
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
-				9E9880E0248BAFEF00D78959 /* PresenterAlertPopup.swift in Sources */,
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,
 				9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */,
 				9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */,
@@ -888,7 +853,6 @@
 				9E9B87F7248D375D009B1448 /* StoryBoardsConstants.swift in Sources */,
 				9E23F434248CED4E003D031F /* OTPTextField.swift in Sources */,
 				9EA657F72488177600F7952A /* CustomLabelThemes.swift in Sources */,
-				9E9880E3248BB01200D78959 /* AlertPopupView.swift in Sources */,
 				9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */,
 				9E9B87EF248D3623009B1448 /* FavoritesViewController.swift in Sources */,
 				9E9880E7248BB9E500D78959 /* User.swift in Sources */,
