@@ -25,6 +25,7 @@
 		9E4CACE22494D24500AA72E0 /* ModelSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */; };
 		9E4CACE52494D8AC00AA72E0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE42494D8AC00AA72E0 /* API.swift */; };
 		9E4CACE72494D92D00AA72E0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */; };
+		9E4CACE92494EBE800AA72E0 /* ModelVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */; };
 		9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD53248A9864004F401B /* InstallationViewController.swift */; };
 		9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD55248A98C8004F401B /* InstallationView.swift */; };
 		9E55BD58248A98D6004F401B /* PresenterInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD57248A98D6004F401B /* PresenterInstallation.swift */; };
@@ -130,6 +131,7 @@
 		9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSignUp.swift; sourceTree = "<group>"; };
 		9E4CACE42494D8AC00AA72E0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVerify.swift; sourceTree = "<group>"; };
 		9E55BD53248A9864004F401B /* InstallationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationViewController.swift; sourceTree = "<group>"; };
 		9E55BD55248A98C8004F401B /* InstallationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationView.swift; sourceTree = "<group>"; };
 		9E55BD57248A98D6004F401B /* PresenterInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterInstallation.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */,
+				9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
 				9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */,
 				9E9880ED248BBABD00D78959 /* PresenterActivation.swift in Sources */,
+				9E4CACE92494EBE800AA72E0 /* ModelVerify.swift in Sources */,
 				9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */,
 				9E55BD5A248AC8C1004F401B /* UIViewController+SetBackBarButton.swift in Sources */,
 				9E9880E9248BBAA500D78959 /* ActivationView.swift in Sources */,

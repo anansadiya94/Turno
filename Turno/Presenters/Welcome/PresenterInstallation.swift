@@ -80,13 +80,13 @@ class PresenterInstallation {
             let modelSignUp = ModelSignUp(phoneNumber: phoneNumber, fullName: fullName)
             networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
                 if let error = error {
-                    print(error)
                     self.view.stopWaiting()
                     //TODO
                     self.view.showPopup(withTitle: "ERROR", withText: error.localizedDescription, withButton: "OK", completion: nil)
                     return
                 }
                 if let modelSignUpResponse = modelSignUpResponse {
+                    self.view.stopWaiting()
                     self.delegate.didSelectAlertYesButton(modelSignUpResponse: modelSignUpResponse)
                 }
             }

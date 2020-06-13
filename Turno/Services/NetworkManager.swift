@@ -13,6 +13,7 @@ protocol Networkable {
     var provider: MoyaProvider<APIRouter> { get }
 
     func signUp(modelSignUp: ModelSignUp, completion: @escaping (ModelSignUpResponse?, Error?) -> Void)
+    func verify(modelVerify: ModelVerify, completion: @escaping (ModelVerifyResponse?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -29,6 +30,23 @@ class NetworkManager: Networkable {
                 do {
                     let modelSignUpResponse = try decoder.decode(ModelSignUpResponse.self, from: value.data)
                     completion(modelSignUpResponse, nil)
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func verify(modelVerify: ModelVerify, completion: @escaping (ModelVerifyResponse?, Error?) -> Void) {
+        provider.request(.verify(modelVerify: modelVerify)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let modelVerifyResponse = try decoder.decode(ModelVerifyResponse.self, from: value.data)
+                    completion(modelVerifyResponse, nil)
                 } catch let error {
                     completion(nil, error)
                 }

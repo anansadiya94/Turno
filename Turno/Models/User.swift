@@ -9,12 +9,14 @@
 import Foundation
 
 struct User: Codable {
-    let token: String?
-    let name: String?
-    let phoneNumber: String?
+    var secret: String?
+    var userId: String?
+    var name: String?
+    var phoneNumber: String?
     
-    init(token: String? = nil, name: String? = nil, phoneNumber: String? = nil) {
-        self.token = token
+    init(secret: String? = nil, userId: String? = nil, name: String? = nil, phoneNumber: String? = nil) {
+        self.secret = secret
+        self.userId = userId
         self.name = name
         self.phoneNumber = phoneNumber
     }

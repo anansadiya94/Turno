@@ -13,6 +13,7 @@ enum APIRouter {
 
     // MARK: - Sign Up
     case signUp(modelSignUp: ModelSignUp)
+    case verify(modelVerify: ModelVerify)
 }
 
 extension APIRouter: TargetType {
@@ -24,12 +25,13 @@ extension APIRouter: TargetType {
     var path: String {
         switch self {
         case .signUp: return kSignUp
+        case .verify: return kVerify
         }
     }
   
     var method: Moya.Method {
         switch self {
-        case .signUp:
+        case .signUp, .verify:
             return .post
         }
     }
@@ -38,6 +40,8 @@ extension APIRouter: TargetType {
         switch self {
         case .signUp(let modelSignUp):
             return .requestJSONEncodable(modelSignUp)
+        case .verify(let modelVerify):
+            return .requestJSONEncodable(modelVerify)
         }
     }
     

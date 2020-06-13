@@ -7,9 +7,11 @@
 //
 
 import Foundation
+
 // MARK: - Base URL
 let kBaseURL = "http://tan320200607105243.azurewebsites.net"
 
 // MARK: - Endpoints
 
 let kSignUp = "/signup"
+let kVerify = "/verify"

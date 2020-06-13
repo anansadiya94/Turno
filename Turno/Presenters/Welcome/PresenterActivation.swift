@@ -19,6 +19,7 @@ class PresenterActivation: NSObject {
     var view: ActivationViewController!
     var delegate: SelectButtonWelcome!
     var modelSignUpResponse: ModelSignUpResponse?
+    let networkManager = NetworkManager()
     
     // MARK: - Public Interface
     init(view: ActivationViewController, delegate: SelectButtonWelcome, modelSignUpResponse: ModelSignUpResponse) {
@@ -33,6 +34,14 @@ class PresenterActivation: NSObject {
         if let modelSignUpResponse = modelSignUpResponse {
             view?.didSetData(remainingTimeInSeconds: modelSignUpResponse.remainingTimeInSeconds)
         }
+    }
+    
+    private func setPrefs(modelVerifyResponse: ModelVerifyResponse) {
+        var user = Preferences.getPrefsUser()
+        user?.secret = modelVerifyResponse.secret
+        user?.userId = modelVerifyResponse.userId
+        Preferences.setPrefsUser(user: user)
+        Preferences.setPrefsAppState(value: .loggedIn)
     }
     
     // MARK: - UI interaction methods
@@ -53,7 +62,22 @@ class PresenterActivation: NSObject {
     func OTPTapped(otp: String) {
         //TODO Call server and save token
         print("Code is: \(otp)")
-        Preferences.setPrefsAppState(value: .loggedIn)
-        delegate.didOPTTapped()
+        self.view.startWaiting()
+        if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber {
+            let modelVerify = ModelVerify(phoneNumber: phoneNumber, verificationCode: otp)
+            networkManager.verify(modelVerify: modelVerify) { (modelVerifyResponse, error) in
+                if let error = error {
+                    self.view.stopWaiting()
+                    //TODO
+                    self.view.showPopup(withTitle: "ERROR", withText: error.localizedDescription, withButton: "OK", completion: nil)
+                    return
+                }
+                if let modelVerifyResponse = modelVerifyResponse {
+                    self.setPrefs(modelVerifyResponse: modelVerifyResponse)
+                    self.view.stopWaiting()
+                    self.delegate.didOPTTapped()
+                }
+            }
+        }
     }
 }
