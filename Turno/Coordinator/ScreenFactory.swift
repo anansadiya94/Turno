@@ -16,7 +16,7 @@ protocol SelectButtonOnboarding: class {
 
 protocol SelectButtonWelcome: class {
     func didSelectWelcomeContinueButton()
-    func didSelectAlertYesButton()
+    func didSelectAlertYesButton(modelSignUpResponse: ModelSignUpResponse)
     func didOPTTapped()
 }
 
@@ -49,9 +49,9 @@ struct ScreenFactory {
         return viewController
     }
     
-    static func makeActivationScreen(delegate: SelectButtonWelcome) -> UIViewController {
+    static func makeActivationScreen(delegate: SelectButtonWelcome, modelSignUpResponse: ModelSignUpResponse) -> UIViewController {
         let viewController = ActivationViewController()
-        let presenter = PresenterActivation(view: viewController, delegate: delegate)
+        let presenter = PresenterActivation(view: viewController, delegate: delegate, modelSignUpResponse: modelSignUpResponse)
         viewController.presenterActivation = presenter
         return viewController
     }

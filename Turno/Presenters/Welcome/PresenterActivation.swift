@@ -9,6 +9,7 @@
 import Foundation
 
 protocol PresenterActivationView: class {
+    func didSetData(remainingTimeInSeconds: Int)
     func popViewController()
 }
 
@@ -17,12 +18,21 @@ class PresenterActivation: NSObject {
     // MARK: - Properties
     var view: ActivationViewController!
     var delegate: SelectButtonWelcome!
+    var modelSignUpResponse: ModelSignUpResponse?
     
     // MARK: - Public Interface
-    init(view: ActivationViewController, delegate: SelectButtonWelcome) {
+    init(view: ActivationViewController, delegate: SelectButtonWelcome, modelSignUpResponse: ModelSignUpResponse) {
         super.init()
         self.view = view
         self.delegate = delegate
+        self.modelSignUpResponse = modelSignUpResponse
+        self.didSetData()
+    }
+    
+    private func didSetData() {
+        if let modelSignUpResponse = modelSignUpResponse {
+            view?.didSetData(remainingTimeInSeconds: modelSignUpResponse.remainingTimeInSeconds)
+        }
     }
     
     // MARK: - UI interaction methods
@@ -40,8 +50,9 @@ class PresenterActivation: NSObject {
         print("activateByCallButtonTapped")
     }
     
-    func OPTTapped() {
+    func OTPTapped(otp: String) {
         //TODO Call server and save token
+        print("Code is: \(otp)")
         Preferences.setPrefsAppState(value: .loggedIn)
         delegate.didOPTTapped()
     }

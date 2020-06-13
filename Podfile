@@ -8,5 +8,6 @@ target 'Turno' do
   # Pods for Turno
   pod 'SwiftLint'
   pod 'lottie-ios'
-
+  pod 'Moya', '~> 14.0'
+  
 end

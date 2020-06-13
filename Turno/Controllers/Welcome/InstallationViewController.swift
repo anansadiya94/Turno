@@ -27,6 +27,7 @@ class InstallationViewController: ParentViewController {
         hideKeyboardWhenTappedAround()
         configureTextFields()
         addToolBar()
+        addTestData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,6 +52,12 @@ class InstallationViewController: ParentViewController {
     
     private func addToolBar() {
         addCancelAndButtonsOnKeyboard(textField: installationView?.phoneNumberTextField)
+    }
+    
+    //TODO ONLY FOR TESTING
+    private func addTestData() {
+        installationView?.nameTextField.text = "Anan Sadiya"
+        installationView?.phoneNumberTextField.text = "0526366061"
     }
     
     // MARK: - UI interaction methods

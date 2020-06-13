@@ -21,6 +21,10 @@
 		9E23F434248CED4E003D031F /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F433248CED4E003D031F /* OTPTextField.swift */; };
 		9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F435248CED7D003D031F /* OTPStackView.swift */; };
 		9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */; };
+		9E4CACE02494CF9400AA72E0 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */; };
+		9E4CACE22494D24500AA72E0 /* ModelSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */; };
+		9E4CACE52494D8AC00AA72E0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE42494D8AC00AA72E0 /* API.swift */; };
+		9E4CACE72494D92D00AA72E0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */; };
 		9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD53248A9864004F401B /* InstallationViewController.swift */; };
 		9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD55248A98C8004F401B /* InstallationView.swift */; };
 		9E55BD58248A98D6004F401B /* PresenterInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD57248A98D6004F401B /* PresenterInstallation.swift */; };
@@ -122,6 +126,10 @@
 		9E23F433248CED4E003D031F /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		9E23F435248CED7D003D031F /* OTPStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift"; sourceTree = "<group>"; };
+		9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSignUp.swift; sourceTree = "<group>"; };
+		9E4CACE42494D8AC00AA72E0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9E55BD53248A9864004F401B /* InstallationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationViewController.swift; sourceTree = "<group>"; };
 		9E55BD55248A98C8004F401B /* InstallationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationView.swift; sourceTree = "<group>"; };
 		9E55BD57248A98D6004F401B /* PresenterInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterInstallation.swift; sourceTree = "<group>"; };
@@ -272,6 +280,14 @@
 			path = CustomButton;
 			sourceTree = "<group>";
 		};
+		9E4CACE32494D2A200AA72E0 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		9E55BD5B248ACF6D004F401B /* CustomTextFieldViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +355,8 @@
 				9E9880EE248BC24B00D78959 /* Preferences.swift */,
 				9E9880F2248BCD8E00D78959 /* ServiceTextFieldValidation.swift */,
 				9E9B87F2248D3702009B1448 /* ServiceViewController.swift */,
+				9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */,
+				9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -346,6 +364,7 @@
 		9EA657C6248813AA00F7952A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9E4CACE32494D2A200AA72E0 /* API */,
 				9EA657C7248813B700F7952A /* ModelOnboarding.swift */,
 				9E9880E4248BB9AD00D78959 /* ModelAlertPopup.swift */,
 				9E9880E6248BB9E500D78959 /* User.swift */,
@@ -638,6 +657,7 @@
 				9E9880F0248BC28F00D78959 /* PrefsConstants.swift */,
 				9E9B87F4248D374E009B1448 /* ViewControllersConstants.swift */,
 				9E9B87F6248D375D009B1448 /* StoryBoardsConstants.swift */,
+				9E4CACE42494D8AC00AA72E0 /* API.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -808,7 +828,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E4CACE72494D92D00AA72E0 /* NetworkManager.swift in Sources */,
 				9E9B87F5248D374E009B1448 /* ViewControllersConstants.swift in Sources */,
+				9E4CACE22494D24500AA72E0 /* ModelSignUp.swift in Sources */,
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,
 				9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */,
@@ -826,6 +848,7 @@
 				9EA658182488193A00F7952A /* RoundedCustomButton.swift in Sources */,
 				9EA657CD248814AE00F7952A /* OnboardingViewController.swift in Sources */,
 				9E764474248E91F800CDAF89 /* LoadingViewController.swift in Sources */,
+				9E4CACE52494D8AC00AA72E0 /* API.swift in Sources */,
 				9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */,
 				9EA657F22488173100F7952A /* OnboardingCollectionViewCell.swift in Sources */,
 				9E00041D2490012500E41A9A /* UIViewController+OpenUrl.swift in Sources */,
@@ -850,6 +873,7 @@
 				9EA657DD2488159400F7952A /* UIColor+Color.swift in Sources */,
 				9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */,
 				9E0B75A2248985C200B25313 /* ServiceAppFont.swift in Sources */,
+				9E4CACE02494CF9400AA72E0 /* APIRouter.swift in Sources */,
 				9E9B87F7248D375D009B1448 /* StoryBoardsConstants.swift in Sources */,
 				9E23F434248CED4E003D031F /* OTPTextField.swift in Sources */,
 				9EA657F72488177600F7952A /* CustomLabelThemes.swift in Sources */,

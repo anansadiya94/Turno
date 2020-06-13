@@ -9,16 +9,14 @@
 import Foundation
 import UIKit
 
-let kSeconds: Int = 10
-
 class ActivationViewController: ParentViewController {
     
     // MARK: - Properties
     var presenterActivation: PresenterActivation!
     var activationView: ActivationView?
     
-    let progress = Progress(totalUnitCount: Int64(kSeconds))
-    var seconds: Double = Double(kSeconds)
+    var progress = Progress(totalUnitCount: Int64(0))
+    var seconds: Double = Double(0)
     var start: Float = 0
     var timer: Timer?
     
@@ -35,8 +33,7 @@ class ActivationViewController: ParentViewController {
         super.viewDidLoad()
         setActivationView()
         addTargets()
-        fireTimer()
-        configureOPTView()
+        configureOTPView()
     }
     
     // MARK: - Private methods
@@ -51,16 +48,17 @@ class ActivationViewController: ParentViewController {
         activationView?.activateByCallButton.addTarget(self, action: #selector(activateByCallButtonTapped), for: .touchUpInside)
     }
     
-    private func fireTimer() {
+    private func fireTimer(_ remainingTimeInSeconds: Int) {
         activationView?.progressView.progress = 0.0
         progress.completedUnitCount = 0
-        progress.totalUnitCount = Int64(kSeconds)
+        progress.totalUnitCount = Int64(remainingTimeInSeconds)
+        seconds = Double(remainingTimeInSeconds)
 
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timer) in
-            if self.start <= Float(kSeconds) {
+            if self.start <= Float(remainingTimeInSeconds) {
                 // Progress view
                 self.start += 0.01
-                self.activationView?.progressView.setProgress(self.start/Float(10), animated: true)
+                self.activationView?.progressView.setProgress(self.start/Float(remainingTimeInSeconds), animated: true)
                 // Count down label
                 self.seconds -= 0.01
                 self.activationView?.updateCountDownLabel(time: self.seconds.rounded(toPlaces: 2))
@@ -73,7 +71,7 @@ class ActivationViewController: ParentViewController {
         }
     }
     
-    private func configureOPTView() {
+    private func configureOTPView() {
         activationView?.otpStackView.delegate = self
     }
     
@@ -93,6 +91,10 @@ class ActivationViewController: ParentViewController {
 
 // MARK: - PresenterActivationView methods
 extension ActivationViewController: PresenterActivationView {
+    func didSetData(remainingTimeInSeconds: Int) {
+        fireTimer(remainingTimeInSeconds)
+    }
+    
     func popViewController() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -104,8 +106,7 @@ extension ActivationViewController: OTPDelegate {
     func didChangeValidity(isValid: Bool) {
         if isValid, let otp = activationView?.otpStackView.getOTP() {
             timer?.invalidate()
-            print("Code is: \(otp)")
-            presenterActivation.OPTTapped()
+            presenterActivation.OTPTapped(otp: otp)
         }
     }
 }

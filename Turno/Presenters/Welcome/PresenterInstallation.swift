@@ -19,6 +19,7 @@ class PresenterInstallation {
     // MARK: - Properties
     var view: InstallationViewController!
     var delegate: SelectButtonWelcome!
+    let networkManager = NetworkManager()
     
     // MARK: - Public Interface
     init(view: InstallationViewController, delegate: SelectButtonWelcome) {
@@ -75,10 +76,20 @@ class PresenterInstallation {
     
     func alertYesButtonTapped() {
         self.view.startWaiting()
-        //TODO CALL SERVER
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.view.stopWaiting()
-            self.delegate.didSelectAlertYesButton()
+        if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
+            let modelSignUp = ModelSignUp(phoneNumber: phoneNumber, fullName: fullName)
+            networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
+                if let error = error {
+                    print(error)
+                    self.view.stopWaiting()
+                    //TODO
+                    self.view.showPopup(withTitle: "ERROR", withText: error.localizedDescription, withButton: "OK", completion: nil)
+                    return
+                }
+                if let modelSignUpResponse = modelSignUpResponse {
+                    self.delegate.didSelectAlertYesButton(modelSignUpResponse: modelSignUpResponse)
+                }
+            }
         }
     }
 }
