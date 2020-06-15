@@ -45,12 +45,14 @@ class ActivationViewController: ParentViewController {
     private func addTargets() {
         activationView?.wrongNumberButton.addTarget(self, action: #selector(wrongNumberButtonTapped), for: .touchUpInside)
         activationView?.resendSMSButton.addTarget(self, action: #selector(resendSMSButtonTapped), for: .touchUpInside)
-        activationView?.activateByCallButton.addTarget(self, action: #selector(activateByCallButtonTapped), for: .touchUpInside)
     }
     
     private func fireTimer(_ remainingTimeInSeconds: Int) {
+        activationView?.resendSMSButton.isEnabled = false
+        
         activationView?.progressView.progress = 0.0
         progress.completedUnitCount = 0
+        start = 0
         progress.totalUnitCount = Int64(remainingTimeInSeconds)
         seconds = Double(remainingTimeInSeconds)
 
@@ -61,11 +63,12 @@ class ActivationViewController: ParentViewController {
                 self.activationView?.progressView.setProgress(self.start/Float(remainingTimeInSeconds), animated: true)
                 // Count down label
                 self.seconds -= 0.01
-                self.activationView?.updateCountDownLabel(time: self.seconds.rounded(toPlaces: 2))
+                self.activationView?.updateCountDownLabel(time: self.seconds)
             } else {
                 timer.invalidate()
+                self.view.endEditing(true)
                 self.activationView?.updateCountDownLabel(time: 0.00)
-                //TODO When finished?
+                self.activationView?.resendSMSButton.isEnabled = true
                 return
             }
         }
@@ -83,21 +86,30 @@ class ActivationViewController: ParentViewController {
     @objc func resendSMSButtonTapped() {
         presenterActivation.resendSMSButtonTapped()
     }
-    
-    @objc func activateByCallButtonTapped() {
-        presenterActivation.activateByCallButtonTapped()
-    }
 }
 
 // MARK: - PresenterActivationView methods
 extension ActivationViewController: PresenterActivationView {
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    func startTimer() {
+        timer?.fire()
+    }
+    
     func didSetData(remainingTimeInSeconds: Int) {
         fireTimer(remainingTimeInSeconds)
+        
     }
     
     func popViewController() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    func tryAgain() {
+        activationView?.otpStackView.resetOTP()
     }
 }
 
@@ -105,7 +117,7 @@ extension ActivationViewController: PresenterActivationView {
 extension ActivationViewController: OTPDelegate {
     func didChangeValidity(isValid: Bool) {
         if isValid, let otp = activationView?.otpStackView.getOTP() {
-            timer?.invalidate()
+            view.endEditing(true)
             presenterActivation.OTPTapped(otp: otp)
         }
     }

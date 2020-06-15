@@ -34,3 +34,7 @@
 "my_turns_key" = "My turns";
 "favorites_key" = "Favorites";
 "settings_key" = "Settings";
+"ok_key" = "Ok";
+"generic_error_title_key" = "Something's wrong...";
+"connection_failed_error_title_key" = "Connection failed";
+"connection_failed_error_message_key" = "There may be a problem in your internet connection. Please try again !";

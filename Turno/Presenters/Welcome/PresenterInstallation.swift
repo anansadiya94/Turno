@@ -81,8 +81,11 @@ class PresenterInstallation {
             networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
                 if let error = error {
                     self.view.stopWaiting()
-                    //TODO
-                    self.view.showPopup(withTitle: "ERROR", withText: error.localizedDescription, withButton: "OK", completion: nil)
+                    //TODO ERROR FROM BACKEND
+                    self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
+                                        withText: error.localizedDescription,
+                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        completion: nil)
                     return
                 }
                 if let modelSignUpResponse = modelSignUpResponse {

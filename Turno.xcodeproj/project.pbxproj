@@ -107,6 +107,7 @@
 		9EB14F482485048C0085E885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB14F462485048C0085E885 /* LaunchScreen.storyboard */; };
 		9EB17D6A24850D5A004E5FBD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EB17D6C24850D5A004E5FBD /* Localizable.strings */; };
 		9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB17D7324850EF7004E5FBD /* LocalizableConstants.swift */; };
+		9EBAAE7424979E120011B160 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBAAE7324979E120011B160 /* AppError.swift */; };
 		B4AD2AA673D0E8FDDD1649AA /* Pods_Turno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60536D8BBF639461D5CB90FC /* Pods_Turno.framework */; };
 /* End PBXBuildFile section */
 
@@ -219,6 +220,7 @@
 		9EB17D6F24850D6E004E5FBD /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9EB17D7024850D73004E5FBD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9EB17D7324850EF7004E5FBD /* LocalizableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableConstants.swift; sourceTree = "<group>"; };
+		9EBAAE7324979E120011B160 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		C163364AA1CFF3575881BBA7 /* Pods-Turno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.debug.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -372,6 +374,7 @@
 				9E9880E4248BB9AD00D78959 /* ModelAlertPopup.swift */,
 				9E9880E6248BB9E500D78959 /* User.swift */,
 				9E9B87FA248D4B6A009B1448 /* AppState.swift */,
+				9EBAAE7324979E120011B160 /* AppError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -887,6 +890,7 @@
 				9E0B75A02489837E00B25313 /* Fonts.swift in Sources */,
 				9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */,
 				9EA6581A2488194300F7952A /* RoundedCustomButtonThemes.swift in Sources */,
+				9EBAAE7424979E120011B160 /* AppError.swift in Sources */,
 				9E55BD58248A98D6004F401B /* PresenterInstallation.swift in Sources */,
 				9E0B75B224898E5300B25313 /* UIButton+Underline.swift in Sources */,
 				9EA6582324881AB700F7952A /* AppCoordinator.swift in Sources */,

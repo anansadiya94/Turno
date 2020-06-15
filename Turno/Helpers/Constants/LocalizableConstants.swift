@@ -44,6 +44,10 @@ enum LocalizedConstants: String {
     case    my_turns_key
     case    favorites_key
     case    settings_key
+    case    ok_key
+    case    generic_error_title_key
+    case    connection_failed_error_title_key
+    case    connection_failed_error_message_key
 }
 
 extension LocalizedConstants {

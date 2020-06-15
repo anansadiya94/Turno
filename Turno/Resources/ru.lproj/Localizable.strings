@@ -34,3 +34,7 @@
 "my_turns_key" = "Мои повороты";
 "favorites_key" = "Избранные";
 "settings_key" = "настройки";
+"ok_key" = "Хорошо";
+"generic_error_title_key" = "Что-то не так...";
+"connection_failed_error_title_key" = "Ошибка подключения";
+"connection_failed_error_message_key" = "Там может быть проблема в вашем интернет-соединения. Пожалуйста, попробуйте еще раз !";

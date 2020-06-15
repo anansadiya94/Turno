@@ -34,3 +34,7 @@
 "my_turns_key" = "Mis vueltas";
 "favorites_key" = "favoritos";
 "settings_key" = "ajustes";
+"ok_key" = "Okay";
+"generic_error_title_key" = "Algo esta mal...";
+"connection_failed_error_title_key" = "La conexión falló";
+"connection_failed_error_message_key" = "Puede haber un problema en la conexión a Internet. Inténtalo de nuevo !";

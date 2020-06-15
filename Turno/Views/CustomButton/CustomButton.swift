@@ -39,4 +39,10 @@ class CustomButton: UIButton {
     private func setup() {
         titleLabel?.numberOfLines = 0
     }
+    
+    override public var isEnabled: Bool {
+        didSet {
+            alpha = isEnabled ? 1.0 : 0.5
+        }
+    }
 }

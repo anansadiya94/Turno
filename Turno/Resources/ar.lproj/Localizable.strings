@@ -34,3 +34,7 @@
 "my_turns_key" = "بلدي يتحول";
 "favorites_key" = "المفضلة";
 "settings_key" = "الإعدادات";
+"ok_key" = "حسنا";
+"generic_error_title_key" = "هناك خطأ...";
+"connection_failed_error_title_key" = "فشل الاتصال";
+"connection_failed_error_message_key" = "قد تكون هناك مشكلة في الاتصال بالإنترنت. حاول مرة اخرى !";
