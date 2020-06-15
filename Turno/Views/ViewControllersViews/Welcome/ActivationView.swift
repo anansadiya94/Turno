@@ -20,7 +20,6 @@ class ActivationView: UIView {
     @UseAutoLayout var otpView = UIView()
     @UseAutoLayout var countDownLabel = CustomLabel()
     @UseAutoLayout var resendSMSButton = CustomButton()
-    @UseAutoLayout var activateByCallButton = CustomButton()
 
     let otpStackView = OTPStackView()
     
@@ -49,7 +48,7 @@ class ActivationView: UIView {
         addOTPLabel()
         addOTPView()
         addCountDownLabel()
-        addCenterButtons()
+        addResendSMSButton()
     }
 
     private func addSubviews() {
@@ -59,6 +58,7 @@ class ActivationView: UIView {
         self.addSubview(otpLabel)
         self.addSubview(otpView)
         self.addSubview(countDownLabel)
+        self.addSubview(resendSMSButton)
     }
 
     private func addProgressView() {
@@ -132,31 +132,26 @@ class ActivationView: UIView {
        ])
    }
 
-    private func addCenterButtons() {
+    private func addResendSMSButton() {
+//        resendSMSButton.isEnabled = false
         resendSMSButton.buttonTheme = BaseTheme(label: LocalizedConstants.resend_sms_key.localized,
                                                 titleColor: .primary, contentHorizontalAlignment: .left)
-        activateByCallButton.buttonTheme = BaseTheme(label: LocalizedConstants.activate_by_call_key.localized,
-                                                     titleColor: .primary, contentHorizontalAlignment: .right)
-            
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 2
-    
-        stackView.addArrangedSubview(resendSMSButton)
-        stackView.addArrangedSubview(activateByCallButton)
-          
-        self.addSubview(stackView)
-          
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: countDownLabel.bottomAnchor, constant: kSuperViewMargin*4).isActive = true
-        stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin).isActive = true
-        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin).isActive = true
+        NSLayoutConstraint.activate([
+            resendSMSButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            resendSMSButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
     }
     
     // MARK: - Public Interface
     func updateCountDownLabel(time: Double) {
-        countDownLabel.text = String(time)
+        let duration: TimeInterval = time
+
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.minute, .second ]
+        formatter.zeroFormattingBehavior = [.pad]
+        let formattedDuration = formatter.string(from: duration)
+        
+        countDownLabel.text = formattedDuration
     }
 }

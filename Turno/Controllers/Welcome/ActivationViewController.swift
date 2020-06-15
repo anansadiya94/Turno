@@ -9,16 +9,14 @@
 import Foundation
 import UIKit
 
-let kSeconds: Int = 10
-
 class ActivationViewController: ParentViewController {
     
     // MARK: - Properties
     var presenterActivation: PresenterActivation!
     var activationView: ActivationView?
     
-    let progress = Progress(totalUnitCount: Int64(kSeconds))
-    var seconds: Double = Double(kSeconds)
+    var progress = Progress(totalUnitCount: Int64(0))
+    var seconds: Double = Double(0)
     var start: Float = 0
     var timer: Timer?
     
@@ -35,8 +33,7 @@ class ActivationViewController: ParentViewController {
         super.viewDidLoad()
         setActivationView()
         addTargets()
-        fireTimer()
-        configureOPTView()
+        configureOTPView()
     }
     
     // MARK: - Private methods
@@ -48,32 +45,36 @@ class ActivationViewController: ParentViewController {
     private func addTargets() {
         activationView?.wrongNumberButton.addTarget(self, action: #selector(wrongNumberButtonTapped), for: .touchUpInside)
         activationView?.resendSMSButton.addTarget(self, action: #selector(resendSMSButtonTapped), for: .touchUpInside)
-        activationView?.activateByCallButton.addTarget(self, action: #selector(activateByCallButtonTapped), for: .touchUpInside)
     }
     
-    private func fireTimer() {
+    private func fireTimer(_ remainingTimeInSeconds: Int) {
+        activationView?.resendSMSButton.isEnabled = false
+        
         activationView?.progressView.progress = 0.0
         progress.completedUnitCount = 0
-        progress.totalUnitCount = Int64(kSeconds)
+        start = 0
+        progress.totalUnitCount = Int64(remainingTimeInSeconds)
+        seconds = Double(remainingTimeInSeconds)
 
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timer) in
-            if self.start <= Float(kSeconds) {
+            if self.start <= Float(remainingTimeInSeconds) {
                 // Progress view
                 self.start += 0.01
-                self.activationView?.progressView.setProgress(self.start/Float(10), animated: true)
+                self.activationView?.progressView.setProgress(self.start/Float(remainingTimeInSeconds), animated: true)
                 // Count down label
                 self.seconds -= 0.01
-                self.activationView?.updateCountDownLabel(time: self.seconds.rounded(toPlaces: 2))
+                self.activationView?.updateCountDownLabel(time: self.seconds)
             } else {
                 timer.invalidate()
+                self.view.endEditing(true)
                 self.activationView?.updateCountDownLabel(time: 0.00)
-                //TODO When finished?
+                self.activationView?.resendSMSButton.isEnabled = true
                 return
             }
         }
     }
     
-    private func configureOPTView() {
+    private func configureOTPView() {
         activationView?.otpStackView.delegate = self
     }
     
@@ -85,17 +86,30 @@ class ActivationViewController: ParentViewController {
     @objc func resendSMSButtonTapped() {
         presenterActivation.resendSMSButtonTapped()
     }
-    
-    @objc func activateByCallButtonTapped() {
-        presenterActivation.activateByCallButtonTapped()
-    }
 }
 
 // MARK: - PresenterActivationView methods
 extension ActivationViewController: PresenterActivationView {
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    func startTimer() {
+        timer?.fire()
+    }
+    
+    func didSetData(remainingTimeInSeconds: Int) {
+        fireTimer(remainingTimeInSeconds)
+        
+    }
+    
     func popViewController() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    func tryAgain() {
+        activationView?.otpStackView.resetOTP()
     }
 }
 
@@ -103,9 +117,8 @@ extension ActivationViewController: PresenterActivationView {
 extension ActivationViewController: OTPDelegate {
     func didChangeValidity(isValid: Bool) {
         if isValid, let otp = activationView?.otpStackView.getOTP() {
-            timer?.invalidate()
-            print("Code is: \(otp)")
-            presenterActivation.OPTTapped()
+            view.endEditing(true)
+            presenterActivation.OTPTapped(otp: otp)
         }
     }
 }

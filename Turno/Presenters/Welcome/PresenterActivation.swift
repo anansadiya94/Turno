@@ -9,7 +9,11 @@
 import Foundation
 
 protocol PresenterActivationView: class {
+    func stopTimer()
+    func startTimer()
+    func didSetData(remainingTimeInSeconds: Int)
     func popViewController()
+    func tryAgain()
 }
 
 class PresenterActivation: NSObject {
@@ -17,12 +21,30 @@ class PresenterActivation: NSObject {
     // MARK: - Properties
     var view: ActivationViewController!
     var delegate: SelectButtonWelcome!
+    var modelSignUpResponse: ModelSignUpResponse?
+    let networkManager = NetworkManager()
     
     // MARK: - Public Interface
-    init(view: ActivationViewController, delegate: SelectButtonWelcome) {
+    init(view: ActivationViewController, delegate: SelectButtonWelcome, modelSignUpResponse: ModelSignUpResponse) {
         super.init()
         self.view = view
         self.delegate = delegate
+        self.modelSignUpResponse = modelSignUpResponse
+        self.didSetData()
+    }
+    
+    private func didSetData() {
+        if let modelSignUpResponse = modelSignUpResponse {
+            view?.didSetData(remainingTimeInSeconds: modelSignUpResponse.remainingTimeInSeconds)
+        }
+    }
+    
+    private func setPrefs(modelVerifyResponse: ModelVerifyResponse) {
+        var user = Preferences.getPrefsUser()
+        user?.secret = modelVerifyResponse.secret
+        user?.userId = modelVerifyResponse.userId
+        Preferences.setPrefsUser(user: user)
+        Preferences.setPrefsAppState(value: .loggedIn)
     }
     
     // MARK: - UI interaction methods
@@ -30,19 +52,56 @@ class PresenterActivation: NSObject {
         view?.popViewController()
     }
     
-    //TODO
     func resendSMSButtonTapped() {
-        print("resendSMSButtonTapped")
+        self.view.startWaiting()
+        self.view.stopTimer()
+        
+        if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
+            let modelSignUp = ModelSignUp(phoneNumber: phoneNumber, fullName: fullName)
+            networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
+                if let error = error {
+                    self.view.stopWaiting()
+                    //TODO ERROR FROM BACKEND
+                    self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
+                                        withText: error.localizedDescription,
+                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        completion: nil)
+                    return
+                }
+                if let modelSignUpResponse = modelSignUpResponse {
+                    self.view.stopWaiting()
+                    self.view.tryAgain()
+                    self.modelSignUpResponse = modelSignUpResponse
+                    self.didSetData()
+                    self.view.startTimer()
+                }
+            }
+        }
     }
-    
-    //TODO
-    func activateByCallButtonTapped() {
-        print("activateByCallButtonTapped")
-    }
-    
-    func OPTTapped() {
-        //TODO Call server and save token
-        Preferences.setPrefsAppState(value: .loggedIn)
-        delegate.didOPTTapped()
+
+    func OTPTapped(otp: String) {
+        self.view.startWaiting()
+        
+        if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber {
+            let modelVerify = ModelVerify(phoneNumber: phoneNumber, verificationCode: otp)
+            networkManager.verify(modelVerify: modelVerify) { (modelVerifyResponse, error) in
+                if let error = error {
+                    self.view.stopWaiting()
+                    //TODO ERROR FROM BACKEND
+                    self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
+                                        withText: error.localizedDescription,
+                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        completion: { (_, _) in
+                                            self.view?.tryAgain()
+                    })
+                    return
+                }
+                if let modelVerifyResponse = modelVerifyResponse {
+                    self.setPrefs(modelVerifyResponse: modelVerifyResponse)
+                    self.view.stopWaiting()
+                    self.delegate.didOPTTapped()
+                }
+            }
+        }
     }
 }

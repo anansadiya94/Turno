@@ -34,3 +34,7 @@
 "my_turns_key" = "הפניות שלי";
 "favorites_key" = "מועדפים";
 "settings_key" = "הגדרות";
+"ok_key" = "בסדר";
+"generic_error_title_key" = "משהו לא בסדר...";
+"connection_failed_error_title_key" = "חיבור נכשל";
+"connection_failed_error_message_key" = "יתכנו בעיה בחיבור האינטרנט. בבקשה נסה שוב !";

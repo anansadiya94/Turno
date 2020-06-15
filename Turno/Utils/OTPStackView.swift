@@ -126,6 +126,13 @@ class OTPStackView: UIStackView {
         remainingStrStack = []
     }
     
+    //reset textFields
+    final func resetOTP() {
+        for textField in textFieldsCollection {
+            textField.text = ""
+        }
+        textFieldsCollection[0].becomeFirstResponder()
+    }
 }
 
 // MARK: - TextField Handling
