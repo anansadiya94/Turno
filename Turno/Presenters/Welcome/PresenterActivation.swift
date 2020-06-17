@@ -34,8 +34,9 @@ class PresenterActivation: NSObject {
     }
     
     private func didSetData() {
-        if let modelSignUpResponse = modelSignUpResponse {
-            view?.didSetData(remainingTimeInSeconds: modelSignUpResponse.remainingTimeInSeconds)
+        if let modelSignUpResponse = modelSignUpResponse,
+            let remainingTimeInSeconds = modelSignUpResponse.remainingTimeInSeconds {
+            view?.didSetData(remainingTimeInSeconds: remainingTimeInSeconds)
         }
     }
     
@@ -59,11 +60,10 @@ class PresenterActivation: NSObject {
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
             let modelSignUp = ModelSignUp(phoneNumber: phoneNumber, fullName: fullName)
             networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
-                if let error = error {
+                if let error = error as? AppError {
                     self.view.stopWaiting()
-                    //TODO ERROR FROM BACKEND
                     self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
-                                        withText: error.localizedDescription,
+                                        withText: error.errorDescription,
                                         withButton: LocalizedConstants.ok_key.localized.localized,
                                         completion: nil)
                     return
@@ -85,11 +85,10 @@ class PresenterActivation: NSObject {
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber {
             let modelVerify = ModelVerify(phoneNumber: phoneNumber, verificationCode: otp)
             networkManager.verify(modelVerify: modelVerify) { (modelVerifyResponse, error) in
-                if let error = error {
+                if let error = error as? AppError {
                     self.view.stopWaiting()
-                    //TODO ERROR FROM BACKEND
                     self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
-                                        withText: error.localizedDescription,
+                                        withText: error.errorDescription,
                                         withButton: LocalizedConstants.ok_key.localized.localized,
                                         completion: { (_, _) in
                                             self.view?.tryAgain()
