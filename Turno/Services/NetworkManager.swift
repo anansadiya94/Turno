@@ -29,12 +29,11 @@ class NetworkManager: Networkable {
                 let decoder = JSONDecoder()
                 do {
                     let modelSignUpResponse = try decoder.decode(ModelSignUpResponse.self, from: value.data)
-                    //TODO ERROR FROM BACKEND
                     switch value.statusCode {
                     case 200:
                         completion(modelSignUpResponse, nil)
                     default:
-                        completion(nil, AppError.message("TODO: ERROR MESSAGE BACKEND"))
+                        completion(nil, AppError.message(modelSignUpResponse.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)
@@ -52,12 +51,11 @@ class NetworkManager: Networkable {
                 let decoder = JSONDecoder()
                 do {
                     let modelVerifyResponse = try decoder.decode(ModelVerifyResponse.self, from: value.data)
-                    //TODO ERROR FROM BACKEND
                     switch value.statusCode {
                     case 200:
                         completion(modelVerifyResponse, nil)
                     default:
-                        completion(nil, AppError.message("ERROR MESSAGE BACKEND"))
+                        completion(nil, AppError.message(modelVerifyResponse.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)

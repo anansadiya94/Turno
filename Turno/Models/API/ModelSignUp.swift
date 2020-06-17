@@ -22,10 +22,12 @@ struct ModelSignUp: Codable {
 
 struct ModelSignUpResponse: Codable {
     
-    var nextOption: String
-    var remainingTimeInSeconds: Int
+    var nextOption: String?
+    var remainingTimeInSeconds: Int?
+    var message: String?
     
     enum CodingKeys: String, CodingKey {
         case nextOption, remainingTimeInSeconds
+        case message = "Message"
     }
 }

@@ -20,10 +20,12 @@ struct ModelVerify: Codable {
 
 struct ModelVerifyResponse: Codable {
     
-    var secret: String
-    var userId: String
+    var secret: String?
+    var userId: String?
+    var message: String?
     
     enum CodingKeys: String, CodingKey {
         case secret, userId
+        case message = "Message"
     }
 }
