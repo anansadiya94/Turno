@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Moya
 
 protocol PresenterActivationView: class {
     func stopTimer()
@@ -20,7 +21,7 @@ class PresenterActivation: NSObject {
     
     // MARK: - Properties
     var view: ActivationViewController!
-    var delegate: SelectButtonWelcome!
+    private var delegate: SelectButtonWelcome?
     var modelSignUpResponse: ModelSignUpResponse?
     let networkManager = NetworkManager()
     
@@ -60,6 +61,14 @@ class PresenterActivation: NSObject {
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
             let modelSignUp = ModelSignUp(phoneNumber: phoneNumber, fullName: fullName)
             networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
+                if error as? MoyaError != nil {
+                    self.view.stopWaiting()
+                    self.view.showPopup(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                        withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        completion: nil)
+                    return
+                }
                 if let error = error as? AppError {
                     self.view.stopWaiting()
                     self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
@@ -85,6 +94,14 @@ class PresenterActivation: NSObject {
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber {
             let modelVerify = ModelVerify(phoneNumber: phoneNumber, verificationCode: otp)
             networkManager.verify(modelVerify: modelVerify) { (modelVerifyResponse, error) in
+                if error as? MoyaError != nil {
+                    self.view.stopWaiting()
+                    self.view.showPopup(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                        withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        completion: nil)
+                    return
+                }
                 if let error = error as? AppError {
                     self.view.stopWaiting()
                     self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
@@ -98,7 +115,7 @@ class PresenterActivation: NSObject {
                 if let modelVerifyResponse = modelVerifyResponse {
                     self.setPrefs(modelVerifyResponse: modelVerifyResponse)
                     self.view.stopWaiting()
-                    self.delegate.didOPTTapped()
+                    self.delegate?.didOPTTapped()
                 }
             }
         }

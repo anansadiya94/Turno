@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Moya
 
 protocol PresenterInstallationView: class {
     func showNameTextFieldLabel(type: TextFieldErrorType)
@@ -18,7 +19,7 @@ class PresenterInstallation {
     
     // MARK: - Properties
     var view: InstallationViewController!
-    var delegate: SelectButtonWelcome!
+    private var delegate: SelectButtonWelcome?
     let networkManager = NetworkManager()
     
     // MARK: - Public Interface
@@ -79,6 +80,14 @@ class PresenterInstallation {
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
             let modelSignUp = ModelSignUp(phoneNumber: phoneNumber, fullName: fullName)
             networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
+                if error as? MoyaError != nil {
+                    self.view.stopWaiting()
+                    self.view.showPopup(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                        withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        completion: nil)
+                    return
+                }
                 if let error = error as? AppError {
                     self.view.stopWaiting()
                     self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
@@ -89,7 +98,7 @@ class PresenterInstallation {
                 }
                 if let modelSignUpResponse = modelSignUpResponse {
                     self.view.stopWaiting()
-                    self.delegate.didSelectAlertYesButton(modelSignUpResponse: modelSignUpResponse)
+                    self.delegate?.didSelectAlertYesButton(modelSignUpResponse: modelSignUpResponse)
                 }
             }
         }
