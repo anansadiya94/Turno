@@ -13,7 +13,7 @@ class PresenterWelcome: NSObject {
     
     // MARK: - Properties
     var view: WelcomeViewController!
-    var delegate: SelectButtonWelcome!
+    private var delegate: SelectButtonWelcome?
     
     // MARK: - Public Interface
     init(view: WelcomeViewController, delegate: SelectButtonWelcome) {
@@ -24,7 +24,7 @@ class PresenterWelcome: NSObject {
     
     // MARK: - UI interaction methods
     func continueButtonTapped() {
-        delegate.didSelectWelcomeContinueButton()
+        delegate?.didSelectWelcomeContinueButton()
     }
 
     func privacyPolicyButtonTapped() {
