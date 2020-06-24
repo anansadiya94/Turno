@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GenericTableView<T: DescriptiveProtocol>: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableViewDelegate, UITableViewDataSource {
 
     public var tableView =  UITableView()
     public var source: T? {

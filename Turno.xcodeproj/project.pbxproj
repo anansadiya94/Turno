@@ -113,6 +113,8 @@
 		9EB43D7424A3A54600B93C34 /* GenericEntityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EB43D7324A3A54600B93C34 /* GenericEntityTableViewCell.xib */; };
 		9EB43D7724A3A77300B93C34 /* ModelBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB43D7624A3A77300B93C34 /* ModelBusiness.swift */; };
 		9EB43D7A24A3A87400B93C34 /* HomeCellsDescriptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB43D7924A3A87400B93C34 /* HomeCellsDescriptive.swift */; };
+		9EB43D7C24A3A9A200B93C34 /* PresenterHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB43D7B24A3A9A200B93C34 /* PresenterHome.swift */; };
+		9EB43D7F24A3ABA000B93C34 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB43D7E24A3ABA000B93C34 /* HomeView.swift */; };
 		9EBAAE7424979E120011B160 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBAAE7324979E120011B160 /* AppError.swift */; };
 		B4AD2AA673D0E8FDDD1649AA /* Pods_Turno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60536D8BBF639461D5CB90FC /* Pods_Turno.framework */; };
 /* End PBXBuildFile section */
@@ -232,6 +234,8 @@
 		9EB43D7324A3A54600B93C34 /* GenericEntityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenericEntityTableViewCell.xib; sourceTree = "<group>"; };
 		9EB43D7624A3A77300B93C34 /* ModelBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelBusiness.swift; sourceTree = "<group>"; };
 		9EB43D7924A3A87400B93C34 /* HomeCellsDescriptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellsDescriptive.swift; sourceTree = "<group>"; };
+		9EB43D7B24A3A9A200B93C34 /* PresenterHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterHome.swift; sourceTree = "<group>"; };
+		9EB43D7E24A3ABA000B93C34 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9EBAAE7324979E120011B160 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		C163364AA1CFF3575881BBA7 /* Pods-Turno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.debug.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -328,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				9E9B87D2248D3430009B1448 /* PresenterMain.swift */,
+				9EB43D7B24A3A9A200B93C34 /* PresenterHome.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 		9EA657D22488150F00F7952A /* ViewControllersViews */ = {
 			isa = PBXGroup;
 			children = (
+				9EB43D7D24A3AB9900B93C34 /* Main */,
 				9E0B75A42489868B00B25313 /* Welcome */,
 				9EA657D32488151D00F7952A /* OnBoarding */,
 			);
@@ -718,6 +724,14 @@
 			path = DescriptiveImplementation;
 			sourceTree = "<group>";
 		};
+		9EB43D7D24A3AB9900B93C34 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9EB43D7E24A3ABA000B93C34 /* HomeView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		E9B9522BF55F13CFC4C97976 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -958,12 +972,14 @@
 				9E9880E5248BB9AD00D78959 /* ModelAlertPopup.swift in Sources */,
 				9E9B87D6248D3466009B1448 /* MainViewController.swift in Sources */,
 				9E764472248E919600CDAF89 /* ParentViewController.swift in Sources */,
+				9EB43D7F24A3ABA000B93C34 /* HomeView.swift in Sources */,
 				9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,
 				9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */,
 				9EA657EC248816A800F7952A /* UserDefaultsConstants.swift in Sources */,
 				9EA657DF248815CB00F7952A /* CellsConstants.swift in Sources */,
 				9E9B87ED248D361A009B1448 /* AppointmentsViewController.swift in Sources */,
+				9EB43D7C24A3A9A200B93C34 /* PresenterHome.swift in Sources */,
 				9EB43D7224A3A53C00B93C34 /* GenericEntityTableViewCell.swift in Sources */,
 				9E55BD60248ACFCC004F401B /* CustomTextFieldThemes.swift in Sources */,
 				9EA657F92488179B00F7952A /* String+Localized.swift in Sources */,

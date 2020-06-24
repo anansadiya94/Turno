@@ -8,17 +8,53 @@
 
 import UIKit
 
-class HomeViewController: ParentViewController {
+class HomeViewController: GenericTableView<HomeListDescriptive> {
 
     // MARK: - Properties
     override var navBarTitle: String {
         return LocalizedConstants.home_key.localized
     }
     
+    var presenterHome: PresenterHome!
+    @UseAutoLayout var homeView = HomeView()
+    
     // MARK: - UIViewController
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        super.configureTableView(tableView: homeView.tableView)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        super.configureTableView(tableView: homeView.tableView)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         setNavigationBar()
+        self.view.addSubview(homeView)
+        setHomeViewConstraints()
+    }
+    
+    // MARK: - Private methods
+    private func setHomeViewConstraints() {
+        NSLayoutConstraint.activate([
+            homeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            homeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            homeView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            homeView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
+    }
+    
+    // MARK: - Override for pagination & smooth scroll
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+}
+
+extension HomeViewController: PresenterHomeView {
+    func didSetData(model: HomeListDescriptive) {
+        self.source = model
+        homeView.tableView.reloadData()
     }
 }

@@ -37,7 +37,7 @@ extension WelcomeCoordinator {
     
     func showMainScreen() {
         navigationController.isNavigationBarHidden = true
-        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController)
+        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController, delegate: self)
         window.rootViewController = screen
     }
 }
@@ -53,5 +53,11 @@ extension WelcomeCoordinator: SelectButtonWelcome {
     
     func didOPTTapped() {
         showMainScreen()
+    }
+}
+
+extension WelcomeCoordinator: SelectButtonHome {
+    func didSelectEntity(id: String) {
+        //TODO
     }
 }

@@ -21,7 +21,7 @@ protocol SelectButtonWelcome: class {
 }
 
 protocol SelectButtonHome: class {
-    func didSelectButton()
+    func didSelectEntity(id: String)
 }
 
 struct ScreenFactory {
@@ -57,17 +57,17 @@ struct ScreenFactory {
     }
     
     //MAIN:
-    static func makeMainScreen(navigationController: UINavigationController) -> UIViewController {
+    static func makeMainScreen(navigationController: UINavigationController, delegate: SelectButtonHome) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(sbName: kMainStoryboardName,
                                                                                                vcID: kMainViewControllerID) as? MainViewController
         
         if let mainVC = mainViewController {
-//            if let viewController = mainVC.viewControllers?[0] as? UINavigationController {
-//                if let homeVC = viewController.topViewController as? HomeViewController {
-//                    let presnter = PresenterExplore(view: exploreVC, delegate: delegate)
-//                    exploreVC.presenterExplore = presnter
-//                }
-//            }
+            if let viewController = mainVC.viewControllers?[0] as? UINavigationController {
+                if let homeVC = viewController.topViewController as? HomeViewController {
+                    let presnter = PresenterHome(view: homeVC, delegate: delegate)
+                    homeVC.presenterHome = presnter
+                }
+            }
             let presenter = PresenterMain(view: mainVC)
             mainVC.presenterMain = presenter
             navigationController.viewControllers = [mainVC]
