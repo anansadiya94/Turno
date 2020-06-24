@@ -36,6 +36,11 @@ class HomeViewController: GenericTableView<HomeListDescriptive> {
         setHomeViewConstraints()
     }
     
+    // MARK: - GenericTableView methods
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 216
+    }
+    
     // MARK: - Private methods
     private func setHomeViewConstraints() {
         NSLayoutConstraint.activate([
@@ -44,11 +49,6 @@ class HomeViewController: GenericTableView<HomeListDescriptive> {
             homeView.leftAnchor.constraint(equalTo: view.leftAnchor),
             homeView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
-    }
-    
-    // MARK: - Override for pagination & smooth scroll
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
     }
 }
 

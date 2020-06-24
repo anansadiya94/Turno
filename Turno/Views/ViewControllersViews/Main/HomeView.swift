@@ -26,7 +26,7 @@ class HomeView: UIView {
     // MARK: - Private methods
     private func createTableView() {
         addSubview(tableView)
-
+        
         tableView.bounces = false
         tableView.alwaysBounceVertical = false
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
@@ -34,8 +34,8 @@ class HomeView: UIView {
         tableView.showsVerticalScrollIndicator = false
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: topAnchor, constant: 8.0),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor)
         ])

@@ -11,18 +11,31 @@ import UIKit
 class GenericEntityTableViewCell: UITableViewCell {
 
     // MARK: - Properties
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var thumbnailImage: UIImageView!
+    @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleLabel: CustomLabel!
     
     var identifier: String? = ""
     
+    // MARK: - UICollectionViewCell
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         setUpView()
     }
     
+    // MARK: - Private methods
     private func setUpView() {
+        baseView.layer.cornerRadius = 5.0
+        titleView.backgroundColor = .primaryAlpha50
+        titleView.roundCorners(corners: [.topRight, .topLeft], radius: 5.0)
+        thumbnailImage.layer.cornerRadius = 5.0
         thumbnailImage.backgroundColor = UIColor.lightGray
         thumbnailImage.contentMode = .scaleAspectFill
     }
@@ -43,11 +56,9 @@ class GenericEntityTableViewCell: UITableViewCell {
         self.identifier = model.identifier
         setThumbnailImageView(url: model.image ?? "")
         titleLabel.labelTheme = BoldTheme(label: model.name ?? "",
-                                          fontSize: 15,
-                                          textColor: .black,
-                                          textAlignment: .left,
-                                          numberOfLines: 2,
-                                          adjustsFontSizeToFitWidth: true)
+                                          fontSize: 30,
+                                          textColor: .white,
+                                          textAlignment: .center)
     }
     
     func didSelect(model: ModelBusiness) {
