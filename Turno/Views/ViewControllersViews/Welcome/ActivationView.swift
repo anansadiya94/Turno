@@ -133,7 +133,6 @@ class ActivationView: UIView {
    }
 
     private func addResendSMSButton() {
-//        resendSMSButton.isEnabled = false
         resendSMSButton.buttonTheme = BaseTheme(label: LocalizedConstants.resend_sms_key.localized,
                                                 titleColor: .primary, contentHorizontalAlignment: .left)
         NSLayoutConstraint.activate([
