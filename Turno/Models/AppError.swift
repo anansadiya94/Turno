@@ -8,16 +8,7 @@
 
 import Foundation
 
-enum AppError: Error {
-    case message(String)
-    case generic
-    case malformedData
-    
-    public var errorDescription: String? {
-        switch self {
-        case .message(let message): return message
-        case .generic: return "generic_error_text".localized
-        default: return ""
-        }
-    }
+struct AppError: Error {
+    let title: String?
+    let message: String?
 }

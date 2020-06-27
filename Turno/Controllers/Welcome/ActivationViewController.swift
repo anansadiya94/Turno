@@ -48,7 +48,7 @@ class ActivationViewController: ParentViewController {
     }
     
     private func fireTimer(_ remainingTimeInSeconds: Int) {
-        activationView?.resendSMSButton.isEnabled = false
+        activationView?.isResendSMSButtonEnabled(false)
         
         activationView?.progressView.progress = 0.0
         progress.completedUnitCount = 0
@@ -68,7 +68,7 @@ class ActivationViewController: ParentViewController {
                 timer.invalidate()
                 self.view.endEditing(true)
                 self.activationView?.updateCountDownLabel(time: 0.00)
-                self.activationView?.resendSMSButton.isEnabled = true
+                self.activationView?.isResendSMSButtonEnabled(true)
                 return
             }
         }

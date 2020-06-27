@@ -16,6 +16,7 @@ protocol CustomButtonTheme {
     var font: UIFont? {get set}
     var underLine: Bool {get set}
     var contentHorizontalAlignment: UIControl.ContentHorizontalAlignment {get}
+    var isEnabled: Bool {get set}
 }
 
 struct BaseTheme: CustomButtonTheme {
@@ -25,11 +26,13 @@ struct BaseTheme: CustomButtonTheme {
     var backgroundColor: UIColor = .clear
     var titleColor: UIColor = .black
     var contentHorizontalAlignment: UIControl.ContentHorizontalAlignment = .center
+    var isEnabled: Bool = true
 
-    init(label: String, underLine: Bool = false, titleColor: UIColor = .black, contentHorizontalAlignment: UIControl.ContentHorizontalAlignment = .center) {
+    init(label: String, underLine: Bool = false, titleColor: UIColor = .black, contentHorizontalAlignment: UIControl.ContentHorizontalAlignment = .center, isEnabled: Bool = true) {
         self.label = label.localized
         self.underLine = underLine
         self.titleColor = titleColor
         self.contentHorizontalAlignment = contentHorizontalAlignment
+        self.isEnabled = isEnabled
     }
 }

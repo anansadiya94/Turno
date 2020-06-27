@@ -33,7 +33,7 @@ class NetworkManager: Networkable {
                     case 200:
                         completion(modelSignUpResponse, nil)
                     default:
-                        completion(nil, AppError.message(modelSignUpResponse.message ?? ""))
+                        completion(nil, AppError(title: modelSignUpResponse.title ?? "", message: modelSignUpResponse.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)
@@ -55,7 +55,7 @@ class NetworkManager: Networkable {
                     case 200:
                         completion(modelVerifyResponse, nil)
                     default:
-                        completion(nil, AppError.message(modelVerifyResponse.message ?? ""))
+                        completion(nil, AppError(title: modelVerifyResponse.title ?? "", message: modelVerifyResponse.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)

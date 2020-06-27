@@ -71,8 +71,8 @@ class PresenterActivation: NSObject {
                 }
                 if let error = error as? AppError {
                     self.view.stopWaiting()
-                    self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
-                                        withText: error.errorDescription,
+                    self.view.showPopup(withTitle: error.title,
+                                        withText: error.message,
                                         withButton: LocalizedConstants.ok_key.localized.localized,
                                         completion: nil)
                     return
@@ -104,8 +104,8 @@ class PresenterActivation: NSObject {
                 }
                 if let error = error as? AppError {
                     self.view.stopWaiting()
-                    self.view.showPopup(withTitle: LocalizedConstants.generic_error_title_key.localized,
-                                        withText: error.errorDescription,
+                    self.view.showPopup(withTitle: error.title,
+                                        withText: error.message,
                                         withButton: LocalizedConstants.ok_key.localized.localized,
                                         completion: { (_, _) in
                                             self.view?.tryAgain()
