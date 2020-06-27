@@ -23,6 +23,7 @@ class CustomButton: UIButton {
             titleLabel?.font = buttonTheme.font
             buttonTheme.underLine ? underline() : Void()
             contentHorizontalAlignment = buttonTheme.contentHorizontalAlignment
+            isEnabled = buttonTheme.isEnabled
         }
     }
 
@@ -42,7 +43,7 @@ class CustomButton: UIButton {
     
     override public var isEnabled: Bool {
         didSet {
-            alpha = isEnabled ? 1.0 : 0.5
+            setTitleColor(isEnabled ? .primary : .gray, for: .normal)
         }
     }
 }

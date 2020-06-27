@@ -134,7 +134,7 @@ class ActivationView: UIView {
 
     private func addResendSMSButton() {
         resendSMSButton.buttonTheme = BaseTheme(label: LocalizedConstants.resend_sms_key.localized,
-                                                titleColor: .primary, contentHorizontalAlignment: .left)
+                                                titleColor: .primary, contentHorizontalAlignment: .left, isEnabled: false)
         NSLayoutConstraint.activate([
             resendSMSButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             resendSMSButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
@@ -152,5 +152,9 @@ class ActivationView: UIView {
         let formattedDuration = formatter.string(from: duration)
         
         countDownLabel.text = formattedDuration
+    }
+    
+    func isResendSMSButtonEnabled(_ isEnabled: Bool) {
+        resendSMSButton.isEnabled = isEnabled
     }
 }
