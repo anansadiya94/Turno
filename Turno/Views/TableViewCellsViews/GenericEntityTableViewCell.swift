@@ -15,6 +15,7 @@ class GenericEntityTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleLabel: CustomLabel!
+    @IBOutlet weak var favoriteButton: HeartButton!
     
     var identifier: String? = ""
     
@@ -22,7 +23,6 @@ class GenericEntityTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        
     }
     
     override func layoutSubviews() {
@@ -33,7 +33,7 @@ class GenericEntityTableViewCell: UITableViewCell {
     // MARK: - Private methods
     private func setUpView() {
         baseView.layer.cornerRadius = 5.0
-        titleView.backgroundColor = .primaryAlpha50
+        titleView.backgroundColor = .primaryAlpha75
         titleView.roundCorners(corners: [.topRight, .topLeft], radius: 5.0)
         thumbnailImage.layer.cornerRadius = 5.0
         thumbnailImage.backgroundColor = UIColor.lightGray
@@ -59,9 +59,15 @@ class GenericEntityTableViewCell: UITableViewCell {
                                           fontSize: 30,
                                           textColor: .white,
                                           textAlignment: .center)
+        favoriteButton.isLiked = true
     }
     
     func didSelect(model: ModelBusiness) {
         //TODO
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        guard let button = sender as? HeartButton else { return }
+        button.flipLikedState()
     }
 }

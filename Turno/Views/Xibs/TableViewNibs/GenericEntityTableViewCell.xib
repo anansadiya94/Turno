@@ -31,12 +31,24 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gL3-MH-zQF" customClass="HeartButton" customModule="Turno" customModuleProvider="target">
+                                    <rect key="frame" x="368" y="11" width="26" height="22"/>
+                                    <state key="normal" image="heart.fill" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="favoriteButtonTapped:" destination="hVI-Kg-h7u" eventType="touchUpInside" id="tQU-iW-CTr"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
+                                <constraint firstItem="gL3-MH-zQF" firstAttribute="centerY" secondItem="J3y-XU-Wu9" secondAttribute="centerY" id="7Lj-Ae-eHe"/>
                                 <constraint firstItem="J3y-XU-Wu9" firstAttribute="centerX" secondItem="dnn-oL-82Z" secondAttribute="centerX" id="Zsd-jd-W5k"/>
                                 <constraint firstAttribute="height" constant="44" id="cBO-zG-Ebw"/>
+                                <constraint firstItem="gL3-MH-zQF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J3y-XU-Wu9" secondAttribute="trailing" constant="8" id="lsH-hA-7E2"/>
                                 <constraint firstItem="J3y-XU-Wu9" firstAttribute="centerY" secondItem="dnn-oL-82Z" secondAttribute="centerY" id="oDU-z6-oim"/>
+                                <constraint firstAttribute="trailing" secondItem="gL3-MH-zQF" secondAttribute="trailing" constant="8" id="shN-H9-MyT"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -62,6 +74,7 @@
             <viewLayoutGuide key="safeArea" id="TGw-MY-uPC"/>
             <connections>
                 <outlet property="baseView" destination="bDU-gz-Sl7" id="7FE-i3-kzh"/>
+                <outlet property="favoriteButton" destination="gL3-MH-zQF" id="Syg-5q-kcm"/>
                 <outlet property="thumbnailImage" destination="aiP-yE-T7F" id="0se-UK-CwS"/>
                 <outlet property="titleLabel" destination="J3y-XU-Wu9" id="dJZ-HV-aqX"/>
                 <outlet property="titleView" destination="dnn-oL-82Z" id="0mj-Go-M5n"/>
@@ -69,4 +82,7 @@
             <point key="canvasLocation" x="-520.28985507246375" y="151.00446428571428"/>
         </view>
     </objects>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+    </resources>
 </document>

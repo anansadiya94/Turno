@@ -31,7 +31,6 @@ class HomeViewController: GenericTableView<HomeListDescriptive> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         self.view.addSubview(homeView)
         setHomeViewConstraints()
     }

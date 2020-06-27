@@ -26,6 +26,7 @@
 		9E4CACE52494D8AC00AA72E0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE42494D8AC00AA72E0 /* API.swift */; };
 		9E4CACE72494D92D00AA72E0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */; };
 		9E4CACE92494EBE800AA72E0 /* ModelVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */; };
+		9E5526AF24A7510A009459E8 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5526AE24A7510A009459E8 /* HeartButton.swift */; };
 		9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD53248A9864004F401B /* InstallationViewController.swift */; };
 		9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD55248A98C8004F401B /* InstallationView.swift */; };
 		9E55BD58248A98D6004F401B /* PresenterInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD57248A98D6004F401B /* PresenterInstallation.swift */; };
@@ -142,6 +143,7 @@
 		9E4CACE42494D8AC00AA72E0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVerify.swift; sourceTree = "<group>"; };
+		9E5526AE24A7510A009459E8 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		9E55BD53248A9864004F401B /* InstallationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationViewController.swift; sourceTree = "<group>"; };
 		9E55BD55248A98C8004F401B /* InstallationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationView.swift; sourceTree = "<group>"; };
 		9E55BD57248A98D6004F401B /* PresenterInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterInstallation.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				9E0B75AD24898DB000B25313 /* CustomButton.swift */,
 				9E0B75AF24898DC100B25313 /* CustomButtonTheme.swift */,
+				9E5526AE24A7510A009459E8 /* HeartButton.swift */,
 			);
 			path = CustomButton;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				9E9880F1248BC28F00D78959 /* PrefsConstants.swift in Sources */,
 				9EA657EF2488170300F7952A /* UICollectionView+PresenterOnboarding.swift in Sources */,
 				9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */,
+				9E5526AF24A7510A009459E8 /* HeartButton.swift in Sources */,
 				9E9880E5248BB9AD00D78959 /* ModelAlertPopup.swift in Sources */,
 				9E9B87D6248D3466009B1448 /* MainViewController.swift in Sources */,
 				9E764472248E919600CDAF89 /* ParentViewController.swift in Sources */,
