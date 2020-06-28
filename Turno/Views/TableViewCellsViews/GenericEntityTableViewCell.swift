@@ -33,7 +33,9 @@ class GenericEntityTableViewCell: UITableViewCell {
     
     // MARK: - Private methods
     private func setUpView() {
-        baseView.layer.cornerRadius = 5.0
+        baseView.addShadow(shadowColor: UIColor.black.withAlphaComponent(0.5).cgColor, shadowRadius: 5,
+                           shadowOffset: CGSize(width: 0.5, height: 1), shadowOpacity: 1)
+        baseView.layer.cornerRadius = 5
         titleView.backgroundColor = .primaryAlpha75
         titleView.roundCorners(corners: [.topRight, .topLeft], radius: 5.0)
         thumbnailImage.layer.cornerRadius = 5.0
@@ -58,7 +60,6 @@ class GenericEntityTableViewCell: UITableViewCell {
         } else {
             //TODO set default image
         }
-        
     }
     
     // MARK: - Public Interface
