@@ -12,8 +12,11 @@ import Moya
 enum APIRouter {
 
     // MARK: - Sign Up
-    case signUp(modelSignUp: ModelSignUp)
-    case verify(modelVerify: ModelVerify)
+    case signUp(modelSignUpTask: ModelSignUpTask)
+    case verify(modelVerifyTask: ModelVerifyTask)
+    
+    // MARK: - Buisenesses
+    case getBusinesses(modelBusinessTask: ModelBusinessTask)
 }
 
 extension APIRouter: TargetType {
@@ -26,22 +29,25 @@ extension APIRouter: TargetType {
         switch self {
         case .signUp: return kSignUp
         case .verify: return kVerify
+        case .getBusinesses: return kGetBusinesses
         }
     }
   
     var method: Moya.Method {
         switch self {
-        case .signUp, .verify:
+        case .signUp, .verify, .getBusinesses:
             return .post
         }
     }
     
     var task: Task {
         switch self {
-        case .signUp(let modelSignUp):
-            return .requestJSONEncodable(modelSignUp)
+        case .signUp(let modelSignUpTask):
+            return .requestJSONEncodable(modelSignUpTask)
         case .verify(let modelVerify):
             return .requestJSONEncodable(modelVerify)
+        case .getBusinesses(let modelBusinessTask):
+            return .requestJSONEncodable(modelBusinessTask)
         }
     }
     
@@ -50,6 +56,15 @@ extension APIRouter: TargetType {
     }
     
     var headers: [String: String]? {
-        return ["Content-type": "application/json; charset=UTF-8"]
+        var headers: [String: String] = [:]
+        headers = ["Content-type": "application/json; charset=UTF-8"]
+        
+        switch self {
+        case .getBusinesses:
+            headers = ["Authorization": Preferences.getAuthorization()]
+        default:
+            break
+        }
+        return headers
     }
 }

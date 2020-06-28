@@ -12,28 +12,29 @@ import Moya
 protocol Networkable {
     var provider: MoyaProvider<APIRouter> { get }
 
-    func signUp(modelSignUp: ModelSignUp, completion: @escaping (ModelSignUpResponse?, Error?) -> Void)
-    func verify(modelVerify: ModelVerify, completion: @escaping (ModelVerifyResponse?, Error?) -> Void)
+    func signUp(modelSignUpTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void)
+    func verify(modelVerifyTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void)
+    func getBusinesses(modelBusinessTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
     
     let provider = MoyaProvider<APIRouter>()
     
-    func signUp(modelSignUp: ModelSignUp, completion: @escaping (ModelSignUpResponse?, Error?) -> Void) {
-        provider.request(.signUp(modelSignUp: modelSignUp)) { result in
+    func signUp(modelSignUpTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void) {
+        provider.request(.signUp(modelSignUpTask: modelSignUpTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
                 let decoder = JSONDecoder()
                 do {
-                    let modelSignUpResponse = try decoder.decode(ModelSignUpResponse.self, from: value.data)
+                    let modelSignUp = try decoder.decode(ModelSignUp.self, from: value.data)
                     switch value.statusCode {
                     case 200:
-                        completion(modelSignUpResponse, nil)
+                        completion(modelSignUp, nil)
                     default:
-                        completion(nil, AppError(title: modelSignUpResponse.title ?? "", message: modelSignUpResponse.message ?? ""))
+                        completion(nil, AppError(title: modelSignUp.title ?? "", message: modelSignUp.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)
@@ -42,20 +43,42 @@ class NetworkManager: Networkable {
         }
     }
     
-    func verify(modelVerify: ModelVerify, completion: @escaping (ModelVerifyResponse?, Error?) -> Void) {
-        provider.request(.verify(modelVerify: modelVerify)) { result in
+    func verify(modelVerifyTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void) {
+        provider.request(.verify(modelVerifyTask: modelVerifyTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
                 let decoder = JSONDecoder()
                 do {
-                    let modelVerifyResponse = try decoder.decode(ModelVerifyResponse.self, from: value.data)
+                    let modelVerify = try decoder.decode(ModelVerify.self, from: value.data)
                     switch value.statusCode {
                     case 200:
-                        completion(modelVerifyResponse, nil)
+                        completion(modelVerify, nil)
                     default:
-                        completion(nil, AppError(title: modelVerifyResponse.title ?? "", message: modelVerifyResponse.message ?? ""))
+                        completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? ""))
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func getBusinesses(modelBusinessTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void) {
+        provider.request(.getBusinesses(modelBusinessTask: modelBusinessTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let modelBusiness = try decoder.decode([ModelBusiness].self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(modelBusiness, nil)
+                    default:
+                        break
                     }
                 } catch let error {
                     completion(nil, error)

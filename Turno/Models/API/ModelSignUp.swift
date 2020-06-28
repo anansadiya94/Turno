@@ -10,7 +10,7 @@ import Foundation
 
 typealias Codable = Encodable & Decodable
 
-struct ModelSignUp: Codable {
+struct ModelSignUpTask: Codable {
     
     var phoneNumber: String
     var fullName: String
@@ -20,7 +20,7 @@ struct ModelSignUp: Codable {
     }
 }
 
-struct ModelSignUpResponse: Codable {
+struct ModelSignUp: Codable {
     
     var nextOption: String?
     var remainingTimeInSeconds: Int?

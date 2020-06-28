@@ -30,8 +30,8 @@ extension WelcomeCoordinator {
         navigationController.pushViewController(screen, animated: true)
     }
     
-    func showActivationScreen(delegate: SelectButtonWelcome, modelSignUpResponse: ModelSignUpResponse) {
-        let screen = ScreenFactory.makeActivationScreen(delegate: delegate, modelSignUpResponse: modelSignUpResponse)
+    func showActivationScreen(delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) {
+        let screen = ScreenFactory.makeActivationScreen(delegate: delegate, modelSignUp: modelSignUp)
         navigationController.pushViewController(screen, animated: true)
     }
     
@@ -47,8 +47,8 @@ extension WelcomeCoordinator: SelectButtonWelcome {
         showInstallationScreen(delegate: self)
     }
     
-    func didSelectAlertYesButton(modelSignUpResponse: ModelSignUpResponse) {
-        showActivationScreen(delegate: self, modelSignUpResponse: modelSignUpResponse)
+    func didSelectAlertYesButton(modelSignUp: ModelSignUp) {
+        showActivationScreen(delegate: self, modelSignUp: modelSignUp)
     }
     
     func didOPTTapped() {

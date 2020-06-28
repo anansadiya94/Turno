@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GenericEntityTableViewCell: UITableViewCell {
 
@@ -40,21 +41,30 @@ class GenericEntityTableViewCell: UITableViewCell {
         thumbnailImage.contentMode = .scaleAspectFill
     }
     
-    private func setThumbnailImageView(url: String) {
-        guard let imageURL = URL(string: url) else { return }
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                self.thumbnailImage.image = image
+    private func setThumbnailImageView(url: String?) {
+        if let stringUrl = url, let url = URL(string: stringUrl) {
+            let resource = ImageResource(downloadURL: url)
+            KingfisherManager.shared.retrieveImage(with: resource) { [weak self] (result: Result<RetrieveImageResult, KingfisherError>) in
+                switch result {
+                case .failure(let error):
+                    debugPrint(error.localizedDescription)
+                    //TODO set default image
+                case .success(let imageResult):
+                    DispatchQueue.main.async {
+                        self?.thumbnailImage.image = imageResult.image
+                    }
+                }
             }
+        } else {
+            //TODO set default image
         }
+        
     }
     
     // MARK: - Public Interface
     func config(model: ModelBusiness) {
         self.identifier = model.identifier
-        setThumbnailImageView(url: model.image ?? "")
+        setThumbnailImageView(url: model.image)
         titleLabel.labelTheme = BoldTheme(label: model.name ?? "",
                                           fontSize: 30,
                                           textColor: .white,

@@ -15,3 +15,4 @@ let kBaseURL = "http://tan320200607105243.azurewebsites.net"
 
 let kSignUp = "/signup"
 let kVerify = "/verify"
+let kGetBusinesses = "/ListBusinesses"

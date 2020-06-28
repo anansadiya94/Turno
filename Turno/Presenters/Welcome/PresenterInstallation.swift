@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-protocol PresenterInstallationView: class {
+protocol PresenterInstallationView: PresenterParentView {
     func showNameTextFieldLabel(type: TextFieldErrorType)
     func showPhoneNumberTextFieldLabel(type: TextFieldErrorType)
     func showAlert()
@@ -18,12 +18,12 @@ protocol PresenterInstallationView: class {
 class PresenterInstallation {
     
     // MARK: - Properties
-    var view: InstallationViewController!
+    var view: PresenterInstallationView!
     private var delegate: SelectButtonWelcome?
     let networkManager = NetworkManager()
     
     // MARK: - Public Interface
-    init(view: InstallationViewController, delegate: SelectButtonWelcome) {
+    init(view: PresenterInstallationView, delegate: SelectButtonWelcome) {
         self.view = view
         self.delegate = delegate
     }
@@ -76,29 +76,29 @@ class PresenterInstallation {
     }
     
     func alertYesButtonTapped() {
-        self.view.startWaiting()
+        self.view?.startWaitingView()
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
-            let modelSignUp = ModelSignUp(phoneNumber: phoneNumber, fullName: fullName)
-            networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
+            let modelSignUpTask = ModelSignUpTask(phoneNumber: phoneNumber, fullName: fullName)
+            networkManager.signUp(modelSignUpTask: modelSignUpTask) { (modelSignUp, error) in
                 if error as? MoyaError != nil {
-                    self.view.stopWaiting()
-                    self.view.showPopup(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                         completion: nil)
                     return
                 }
                 if let error = error as? AppError {
-                    self.view.stopWaiting()
-                    self.view.showPopup(withTitle: error.title,
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: error.title,
                                         withText: error.message,
-                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                         completion: nil)
                     return
                 }
-                if let modelSignUpResponse = modelSignUpResponse {
-                    self.view.stopWaiting()
-                    self.delegate?.didSelectAlertYesButton(modelSignUpResponse: modelSignUpResponse)
+                if let modelSignUp = modelSignUp {
+                    self.view?.stopWaitingView()
+                    self.delegate?.didSelectAlertYesButton(modelSignUp: modelSignUp)
                 }
             }
         }

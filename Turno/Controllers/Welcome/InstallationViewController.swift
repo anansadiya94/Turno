@@ -104,7 +104,7 @@ extension InstallationViewController: UITextFieldDelegate {
 }
 
 // MARK: - PresenterInstallationView methods
-extension InstallationViewController: PresenterInstallationView {
+extension InstallationViewController: PresenterInstallationView {    
     func showNameTextFieldLabel(type: TextFieldErrorType) {
         var isValid: Bool = true
         var message = ""
@@ -159,5 +159,17 @@ extension InstallationViewController: PresenterInstallationView {
                                 }
                                 
         })
+    }
+    
+    func startWaitingView() {
+        startWaiting()
+    }
+    
+    func stopWaitingView() {
+        stopWaiting()
+    }
+    
+    func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
+        showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
     }
 }

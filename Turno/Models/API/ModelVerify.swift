@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ModelVerify: Codable {
+struct ModelVerifyTask: Codable {
     
     var phoneNumber: String
     var verificationCode: String
@@ -18,7 +18,7 @@ struct ModelVerify: Codable {
     }
 }
 
-struct ModelVerifyResponse: Codable {
+struct ModelVerify: Codable {
     
     var secret: String?
     var userId: String?

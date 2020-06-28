@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol PresenterParentView: class {
+    func startWaitingView()
+    func stopWaitingView()
+    func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?)
+}
+
 class ParentViewController: UIViewController {
 
     var waitingView: LoadingViewController?
