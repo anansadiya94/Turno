@@ -56,7 +56,7 @@ extension WelcomeCoordinator: SelectButtonWelcome {
     }
 }
 
-extension WelcomeCoordinator: SelectButtonHome {
+extension WelcomeCoordinator: SelectButtonEntity {
     func didSelectEntity(id: String) {
         //TODO
     }

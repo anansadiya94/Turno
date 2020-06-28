@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: GenericTableView<HomeListDescriptive> {
+class HomeViewController: GenericTableView<GenericListDescriptive> {
 
     // MARK: - Properties
     override var navBarTitle: String {
@@ -16,23 +16,23 @@ class HomeViewController: GenericTableView<HomeListDescriptive> {
     }
     
     var presenterHome: PresenterHome!
-    @UseAutoLayout var homeView = HomeView()
+    @UseAutoLayout var genericView = GenericView()
     
     // MARK: - UIViewController
     init() {
         super.init(nibName: nil, bundle: nil)
-        super.configureTableView(tableView: homeView.tableView)
+        super.configureTableView(tableView: genericView.tableView)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        super.configureTableView(tableView: homeView.tableView)
+        super.configureTableView(tableView: genericView.tableView)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(homeView)
-        setHomeViewConstraints()
+        self.view.addSubview(genericView)
+        setGenericViewConstraints()
     }
     
     // MARK: - GenericTableView methods
@@ -41,20 +41,20 @@ class HomeViewController: GenericTableView<HomeListDescriptive> {
     }
     
     // MARK: - Private methods
-    private func setHomeViewConstraints() {
+    private func setGenericViewConstraints() {
         NSLayoutConstraint.activate([
-            homeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            homeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            homeView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            homeView.rightAnchor.constraint(equalTo: view.rightAnchor)
+            genericView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            genericView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            genericView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            genericView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
     }
 }
 
 extension HomeViewController: PresenterHomeView {
-    func didSetData(model: HomeListDescriptive) {
+    func didSetData(model: GenericListDescriptive) {
         self.source = model
-        homeView.tableView.reloadData()
+        genericView.tableView.reloadData()
     }
     
     func startWaitingView() {

@@ -63,7 +63,7 @@ extension OnBoardingCoordinator: SelectButtonOnboarding {
     }
 }
 
-extension OnBoardingCoordinator: SelectButtonHome {
+extension OnBoardingCoordinator: SelectButtonEntity {
     func didSelectEntity(id: String) {
         //TODO
     }

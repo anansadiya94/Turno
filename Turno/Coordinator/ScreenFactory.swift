@@ -20,7 +20,11 @@ protocol SelectButtonWelcome: class {
     func didOPTTapped()
 }
 
-protocol SelectButtonHome: class {
+protocol SelectButtonEntity: class {
+    func didSelectEntity(id: String)
+}
+
+protocol SelectButtonFavorites: class {
     func didSelectEntity(id: String)
 }
 
@@ -57,7 +61,7 @@ struct ScreenFactory {
     }
     
     //MAIN:
-    static func makeMainScreen(navigationController: UINavigationController, delegate: SelectButtonHome) -> UIViewController {
+    static func makeMainScreen(navigationController: UINavigationController, delegate: SelectButtonEntity) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(sbName: kMainStoryboardName,
                                                                                                vcID: kMainViewControllerID) as? MainViewController
         
@@ -66,6 +70,12 @@ struct ScreenFactory {
                 if let homeVC = viewController.topViewController as? HomeViewController {
                     let presnter = PresenterHome(view: homeVC, delegate: delegate)
                     homeVC.presenterHome = presnter
+                }
+            }
+            if let viewController = mainVC.viewControllers?[2] as? UINavigationController {
+                if let favoritesVC = viewController.topViewController as? FavoritesViewController {
+                    let presnter = PresenterFavorites(view: favoritesVC, delegate: delegate)
+                    favoritesVC.presenterFavorites = presnter
                 }
             }
             let presenter = PresenterMain(view: mainVC)
