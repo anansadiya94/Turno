@@ -19,6 +19,13 @@ class FavoritesViewController: GenericTableView<GenericListDescriptive> {
     @UseAutoLayout var genericView = GenericView()
     
     // MARK: - UIViewController
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.addSubview(genericView)
+        setGenericViewConstraints()
+    }
+    
+    // MARK: - GenericTableView methods
     init() {
         super.init(nibName: nil, bundle: nil)
         super.configureTableView(tableView: genericView.tableView)
@@ -28,16 +35,13 @@ class FavoritesViewController: GenericTableView<GenericListDescriptive> {
         super.init(coder: coder)
         super.configureTableView(tableView: genericView.tableView)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.addSubview(genericView)
-        setGenericViewConstraints()
-    }
     
-    // MARK: - GenericTableView methods
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 216
+    }
+    
+    override func handleRefresh(_ refreshControl: UIRefreshControl) {
+        presenterFavorites.fetchData()
     }
     
     // MARK: - Private methods
@@ -51,10 +55,12 @@ class FavoritesViewController: GenericTableView<GenericListDescriptive> {
     }
 }
 
+// MARK: - PresenterFavoritesView methods
 extension FavoritesViewController: PresenterFavoritesView {
     func didSetData(model: GenericListDescriptive) {
         self.source = model
         genericView.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func startWaitingView() {
