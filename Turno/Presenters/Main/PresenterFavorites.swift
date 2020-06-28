@@ -1,8 +1,8 @@
 //
-//  PresenterHome.swift
+//  PresenterFavorites.swift
 //  Turno
 //
-//  Created by Anan Sadiya on 24/06/2020.
+//  Created by Anan Sadiya on 28/06/2020.
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
@@ -10,20 +10,20 @@ import Foundation
 import UIKit
 import Moya
 
-protocol PresenterHomeView: PresenterParentView {
+protocol PresenterFavoritesView: PresenterParentView {
     func didSetData(model: GenericListDescriptive)
 }
 
-class PresenterHome {
+class PresenterFavorites {
     
     // MARK: - Properties
-    private weak var view: PresenterHomeView?
+    private weak var view: PresenterFavoritesView?
     var delegate: SelectButtonEntity!
     var modelList = [ModelBusiness]()
     let networkManager = NetworkManager()
     
     // MARK: - init Methods
-    init(view: PresenterHomeView, delegate: SelectButtonEntity) {
+    init(view: PresenterFavoritesView, delegate: SelectButtonEntity) {
         self.view = view
         self.fetchData()
         self.delegate = delegate
@@ -32,8 +32,7 @@ class PresenterHome {
     // MARK: - Private methods
     private func fetchData() {
         self.view?.startWaitingView()
-        let modelBusinessTask = ModelBusinessTask(query: "")
-        networkManager.getBusinesses(modelBusinessTask: modelBusinessTask) { (modelList, error) in
+        networkManager.getFavorites { (modelList, error) in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,

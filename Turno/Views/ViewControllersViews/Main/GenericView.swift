@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  GenericView.swift
 //  Turno
 //
 //  Created by Anan Sadiya on 24/06/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeView: UIView {
+class GenericView: UIView {
     
     // MARK: - Properties
     @UseAutoLayout var tableView =  UITableView()

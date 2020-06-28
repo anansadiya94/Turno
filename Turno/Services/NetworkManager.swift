@@ -15,6 +15,7 @@ protocol Networkable {
     func signUp(modelSignUpTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void)
     func verify(modelVerifyTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void)
     func getBusinesses(modelBusinessTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void)
+    func getFavorites(completion: @escaping ([ModelBusiness]?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -73,10 +74,32 @@ class NetworkManager: Networkable {
             case .success(let value):
                 let decoder = JSONDecoder()
                 do {
-                    let modelBusiness = try decoder.decode([ModelBusiness].self, from: value.data)
+                    let modelList = try decoder.decode([ModelBusiness].self, from: value.data)
                     switch value.statusCode {
                     case 200:
-                        completion(modelBusiness, nil)
+                        completion(modelList, nil)
+                    default:
+                        break
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func getFavorites(completion: @escaping ([ModelBusiness]?, Error?) -> Void) {
+        provider.request(.getFavorites) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let modelList = try decoder.decode([ModelBusiness].self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(modelList, nil)
                     default:
                         break
                     }

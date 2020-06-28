@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct HomeListDescriptive: DescriptiveProtocol {
+struct GenericListDescriptive: DescriptiveProtocol {
     var sectionDescriptor: [SectionDescriptor]
     var descriptors: [CellDescriptor]
     var modelList = [ModelBusiness]()
