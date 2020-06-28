@@ -54,4 +54,13 @@ class Preferences {
     static func removePrefsUser() {
         UserDefaults.standard.removeObject(forKey: kPrefsUser)
     }
+    
+    static func getAuthorization() -> String {
+        if let userId = Preferences.getPrefsUser()?.userId, let secret = Preferences.getPrefsUser()?.secret {
+            let authorization = userId + ":" + secret
+            let authorizationBase64 = Data(authorization.utf8).base64EncodedString()
+            return "Basic " + authorizationBase64
+        }
+        return ""
+    }
 }

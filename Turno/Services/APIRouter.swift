@@ -61,7 +61,7 @@ extension APIRouter: TargetType {
         
         switch self {
         case .getBusinesses:
-            headers = ["Authorization": "Basic N2VjODI4NWUtNWFmNS00NWFjLWFhYzgtOGMwNmM4YjRmY2I4Ol1oRyRDVm95TzZFPmxfXjltQVVRYlNL"]
+            headers = ["Authorization": Preferences.getAuthorization()]
         default:
             break
         }
