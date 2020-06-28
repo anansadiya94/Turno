@@ -25,7 +25,6 @@ class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.delegate = self
         tableView.dataSource = self
         setTableViewSeparator()
@@ -36,12 +35,6 @@ class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableVie
         tableView.separatorInset = .zero
     }
 
-    public func needsPagination() {
-        self.tableView.estimatedRowHeight = 0
-        self.tableView.estimatedSectionHeaderHeight = 0
-        self.tableView.estimatedSectionFooterHeight = 0
-    }
-
     public func configureTableView(tableView: UITableView) {
         self.tableView = tableView
         self.tableView.delegate = self
@@ -49,7 +42,7 @@ class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableVie
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        source?.sectionDescriptor[section].descriptors.count ?? 10
+        source?.sectionDescriptor[section].descriptors.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
