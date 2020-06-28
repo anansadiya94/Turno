@@ -21,6 +21,7 @@
 		9E23F434248CED4E003D031F /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F433248CED4E003D031F /* OTPTextField.swift */; };
 		9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F435248CED7D003D031F /* OTPStackView.swift */; };
 		9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */; };
+		9E418CF724A8FAF900232082 /* UIView+AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E418CF624A8FAF900232082 /* UIView+AddShadow.swift */; };
 		9E4CACE02494CF9400AA72E0 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */; };
 		9E4CACE22494D24500AA72E0 /* ModelSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */; };
 		9E4CACE52494D8AC00AA72E0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE42494D8AC00AA72E0 /* API.swift */; };
@@ -139,6 +140,7 @@
 		9E23F433248CED4E003D031F /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		9E23F435248CED7D003D031F /* OTPStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift"; sourceTree = "<group>"; };
+		9E418CF624A8FAF900232082 /* UIView+AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddShadow.swift"; sourceTree = "<group>"; };
 		9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSignUp.swift; sourceTree = "<group>"; };
 		9E4CACE42494D8AC00AA72E0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 				9E0B75B124898E5300B25313 /* UIButton+Underline.swift */,
 				9E55BD59248AC8C1004F401B /* UIViewController+SetBackBarButton.swift */,
 				9EED2F8124A3D35100598586 /* UIView+RoundCorners.swift */,
+				9E418CF624A8FAF900232082 /* UIView+AddShadow.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -920,6 +923,7 @@
 				9E55BD5D248ACF7A004F401B /* CustomTextField.swift in Sources */,
 				9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */,
 				9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */,
+				9E418CF724A8FAF900232082 /* UIView+AddShadow.swift in Sources */,
 				9EA657D92488157300F7952A /* AutoLayout.swift in Sources */,
 				9EB43D6D24A3A32800B93C34 /* GenericTableView.swift in Sources */,
 				9EA6581E248819EA00F7952A /* UICollectionView+OnBoardingViewController.swift in Sources */,
