@@ -30,7 +30,13 @@ class PresenterHome {
     }
     
     // MARK: - Private methods
-    private func fetchData() {
+    private func notifyView() {
+        let genericListDescriptive = GenericListDescriptive(modelList: self.modelList)
+        self.view?.didSetData(model: genericListDescriptive)
+    }
+    
+    // MARK: - Public Interface
+    func fetchData() {
         self.view?.startWaitingView()
         let modelBusinessTask = ModelBusinessTask(query: "")
         networkManager.getBusinesses(modelBusinessTask: modelBusinessTask) { (modelList, error) in
@@ -56,10 +62,5 @@ class PresenterHome {
                 self.notifyView()
             }
         }
-    }
-    
-    private func notifyView() {
-        let genericListDescriptive = GenericListDescriptive(modelList: self.modelList)
-        self.view?.didSetData(model: genericListDescriptive)
     }
 }

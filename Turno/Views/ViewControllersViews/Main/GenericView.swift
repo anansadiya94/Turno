@@ -27,8 +27,7 @@ class GenericView: UIView {
     private func createTableView() {
         addSubview(tableView)
         
-        tableView.bounces = false
-        tableView.alwaysBounceVertical = false
+        tableView.alwaysBounceVertical = true
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.showsVerticalScrollIndicator = false

@@ -79,5 +79,6 @@ class GenericEntityTableViewCell: UITableViewCell {
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         guard let button = sender as? HeartButton else { return }
         button.flipLikedState()
+        //TODO modify model and call API
     }
 }
