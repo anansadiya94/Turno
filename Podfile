@@ -9,5 +9,5 @@ target 'Turno' do
   pod 'SwiftLint'
   pod 'lottie-ios'
   pod 'Moya', '~> 14.0'
-  
+  pod 'Kingfisher'
 end
