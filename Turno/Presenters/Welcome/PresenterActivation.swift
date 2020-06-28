@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-protocol PresenterActivationView: class {
+protocol PresenterActivationView: PresenterParentView {
     func stopTimer()
     func startTimer()
     func didSetData(remainingTimeInSeconds: Int)
@@ -20,31 +20,31 @@ protocol PresenterActivationView: class {
 class PresenterActivation: NSObject {
     
     // MARK: - Properties
-    var view: ActivationViewController!
+    var view: PresenterActivationView!
     private var delegate: SelectButtonWelcome?
-    var modelSignUpResponse: ModelSignUpResponse?
+    var modelSignUp: ModelSignUp?
     let networkManager = NetworkManager()
     
     // MARK: - Public Interface
-    init(view: ActivationViewController, delegate: SelectButtonWelcome, modelSignUpResponse: ModelSignUpResponse) {
+    init(view: PresenterActivationView, delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) {
         super.init()
         self.view = view
         self.delegate = delegate
-        self.modelSignUpResponse = modelSignUpResponse
+        self.modelSignUp = modelSignUp
         self.didSetData()
     }
     
     private func didSetData() {
-        if let modelSignUpResponse = modelSignUpResponse,
-            let remainingTimeInSeconds = modelSignUpResponse.remainingTimeInSeconds {
+        if let modelSignUp = modelSignUp,
+            let remainingTimeInSeconds = modelSignUp.remainingTimeInSeconds {
             view?.didSetData(remainingTimeInSeconds: remainingTimeInSeconds)
         }
     }
     
-    private func setPrefs(modelVerifyResponse: ModelVerifyResponse) {
+    private func setPrefs(modelVerify: ModelVerify) {
         var user = Preferences.getPrefsUser()
-        user?.secret = modelVerifyResponse.secret
-        user?.userId = modelVerifyResponse.userId
+        user?.secret = modelVerify.secret
+        user?.userId = modelVerify.userId
         Preferences.setPrefsUser(user: user)
         Preferences.setPrefsAppState(value: .loggedIn)
     }
@@ -55,32 +55,32 @@ class PresenterActivation: NSObject {
     }
     
     func resendSMSButtonTapped() {
-        self.view.startWaiting()
+        self.view?.startWaitingView()
         self.view.stopTimer()
         
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
-            let modelSignUp = ModelSignUp(phoneNumber: phoneNumber, fullName: fullName)
-            networkManager.signUp(modelSignUp: modelSignUp) { (modelSignUpResponse, error) in
+            let modelSignUpTask = ModelSignUpTask(phoneNumber: phoneNumber, fullName: fullName)
+            networkManager.signUp(modelSignUpTask: modelSignUpTask) { (modelSignUp, error) in
                 if error as? MoyaError != nil {
-                    self.view.stopWaiting()
-                    self.view.showPopup(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                         completion: nil)
                     return
                 }
                 if let error = error as? AppError {
-                    self.view.stopWaiting()
-                    self.view.showPopup(withTitle: error.title,
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: error.title,
                                         withText: error.message,
-                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                         completion: nil)
                     return
                 }
-                if let modelSignUpResponse = modelSignUpResponse {
-                    self.view.stopWaiting()
+                if let modelSignUp = modelSignUp {
+                    self.view?.stopWaitingView()
                     self.view.tryAgain()
-                    self.modelSignUpResponse = modelSignUpResponse
+                    self.modelSignUp = modelSignUp
                     self.didSetData()
                     self.view.startTimer()
                 }
@@ -89,32 +89,32 @@ class PresenterActivation: NSObject {
     }
 
     func OTPTapped(otp: String) {
-        self.view.startWaiting()
+        self.view?.startWaitingView()
         
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber {
-            let modelVerify = ModelVerify(phoneNumber: phoneNumber, verificationCode: otp)
-            networkManager.verify(modelVerify: modelVerify) { (modelVerifyResponse, error) in
+            let modelVerifyTask = ModelVerifyTask(phoneNumber: phoneNumber, verificationCode: otp)
+            networkManager.verify(modelVerifyTask: modelVerifyTask) { (modelVerify, error) in
                 if error as? MoyaError != nil {
-                    self.view.stopWaiting()
-                    self.view.showPopup(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                         completion: nil)
                     return
                 }
                 if let error = error as? AppError {
-                    self.view.stopWaiting()
-                    self.view.showPopup(withTitle: error.title,
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: error.title,
                                         withText: error.message,
-                                        withButton: LocalizedConstants.ok_key.localized.localized,
+                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                         completion: { (_, _) in
                                             self.view?.tryAgain()
                     })
                     return
                 }
-                if let modelVerifyResponse = modelVerifyResponse {
-                    self.setPrefs(modelVerifyResponse: modelVerifyResponse)
-                    self.view.stopWaiting()
+                if let modelVerify = modelVerify {
+                    self.setPrefs(modelVerify: modelVerify)
+                    self.view?.stopWaitingView()
                     self.delegate?.didOPTTapped()
                 }
             }

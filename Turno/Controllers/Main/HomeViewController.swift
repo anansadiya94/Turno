@@ -56,4 +56,16 @@ extension HomeViewController: PresenterHomeView {
         self.source = model
         homeView.tableView.reloadData()
     }
+    
+    func startWaitingView() {
+        startWaiting()
+    }
+    
+    func stopWaitingView() {
+        stopWaiting()
+    }
+    
+    func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
+        showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
+    }
 }

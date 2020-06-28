@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import Moya
 
-protocol PresenterHomeView: class {
+protocol PresenterHomeView: PresenterParentView {
     func didSetData(model: HomeListDescriptive)
 }
 
@@ -19,6 +20,7 @@ class PresenterHome {
     private weak var view: PresenterHomeView?
     var delegate: SelectButtonHome!
     var modelList = [ModelBusiness]()
+    let networkManager = NetworkManager()
     
     // MARK: - init Methods
     init(view: PresenterHomeView, delegate: SelectButtonHome) {
@@ -29,13 +31,31 @@ class PresenterHome {
     
     // MARK: - Private methods
     private func fetchData() {
-        modelList = [ModelBusiness(identifier: "1", image: "https://maletti.it/media/cache/regular/uploads/images/casehistory/gallery/5db15a1bd1e21.jpg", name: "Barber1"),
-                     ModelBusiness(identifier: "2", image: "https://recursos.bps.com.es/files/810/16.jpg", name: "Barber2"),
-                     ModelBusiness(identifier: "2", image: "https://recursos.bps.com.es/files/810/16.jpg", name: "Barber2"),
-                     ModelBusiness(identifier: "2", image: "https://recursos.bps.com.es/files/810/16.jpg", name: "Barber2"),
-                     ModelBusiness(identifier: "2", image: "https://recursos.bps.com.es/files/810/16.jpg", name: "Barber2"),
-                     ModelBusiness(identifier: "2", image: "https://recursos.bps.com.es/files/810/16.jpg", name: "Barber2")]
-        notifyView()
+        self.view?.startWaitingView()
+        let modelBusinessTask = ModelBusinessTask(query: "")
+        networkManager.getBusinesses(modelBusinessTask: modelBusinessTask) { (modelList, error) in
+            if error as? MoyaError != nil {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                    withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                    withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                    completion: nil)
+                return
+            }
+            if let error = error as? AppError {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: error.title,
+                                     withText: error.message,
+                                     withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                     completion: nil)
+                return
+            }
+            if let modelList = modelList {
+                self.view?.stopWaitingView()
+                self.modelList = modelList
+                self.notifyView()
+            }
+        }
     }
     
     private func notifyView() {

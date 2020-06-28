@@ -99,8 +99,7 @@ extension ActivationViewController: PresenterActivationView {
     }
     
     func didSetData(remainingTimeInSeconds: Int) {
-        fireTimer(remainingTimeInSeconds)
-        
+        fireTimer(remainingTimeInSeconds) 
     }
     
     func popViewController() {
@@ -110,6 +109,18 @@ extension ActivationViewController: PresenterActivationView {
     
     func tryAgain() {
         activationView?.otpStackView.resetOTP()
+    }
+    
+    func startWaitingView() {
+        startWaiting()
+    }
+    
+    func stopWaitingView() {
+        stopWaiting()
+    }
+    
+    func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
+        showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
     }
 }
 
