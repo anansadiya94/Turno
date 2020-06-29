@@ -36,9 +36,10 @@ struct ModelBusiness: Codable {
     var latitude: Double?
     var ownerName: String?
     var phone: String?
+    var isFavorite: Bool?
     
     enum CodingKeys: String, CodingKey {
-        case name, address, longitude, latitude, ownerName
+        case name, address, longitude, latitude, ownerName, isFavorite
         case identifier = "id"
         case image = "imageUri"
         case description = "businessDescription"
@@ -47,7 +48,8 @@ struct ModelBusiness: Codable {
     
     init(identifier: String? = nil, name: String? = nil, image: String? = nil,
          address: String? = nil, description: String? = nil, longitude: Double? = nil,
-         latitude: Double? = nil, ownerName: String? = nil, phone: String? = nil) {
+         latitude: Double? = nil, ownerName: String? = nil, phone: String? = nil,
+         isFavorite: Bool? = nil) {
         self.identifier = identifier
         self.name = name
         self.image = image
@@ -57,5 +59,21 @@ struct ModelBusiness: Codable {
         self.latitude = latitude
         self.ownerName = ownerName
         self.phone = phone
+        self.isFavorite = isFavorite
+    }
+    
+    mutating func isFavoriteTapped() {
+        if let isFavorite = isFavorite {
+            self.isFavorite = !isFavorite
+        }
+    }
+}
+
+struct ModelFavoritesTask: Codable {
+
+    var businessId: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case businessId
     }
 }

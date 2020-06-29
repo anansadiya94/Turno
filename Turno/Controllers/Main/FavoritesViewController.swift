@@ -23,6 +23,12 @@ class FavoritesViewController: GenericTableView<GenericListDescriptive> {
         super.viewDidLoad()
         self.view.addSubview(genericView)
         setGenericViewConstraints()
+        addObserver()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenterFavorites.fetchData()
     }
     
     // MARK: - GenericTableView methods
@@ -52,6 +58,20 @@ class FavoritesViewController: GenericTableView<GenericListDescriptive> {
             genericView.leftAnchor.constraint(equalTo: view.leftAnchor),
             genericView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
+    }
+    
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(isFavoriteTappedAction(_:)),
+                                               name: GenericEntity.isFavoriteTapped, object: nil)
+    }
+    
+    // MARK: - UI interaction methods
+    @objc func isFavoriteTappedAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let identifier = dict["identifier"] as? String {
+                presenterFavorites.isFavoriteTapped(entityIdentifier: identifier)
+            }
+        }
     }
 }
 
