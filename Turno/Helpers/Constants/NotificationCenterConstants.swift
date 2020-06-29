@@ -14,3 +14,6 @@ let kNotificaitonButtonOnboardingCellTapped = "buttonOnBoardingCellTapped"
 //ALERTS:
 let kNotificaitonAlertButton1Tapped = "alertButton1Tapped"
 let kNotificaitonAlertButton2Tapped = "alertButton2Tapped"
+
+//GenericEntity:
+let kNotificaitonGenericEntityCellIsFavoriteTapped = "genericEntityCellIsFavoriteTapped"

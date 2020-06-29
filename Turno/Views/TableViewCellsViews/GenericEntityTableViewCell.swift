@@ -18,7 +18,7 @@ class GenericEntityTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: CustomLabel!
     @IBOutlet weak var favoriteButton: HeartButton!
     
-    var identifier: String? = ""
+    var identifier: String?
     
     // MARK: - UICollectionViewCell
     override func awakeFromNib() {
@@ -70,7 +70,7 @@ class GenericEntityTableViewCell: UITableViewCell {
                                           fontSize: 30,
                                           textColor: .white,
                                           textAlignment: .center)
-        favoriteButton.isLiked = true
+        favoriteButton.isLiked = model.isFavorite ?? false
     }
     
     func didSelect(model: ModelBusiness) {
@@ -80,6 +80,10 @@ class GenericEntityTableViewCell: UITableViewCell {
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         guard let button = sender as? HeartButton else { return }
         button.flipLikedState()
-        //TODO modify model and call API
+        if let identifier = self.identifier {
+            let dict: [String: String] = ["identifier": identifier]
+            NotificationCenter.default.post(name: GenericEntity.isFavoriteTapped, object: nil,
+                                            userInfo: dict)
+        }
     }
 }
