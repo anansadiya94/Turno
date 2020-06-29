@@ -16,10 +16,12 @@ protocol Networkable {
     func verify(modelVerifyTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void)
     func getBusinesses(modelBusinessTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void)
     func getFavorites(completion: @escaping ([ModelBusiness]?, Error?) -> Void)
+    func addToFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
+    func removeFromFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
-    
+
     let provider = MoyaProvider<APIRouter>()
     
     func signUp(modelSignUpTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void) {
@@ -105,6 +107,38 @@ class NetworkManager: Networkable {
                     }
                 } catch let error {
                     completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func addToFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.addToFavorites(modelFavoritesTask: modelFavoritesTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                switch value.statusCode {
+                case 200:
+                    completion(true, nil)
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func removeFromFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.removeToFavorites(modelFavoritesTask: modelFavoritesTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                switch value.statusCode {
+                case 200:
+                    completion(true, nil)
+                default:
+                    break
                 }
             }
         }
