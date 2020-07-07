@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeViewController: GenericTableView<GenericListDescriptive> {
-
+    
     // MARK: - Properties
     override var navBarTitle: String {
         return LocalizedConstants.home_key.localized
@@ -17,12 +17,18 @@ class HomeViewController: GenericTableView<GenericListDescriptive> {
     
     var presenterHome: PresenterHome!
     @UseAutoLayout var genericView = GenericView()
-
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(genericView)
         setGenericViewConstraints()
+        addObserver()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenterHome.fetchData()
     }
     
     // MARK: - GenericTableView methods
@@ -30,12 +36,12 @@ class HomeViewController: GenericTableView<GenericListDescriptive> {
         super.init(nibName: nil, bundle: nil)
         super.configureTableView(tableView: genericView.tableView)
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         super.configureTableView(tableView: genericView.tableView)
     }
-      
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 216
     }
@@ -52,6 +58,20 @@ class HomeViewController: GenericTableView<GenericListDescriptive> {
             genericView.leftAnchor.constraint(equalTo: view.leftAnchor),
             genericView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
+    }
+    
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(isFavoriteTappedAction(_:)),
+                                               name: GenericEntity.isFavoriteTapped, object: nil)
+    }
+    
+    // MARK: - UI interaction methods
+    @objc func isFavoriteTappedAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let identifier = dict["identifier"] as? String {
+                presenterHome.isFavoriteTapped(entityIdentifier: identifier)
+            }
+        }
     }
 }
 

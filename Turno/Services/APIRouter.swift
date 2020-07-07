@@ -18,6 +18,8 @@ enum APIRouter {
     // MARK: - Buisenesses
     case getBusinesses(modelBusinessTask: ModelBusinessTask)
     case getFavorites
+    case addToFavorites(modelFavoritesTask: ModelFavoritesTask)
+    case removeToFavorites(modelFavoritesTask: ModelFavoritesTask)
 }
 
 extension APIRouter: TargetType {
@@ -32,12 +34,14 @@ extension APIRouter: TargetType {
         case .verify: return kVerify
         case .getBusinesses: return kGetBusinesses
         case .getFavorites: return kGetFavorites
+        case .addToFavorites: return kAddToFavorites
+        case .removeToFavorites: return kRemoveFromFavorites
         }
     }
   
     var method: Moya.Method {
         switch self {
-        case .signUp, .verify, .getBusinesses, .getFavorites:
+        case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites:
             return .post
         }
     }
@@ -52,6 +56,8 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelBusinessTask)
         case .getFavorites:
             return .requestPlain
+        case .addToFavorites(let modelFavoritesTask), .removeToFavorites(let modelFavoritesTask):
+            return .requestJSONEncodable(modelFavoritesTask)
         }
     }
     
@@ -64,7 +70,7 @@ extension APIRouter: TargetType {
         headers = ["Content-type": "application/json; charset=UTF-8"]
         
         switch self {
-        case .getBusinesses, .getFavorites:
+        case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites:
             headers = ["Authorization": Preferences.getAuthorization()]
         default:
             break

@@ -63,4 +63,54 @@ class PresenterHome {
             }
         }
     }
+
+    func isFavoriteTapped(entityIdentifier: String) {
+        if let index = modelList.firstIndex(where: { $0.identifier == entityIdentifier }),
+            let identifier = modelList[index].identifier,
+            let isFavorite = modelList[index].isFavorite {
+            let modelFavoritesTask = ModelFavoritesTask(businessId: identifier)
+            if isFavorite {
+                networkManager.removeFromFavorites(modelFavoritesTask: modelFavoritesTask) { _, error in
+                    if error as? MoyaError != nil {
+                        self.view?.stopWaitingView()
+                        self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                            withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                            withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                            completion: nil)
+                        return
+                    }
+                    if let error = error as? AppError {
+                        self.view?.stopWaitingView()
+                        self.view?.showPopupView(withTitle: error.title,
+                                             withText: error.message,
+                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             completion: nil)
+                        return
+                    }
+                }
+                modelList[index].isFavoriteTapped()
+                
+            } else {
+                networkManager.addToFavorites(modelFavoritesTask: modelFavoritesTask) { _, error in
+                    if error as? MoyaError != nil {
+                        self.view?.stopWaitingView()
+                        self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                            withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                            withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                            completion: nil)
+                        return
+                    }
+                    if let error = error as? AppError {
+                        self.view?.stopWaitingView()
+                        self.view?.showPopupView(withTitle: error.title,
+                                             withText: error.message,
+                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             completion: nil)
+                        return
+                    }
+                }
+                modelList[index].isFavoriteTapped()
+            }
+        }
+    }
 }

@@ -11,3 +11,7 @@ import Foundation
 struct OnBoarding {
     static let onBoardingButtonCellTapped = Notification.Name(kNotificaitonButtonOnboardingCellTapped)
 }
+
+struct GenericEntity {
+    static let isFavoriteTapped = Notification.Name(kNotificaitonGenericEntityCellIsFavoriteTapped)
+}
