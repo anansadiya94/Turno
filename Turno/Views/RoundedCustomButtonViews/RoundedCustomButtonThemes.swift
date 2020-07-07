@@ -50,7 +50,10 @@ struct RoundedBaseTheme: RoundedCustomButtonTheme {
     var button2ImageName: String?
     var isBlurBackground: Bool = false
     
-    init(label: String) {
+    init(label: String, backgroundColor: UIColor = .primary, borderColor: CGColor = UIColor.clear.cgColor, titleColor: UIColor = .white ) {
         self.label = label.localized
+        self.backgroundColor = backgroundColor
+        self.borderColor = borderColor
+        self.titleColor = titleColor
     }
 }

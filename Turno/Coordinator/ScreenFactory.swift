@@ -72,6 +72,12 @@ struct ScreenFactory {
                     homeVC.presenterHome = presnter
                 }
             }
+            if let viewController = mainVC.viewControllers?[1] as? UINavigationController {
+                if let appointmentsVC = viewController.topViewController as? AppointmentsViewController {
+                    let presnter = PresenterAppointments(view: appointmentsVC, delegate: delegate)
+                    appointmentsVC.presenterAppointments = presnter
+                }
+            }
             if let viewController = mainVC.viewControllers?[2] as? UINavigationController {
                 if let favoritesVC = viewController.topViewController as? FavoritesViewController {
                     let presnter = PresenterFavorites(view: favoritesVC, delegate: delegate)

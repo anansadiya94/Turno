@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="center" id="HRM-Cn-ZWG" customClass="AppointmentTableViewCell" customModule="Turno" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="434" height="301"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0E0-6W-sLd" userLabel="Base View">
+                    <rect key="frame" x="16" y="8" width="402" height="285"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbL-Fo-tqv">
+                            <rect key="frame" x="0.0" y="225" width="402" height="60"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4He-3q-aCE" customClass="RoundedCustomButton" customModule="Turno" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="8" width="120" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="5Q1-ob-B4I"/>
+                                        <constraint firstAttribute="height" constant="44" id="hkf-D1-dXA"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYy-Qd-mCM" customClass="RoundedCustomButton" customModule="Turno" customModuleProvider="target">
+                                    <rect key="frame" x="266" y="8" width="120" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="C0F-H3-Z2f"/>
+                                        <constraint firstAttribute="height" constant="44" id="kNP-e3-6TN"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="AYy-Qd-mCM" secondAttribute="trailing" constant="16" id="4YW-k1-K2K"/>
+                                <constraint firstItem="4He-3q-aCE" firstAttribute="centerY" secondItem="LbL-Fo-tqv" secondAttribute="centerY" id="M66-cG-nk6"/>
+                                <constraint firstItem="AYy-Qd-mCM" firstAttribute="centerY" secondItem="LbL-Fo-tqv" secondAttribute="centerY" id="eo8-R5-OYD"/>
+                                <constraint firstAttribute="height" constant="60" id="py1-Rz-Zhz"/>
+                                <constraint firstItem="4He-3q-aCE" firstAttribute="leading" secondItem="LbL-Fo-tqv" secondAttribute="leading" constant="16" id="srr-MF-WUa"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0EA-F5-Z74">
+                            <rect key="frame" x="0.0" y="60" width="402" height="165"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyR-gz-rHn">
+                                    <rect key="frame" x="0.0" y="0.0" width="402" height="55"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="beM-i0-VVN">
+                                            <rect key="frame" x="8" y="16" width="24" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="ymT-WH-agn"/>
+                                                <constraint firstAttribute="width" constant="24" id="zSc-IX-MAQ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXG-ct-gYb" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
+                                            <rect key="frame" x="48" y="17.5" width="42" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="jXG-ct-gYb" firstAttribute="centerY" secondItem="beM-i0-VVN" secondAttribute="centerY" id="F1b-mj-ewt"/>
+                                        <constraint firstItem="beM-i0-VVN" firstAttribute="leading" secondItem="xyR-gz-rHn" secondAttribute="leading" constant="8" id="Zfz-FE-oJM"/>
+                                        <constraint firstItem="beM-i0-VVN" firstAttribute="centerY" secondItem="xyR-gz-rHn" secondAttribute="centerY" id="r4A-WR-OPc"/>
+                                        <constraint firstItem="jXG-ct-gYb" firstAttribute="leading" secondItem="beM-i0-VVN" secondAttribute="trailing" constant="16" id="twB-XQ-vZE"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9h-MS-mgt">
+                                    <rect key="frame" x="0.0" y="55" width="402" height="55"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9fV-eb-dnm">
+                                            <rect key="frame" x="8" y="15" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="ET7-k2-LUp"/>
+                                                <constraint firstAttribute="height" constant="24" id="Lbc-Xe-fFV"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lO3-58-G15" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
+                                            <rect key="frame" x="48" y="17.5" width="42" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="lO3-58-G15" firstAttribute="centerY" secondItem="9fV-eb-dnm" secondAttribute="centerY" id="1MW-Om-to6"/>
+                                        <constraint firstItem="lO3-58-G15" firstAttribute="leading" secondItem="9fV-eb-dnm" secondAttribute="trailing" constant="16" id="Gap-89-ccv"/>
+                                        <constraint firstItem="9fV-eb-dnm" firstAttribute="leading" secondItem="r9h-MS-mgt" secondAttribute="leading" constant="8" id="RX7-lX-zGe"/>
+                                        <constraint firstItem="9fV-eb-dnm" firstAttribute="centerY" secondItem="r9h-MS-mgt" secondAttribute="centerY" id="Zwb-YU-9dl"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5gp-eg-ODu">
+                                    <rect key="frame" x="0.0" y="110" width="402" height="55"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Onh-wV-4sV">
+                                            <rect key="frame" x="8" y="15.5" width="24" height="24.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="1sT-FU-jsl"/>
+                                                <constraint firstAttribute="height" constant="24" id="2J8-Hw-jKK"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncp-OV-2nh" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
+                                            <rect key="frame" x="48" y="17.5" width="42" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="Ncp-OV-2nh" firstAttribute="leading" secondItem="Onh-wV-4sV" secondAttribute="trailing" constant="16" id="0f5-iJ-vYt"/>
+                                        <constraint firstItem="Onh-wV-4sV" firstAttribute="centerY" secondItem="5gp-eg-ODu" secondAttribute="centerY" id="3pk-Sy-t7b"/>
+                                        <constraint firstItem="Onh-wV-4sV" firstAttribute="leading" secondItem="5gp-eg-ODu" secondAttribute="leading" constant="8" id="JA3-3G-pBU"/>
+                                        <constraint firstItem="Ncp-OV-2nh" firstAttribute="centerY" secondItem="Onh-wV-4sV" secondAttribute="centerY" id="lgM-74-Ngs"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKI-pB-81r">
+                            <rect key="frame" x="0.0" y="0.0" width="402" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Azs-Re-4YW" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
+                                    <rect key="frame" x="180" y="20" width="42" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1eF-4U-fz4">
+                                    <rect key="frame" x="8" y="5" width="50" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="9lq-cl-kgY"/>
+                                        <constraint firstAttribute="height" constant="50" id="HOu-w7-pbb"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="1eF-4U-fz4" firstAttribute="leading" secondItem="gKI-pB-81r" secondAttribute="leading" constant="8" id="6yv-nT-nuq"/>
+                                <constraint firstAttribute="bottom" secondItem="1eF-4U-fz4" secondAttribute="bottom" constant="5" id="EHY-05-XXK"/>
+                                <constraint firstItem="1eF-4U-fz4" firstAttribute="top" secondItem="gKI-pB-81r" secondAttribute="top" constant="5" id="WMc-gx-hEX"/>
+                                <constraint firstItem="Azs-Re-4YW" firstAttribute="centerY" secondItem="gKI-pB-81r" secondAttribute="centerY" id="cFE-x8-mMN"/>
+                                <constraint firstItem="Azs-Re-4YW" firstAttribute="centerX" secondItem="gKI-pB-81r" secondAttribute="centerX" id="jrJ-Sl-euq"/>
+                                <constraint firstAttribute="height" constant="60" id="oh0-A3-hXn"/>
+                                <constraint firstItem="Azs-Re-4YW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1eF-4U-fz4" secondAttribute="trailing" constant="8" id="wEk-db-vNd"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="gKI-pB-81r" firstAttribute="leading" secondItem="0E0-6W-sLd" secondAttribute="leading" id="6Io-IE-v1i"/>
+                        <constraint firstItem="gKI-pB-81r" firstAttribute="top" secondItem="0E0-6W-sLd" secondAttribute="top" id="AAa-ut-jSD"/>
+                        <constraint firstAttribute="trailing" secondItem="gKI-pB-81r" secondAttribute="trailing" id="JHD-n4-QcS"/>
+                        <constraint firstAttribute="bottom" secondItem="LbL-Fo-tqv" secondAttribute="bottom" id="Pxh-iw-pbD"/>
+                        <constraint firstAttribute="trailing" secondItem="0EA-F5-Z74" secondAttribute="trailing" id="dtw-t8-sWx"/>
+                        <constraint firstItem="0EA-F5-Z74" firstAttribute="top" secondItem="gKI-pB-81r" secondAttribute="bottom" id="fhc-EM-yO5"/>
+                        <constraint firstItem="LbL-Fo-tqv" firstAttribute="top" secondItem="0EA-F5-Z74" secondAttribute="bottom" id="lDW-CN-az8"/>
+                        <constraint firstAttribute="trailing" secondItem="LbL-Fo-tqv" secondAttribute="trailing" id="rSR-gh-MRQ"/>
+                        <constraint firstItem="0EA-F5-Z74" firstAttribute="leading" secondItem="0E0-6W-sLd" secondAttribute="leading" id="uUZ-PE-4t1"/>
+                        <constraint firstItem="LbL-Fo-tqv" firstAttribute="leading" secondItem="0E0-6W-sLd" secondAttribute="leading" id="vmD-Ot-Rg2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0E0-6W-sLd" firstAttribute="leading" secondItem="HRM-Cn-ZWG" secondAttribute="leading" constant="16" id="SDI-xF-fII"/>
+                <constraint firstAttribute="bottom" secondItem="0E0-6W-sLd" secondAttribute="bottom" constant="8" id="ahF-1u-o8J"/>
+                <constraint firstItem="0E0-6W-sLd" firstAttribute="top" secondItem="HRM-Cn-ZWG" secondAttribute="top" constant="8" id="mPq-As-fM6"/>
+                <constraint firstAttribute="trailing" secondItem="0E0-6W-sLd" secondAttribute="trailing" constant="16" id="rbz-jf-9pc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="x0a-XM-oSY"/>
+            <connections>
+                <outlet property="baseView" destination="0E0-6W-sLd" id="Vvf-vp-LfS"/>
+                <outlet property="buttonsView" destination="LbL-Fo-tqv" id="7ng-Fm-T9Z"/>
+                <outlet property="callNowButton" destination="AYy-Qd-mCM" id="r8Z-p2-tBf"/>
+                <outlet property="cancelButton" destination="4He-3q-aCE" id="okc-lD-MOe"/>
+                <outlet property="dateImageView" destination="beM-i0-VVN" id="Ybp-08-A8S"/>
+                <outlet property="dateLabel" destination="jXG-ct-gYb" id="nmy-Gp-f78"/>
+                <outlet property="locationImageView" destination="9fV-eb-dnm" id="NPN-ug-a9i"/>
+                <outlet property="locationLabel" destination="lO3-58-G15" id="wYs-vb-7Wv"/>
+                <outlet property="servicesImageView" destination="Onh-wV-4sV" id="xve-YZ-Mgf"/>
+                <outlet property="servicesLabel" destination="Ncp-OV-2nh" id="2g8-Xa-qaX"/>
+                <outlet property="thumbnailImage" destination="1eF-4U-fz4" id="0Ce-Gc-ca3"/>
+                <outlet property="titleLabel" destination="Azs-Re-4YW" id="j1h-dc-vxt"/>
+                <outlet property="titleView" destination="gKI-pB-81r" id="pZi-YL-Vxc"/>
+            </connections>
+            <point key="canvasLocation" x="-520.28985507246375" y="179.12946428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="mappin" catalog="system" width="105" height="128"/>
+    </resources>
+</document>

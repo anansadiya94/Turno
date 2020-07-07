@@ -71,7 +71,7 @@ extension APIRouter: TargetType {
         
         switch self {
         case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites:
-            headers = ["Authorization": Preferences.getAuthorization()]
+            headers["Authorization"] = Preferences.getAuthorization() 
         default:
             break
         }
