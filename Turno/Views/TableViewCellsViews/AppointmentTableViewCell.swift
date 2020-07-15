@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class AppointmentTableViewCell: UITableViewCell {
-
+    
     // MARK: - Properties
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var thumbnailImage: UIImageView!
@@ -33,7 +33,7 @@ class AppointmentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setUpView()
@@ -63,7 +63,7 @@ class AppointmentTableViewCell: UITableViewCell {
                 switch result {
                 case .failure(let error):
                     debugPrint(error.localizedDescription)
-                    //TODO set default image
+                //TODO set default image
                 case .success(let imageResult):
                     DispatchQueue.main.async {
                         self?.thumbnailImage.image = imageResult.image
@@ -75,26 +75,54 @@ class AppointmentTableViewCell: UITableViewCell {
         }
     }
     
+    private func setServicesLabel(from model: ModelAppointment) {
+        var services: [String] = []
+        model.turn?.services?.forEach({
+            if let serviceName = $0.serviceName {
+                services.append(serviceName)
+            }
+        })
+        let joined = services.joined(separator: ", ")
+        
+        servicesLabel.labelTheme = BoldTheme(label: joined,
+                                             fontSize: 20,
+                                             textColor: .black,
+                                             textAlignment: .left)
+    }
+    
+    // MARK: - UI interaction methods
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        if let identifier = self.identifier {
+            let dict: [String: String] = ["identifier": identifier]
+            NotificationCenter.default.post(name: Appointments.cancelTapped, object: nil,
+                                            userInfo: dict)
+        }
+    }
+    
+    @IBAction func callNowTapped(_ sender: Any) {
+        if let identifier = self.identifier {
+            let dict: [String: String] = ["identifier": identifier]
+            NotificationCenter.default.post(name: Appointments.callNowTapped, object: nil,
+                                            userInfo: dict)
+        }
+    }
+    
     // MARK: - Public Interface
-    func config(model: ModelBusiness) {
-        self.identifier = model.identifier
+    func config(model: ModelAppointment) {
+        self.identifier = model.turn?.identifier
         setThumbnailImageView(url: model.image)
         titleLabel.labelTheme = BoldTheme(label: model.name ?? "",
                                           fontSize: 30,
                                           textColor: .white,
                                           textAlignment: .center)
-        dateLabel.labelTheme = BoldTheme(label: "TEST1",
+        dateLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toDisplayableDate() ?? "",
                                          fontSize: 20,
                                          textColor: .black,
                                          textAlignment: .left)
-        locationLabel.labelTheme = BoldTheme(label: "TEST2",
+        locationLabel.labelTheme = BoldTheme(label: "TODO",
                                              fontSize: 20,
                                              textColor: .black,
                                              textAlignment: .left)
-        servicesLabel.labelTheme = BoldTheme(label: "TEST3",
-                                             fontSize: 20,
-                                             textColor: .black,
-                                             textAlignment: .left)
+        setServicesLabel(from: model)
     }
-
 }

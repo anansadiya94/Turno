@@ -15,3 +15,9 @@ struct OnBoarding {
 struct GenericEntity {
     static let isFavoriteTapped = Notification.Name(kNotificaitonGenericEntityCellIsFavoriteTapped)
 }
+
+struct Appointments {
+    static let cancelTapped = Notification.Name(kNotificaitonGenericEntityCellIsFavoriteTapped)
+    static let callNowTapped = Notification.Name(kNotificaitonGenericEntityCellIsFavoriteTapped)
+    
+}

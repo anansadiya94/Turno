@@ -20,7 +20,7 @@ class GenericEntityTableViewCell: UITableViewCell {
     
     var identifier: String?
     
-    // MARK: - UICollectionViewCell
+    // MARK: - UITableViewCell
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
