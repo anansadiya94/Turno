@@ -17,3 +17,7 @@ let kNotificaitonAlertButton2Tapped = "alertButton2Tapped"
 
 //GenericEntity:
 let kNotificaitonGenericEntityCellIsFavoriteTapped = "genericEntityCellIsFavoriteTapped"
+
+//Appointments:
+let kNotificaitonCancelTapped = "cancelTapped"
+let kNotificaitonCallNowTapped = "callNowTapped"

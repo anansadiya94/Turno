@@ -14,9 +14,9 @@ import UIKit
 struct AppointmentsListDescriptive: DescriptiveProtocol {
     var sectionDescriptor: [SectionDescriptor]
     var descriptors: [CellDescriptor]
-    var modelList = [ModelBusiness]()
+    var modelList = [ModelAppointment]()
 
-    init(modelList: [ModelBusiness] ) {
+    init(modelList: [ModelAppointment] ) {
         self.modelList = modelList
         var descriptorsTemp = [CellDescriptor]()
         for model in modelList {

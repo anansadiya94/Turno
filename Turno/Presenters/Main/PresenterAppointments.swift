@@ -31,7 +31,19 @@ class PresenterAppointments {
     
     // MARK: - Private methods
     private func notifyView() {
-        let appointmentsListDescriptive = AppointmentsListDescriptive(modelList: self.modelList)
+        //GET TURNS
+        var newListModel: [ModelAppointment] = []
+        for model in modelList {
+            if let turns = model.turns {
+                turns.forEach({newListModel.append(ModelAppointment(identifier: model.identifier,
+                                                                     name: model.name,
+                                                                     image: model.image,
+                                                                     address: model.address,
+                                                                     turn: $0))})
+            }
+        }
+        
+        let appointmentsListDescriptive = AppointmentsListDescriptive(modelList: newListModel)
         self.view?.didSetData(model: appointmentsListDescriptive)
     }
     
@@ -62,5 +74,13 @@ class PresenterAppointments {
                 self.notifyView()
             }
         }
+    }
+    
+    func cancelTapped(turnId: String) {
+        //TODO
+    }
+    
+    func callNowTapped(turnId: String) {
+        //TODO
     }
 }

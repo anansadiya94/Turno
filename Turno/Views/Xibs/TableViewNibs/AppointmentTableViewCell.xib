@@ -24,8 +24,12 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="5Q1-ob-B4I"/>
                                         <constraint firstAttribute="height" constant="44" id="hkf-D1-dXA"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="nUu-mO-8ZZ"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="cancelButtonTapped:" destination="HRM-Cn-ZWG" eventType="touchUpInside" id="HUm-cv-NnZ"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYy-Qd-mCM" customClass="RoundedCustomButton" customModule="Turno" customModuleProvider="target">
                                     <rect key="frame" x="266" y="8" width="120" height="44"/>
@@ -34,6 +38,9 @@
                                         <constraint firstAttribute="height" constant="44" id="kNP-e3-6TN"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="callNowTapped:" destination="HRM-Cn-ZWG" eventType="touchUpInside" id="bir-jV-wO9"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

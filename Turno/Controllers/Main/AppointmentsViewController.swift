@@ -23,6 +23,7 @@ class AppointmentsViewController: GenericTableView<AppointmentsListDescriptive> 
         super.viewDidLoad()
         self.view.addSubview(genericView)
         setGenericViewConstraints()
+        addObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +58,30 @@ class AppointmentsViewController: GenericTableView<AppointmentsListDescriptive> 
             genericView.leftAnchor.constraint(equalTo: view.leftAnchor),
             genericView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
+    }
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(cancelTappedAction(_:)),
+                                               name: Appointments.cancelTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(callNowTappedAction(_:)),
+                                               name: Appointments.callNowTapped, object: nil)
+    }
+    
+    // MARK: - UI interaction methods
+    @objc func cancelTappedAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let identifier = dict["identifier"] as? String {
+                presenterAppointments.cancelTapped(turnId: identifier)
+            }
+        }
+    }
+    
+    @objc func callNowTappedAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let identifier = dict["identifier"] as? String {
+                presenterAppointments.callNowTapped(turnId: identifier)
+            }
+        }
     }
 }
 
