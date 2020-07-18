@@ -27,6 +27,11 @@
 		9E4CACE52494D8AC00AA72E0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE42494D8AC00AA72E0 /* API.swift */; };
 		9E4CACE72494D92D00AA72E0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */; };
 		9E4CACE92494EBE800AA72E0 /* ModelVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */; };
+		9E4DE1AB24C3357800EC1FF2 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DE1AA24C3357800EC1FF2 /* BusinessViewController.swift */; };
+		9E4DE1AD24C335EB00EC1FF2 /* PresenterBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DE1AC24C335EB00EC1FF2 /* PresenterBusiness.swift */; };
+		9E4DE1AF24C33AB000EC1FF2 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DE1AE24C33AB000EC1FF2 /* MainCoordinator.swift */; };
+		9E4DE1B124C33BB800EC1FF2 /* BusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DE1B024C33BB800EC1FF2 /* BusinessView.swift */; };
+		9E4DE1B324C3457800EC1FF2 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DE1B224C3457700EC1FF2 /* UIImageView+Utils.swift */; };
 		9E5526AF24A7510A009459E8 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5526AE24A7510A009459E8 /* HeartButton.swift */; };
 		9E55BD54248A9864004F401B /* InstallationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD53248A9864004F401B /* InstallationViewController.swift */; };
 		9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD55248A98C8004F401B /* InstallationView.swift */; };
@@ -150,6 +155,11 @@
 		9E4CACE42494D8AC00AA72E0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVerify.swift; sourceTree = "<group>"; };
+		9E4DE1AA24C3357800EC1FF2 /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		9E4DE1AC24C335EB00EC1FF2 /* PresenterBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterBusiness.swift; sourceTree = "<group>"; };
+		9E4DE1AE24C33AB000EC1FF2 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		9E4DE1B024C33BB800EC1FF2 /* BusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessView.swift; sourceTree = "<group>"; };
+		9E4DE1B224C3457700EC1FF2 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		9E5526AE24A7510A009459E8 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		9E55BD53248A9864004F401B /* InstallationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationViewController.swift; sourceTree = "<group>"; };
 		9E55BD55248A98C8004F401B /* InstallationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationView.swift; sourceTree = "<group>"; };
@@ -327,6 +337,30 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		9E4DE1A724C3355400EC1FF2 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				9E4DE1AA24C3357800EC1FF2 /* BusinessViewController.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		9E4DE1A824C3356300EC1FF2 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				9E4DE1B024C33BB800EC1FF2 /* BusinessView.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		9E4DE1A924C3356B00EC1FF2 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				9E4DE1AC24C335EB00EC1FF2 /* PresenterBusiness.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
 		9E55BD5B248ACF6D004F401B /* CustomTextFieldViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +455,7 @@
 			children = (
 				9E764471248E919600CDAF89 /* ParentViewController.swift */,
 				9E764473248E91F800CDAF89 /* LoadingViewController.swift */,
+				9E4DE1A724C3355400EC1FF2 /* Business */,
 				9E9B87D4248D3443009B1448 /* Main */,
 				9E0B75A32489867D00B25313 /* Welcome */,
 				9EA657CE248814C700F7952A /* OnBoarding */,
@@ -455,6 +490,7 @@
 		9EA657D0248814E200F7952A /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DE1A924C3356B00EC1FF2 /* Business */,
 				9E9B87D1248D3425009B1448 /* Main */,
 				9E0B75A52489869800B25313 /* Welcome */,
 				9EA657E42488162000F7952A /* OnBoarding */,
@@ -465,6 +501,7 @@
 		9EA657D22488150F00F7952A /* ViewControllersViews */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DE1A824C3356300EC1FF2 /* Business */,
 				9EB43D7D24A3AB9900B93C34 /* Main */,
 				9E0B75A42489868B00B25313 /* Welcome */,
 				9EA657D32488151D00F7952A /* OnBoarding */,
@@ -515,6 +552,7 @@
 				9E55BD59248AC8C1004F401B /* UIViewController+SetBackBarButton.swift */,
 				9EED2F8124A3D35100598586 /* UIView+RoundCorners.swift */,
 				9E418CF624A8FAF900232082 /* UIView+AddShadow.swift */,
+				9E4DE1B224C3457700EC1FF2 /* UIImageView+Utils.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -615,6 +653,7 @@
 				9EA6582624881AF000F7952A /* ScreenFactory.swift */,
 				9EA6582424881ACD00F7952A /* OnBoardingCoordinator.swift */,
 				9EA6582A24881BBD00F7952A /* WelcomeCoordinator.swift */,
+				9E4DE1AE24C33AB000EC1FF2 /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -957,6 +996,8 @@
 				9EA657E32488161C00F7952A /* PresenterOnboarding.swift in Sources */,
 				9EA657D52488152700F7952A /* OnBoardingView.swift in Sources */,
 				9EE3EF4824B4D23C0049EC0A /* AppointmentTableViewCell.swift in Sources */,
+				9E4DE1AF24C33AB000EC1FF2 /* MainCoordinator.swift in Sources */,
+				9E4DE1AB24C3357800EC1FF2 /* BusinessViewController.swift in Sources */,
 				9E9B87F1248D362A009B1448 /* SettingsViewController.swift in Sources */,
 				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
 				9EB43D6F24A3A38300B93C34 /* Descriptive.swift in Sources */,
@@ -1001,15 +1042,18 @@
 				9EA657EF2488170300F7952A /* UICollectionView+PresenterOnboarding.swift in Sources */,
 				9E55BD56248A98C8004F401B /* InstallationView.swift in Sources */,
 				9E5526AF24A7510A009459E8 /* HeartButton.swift in Sources */,
+				9E4DE1AD24C335EB00EC1FF2 /* PresenterBusiness.swift in Sources */,
 				9E9880E5248BB9AD00D78959 /* ModelAlertPopup.swift in Sources */,
 				9E9B87D6248D3466009B1448 /* MainViewController.swift in Sources */,
 				9E764472248E919600CDAF89 /* ParentViewController.swift in Sources */,
 				9EB43D7F24A3ABA000B93C34 /* GenericView.swift in Sources */,
+				9E4DE1B124C33BB800EC1FF2 /* BusinessView.swift in Sources */,
 				9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,
 				9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */,
 				9EA657EC248816A800F7952A /* UserDefaultsConstants.swift in Sources */,
 				9EA657DF248815CB00F7952A /* CellsConstants.swift in Sources */,
+				9E4DE1B324C3457800EC1FF2 /* UIImageView+Utils.swift in Sources */,
 				9E9B87ED248D361A009B1448 /* AppointmentsViewController.swift in Sources */,
 				9EB43D7C24A3A9A200B93C34 /* PresenterHome.swift in Sources */,
 				9EB43D7224A3A53C00B93C34 /* GenericEntityTableViewCell.swift in Sources */,

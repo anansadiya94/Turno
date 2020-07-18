@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomTextField: UITextField {
-
+    
     var textFieldTheme: CustomTextFieldTheme? {
         didSet {
             setupStyle()
@@ -27,7 +27,7 @@ class CustomTextField: UITextField {
             setLeftView(image: textFieldTheme.icon)
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -37,7 +37,7 @@ class CustomTextField: UITextField {
         super.init(coder: aDecoder)
         setup()
     }
-
+    
     private func setup() {
         font = Fonts.Regular12
         borderStyle = .roundedRect

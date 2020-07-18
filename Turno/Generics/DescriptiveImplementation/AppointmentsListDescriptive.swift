@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 // swiftlint:disable unused_closure_parameter
@@ -15,7 +14,7 @@ struct AppointmentsListDescriptive: DescriptiveProtocol {
     var sectionDescriptor: [SectionDescriptor]
     var descriptors: [CellDescriptor]
     var modelList = [ModelAppointment]()
-
+    
     init(modelList: [ModelAppointment] ) {
         self.modelList = modelList
         var descriptorsTemp = [CellDescriptor]()

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import Moya
 
@@ -36,10 +35,10 @@ class PresenterAppointments {
         for model in modelList {
             if let turns = model.turns {
                 turns.forEach({newListModel.append(ModelAppointment(identifier: model.identifier,
-                                                                     name: model.name,
-                                                                     image: model.image,
-                                                                     address: model.address,
-                                                                     turn: $0))})
+                                                                    name: model.name,
+                                                                    image: model.image,
+                                                                    address: model.address,
+                                                                    turn: $0))})
             }
         }
         
@@ -55,17 +54,17 @@ class PresenterAppointments {
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
-                                    withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                    withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                    completion: nil)
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
                 return
             }
             if let error = error as? AppError {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
-                                     withText: error.message,
-                                     withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                     completion: nil)
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
                 return
             }
             if let modelList = modelList {

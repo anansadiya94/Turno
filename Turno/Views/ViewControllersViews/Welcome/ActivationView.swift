@@ -20,7 +20,7 @@ class ActivationView: UIView {
     @UseAutoLayout var otpView = UIView()
     @UseAutoLayout var countDownLabel = CustomLabel()
     @UseAutoLayout var resendSMSButton = CustomButton()
-
+    
     let otpStackView = OTPStackView()
     
     // MARK: - Constraints constants
@@ -50,7 +50,7 @@ class ActivationView: UIView {
         addCountDownLabel()
         addResendSMSButton()
     }
-
+    
     private func addSubviews() {
         self.addSubview(progressView)
         self.addSubview(titleLabel)
@@ -60,7 +60,7 @@ class ActivationView: UIView {
         self.addSubview(countDownLabel)
         self.addSubview(resendSMSButton)
     }
-
+    
     private func addProgressView() {
         progressView.tintColor = .primary
         NSLayoutConstraint.activate([
@@ -82,13 +82,13 @@ class ActivationView: UIView {
     
     private func addSubTitleView() {
         phoneNumberLabel.labelTheme = RegularTheme(label: Preferences.getPrefsUser()?.phoneNumber ?? "",
-                                                fontSize: 14, textColor: .black, textAlignment: .right)
+                                                   fontSize: 14, textColor: .black, textAlignment: .right)
         wrongNumberButton.buttonTheme = BaseTheme(label: LocalizedConstants.wrong_number_key.localized,
-                                               underLine: true, titleColor: .primary, contentHorizontalAlignment: .left)
+                                                  underLine: true, titleColor: .primary, contentHorizontalAlignment: .left)
         
         subTitleView.addSubview(phoneNumberLabel)
         subTitleView.addSubview(wrongNumberButton)
-    
+        
         NSLayoutConstraint.activate([
             phoneNumberLabel.centerYAnchor.constraint(equalTo: subTitleView.centerYAnchor),
             wrongNumberButton.centerYAnchor.constraint(equalTo: subTitleView.centerYAnchor),
@@ -103,7 +103,7 @@ class ActivationView: UIView {
     
     private func addOTPLabel() {
         otpLabel.labelTheme = RegularTheme(label: LocalizedConstants.six_digit_code_key.localized,
-                                                    fontSize: 20, textColor: .black, textAlignment: .center)
+                                           fontSize: 20, textColor: .black, textAlignment: .center)
         NSLayoutConstraint.activate([
             otpLabel.topAnchor.constraint(equalTo: wrongNumberButton.bottomAnchor, constant: kSuperViewMargin*2),
             otpLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
@@ -125,13 +125,13 @@ class ActivationView: UIView {
     }
     
     private func addCountDownLabel() {
-       countDownLabel.labelTheme = RegularTheme(label: "", fontSize: 10, textColor: .black, textAlignment: .center)
-       NSLayoutConstraint.activate([
-           countDownLabel.topAnchor.constraint(equalTo: otpView.bottomAnchor, constant: kSuperViewMargin),
-           countDownLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-       ])
-   }
-
+        countDownLabel.labelTheme = RegularTheme(label: "", fontSize: 10, textColor: .black, textAlignment: .center)
+        NSLayoutConstraint.activate([
+            countDownLabel.topAnchor.constraint(equalTo: otpView.bottomAnchor, constant: kSuperViewMargin),
+            countDownLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
+    }
+    
     private func addResendSMSButton() {
         resendSMSButton.buttonTheme = BaseTheme(label: LocalizedConstants.resend_sms_key.localized,
                                                 titleColor: .primary, contentHorizontalAlignment: .left, isEnabled: false)
@@ -144,7 +144,7 @@ class ActivationView: UIView {
     // MARK: - Public Interface
     func updateCountDownLabel(time: Double) {
         let duration: TimeInterval = time
-
+        
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [.minute, .second ]

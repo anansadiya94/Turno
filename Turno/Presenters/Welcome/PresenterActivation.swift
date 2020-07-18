@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import Moya
 
 protocol PresenterActivationView: PresenterParentView {
@@ -64,17 +63,17 @@ class PresenterActivation: NSObject {
                 if error as? MoyaError != nil {
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
-                                        withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                        completion: nil)
+                                             withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             completion: nil)
                     return
                 }
                 if let error = error as? AppError {
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: error.title,
-                                        withText: error.message,
-                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                        completion: nil)
+                                             withText: error.message,
+                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             completion: nil)
                     return
                 }
                 if let modelSignUp = modelSignUp {
@@ -87,7 +86,7 @@ class PresenterActivation: NSObject {
             }
         }
     }
-
+    
     func OTPTapped(otp: String) {
         self.view?.startWaitingView()
         
@@ -97,18 +96,18 @@ class PresenterActivation: NSObject {
                 if error as? MoyaError != nil {
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
-                                        withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                        completion: nil)
+                                             withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             completion: nil)
                     return
                 }
                 if let error = error as? AppError {
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: error.title,
-                                        withText: error.message,
-                                        withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                        completion: { (_, _) in
-                                            self.view?.tryAgain()
+                                             withText: error.message,
+                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             completion: { (_, _) in
+                                                self.view?.tryAgain()
                     })
                     return
                 }

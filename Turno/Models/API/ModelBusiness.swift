@@ -95,7 +95,7 @@ struct Service: Codable {
 }
 
 struct ModelFavoritesTask: Codable {
-
+    
     var businessId: String?
     
     enum CodingKeys: String, CodingKey {
@@ -104,7 +104,7 @@ struct ModelFavoritesTask: Codable {
 }
 
 struct ModelAppointment {
-
+    
     var identifier: String?
     var name: String?
     var image: String?

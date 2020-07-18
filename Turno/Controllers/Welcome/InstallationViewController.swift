@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class InstallationViewController: ParentViewController {
@@ -70,7 +69,7 @@ extension InstallationViewController {
     func addCancelAndButtonsOnKeyboard(textField: UITextField?) {
         let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         toolbar.barStyle = .default
-
+        
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancel: UIBarButtonItem = UIBarButtonItem(title: LocalizedConstants.cancel_key.localized, style: .plain,
                                                       target: self, action: #selector(self.cancelButtonTapped))
@@ -79,11 +78,11 @@ extension InstallationViewController {
         
         cancel.tintColor = .primary
         done.tintColor = .primary
-
+        
         let items = [cancel, flexSpace, done]
         toolbar.items = items
         toolbar.sizeToFit()
-
+        
         textField?.inputAccessoryView = toolbar
     }
 }
@@ -142,15 +141,15 @@ extension InstallationViewController: PresenterInstallationView {
                                               action1: LocalizedConstants.edit_key.localized,
                                               action2: LocalizedConstants.yes_key.localized)
         self.showPopup(withTitle: modelAlertPopUp.title, withText: modelAlertPopUp.message,
-                            withButton: modelAlertPopUp.action1, button2: modelAlertPopUp.action2,
-                            completion: { (action1, action2) in
-                                if action1 != nil && action1 == true {
-                                    self.installationView?.phoneNumberTextField.becomeFirstResponder()
-                                }
-                                if action2 != nil && action2 == true {
-                                    self.presenterInstallation.alertYesButtonTapped()
-                                }
-                                
+                       withButton: modelAlertPopUp.action1, button2: modelAlertPopUp.action2,
+                       completion: { (action1, action2) in
+                        if action1 != nil && action1 == true {
+                            self.installationView?.phoneNumberTextField.becomeFirstResponder()
+                        }
+                        if action2 != nil && action2 == true {
+                            self.presenterInstallation.alertYesButtonTapped()
+                        }
+                        
         })
     }
     

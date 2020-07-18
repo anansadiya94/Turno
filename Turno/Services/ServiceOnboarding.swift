@@ -42,7 +42,7 @@ class ServiceOnboarding {
             }
         } else {
             DispatchQueue.main.async(execute: {
-               callback(fetchDataWithoutNetwork())
+                callback(fetchDataWithoutNetwork())
             })
         }
     }

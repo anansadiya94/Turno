@@ -15,7 +15,7 @@ protocol PresenterParentView: class {
 }
 
 class ParentViewController: UIViewController {
-
+    
     var waitingView: LoadingViewController?
     private var isShownPopup = false
     

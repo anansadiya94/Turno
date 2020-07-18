@@ -46,7 +46,7 @@ class Preferences {
         if let userData = UserDefaults.standard.value(forKey: kPrefsUser) as? Data {
             return try? PropertyListDecoder().decode(User.self, from: userData)
         }
-    
+        
         return nil
     }
     

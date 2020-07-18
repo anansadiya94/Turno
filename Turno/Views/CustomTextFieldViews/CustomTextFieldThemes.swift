@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol CustomTextFieldTheme {
@@ -40,7 +39,7 @@ struct PhoneNumberTheme: CustomTextFieldTheme {
     var keyboardType: UIKeyboardType = .phonePad
     var icon: String
     var returnKeyType: UIReturnKeyType
-
+    
     init(placeholder: String, icon: String, returnKeyType: UIReturnKeyType) {
         self.placeholder = placeholder.localized
         self.icon = icon

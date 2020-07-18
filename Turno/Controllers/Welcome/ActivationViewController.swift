@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class ActivationViewController: ParentViewController {
@@ -55,7 +54,7 @@ class ActivationViewController: ParentViewController {
         start = 0
         progress.totalUnitCount = Int64(remainingTimeInSeconds)
         seconds = Double(remainingTimeInSeconds)
-
+        
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timer) in
             if self.start <= Float(remainingTimeInSeconds) {
                 // Progress view

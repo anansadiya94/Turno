@@ -9,11 +9,11 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
-        
+    
     // MARK: - Properties
     var presenterOnboarding: PresenterOnboarding!
     var onBoardingView = OnBoardingView(frame: UIScreen.main.bounds)
-        
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class OnboardingViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(buttonCellTappedAction(_:)),
                                                name: OnBoarding.onBoardingButtonCellTapped, object: nil)
     }
-       
+    
     // MARK: - UI interaction methods
     @objc func buttonCellTappedAction(_ notification: NSNotification) {
         if let dict = notification.userInfo as NSDictionary? {

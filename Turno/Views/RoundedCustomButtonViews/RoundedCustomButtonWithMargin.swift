@@ -27,7 +27,7 @@ class RoundedCustomButtonWithMargin: RoundedCustomButton {
         buttonTitle.font = buttonTheme?.font
         setup()
     }
-        
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -35,7 +35,7 @@ class RoundedCustomButtonWithMargin: RoundedCustomButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     private func setup() {
         buttonTitle.textAlignment = .center
         addSubview(buttonTitle)

@@ -9,13 +9,13 @@
 import UIKit
 
 class CustomButton: UIButton {
-
+    
     var buttonTheme: CustomButtonTheme? {
         didSet {
             setupStyle()
         }
     }
-
+    
     private func setupStyle() {
         if let buttonTheme = buttonTheme {
             setTitle(buttonTheme.label, for: .normal)
@@ -26,17 +26,17 @@ class CustomButton: UIButton {
             isEnabled = buttonTheme.isEnabled
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-
+    
     private func setup() {
         titleLabel?.numberOfLines = 0
     }

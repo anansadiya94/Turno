@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class PresenterWelcome: NSObject {
@@ -26,7 +25,7 @@ class PresenterWelcome: NSObject {
     func continueButtonTapped() {
         delegate?.didSelectWelcomeContinueButton()
     }
-
+    
     func privacyPolicyButtonTapped() {
         if let privacyPolicyUrl = UIApplication.privacyPolicyUrl {
             self.view.openUrl(privacyPolicyUrl)

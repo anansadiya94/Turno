@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum APIRouter {
-
+    
     // MARK: - Sign Up
     case signUp(modelSignUpTask: ModelSignUpTask)
     case verify(modelVerifyTask: ModelVerifyTask)
@@ -38,7 +38,7 @@ extension APIRouter: TargetType {
         case .removeToFavorites: return kRemoveFromFavorites
         }
     }
-  
+    
     var method: Moya.Method {
         switch self {
         case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites:

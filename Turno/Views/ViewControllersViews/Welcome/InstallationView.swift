@@ -41,7 +41,7 @@ class InstallationView: UIView {
         addPhoneNumberTextFieldLabel()
         addContinueButton()
     }
-
+    
     private func addSubviews() {
         self.addSubview(nameTextField)
         self.addSubview(nameTextFieldLabel)
@@ -70,7 +70,7 @@ class InstallationView: UIView {
             nameTextFieldLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
         ])
     }
-
+    
     private func addPhoneNumberTextField() {
         phoneNumberTextField.textFieldTheme = PhoneNumberTheme(placeholder: LocalizedConstants.phone_number_key.localized,
                                                                icon: kPhoneNumber, returnKeyType: .done)

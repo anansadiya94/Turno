@@ -25,7 +25,7 @@ struct BoldTheme: CustomLabelTheme {
     var textColor: UIColor = .white
     var numberOfLines: Int
     var adjustsFontSizeToFitWidth: Bool
-
+    
     init(label: String, fontSize: CGFloat, textColor: UIColor, textAlignment: NSTextAlignment, numberOfLines: Int = 0, adjustsFontSizeToFitWidth: Bool = false) {
         self.label = label.localized
         self.font = UIFont(name: ServiceAppFont.boldFont, size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
@@ -43,7 +43,7 @@ struct SemiBoldTheme: CustomLabelTheme {
     var textColor: UIColor
     var numberOfLines: Int
     var adjustsFontSizeToFitWidth: Bool
-
+    
     init(label: String, fontSize: CGFloat, textColor: UIColor, textAlignment: NSTextAlignment, numberOfLines: Int = 0, adjustsFontSizeToFitWidth: Bool = false) {
         self.label = label.localized
         self.font = UIFont(name: ServiceAppFont.semiBoldFont, size: fontSize) ?? .systemFont(ofSize: fontSize)
@@ -61,7 +61,7 @@ struct RegularTheme: CustomLabelTheme {
     var textColor: UIColor
     var numberOfLines: Int
     var adjustsFontSizeToFitWidth: Bool
-
+    
     init(label: String, fontSize: CGFloat, textColor: UIColor, textAlignment: NSTextAlignment, numberOfLines: Int = 0, adjustsFontSizeToFitWidth: Bool = false) {
         self.label = label.localized
         self.font = UIFont(name: ServiceAppFont.regularFont, size: fontSize) ?? .systemFont(ofSize: fontSize)
@@ -79,7 +79,7 @@ struct Lightheme: CustomLabelTheme {
     var textColor: UIColor
     var numberOfLines: Int
     var adjustsFontSizeToFitWidth: Bool
-
+    
     init(label: String, fontSize: CGFloat, textColor: UIColor, textAlignment: NSTextAlignment, numberOfLines: Int = 0, adjustsFontSizeToFitWidth: Bool = false) {
         self.label = label.localized
         self.font = UIFont(name: ServiceAppFont.lightFont, size: fontSize) ?? .systemFont(ofSize: fontSize)

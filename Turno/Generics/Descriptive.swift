@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 // swiftlint:disable force_cast
@@ -21,7 +20,7 @@ struct CellDescriptor {
     let reuseIdentifier: String
     let configure: (UITableViewCell) -> Void
     let didSelect: (UITableViewCell) -> Void
-
+    
     init<T: UITableViewCell>(configure: @escaping (T) -> Void, didSelect: @escaping (T) -> Void) {
         self.cellClass = T.self
         self.reuseIdentifier = String(describing: T.self)
@@ -36,7 +35,7 @@ struct CellDescriptor {
 
 struct SectionDescriptor {
     var descriptors = [CellDescriptor]()
-
+    
     init(descriptorsList: [CellDescriptor]) {
         descriptors = descriptorsList
     }

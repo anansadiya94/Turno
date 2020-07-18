@@ -36,7 +36,7 @@ class CustomLabel: UILabel {
         super.init(coder: aDecoder)
         setup()
     }
-
+    
     private func setup() {
     }
 }

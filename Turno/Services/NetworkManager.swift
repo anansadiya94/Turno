@@ -11,7 +11,7 @@ import Moya
 
 protocol Networkable {
     var provider: MoyaProvider<APIRouter> { get }
-
+    
     func signUp(modelSignUpTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void)
     func verify(modelVerifyTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void)
     func getBusinesses(modelBusinessTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void)
@@ -21,7 +21,7 @@ protocol Networkable {
 }
 
 class NetworkManager: Networkable {
-
+    
     let provider = MoyaProvider<APIRouter>()
     
     func signUp(modelSignUpTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void) {

@@ -26,7 +26,7 @@ class HeartButton: UIButton {
         self.tintColor = .white
         setImage(isLiked ? likedImage : unlikedImage, for: .normal)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.tintColor = .white
