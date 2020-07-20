@@ -21,3 +21,7 @@ struct Appointments {
     static let cancelTapped = Notification.Name(kNotificaitonGenericEntityCellIsFavoriteTapped)
     static let callNowTapped = Notification.Name(kNotificaitonGenericEntityCellIsFavoriteTapped)
 }
+
+struct Business {
+    static let modifyModel = Notification.Name(kNotificaitonBusinessModifyModel)
+}

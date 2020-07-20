@@ -11,6 +11,7 @@ import Moya
 
 protocol PresenterBusinessView: PresenterParentView {
     func didSetData(model: ModelBusiness)
+    func modifyModel(identifier: String, count: Int)
 }
 
 class PresenterBusiness {
@@ -32,5 +33,9 @@ class PresenterBusiness {
     // MARK: - Private methods
     private func notifyView(model: ModelBusiness) {
         view?.didSetData(model: model)
+    }
+    
+    func modifyModel(identifier: String, count: Int) {
+        view?.modifyModel(identifier: identifier, count: count)
     }
 }

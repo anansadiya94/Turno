@@ -9,3 +9,4 @@
 import Foundation
 
 let kOnboardingCellID = "onboardingCell"
+let kServiceCellID = "serviceCell"
