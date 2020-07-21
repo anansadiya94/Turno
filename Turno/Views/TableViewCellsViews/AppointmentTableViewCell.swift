@@ -50,6 +50,9 @@ class AppointmentTableViewCell: UITableViewCell {
         thumbnailImage.clipsToBounds = true
         thumbnailImage.backgroundColor = UIColor.lightGray
         thumbnailImage.contentMode = .scaleAspectFill
+        dateImageView.tintColor = .black
+        locationImageView.tintColor = .black
+        servicesImageView.tintColor = .black
         buttonsView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
         cancelButton.buttonTheme = RoundedBaseTheme(label: "Cancel", backgroundColor: UIColor.red.withAlphaComponent(0.5))
         callNowButton.buttonTheme = RoundedBaseTheme(label: "Call now", backgroundColor: .white,

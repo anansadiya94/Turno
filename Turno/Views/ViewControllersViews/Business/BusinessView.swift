@@ -12,8 +12,13 @@ class BusinessView: UIView {
     
     // MARK: - Properties
     @UseAutoLayout var imageView = UIImageView()
-    @UseAutoLayout var segmentedControl = UISegmentedControl(items: ["Services", "My turns", "Information"])
+    @UseAutoLayout var segmentedControl = UISegmentedControl(items: [LocalizedConstants.services_key.localized,
+                                                                     LocalizedConstants.my_turns_key.localized,
+                                                                     LocalizedConstants.information_key.localized])
     @UseAutoLayout var tableView =  UITableView()
+    @UseAutoLayout var checkAvailabilityButton =  RoundedCustomButton()
+    
+    var bottomConstraint = NSLayoutConstraint()
     
     // MARK: - UIView
     override init(frame: CGRect) {
@@ -21,6 +26,7 @@ class BusinessView: UIView {
         self.backgroundColor = .white
         createImageView()
         createSegmentedControl()
+        createCheckAvailabilityButton()
         createTableView()
     }
     
@@ -41,8 +47,8 @@ class BusinessView: UIView {
     }
     
     private func createSegmentedControl() {
-        segmentedControl.selectedSegmentIndex = 0
         addSubview(segmentedControl)
+        segmentedControl.selectedSegmentIndex = 0
         
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: imageView.bottomAnchor),
@@ -51,23 +57,54 @@ class BusinessView: UIView {
         ])
     }
     
+    func createCheckAvailabilityButton() {
+        addSubview(checkAvailabilityButton)
+        checkAvailabilityButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.check_availability_key.localized)
+        setCheckAvailabilityButton(0)
+        
+        NSLayoutConstraint.activate([
+            checkAvailabilityButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
+            checkAvailabilityButton.heightAnchor.constraint(equalToConstant: 44.0),
+            checkAvailabilityButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
+            checkAvailabilityButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
+            
+        ])
+    }
+    
     private func createTableView() {
         addSubview(tableView)
-        
         tableView.alwaysBounceVertical = true
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
         
+        bottomConstraint = tableView.bottomAnchor.constraint(equalTo: checkAvailabilityButton.topAnchor, constant: -8.0)
         NSLayoutConstraint.activate([
+            bottomConstraint,
             tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
     
     // MARK: - Public Interface
+    func setCheckAvailabilityButton(_ count: Int) {
+        checkAvailabilityButton.isEnabled = count >= 1 ? true : false
+        checkAvailabilityButton.backgroundColor = count >= 1 ? .primary : UIColor.primary.withAlphaComponent(0.5)
+    }
+    
+    func setView() {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            checkAvailabilityButton.isHidden = false
+            bottomConstraint = tableView.bottomAnchor.constraint(equalTo: checkAvailabilityButton.topAnchor, constant: -8.0)
+        default:
+            checkAvailabilityButton.isHidden = true
+            bottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        }
+    }
+    
     func setImage(image: String?) {
         imageView.setThumbnailImageView(from: image)
     }

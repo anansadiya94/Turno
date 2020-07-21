@@ -16,6 +16,7 @@ class BusinessViewController: ParentViewController {
     
     var model: ModelBusiness?
     var services: [Service]?
+    var turns: [Turn]?
     
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -23,7 +24,7 @@ class BusinessViewController: ParentViewController {
         setBusinessViewConstraints()
         setTableView()
         setTableView()
-        addTarget()
+        addTargets()
         addObserver()
     }
     
@@ -39,27 +40,22 @@ class BusinessViewController: ParentViewController {
     }
     
     private func setTableView() {
+        businessView.tableView.delegate = self
         businessView.tableView.dataSource = self
         businessView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
                                         forCellReuseIdentifier: kServiceCellID)
+        businessView.tableView.register(UINib(nibName: kBusinessAppointmentTableViewCellNib, bundle: nil),
+                                        forCellReuseIdentifier: kBusinessAppoitmentCellID)
     }
     
-    private func addTarget() {
+    private func addTargets() {
         businessView.segmentedControl.addTarget(self, action: #selector(handleSegmentControl), for: .valueChanged)
+        businessView.checkAvailabilityButton.addTarget(self, action: #selector(checkAvailabilityButtonTapped), for: .touchUpInside)
     }
     
     private func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(modifyModelAction(_:)),
                                                name: Business.modifyModel, object: nil)
-    }
-    
-    // MARK: - UI interaction methods
-    @objc func modifyModelAction(_ notification: NSNotification) {
-        if let dict = notification.userInfo as NSDictionary? {
-            if let model = dict["model"] as? ModelModifyService {
-                presenterBusiness.modifyModel(identifier: model.identifier, count: model.count)
-            }
-        }
     }
     
     private func serviceCell(_ indexPath: IndexPath) -> UITableViewCell {
@@ -71,8 +67,32 @@ class BusinessViewController: ParentViewController {
         return UITableViewCell()
     }
     
+    private func appoitmentCell(_ indexPath: IndexPath) -> UITableViewCell {
+        if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kBusinessAppoitmentCellID,
+                                                                 for: indexPath) as? BusinessAppointmentTableViewCell,
+            let turn = turns?[indexPath.row] {
+            cell.config(turn: turn)
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    // MARK: - UI interaction methods
+    @objc func modifyModelAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let model = dict["model"] as? ModelModifyService {
+                presenterBusiness.modifyModel(identifier: model.identifier, count: model.count)
+            }
+        }
+    }
+    
+    @objc func checkAvailabilityButtonTapped() {
+        presenterBusiness.checkAvailabilityButtonTapped(identifier: model?.identifier, services: services)
+    }
+    
     // MARK: - UI interaction methods
     @objc private func handleSegmentControl() {
+        businessView.setView()
         businessView.tableView.reloadData()
     }
 }
@@ -81,7 +101,8 @@ class BusinessViewController: ParentViewController {
 extension BusinessViewController: PresenterBusinessView {
     func didSetData(model: ModelBusiness) {
         self.model = model
-
+        self.turns = model.turns
+        
         guard let servicesInit = model.services else { return }
         for index in 0..<servicesInit.count {
             servicesInit[index].count = 0
@@ -96,7 +117,14 @@ extension BusinessViewController: PresenterBusinessView {
     }
     
     func modifyModel(identifier: String, count: Int) {
-        services?.first(where: { $0.identifier == identifier })?.count = count
+        services?.first(where: {$0.identifier == identifier})?.count = count
+        
+        var count: Int {
+            var total = 0
+            services?.forEach({total += $0.count ?? 0})
+            return total
+        }
+        businessView.setCheckAvailabilityButton(count)
     }
     
     func startWaitingView() {
@@ -113,13 +141,13 @@ extension BusinessViewController: PresenterBusinessView {
 }
 
 // MARK: - UITableViewDataSource methods
-extension BusinessViewController: UITableViewDataSource {
+extension BusinessViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch businessView.segmentedControl.selectedSegmentIndex {
         case 0:
             return services?.count ?? 0
         case 1:
-            return model?.turns?.count ?? 0
+            return turns?.count ?? 0
         case 2:
             return 5
         default:
@@ -132,7 +160,7 @@ extension BusinessViewController: UITableViewDataSource {
         case 0:
             return serviceCell(indexPath)
         case 1:
-            return UITableViewCell()
+            return appoitmentCell(indexPath)
         case 2:
             return UITableViewCell()
         default:

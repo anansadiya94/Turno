@@ -35,7 +35,12 @@ class PresenterBusiness {
         view?.didSetData(model: model)
     }
     
+    // MARK: - Public Interface
     func modifyModel(identifier: String, count: Int) {
         view?.modifyModel(identifier: identifier, count: count)
+    }
+    
+    func checkAvailabilityButtonTapped(identifier: String?, services: [Service]?) {
+        //TODO
     }
 }

@@ -42,6 +42,8 @@
 		9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */; };
 		9E55DBF824C4CD7C00361B24 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55DBF624C4CD7C00361B24 /* ServiceTableViewCell.swift */; };
 		9E55DBF924C4CD7C00361B24 /* ServiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E55DBF724C4CD7C00361B24 /* ServiceTableViewCell.xib */; };
+		9E6184D124C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6184CF24C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift */; };
+		9E6184D224C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E6184D024C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib */; };
 		9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */; };
 		9E764472248E919600CDAF89 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E764471248E919600CDAF89 /* ParentViewController.swift */; };
 		9E764474248E91F800CDAF89 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E764473248E91F800CDAF89 /* LoadingViewController.swift */; };
@@ -172,6 +174,8 @@
 		9E55BD61248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboardWhenTappedAround.swift"; sourceTree = "<group>"; };
 		9E55DBF624C4CD7C00361B24 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		9E55DBF724C4CD7C00361B24 /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceTableViewCell.xib; sourceTree = "<group>"; };
+		9E6184CF24C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessAppointmentTableViewCell.swift; sourceTree = "<group>"; };
+		9E6184D024C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessAppointmentTableViewCell.xib; sourceTree = "<group>"; };
 		9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButtonWithMargin.swift; sourceTree = "<group>"; };
 		9E764471248E919600CDAF89 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		9E764473248E91F800CDAF89 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -770,6 +774,7 @@
 				9EB43D7124A3A53C00B93C34 /* GenericEntityTableViewCell.swift */,
 				9EE3EF4724B4D23C0049EC0A /* AppointmentTableViewCell.swift */,
 				9E55DBF624C4CD7C00361B24 /* ServiceTableViewCell.swift */,
+				9E6184CF24C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift */,
 			);
 			path = TableViewCellsViews;
 			sourceTree = "<group>";
@@ -780,6 +785,7 @@
 				9EB43D7324A3A54600B93C34 /* GenericEntityTableViewCell.xib */,
 				9EE3EF4924B4D2500049EC0A /* AppointmentTableViewCell.xib */,
 				9E55DBF724C4CD7C00361B24 /* ServiceTableViewCell.xib */,
+				9E6184D024C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib */,
 			);
 			path = TableViewNibs;
 			sourceTree = "<group>";
@@ -897,6 +903,7 @@
 				9EA6580A2488184A00F7952A /* Cairo-Light.ttf in Resources */,
 				9E9B87E9248D35E9009B1448 /* Favorites.storyboard in Resources */,
 				9EA658152488185B00F7952A /* Assistant-Regular.ttf in Resources */,
+				9E6184D224C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib in Resources */,
 				9E9B87E7248D35E9009B1448 /* Main.storyboard in Resources */,
 				9E9B87E8248D35E9009B1448 /* Appointments.storyboard in Resources */,
 				9EB14F452485048C0085E885 /* Assets.xcassets in Resources */,
@@ -973,6 +980,7 @@
 				9E4CACE72494D92D00AA72E0 /* NetworkManager.swift in Sources */,
 				9E9B87F5248D374E009B1448 /* ViewControllersConstants.swift in Sources */,
 				9E4CACE22494D24500AA72E0 /* ModelSignUp.swift in Sources */,
+				9E6184D124C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift in Sources */,
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,
 				9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */,

@@ -30,11 +30,14 @@
 "empty_field_key" = "Este campo no puede estar vacío";
 "invalid_name_key" = "El campo nombre debe ser de entre 2 y 30 caracteres";
 "invalid_phoneNumber_key" = "Por favor ingrese un número de teléfono válido";
-"home_key" = "Casa";
+"home_key" = "Hogar";
 "my_turns_key" = "Mis vueltas";
 "favorites_key" = "favoritos";
 "settings_key" = "ajustes";
 "ok_key" = "Okay";
-"generic_error_title_key" = "Algo esta mal...";
+"generic_error_title_key" = "Algo salió mal...";
 "connection_failed_error_title_key" = "La conexión falló";
-"connection_failed_error_message_key" = "Puede haber un problema en la conexión a Internet. Inténtalo de nuevo !";
+"connection_failed_error_message_key" = "Puede haber un problema con la conexión a Internet. Inténtalo de nuevo.";
+"services_key" = "Servicios";
+"information_key" = "Información";
+"check_availability_key" = "Comprobar disponibilidad";

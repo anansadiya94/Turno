@@ -12,7 +12,7 @@
 "benefits_text_key" = "حجز منصة على الانترنت. لا تضيعوا وقتكم وحجز موعدك القادم.";
 "agree_to_terms_key" = "اختيار المتابعة، فإنك توافق على شروطنا وسياساتنا.";
 "continue_key" = "استمر";
-"privacy_policy_key" = "سياسة الخصوصية";
+"privacy_policy_key" = "سياسة خاصة";
 "installation_key" = "التركيب";
 "name_key" = "اسم";
 "phone_number_key" = "رقم الهاتف";
@@ -35,6 +35,9 @@
 "favorites_key" = "المفضلة";
 "settings_key" = "الإعدادات";
 "ok_key" = "حسنا";
-"generic_error_title_key" = "هناك خطأ...";
+"generic_error_title_key" = "هناك خطأ ما...";
 "connection_failed_error_title_key" = "فشل الاتصال";
-"connection_failed_error_message_key" = "قد تكون هناك مشكلة في الاتصال بالإنترنت. حاول مرة اخرى !";
+"connection_failed_error_message_key" = "قد يكون هناك مشكلة مع اتصال الإنترنت الخاص بك. حاول مرة اخرى.";
+"services_key" = "خدمات";
+"information_key" = "معلومات";
+"check_availability_key" = "التحقق من الصلاحية";
