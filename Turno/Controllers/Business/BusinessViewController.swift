@@ -23,7 +23,7 @@ class BusinessViewController: ParentViewController {
         super.viewDidLoad()
         setBusinessViewConstraints()
         setTableView()
-        setTableView()
+        addSwipeGestureRecognizer()
         addTargets()
         addObserver()
     }
@@ -48,6 +48,16 @@ class BusinessViewController: ParentViewController {
                                         forCellReuseIdentifier: kBusinessAppoitmentCellID)
         businessView.tableView.register(UINib(nibName: kInformationTableViewCellNib, bundle: nil),
                                         forCellReuseIdentifier: kinformationCellID)
+    }
+    
+    private func addSwipeGestureRecognizer() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
+        swipeRight.direction = .right
+        businessView.tableView.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+        swipeLeft.direction = .left
+        businessView.tableView.addGestureRecognizer(swipeLeft)
     }
     
     private func addTargets() {
@@ -93,7 +103,6 @@ class BusinessViewController: ParentViewController {
                 cell.config(type: .schedule, text: "TODO")
             case 4:
                 cell.config(type: .description, text: model?.description ?? "")
-                
             default:
                 break
             }
@@ -115,6 +124,20 @@ class BusinessViewController: ParentViewController {
         presenterBusiness.checkAvailabilityButtonTapped(identifier: model?.identifier, services: services)
     }
     
+    @objc func swipedRight() {
+        if businessView.segmentedControl.selectedSegmentIndex > 0 {
+            businessView.segmentedControl.selectedSegmentIndex -= 1
+            handleSegmentControl()
+        }
+    }
+    
+    @objc func swipedLeft() {
+        if businessView.segmentedControl.selectedSegmentIndex < businessView.segmentedControl.numberOfSegments {
+            businessView.segmentedControl.selectedSegmentIndex += 1
+            handleSegmentControl()
+        }
+    }
+    
     // MARK: - UI interaction methods
     @objc private func handleSegmentControl() {
         businessView.setView()
@@ -124,7 +147,6 @@ class BusinessViewController: ParentViewController {
 
 // MARK: - PresenterBusinessView methods
 extension BusinessViewController: PresenterBusinessView {
-
     func didSetData(model: ModelBusiness) {
         self.model = model
         self.turns = model.turns
