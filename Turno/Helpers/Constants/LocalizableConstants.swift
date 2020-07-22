@@ -51,6 +51,8 @@ enum LocalizedConstants: String {
     case    services_key
     case    information_key
     case    check_availability_key
+    case    call_now_key
+    case    open_in_key
 }
 
 extension LocalizedConstants {

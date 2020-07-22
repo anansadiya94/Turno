@@ -12,6 +12,9 @@ import Moya
 protocol PresenterBusinessView: PresenterParentView {
     func didSetData(model: ModelBusiness)
     func modifyModel(identifier: String, count: Int)
+    func openMap(model: ModelLocation)
+    func send(email: String)
+    func call(_ number: String)
 }
 
 class PresenterBusiness {
@@ -42,5 +45,17 @@ class PresenterBusiness {
     
     func checkAvailabilityButtonTapped(identifier: String?, services: [Service]?) {
         //TODO
+    }
+    
+    func openMaps(model: ModelLocation) {
+        view?.openMap(model: model)
+    }
+    
+    func send(email: String) {
+        view?.send(email: email)
+    }
+    
+    func call(_ number: String) {
+        view?.call(number)
     }
 }

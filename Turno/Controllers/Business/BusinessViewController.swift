@@ -40,12 +40,14 @@ class BusinessViewController: ParentViewController {
     }
     
     private func setTableView() {
-        businessView.tableView.delegate = self
         businessView.tableView.dataSource = self
+        businessView.tableView.delegate = self
         businessView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
                                         forCellReuseIdentifier: kServiceCellID)
         businessView.tableView.register(UINib(nibName: kBusinessAppointmentTableViewCellNib, bundle: nil),
                                         forCellReuseIdentifier: kBusinessAppoitmentCellID)
+        businessView.tableView.register(UINib(nibName: kInformationTableViewCellNib, bundle: nil),
+                                        forCellReuseIdentifier: kinformationCellID)
     }
     
     private func addTargets() {
@@ -77,6 +79,29 @@ class BusinessViewController: ParentViewController {
         return UITableViewCell()
     }
     
+    private func informationCell(_ indexPath: IndexPath) -> UITableViewCell {
+        if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kinformationCellID,
+                                                                 for: indexPath) as? InformationTableViewCell {
+            switch indexPath.row {
+            case 0:
+                cell.config(type: .location, text: model?.address ?? "")
+            case 1:
+                cell.config(type: .email, text: "TODO")
+            case 2:
+                cell.config(type: .telephone, text: model?.phone ?? "")
+            case 3:
+                cell.config(type: .schedule, text: "TODO")
+            case 4:
+                cell.config(type: .description, text: model?.description ?? "")
+                
+            default:
+                break
+            }
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
     // MARK: - UI interaction methods
     @objc func modifyModelAction(_ notification: NSNotification) {
         if let dict = notification.userInfo as NSDictionary? {
@@ -99,6 +124,7 @@ class BusinessViewController: ParentViewController {
 
 // MARK: - PresenterBusinessView methods
 extension BusinessViewController: PresenterBusinessView {
+
     func didSetData(model: ModelBusiness) {
         self.model = model
         self.turns = model.turns
@@ -127,6 +153,18 @@ extension BusinessViewController: PresenterBusinessView {
         businessView.setCheckAvailabilityButton(count)
     }
     
+    func openMap(model: ModelLocation) {
+        self.openMaps(model: model)
+    }
+    
+    func send(email: String) {
+        self.sendEmail(email)
+    }
+    
+    func call(_ number: String) {
+        self.callNumber(number)
+    }
+    
     func startWaitingView() {
         startWaiting()
     }
@@ -141,7 +179,7 @@ extension BusinessViewController: PresenterBusinessView {
 }
 
 // MARK: - UITableViewDataSource methods
-extension BusinessViewController: UITableViewDataSource, UITableViewDelegate {
+extension BusinessViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch businessView.segmentedControl.selectedSegmentIndex {
         case 0:
@@ -162,9 +200,35 @@ extension BusinessViewController: UITableViewDataSource, UITableViewDelegate {
         case 1:
             return appoitmentCell(indexPath)
         case 2:
-            return UITableViewCell()
+            return informationCell(indexPath)
         default:
             return UITableViewCell()
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate methods
+extension BusinessViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch businessView.segmentedControl.selectedSegmentIndex {
+        case 2:
+            switch indexPath.row {
+            case 0:
+                presenterBusiness.openMaps(model: ModelLocation(name: model?.name ?? "",
+                                                                location: Location(lat: model?.latitude, lng: model?.longitude)))
+            case 1:
+                if let email = model?.email {
+                    presenterBusiness.send(email: email)
+                }
+            case 2:
+                if let phone = model?.phone {
+                    presenterBusiness.call(phone)
+                }
+            default:
+                break
+            }
+        default:
+            break
         }
     }
 }

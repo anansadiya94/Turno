@@ -39,13 +39,14 @@ struct ModelBusiness: Codable {
     var isFavorite: Bool?
     var services: [Service]?
     var turns: [Turn]?
+    var email: String?
     
     enum CodingKeys: String, CodingKey {
         case name, address, longitude, latitude, ownerName, isFavorite, services, turns
         case identifier = "id"
         case image = "imageUri"
         case description = "businessDescription"
-        case phone = "Phone"
+        case phone = "phone"
     }
     
     init(identifier: String? = nil, name: String? = nil, image: String? = nil,
@@ -114,4 +115,14 @@ struct ModelAppointment {
 struct ModelModifyService {
     var identifier: String
     var count: Int
+}
+
+struct ModelLocation {
+    let name: String
+    let location: Location
+}
+
+struct Location {
+    var lat: Double?
+    var lng: Double?
 }
