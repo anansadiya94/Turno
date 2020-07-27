@@ -20,6 +20,7 @@ enum APIRouter {
     case getFavorites
     case addToFavorites(modelFavoritesTask: ModelFavoritesTask)
     case removeToFavorites(modelFavoritesTask: ModelFavoritesTask)
+    case cancelTurn(modelCancelTurnTask: ModelCancelTurnTask)
 }
 
 extension APIRouter: TargetType {
@@ -36,12 +37,13 @@ extension APIRouter: TargetType {
         case .getFavorites: return kGetFavorites
         case .addToFavorites: return kAddToFavorites
         case .removeToFavorites: return kRemoveFromFavorites
+        case .cancelTurn: return kCancelTurn
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites:
+        case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn:
             return .post
         }
     }
@@ -58,6 +60,8 @@ extension APIRouter: TargetType {
             return .requestPlain
         case .addToFavorites(let modelFavoritesTask), .removeToFavorites(let modelFavoritesTask):
             return .requestJSONEncodable(modelFavoritesTask)
+        case .cancelTurn(let modelCancelTurnTask):
+            return .requestJSONEncodable(modelCancelTurnTask)
         }
     }
     
@@ -70,7 +74,7 @@ extension APIRouter: TargetType {
         headers = ["Content-type": "application/json; charset=UTF-8"]
         
         switch self {
-        case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites:
+        case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn:
             headers["Authorization"] = Preferences.getAuthorization() 
         default:
             break

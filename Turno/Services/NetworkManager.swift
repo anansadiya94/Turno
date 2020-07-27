@@ -18,6 +18,7 @@ protocol Networkable {
     func getFavorites(completion: @escaping ([ModelBusiness]?, Error?) -> Void)
     func addToFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
     func removeFromFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
+    func cancelTurn(modelCancelTurnTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -130,6 +131,22 @@ class NetworkManager: Networkable {
     
     func removeFromFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void) {
         provider.request(.removeToFavorites(modelFavoritesTask: modelFavoritesTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                switch value.statusCode {
+                case 200:
+                    completion(true, nil)
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func cancelTurn(modelCancelTurnTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.cancelTurn(modelCancelTurnTask: modelCancelTurnTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)

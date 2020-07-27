@@ -126,3 +126,11 @@ struct Location {
     var lat: Double?
     var lng: Double?
 }
+
+struct ModelCancelTurnTask: Codable {
+    var turnId: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case turnId
+    }
+}
