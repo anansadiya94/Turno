@@ -61,11 +61,21 @@ class HomeViewController: GenericTableView<GenericListDescriptive> {
     }
     
     private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(cellTappedAction(_:)),
+                                               name: GenericEntity.cellTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(isFavoriteTappedAction(_:)),
                                                name: GenericEntity.isFavoriteTapped, object: nil)
     }
     
     // MARK: - UI interaction methods
+    @objc func cellTappedAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let model = dict["model"] as? ModelBusiness {
+                presenterHome.cellTapped(model: model)
+            }
+        }
+    }
+    
     @objc func isFavoriteTappedAction(_ notification: NSNotification) {
         if let dict = notification.userInfo as NSDictionary? {
             if let identifier = dict["identifier"] as? String {

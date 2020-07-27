@@ -37,14 +37,16 @@ struct ModelBusiness: Codable {
     var ownerName: String?
     var phone: String?
     var isFavorite: Bool?
+    var services: [Service]?
     var turns: [Turn]?
+    var email: String?
     
     enum CodingKeys: String, CodingKey {
-        case name, address, longitude, latitude, ownerName, isFavorite, turns
+        case name, address, longitude, latitude, ownerName, isFavorite, services, turns
         case identifier = "id"
         case image = "imageUri"
         case description = "businessDescription"
-        case phone = "Phone"
+        case phone = "phone"
     }
     
     init(identifier: String? = nil, name: String? = nil, image: String? = nil,
@@ -82,7 +84,7 @@ struct Turn: Codable {
     }
 }
 
-struct Service: Codable {
+class Service: Codable {
     var identifier: String?
     var serviceName: String?
     var durationInMinutes: Int?
@@ -95,7 +97,6 @@ struct Service: Codable {
 }
 
 struct ModelFavoritesTask: Codable {
-
     var businessId: String?
     
     enum CodingKeys: String, CodingKey {
@@ -104,10 +105,24 @@ struct ModelFavoritesTask: Codable {
 }
 
 struct ModelAppointment {
-
     var identifier: String?
     var name: String?
     var image: String?
     var address: String?
     var turn: Turn?
+}
+
+struct ModelModifyService {
+    var identifier: String
+    var count: Int
+}
+
+struct ModelLocation {
+    let name: String
+    let location: Location
+}
+
+struct Location {
+    var lat: Double?
+    var lng: Double?
 }

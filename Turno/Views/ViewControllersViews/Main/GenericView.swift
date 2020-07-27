@@ -31,12 +31,12 @@ class GenericView: UIView {
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.showsVerticalScrollIndicator = false
-
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: topAnchor, constant: 8.0),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
-     }
+    }
 }

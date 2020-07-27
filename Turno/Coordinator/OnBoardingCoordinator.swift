@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class OnBoardingCoordinator: Coordinator {
@@ -51,8 +50,8 @@ extension OnBoardingCoordinator {
     }
     
     func showMainScreen() {
-        navigationController.isNavigationBarHidden = true
-        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController, delegate: self)
+        let mainCoordinator = MainCoordinator(window: window, navigationController: navigationController)
+        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController, delegate: mainCoordinator)
         window.rootViewController = screen
     }
 }
@@ -60,11 +59,5 @@ extension OnBoardingCoordinator {
 extension OnBoardingCoordinator: SelectButtonOnboarding {
     func didSelectOnboardingButton() {
         showWelcomeScreen()
-    }
-}
-
-extension OnBoardingCoordinator: SelectButtonEntity {
-    func didSelectEntity(id: String) {
-        //TODO
     }
 }

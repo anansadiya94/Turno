@@ -50,29 +50,18 @@ class AppointmentTableViewCell: UITableViewCell {
         thumbnailImage.clipsToBounds = true
         thumbnailImage.backgroundColor = UIColor.lightGray
         thumbnailImage.contentMode = .scaleAspectFill
+        dateImageView.tintColor = .black
+        locationImageView.tintColor = .black
+        servicesImageView.tintColor = .black
         buttonsView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
-        cancelButton.buttonTheme = RoundedBaseTheme(label: "Cancel", backgroundColor: UIColor.red.withAlphaComponent(0.5))
-        callNowButton.buttonTheme = RoundedBaseTheme(label: "Call now", backgroundColor: .white,
+        cancelButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.cancel_key.localized,
+                                                    backgroundColor: UIColor.red.withAlphaComponent(0.5))
+        callNowButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.call_now_key.localized, backgroundColor: .white,
                                                      borderColor: UIColor.primary.cgColor, titleColor: .primary)
     }
     
     private func setThumbnailImageView(url: String?) {
-        if let stringUrl = url, let url = URL(string: stringUrl) {
-            let resource = ImageResource(downloadURL: url)
-            KingfisherManager.shared.retrieveImage(with: resource) { [weak self] (result: Result<RetrieveImageResult, KingfisherError>) in
-                switch result {
-                case .failure(let error):
-                    debugPrint(error.localizedDescription)
-                //TODO set default image
-                case .success(let imageResult):
-                    DispatchQueue.main.async {
-                        self?.thumbnailImage.image = imageResult.image
-                    }
-                }
-            }
-        } else {
-            //TODO set default image
-        }
+        thumbnailImage.setThumbnailImageView(from: url)
     }
     
     private func setServicesLabel(from model: ModelAppointment) {

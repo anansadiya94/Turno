@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoritesViewController: GenericTableView<GenericListDescriptive> {
-
+    
     // MARK: - Properties
     override var navBarTitle: String {
         return LocalizedConstants.favorites_key.localized
@@ -36,7 +36,7 @@ class FavoritesViewController: GenericTableView<GenericListDescriptive> {
         super.init(nibName: nil, bundle: nil)
         super.configureTableView(tableView: genericView.tableView)
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         super.configureTableView(tableView: genericView.tableView)

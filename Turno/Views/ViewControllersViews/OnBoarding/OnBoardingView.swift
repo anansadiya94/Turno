@@ -41,12 +41,12 @@ class OnBoardingView: UIView {
     private func registerNib() {
         self.collectionView?.register(UINib(nibName: kOnboardingCollectionViewCellNib, bundle: nil), forCellWithReuseIdentifier: kOnboardingCellID)
     }
-
+    
     private func setupPageControl() {
         pageControl.currentPageIndicatorTintColor = .primary
         pageControl.pageIndicatorTintColor = .primaryAlpha20
         pageControl.isEnabled = false
-
+        
         self.insertSubview(pageControl, at: 0)
         self.bringSubviewToFront(pageControl)
         setPageControlConstraints()
@@ -74,7 +74,7 @@ class OnBoardingView: UIView {
         collectionView?.isPagingEnabled = true
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.bounces = false
-
+        
         (collectionView != nil) ? self.addSubview(collectionView!) : assertionFailure(kNilCollectionView)
     }
     

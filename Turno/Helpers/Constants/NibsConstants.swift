@@ -9,3 +9,6 @@
 import Foundation
 
 let kOnboardingCollectionViewCellNib = "OnboardingCollectionViewCell"
+let kServiceTableViewCellNib = "ServiceTableViewCell"
+let kBusinessAppointmentTableViewCellNib = "BusinessAppointmentTableViewCell"
+let kInformationTableViewCellNib = "InformationTableViewCell"

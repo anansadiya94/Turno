@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class WelcomeCoordinator: Coordinator {
@@ -36,8 +35,8 @@ extension WelcomeCoordinator {
     }
     
     func showMainScreen() {
-        navigationController.isNavigationBarHidden = true
-        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController, delegate: self)
+        let mainCoordinator = MainCoordinator(window: window, navigationController: navigationController)
+        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController, delegate: mainCoordinator)
         window.rootViewController = screen
     }
 }
@@ -53,11 +52,5 @@ extension WelcomeCoordinator: SelectButtonWelcome {
     
     func didOPTTapped() {
         showMainScreen()
-    }
-}
-
-extension WelcomeCoordinator: SelectButtonEntity {
-    func didSelectEntity(id: String) {
-        //TODO
     }
 }

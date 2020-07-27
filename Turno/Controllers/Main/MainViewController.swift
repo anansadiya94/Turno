@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UITabBarController {
-
+    
     // MARK: - Properties
     var presenterMain: PresenterMain!
     private var homeTabBarItem = UITabBarItem()
@@ -20,7 +20,8 @@ class MainViewController: UITabBarController {
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        configureUI()        
     }
     
     // MARK: - Private functions

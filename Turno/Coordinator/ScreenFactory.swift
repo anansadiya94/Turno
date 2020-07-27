@@ -6,8 +6,7 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
-import  UIKit
+import UIKit
 
 //PROTOCOLS:
 protocol SelectButtonOnboarding: class {
@@ -21,7 +20,7 @@ protocol SelectButtonWelcome: class {
 }
 
 protocol SelectButtonEntity: class {
-    func didSelectEntity(id: String)
+    func didSelectEntity(model: ModelBusiness)
 }
 
 protocol SelectButtonFavorites: class {
@@ -89,5 +88,12 @@ struct ScreenFactory {
             navigationController.viewControllers = [mainVC]
         }
         return navigationController
+    }
+    
+    static func makeBusinessScreen(delegate: SelectButtonEntity, model: ModelBusiness) -> UIViewController {
+        let viewController = BusinessViewController()
+        let presenter = PresenterBusiness(view: viewController, delegate: delegate, model: model)
+        viewController.presenterBusiness = presenter
+        return viewController
     }
 }

@@ -38,7 +38,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         let idDataDict: [String: Bool] = ["amILast": amILast]
         NotificationCenter.default.post(name: OnBoarding.onBoardingButtonCellTapped, object: nil, userInfo: idDataDict)
     }
-
+    
     // MARK: - Public Interface
     func setUp(modelOnboarding: ModelOnboarding) {
         self.amILast = modelOnboarding.amILast

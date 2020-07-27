@@ -48,6 +48,11 @@ enum LocalizedConstants: String {
     case    generic_error_title_key
     case    connection_failed_error_title_key
     case    connection_failed_error_message_key
+    case    services_key
+    case    information_key
+    case    check_availability_key
+    case    call_now_key
+    case    open_in_key
 }
 
 extension LocalizedConstants {

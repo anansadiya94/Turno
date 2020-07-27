@@ -6,14 +6,13 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct GenericListDescriptive: DescriptiveProtocol {
     var sectionDescriptor: [SectionDescriptor]
     var descriptors: [CellDescriptor]
     var modelList = [ModelBusiness]()
-
+    
     init(modelList: [ModelBusiness] ) {
         self.modelList = modelList
         var descriptorsTemp = [CellDescriptor]()

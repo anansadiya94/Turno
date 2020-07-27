@@ -35,7 +35,7 @@ class RoundedCustomButton: UIButton {
         super.init(coder: aDecoder)
         setup()
     }
-
+    
     private func setup() {
         layer.cornerRadius = 10
         layer.borderWidth = 1

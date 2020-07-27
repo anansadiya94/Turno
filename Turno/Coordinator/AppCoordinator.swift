@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol Coordinator {
@@ -30,11 +29,11 @@ class AppCoordinator: Coordinator {
         self.window.rootViewController = navigationController
         self.window.makeKeyAndVisible()
     }
-
+    
     func setupStarterCoordinator() {
         starterCoordinator = OnBoardingCoordinator(window: window, navigationController: navigationController)
     }
-
+    
     func start() {
         starterCoordinator?.start()
     }

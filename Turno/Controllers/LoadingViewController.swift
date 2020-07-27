@@ -10,7 +10,7 @@ import UIKit
 import Lottie
 
 class LoadingViewController: UIViewController {
-
+    
     let containerView: UIView?
     let loadingAnimation = AnimationView(name: "loading")
     
@@ -20,11 +20,11 @@ class LoadingViewController: UIViewController {
         self.containerView = containerView
         super.init(nibName: String(describing: LoadingViewController.self), bundle: nil)
     }
-        
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setAnimationView()
@@ -51,7 +51,7 @@ class LoadingViewController: UIViewController {
             self?.animationView.alpha = 1.0
             self?.loadingAnimation.play()
             self?.view.alpha = 1.0
-        }, completion: nil)
+            }, completion: nil)
     }
     
     func stop() {
@@ -61,7 +61,7 @@ class LoadingViewController: UIViewController {
                 self?.animationView.alpha = 0.0
                 self?.animationView.stop()
                 self?.view.alpha = 0.0
-            }, completion: nil)
+                }, completion: nil)
         }
         view.removeFromSuperview()
     }

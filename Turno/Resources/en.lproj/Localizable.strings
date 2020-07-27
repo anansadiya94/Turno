@@ -35,6 +35,11 @@
 "favorites_key" = "Favorites";
 "settings_key" = "Settings";
 "ok_key" = "Ok";
-"generic_error_title_key" = "Something's wrong...";
+"generic_error_title_key" = "Something went wrong...";
 "connection_failed_error_title_key" = "Connection failed";
-"connection_failed_error_message_key" = "There may be a problem in your internet connection. Please try again !";
+"connection_failed_error_message_key" = "There may be a problem with your internet connection. Please try again.";
+"services_key" = "Services";
+"information_key" = "Information";
+"check_availability_key" = "Check Availability";
+"call_now_key" = "Call now";
+"open_in_key" = "Open in";

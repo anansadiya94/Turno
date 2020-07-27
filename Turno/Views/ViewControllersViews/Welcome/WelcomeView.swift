@@ -45,7 +45,7 @@ class WelcomeView: UIView {
         addLogoImageView()
         addFooterView()
     }
-
+    
     private func addSubviews() {
         self.addSubview(logoImageView)
         self.addSubview(welcomeLabel)
@@ -65,7 +65,7 @@ class WelcomeView: UIView {
             continueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
         ])
     }
-     
+    
     private func addContinueButton() {
         continueButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.continue_key.localized)
         NSLayoutConstraint.activate([
@@ -87,7 +87,7 @@ class WelcomeView: UIView {
     
     private func addWelcomeLabel() {
         welcomeLabel.labelTheme = BoldTheme(label: LocalizedConstants.welcome_to_turno_key.localized,
-                                               fontSize: 25, textColor: .black, textAlignment: .center)
+                                            fontSize: 25, textColor: .black, textAlignment: .center)
         NSLayoutConstraint.activate([
             welcomeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             welcomeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
@@ -111,10 +111,10 @@ class WelcomeView: UIView {
         footerLabel.labelTheme = RegularTheme(label: "@2020 Turno", fontSize: 15,
                                               textColor: .black, textAlignment: .center)
         privacyPolicyButton.buttonTheme = BaseTheme(label: LocalizedConstants.privacy_policy_key.localized, underLine: true)
-
+        
         footerView.addSubview(footerLabel)
         footerView.addSubview(privacyPolicyButton)
-    
+        
         NSLayoutConstraint.activate([
             footerLabel.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
             privacyPolicyButton.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),

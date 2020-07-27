@@ -6,11 +6,10 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     // MARK: - Properties
     public var tableView =  UITableView()
     public var source: T? {
@@ -30,7 +29,7 @@ class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableVie
         refreshControl.tintColor = .primary
         return refreshControl
     }()
-
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +43,14 @@ class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableVie
         tableView.separatorStyle = .none
         tableView.separatorInset = .zero
     }
-
+    
     public func configureTableView(tableView: UITableView) {
         self.tableView = tableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.addSubview(refreshControl)
     }
-
+    
     // MARK: - UI interaction methods
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
     }
@@ -62,7 +61,7 @@ class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableVie
         let cell = tableView.cellForRow(at: indexPath)
         descriptor!.didSelect(cell!)
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -73,7 +72,7 @@ class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableVie
         header?.textLabel?.textColor = UIColor.black
         header?.textLabel?.font = Fonts.Regular12
     }
-
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
@@ -86,7 +85,7 @@ class GenericTableView<T: DescriptiveProtocol>: ParentViewController, UITableVie
     func numberOfSections(in tableView: UITableView) -> Int {
         return source?.sectionDescriptor.count ?? 1
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let descriptor = source?.sectionDescriptor[indexPath.section].descriptors[indexPath.row] {
             let cell = tableView.dequeueReusableCell(withIdentifier: descriptor.reuseIdentifier, for: indexPath)

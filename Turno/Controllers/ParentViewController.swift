@@ -15,7 +15,7 @@ protocol PresenterParentView: class {
 }
 
 class ParentViewController: UIViewController {
-
+    
     var waitingView: LoadingViewController?
     private var isShownPopup = false
     
@@ -29,6 +29,7 @@ class ParentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setNavigationBar()
     }
     

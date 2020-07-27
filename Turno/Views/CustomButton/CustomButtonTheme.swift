@@ -6,7 +6,6 @@
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol CustomButtonTheme {
@@ -27,7 +26,7 @@ struct BaseTheme: CustomButtonTheme {
     var titleColor: UIColor = .black
     var contentHorizontalAlignment: UIControl.ContentHorizontalAlignment = .center
     var isEnabled: Bool = true
-
+    
     init(label: String, underLine: Bool = false, titleColor: UIColor = .black, contentHorizontalAlignment: UIControl.ContentHorizontalAlignment = .center, isEnabled: Bool = true) {
         self.label = label.localized
         self.underLine = underLine
