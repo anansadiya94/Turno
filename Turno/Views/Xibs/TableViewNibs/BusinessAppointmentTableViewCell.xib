@@ -86,6 +86,9 @@
                                             <constraint firstAttribute="width" constant="120" id="T0s-C8-Du5"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="a45-Tv-ReJ" eventType="touchUpInside" id="igZ-Xf-LyU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

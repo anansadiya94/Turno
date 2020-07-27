@@ -25,7 +25,7 @@ class BusinessViewController: ParentViewController {
         setTableView()
         addSwipeGestureRecognizer()
         addTargets()
-        addObserver()
+        addObservers()
     }
     
     // MARK: - Private methods
@@ -65,9 +65,11 @@ class BusinessViewController: ParentViewController {
         businessView.checkAvailabilityButton.addTarget(self, action: #selector(checkAvailabilityButtonTapped), for: .touchUpInside)
     }
     
-    private func addObserver() {
+    private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(modifyModelAction(_:)),
                                                name: Business.modifyModel, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cancelTappedAction(_:)),
+                                               name: Appointments.cancelTapped, object: nil)
     }
     
     private func serviceCell(_ indexPath: IndexPath) -> UITableViewCell {
@@ -116,6 +118,14 @@ class BusinessViewController: ParentViewController {
         if let dict = notification.userInfo as NSDictionary? {
             if let model = dict["model"] as? ModelModifyService {
                 presenterBusiness.modifyModel(identifier: model.identifier, count: model.count)
+            }
+        }
+    }
+    
+    @objc func cancelTappedAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let identifier = dict["identifier"] as? String {
+                presenterBusiness.cancelTapped(turnId: identifier)
             }
         }
     }
