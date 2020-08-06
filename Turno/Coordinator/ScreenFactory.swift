@@ -21,6 +21,7 @@ protocol SelectButtonWelcome: class {
 
 protocol SelectButtonEntity: class {
     func didSelectEntity(model: ModelBusiness)
+    func didSelectCheckAvailability(identifier: String?, name: String?, bookedServices: [Service]?)
 }
 
 protocol SelectButtonFavorites: class {
@@ -94,6 +95,14 @@ struct ScreenFactory {
         let viewController = BusinessViewController()
         let presenter = PresenterBusiness(view: viewController, delegate: delegate, model: model)
         viewController.presenterBusiness = presenter
+        return viewController
+    }
+    
+    static func makeshowCheckAvailabilityScreen(delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?) -> UIViewController {
+        let viewController = CheckAvailabilityViewController()
+        let presenter = PresenterCheckAvailability(view: viewController, delegate: delegate, identifier: identifier,
+                                                   name: name, bookedServices: bookedServices)
+        viewController.presenterCheckAvailability = presenter
         return viewController
     }
 }

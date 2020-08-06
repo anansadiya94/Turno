@@ -131,7 +131,7 @@ class BusinessViewController: ParentViewController {
     }
     
     @objc func checkAvailabilityButtonTapped() {
-        presenterBusiness.checkAvailabilityButtonTapped(identifier: model?.identifier, services: services)
+        presenterBusiness.checkAvailabilityButtonTapped(identifier: model?.identifier, bookedServices: services)
     }
     
     @objc func swipedRight() {

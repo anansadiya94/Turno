@@ -72,8 +72,8 @@ class PresenterBusiness {
         view?.modifyModel(identifier: identifier, count: count)
     }
     
-    func checkAvailabilityButtonTapped(identifier: String?, services: [Service]?) {
-        //TODO
+    func checkAvailabilityButtonTapped(identifier: String?, bookedServices: [Service]?) {
+        delegate.didSelectCheckAvailability(identifier: identifier, name: model?.name, bookedServices: bookedServices)
     }
     
     func openMaps(model: ModelLocation) {
