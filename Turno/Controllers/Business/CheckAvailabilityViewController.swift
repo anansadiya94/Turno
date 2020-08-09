@@ -47,7 +47,7 @@ class CheckAvailabilityViewController: ParentViewController {
 }
 
 extension CheckAvailabilityViewController: PresenterCheckAvailabilityView {
-    func didSetData(name: String?) {
+    func didSetData(name: String?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability) {
         DispatchQueue.main.async {
             self.navigationItem.title = name
         }

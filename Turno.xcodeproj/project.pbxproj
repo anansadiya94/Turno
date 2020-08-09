@@ -141,6 +141,7 @@
 		9EE3EF4C24B4D6F70049EC0A /* AppointmentsListDescriptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3EF4B24B4D6F70049EC0A /* AppointmentsListDescriptive.swift */; };
 		9EE3EF4E24B4D7A90049EC0A /* PresenterAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3EF4D24B4D7A90049EC0A /* PresenterAppointments.swift */; };
 		9EED2F8224A3D35100598586 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED2F8124A3D35100598586 /* UIView+RoundCorners.swift */; };
+		9EF00ADD24E0366A006636DF /* ModelCheckTurnsAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF00ADC24E0366A006636DF /* ModelCheckTurnsAvailability.swift */; };
 		B4AD2AA673D0E8FDDD1649AA /* Pods_Turno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60536D8BBF639461D5CB90FC /* Pods_Turno.framework */; };
 /* End PBXBuildFile section */
 
@@ -287,6 +288,7 @@
 		9EE3EF4B24B4D6F70049EC0A /* AppointmentsListDescriptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsListDescriptive.swift; sourceTree = "<group>"; };
 		9EE3EF4D24B4D7A90049EC0A /* PresenterAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterAppointments.swift; sourceTree = "<group>"; };
 		9EED2F8124A3D35100598586 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
+		9EF00ADC24E0366A006636DF /* ModelCheckTurnsAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCheckTurnsAvailability.swift; sourceTree = "<group>"; };
 		C163364AA1CFF3575881BBA7 /* Pods-Turno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.debug.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -357,6 +359,7 @@
 				9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */,
 				9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */,
 				9EB43D7624A3A77300B93C34 /* ModelBusiness.swift */,
+				9EF00ADC24E0366A006636DF /* ModelCheckTurnsAvailability.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1006,6 +1009,7 @@
 				9E9B87F5248D374E009B1448 /* ViewControllersConstants.swift in Sources */,
 				9E5AD82D24C893B900100526 /* InformationTableViewCell.swift in Sources */,
 				9E4CACE22494D24500AA72E0 /* ModelSignUp.swift in Sources */,
+				9EF00ADD24E0366A006636DF /* ModelCheckTurnsAvailability.swift in Sources */,
 				9E6184D124C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift in Sources */,
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,

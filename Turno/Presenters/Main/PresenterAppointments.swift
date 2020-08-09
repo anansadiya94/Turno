@@ -50,7 +50,7 @@ class PresenterAppointments {
     func fetchData() {
         self.view?.startWaitingView()
         let modelBusinessTask = ModelBusinessTask(query: "")
-        networkManager.getBusinesses(modelBusinessTask: modelBusinessTask) { (modelList, error) in
+        networkManager.getBusinesses(modelTask: modelBusinessTask) { (modelList, error) in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
@@ -78,7 +78,7 @@ class PresenterAppointments {
     func cancelTapped(turnId: String) {
         self.view?.startWaitingView()
         let modelCancelTurnTask: ModelCancelTurnTask = ModelCancelTurnTask(turnId: turnId)
-        networkManager.cancelTurn(modelCancelTurnTask: modelCancelTurnTask) { _, error in
+        networkManager.cancelTurn(modelTask: modelCancelTurnTask) { _, error in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,

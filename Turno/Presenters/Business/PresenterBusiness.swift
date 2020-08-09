@@ -41,7 +41,7 @@ class PresenterBusiness {
     private func cancelTurnConfirmed(turnId: String) {
         self.view?.startWaitingView()
         let modelCancelTurnTask: ModelCancelTurnTask = ModelCancelTurnTask(turnId: turnId)
-        networkManager.cancelTurn(modelCancelTurnTask: modelCancelTurnTask) { _, error in
+        networkManager.cancelTurn(modelTask: modelCancelTurnTask) { _, error in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
