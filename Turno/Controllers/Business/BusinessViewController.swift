@@ -47,7 +47,7 @@ class BusinessViewController: ParentViewController {
         businessView.tableView.register(UINib(nibName: kBusinessAppointmentTableViewCellNib, bundle: nil),
                                         forCellReuseIdentifier: kBusinessAppoitmentCellID)
         businessView.tableView.register(UINib(nibName: kInformationTableViewCellNib, bundle: nil),
-                                        forCellReuseIdentifier: kinformationCellID)
+                                        forCellReuseIdentifier: kInformationCellID)
     }
     
     private func addSwipeGestureRecognizer() {
@@ -92,7 +92,7 @@ class BusinessViewController: ParentViewController {
     }
     
     private func informationCell(_ indexPath: IndexPath) -> UITableViewCell {
-        if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kinformationCellID,
+        if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kInformationCellID,
                                                                  for: indexPath) as? InformationTableViewCell {
             switch indexPath.row {
             case 0:
@@ -131,7 +131,8 @@ class BusinessViewController: ParentViewController {
     }
     
     @objc func checkAvailabilityButtonTapped() {
-        presenterBusiness.checkAvailabilityButtonTapped(identifier: model?.identifier, bookedServices: services)
+        let bookedServices = services?.filter({ $0.count ?? 0 >= 1 })
+        presenterBusiness.checkAvailabilityButtonTapped(identifier: model?.identifier, bookedServices: bookedServices)
     }
     
     @objc func swipedRight() {

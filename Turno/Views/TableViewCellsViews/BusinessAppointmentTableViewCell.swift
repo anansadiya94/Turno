@@ -70,7 +70,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
     func config(turn: Turn) {
         self.identifier = turn.identifier
         
-        dateLabel.labelTheme = BoldTheme(label: turn.dateTimeUTC?.toDisplayableDate() ?? "",
+        dateLabel.labelTheme = BoldTheme(label: turn.dateTimeUTC?.toDisplayableDate(type: .dateAndHour) ?? "",
                                          fontSize: 20,
                                          textColor: .black,
                                          textAlignment: .left)

@@ -38,12 +38,32 @@ struct AvailableTurn: Codable {
     }
 }
 
-struct EmptySlot: Codable {
+class EmptySlot: Codable {
     var turnId: String?
     var dateTimeUTC: String?
     var services: [Service]?
+    var selected: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case turnId, dateTimeUTC, services
+    }
+    
+    init(turnId: String? = nil, dateTimeUTC: String? = nil, services: [Service]? = nil, selected: Bool = false) {
+        self.turnId = turnId
+        self.dateTimeUTC = dateTimeUTC
+        self.services = services
+        self.selected = selected
+    }
+}
+
+class ModelAvailableTurnDay {
+    let day: String?
+    let date: String?
+    var selected: Bool?
+    
+    init(day: String? = nil, date: String? = nil, selected: Bool? = nil) {
+        self.day = day
+        self.date = date
+        self.selected = selected
     }
 }

@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum DisplayableDateType {
+    case dateAndHour
+    case date
+    case hour
+}
+
 extension String {
     var localized: String {
         return NSLocalizedString(self, comment: "")
@@ -19,15 +25,34 @@ extension String {
         return dateFormatter.date(from: self)
     }
     
-    static func fromDate(_ date: Date) -> String {
+    static func fromDateAndHour(_ date: Date) -> String {
         let df = DateFormatter()
         df.dateFormat = "dd-MM-yyyy HH:mm"
         return df.string(from: date)
     }
     
-    func toDisplayableDate() -> String? {
+    static func fromDate(_ date: Date) -> String {
+        let df = DateFormatter()
+        df.dateFormat = "dd-MM-yyyy"
+        return df.string(from: date)
+    }
+    
+    static func fromHout(_ date: Date) -> String {
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm"
+        return df.string(from: date)
+    }
+    
+    func toDisplayableDate(type: DisplayableDateType) -> String? {
         if let date = self.toDate() {
-            return String.fromDate(date)
+            switch type {
+            case .dateAndHour:
+                return String.fromDateAndHour(date)
+            case .date:
+                return String.fromDate(date)
+            case .hour:
+                return String.fromHout(date)
+            }
         }
         return nil
     }

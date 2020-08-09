@@ -10,7 +10,7 @@ import UIKit
 import Moya
 
 protocol PresenterCheckAvailabilityView: PresenterParentView {
-    func didSetData(name: String?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability)
+    func didSetData(name: String?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability, totalServicesTime: String)
 }
 
 class PresenterCheckAvailability {
@@ -64,6 +64,14 @@ class PresenterCheckAvailability {
     }
     
     private func notifyView() {
-        view?.didSetData(name: name, modelCheckTurnsAvailability: modelCheckTurnsAvailability)
+        let minutesToHoursMinutes = ServiceMinutesToHoursMinutes.minutesToHoursMinutes(bookedServices: bookedServices)
+        view?.didSetData(name: name, modelCheckTurnsAvailability: modelCheckTurnsAvailability,
+                         totalServicesTime: "\(minutesToHoursMinutes.hours)h \(minutesToHoursMinutes.leftMinutes)m")
+    }
+    
+    // MARK: - Public Interface
+    func bookNowButtonTapped(bookedSlot: EmptySlot?) {
+        bookedSlot?.services = bookedServices
+        //TODO: Call API
     }
 }

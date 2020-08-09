@@ -43,3 +43,7 @@
 "check_availability_key" = "Check Availability";
 "call_now_key" = "Call now";
 "open_in_key" = "Open in";
+"book_now_key" = "Book now!";
+
+/*  App Translations.xlsx - iOS - Static resources  */
+"total_services_time_key" = "Total services time is: %@";

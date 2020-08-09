@@ -14,15 +14,16 @@ class CheckAvailabilityViewController: ParentViewController {
     var presenterCheckAvailability: PresenterCheckAvailability!
     @UseAutoLayout var checkAvailabilityView = CheckAvailabilityView()
     
-    var model: ModelBusiness?
-    var services: [Service]?
-    var turns: [Turn]?
+    var modelCheckTurnsAvailability: ModelCheckTurnsAvailability?
+    var modelAvailableTurnDay: [ModelAvailableTurnDay] = []
+    var emptySlots: [EmptySlot] = []
     
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         setCheckAvailabilityViewConstraints()
-        setTableView()
+        setCollectionsView()
+        addTarget()
     }
     
     // MARK: - Private methods
@@ -36,20 +37,48 @@ class CheckAvailabilityViewController: ParentViewController {
         ])
     }
     
-    private func setTableView() {
-        checkAvailabilityView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
-                                        forCellReuseIdentifier: kServiceCellID)
-        checkAvailabilityView.tableView.register(UINib(nibName: kBusinessAppointmentTableViewCellNib, bundle: nil),
-                                        forCellReuseIdentifier: kBusinessAppoitmentCellID)
-        checkAvailabilityView.tableView.register(UINib(nibName: kInformationTableViewCellNib, bundle: nil),
-                                        forCellReuseIdentifier: kinformationCellID)
+    private func setCollectionsView() {
+        checkAvailabilityView.daysCollectionView?.dataSource = self
+        checkAvailabilityView.daysCollectionView?.delegate = self
+        checkAvailabilityView.daysCollectionView?.register(UINib(nibName: kAvailableTurnDayCollectionViewCellNib, bundle: nil),
+                                                           forCellWithReuseIdentifier: kAvailableTurnDayCellID)
+        checkAvailabilityView.hoursCollectionView?.dataSource = self
+        checkAvailabilityView.hoursCollectionView?.delegate = self
+        checkAvailabilityView.hoursCollectionView?.register(UINib(nibName: kAvailableTurnHourCollectionViewCellCellNib, bundle: nil),
+                                                            forCellWithReuseIdentifier: kAvailableTurnHourCellID)
+    }
+    
+    private func addTarget() {
+        checkAvailabilityView.bookNowButton.addTarget(self, action: #selector(bookNowButtonTapped), for: .touchUpInside)
+    }
+    
+    // MARK: - UI interaction methods
+    @objc func bookNowButtonTapped() {
+        let bookedSlot = emptySlots.first(where: { $0.selected == true })
+        presenterCheckAvailability.bookNowButtonTapped(bookedSlot: bookedSlot)
     }
 }
 
+// MARK: - PresenterCheckAvailabilityView methods
 extension CheckAvailabilityViewController: PresenterCheckAvailabilityView {
-    func didSetData(name: String?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability) {
+    func didSetData(name: String?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability, totalServicesTime: String) {
+        self.modelCheckTurnsAvailability = modelCheckTurnsAvailability
+        if let availableTurns = modelCheckTurnsAvailability.availableTurns {
+            availableTurns.forEach({
+                self.modelAvailableTurnDay.append(ModelAvailableTurnDay(day: $0.dayOfService,
+                                                                        date: $0.dateOfService,
+                                                                        selected: false))
+            })
+            modelAvailableTurnDay[0].selected = true
+            if let emptySlots = availableTurns[0].emptySlots {
+                self.emptySlots = emptySlots
+            }
+        }
         DispatchQueue.main.async {
             self.navigationItem.title = name
+            self.checkAvailabilityView.setTotalServicesTimeLabel(to: totalServicesTime)
+            self.checkAvailabilityView.daysCollectionView?.reloadData()
+            self.checkAvailabilityView.hoursCollectionView?.reloadData()
         }
     }
     
@@ -63,5 +92,81 @@ extension CheckAvailabilityViewController: PresenterCheckAvailabilityView {
     
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
         showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
+    }
+}
+
+// MARK: - UICollectionViewDataSource methods
+extension CheckAvailabilityViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == checkAvailabilityView.daysCollectionView {
+            return modelAvailableTurnDay.count
+        } else if collectionView == checkAvailabilityView.hoursCollectionView {
+            return emptySlots.count
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == checkAvailabilityView.daysCollectionView {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kAvailableTurnDayCellID,
+                                                             for: indexPath) as? AvailableTurnDayCollectionViewCell {
+                cell.config(modelAvailableTurnDay: modelAvailableTurnDay[indexPath.row])
+                return cell
+            }
+        } else if collectionView == checkAvailabilityView.hoursCollectionView {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kAvailableTurnHourCellID,
+                                                             for: indexPath) as? AvailableTurnHourCollectionViewCell {
+                cell.config(emptySlot: emptySlots[indexPath.row])
+                return cell
+            }
+        }
+        return UICollectionViewCell()
+    }
+}
+
+// MARK: - UICollectionViewDelegate methods
+extension CheckAvailabilityViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == checkAvailabilityView.daysCollectionView {
+            modelAvailableTurnDay.filter({ $0.selected == true }).first?.selected = false
+            modelAvailableTurnDay[indexPath.row].selected = true
+            emptySlots.forEach({ $0.selected = false })
+            if let availableTurns = modelCheckTurnsAvailability?.availableTurns,
+                let emptySlots = availableTurns[indexPath.row].emptySlots {
+                self.emptySlots = emptySlots
+            }
+            checkAvailabilityView.setBookNowButton(to: false)
+            checkAvailabilityView.daysCollectionView?.reloadData()
+            checkAvailabilityView.hoursCollectionView?.reloadData()
+        } else if collectionView == checkAvailabilityView.hoursCollectionView {
+            emptySlots.filter({ $0.selected == true }).first?.selected = false
+            emptySlots[indexPath.row].selected = true
+            checkAvailabilityView.setBookNowButton(to: true)
+            checkAvailabilityView.hoursCollectionView?.reloadData()
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout methods
+extension CheckAvailabilityViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == checkAvailabilityView.daysCollectionView {
+            return  CGSize(width: 120, height: 100)
+        } else if collectionView == checkAvailabilityView.hoursCollectionView {
+            return CGSize(width: (view.frame.width - 16) / 3, height: 50)
+        }
+        return CGSize()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

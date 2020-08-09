@@ -104,7 +104,7 @@ class AppointmentTableViewCell: UITableViewCell {
                                           fontSize: 30,
                                           textColor: .white,
                                           textAlignment: .center)
-        dateLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toDisplayableDate() ?? "",
+        dateLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toDisplayableDate(type: .dateAndHour) ?? "",
                                          fontSize: 20,
                                          textColor: .black,
                                          textAlignment: .left)
