@@ -10,48 +10,22 @@ import Foundation
 
 struct ModelCheckTurnsAvailabilityTask: Codable {
     var services: [Service]?
-    
-    enum CodingKeys: String, CodingKey {
-        case services
-    }
 }
 
 struct ModelCheckTurnsAvailability: Codable {
-    var availableTurns: [AvailableTurn]?
+    let availableDates: [String: [String]]?
     
-    enum CodingKeys: String, CodingKey {
-        case availableTurns = "AvailableTurns"
+    init(availableDates: [String: [String]]? = nil) {
+        self.availableDates = availableDates
     }
 }
 
-struct AvailableTurn: Codable {
-    var services: [Service]?
-    var dateOfService: String?
-    var dayOfService: String?
-    var emptySlots: [EmptySlot]?
-    
-    enum CodingKeys: String, CodingKey {
-        case services = "Services"
-        case dateOfService = "DateOfService"
-        case dayOfService = "DayOfService"
-        case emptySlots = "EmptySlots"
-    }
-}
-
-class EmptySlot: Codable {
-    var turnId: String?
-    var dateTimeUTC: String?
-    var services: [Service]?
+class EmptySlot {
+    var slot: String?
     var selected: Bool = false
     
-    enum CodingKeys: String, CodingKey {
-        case turnId, dateTimeUTC, services
-    }
-    
-    init(turnId: String? = nil, dateTimeUTC: String? = nil, services: [Service]? = nil, selected: Bool = false) {
-        self.turnId = turnId
-        self.dateTimeUTC = dateTimeUTC
-        self.services = services
+    init(slot: String? = nil, selected: Bool = false) {
+        self.slot = slot
         self.selected = selected
     }
 }
@@ -66,4 +40,9 @@ class ModelAvailableTurnDay {
         self.date = date
         self.selected = selected
     }
+}
+
+struct ModelBookTask: Codable {
+    var servicesToBook: [Service]?
+    var dateTime: String?
 }

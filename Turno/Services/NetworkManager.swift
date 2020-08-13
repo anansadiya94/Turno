@@ -19,7 +19,8 @@ protocol Networkable {
     func addToFavorites(modelTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
     func removeFromFavorites(modelTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
     func cancelTurn(modelTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void)
-    func checkTurnsAvailability(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void)
+    func getAvailableTimes(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void)
+    func book(modelTask: ModelBookTask, completion: @escaping (Bool?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -162,8 +163,8 @@ class NetworkManager: Networkable {
         }
     }
     
-    func checkTurnsAvailability(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void) {
-        provider.request(.checkTurnsAvailability(modelCheckTurnsAvailabilityTask: modelTask)) { result in
+    func getAvailableTimes(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void) {
+        provider.request(.getAvailableTimes(modelCheckTurnsAvailabilityTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -179,6 +180,22 @@ class NetworkManager: Networkable {
                     }
                 } catch let error {
                     completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func book(modelTask: ModelBookTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.book(modelBookTask: modelTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                switch value.statusCode {
+                case 200:
+                    completion(true, nil)
+                default:
+                    break
                 }
             }
         }

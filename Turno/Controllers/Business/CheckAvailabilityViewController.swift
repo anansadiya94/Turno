@@ -52,6 +52,12 @@ class CheckAvailabilityViewController: ParentViewController {
         checkAvailabilityView.bookNowButton.addTarget(self, action: #selector(bookNowButtonTapped), for: .touchUpInside)
     }
     
+    private func mapEmptySlots(from availableDates: [String: [String]], forKey key: String) {
+        if let emptySlots = availableDates[key] {
+            emptySlots.forEach({ self.emptySlots.append(EmptySlot(slot: $0, selected: false)) })
+        }
+    }
+    
     // MARK: - UI interaction methods
     @objc func bookNowButtonTapped() {
         let bookedSlot = emptySlots.first(where: { $0.selected == true })
@@ -63,15 +69,15 @@ class CheckAvailabilityViewController: ParentViewController {
 extension CheckAvailabilityViewController: PresenterCheckAvailabilityView {
     func didSetData(name: String?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability, totalServicesTime: String) {
         self.modelCheckTurnsAvailability = modelCheckTurnsAvailability
-        if let availableTurns = modelCheckTurnsAvailability.availableTurns {
-            availableTurns.forEach({
-                self.modelAvailableTurnDay.append(ModelAvailableTurnDay(day: $0.dayOfService,
-                                                                        date: $0.dateOfService,
+        if let availableDates = modelCheckTurnsAvailability.availableDates {
+            availableDates.forEach({
+                self.modelAvailableTurnDay.append(ModelAvailableTurnDay(day: "TODO",
+                                                                        date: $0.key,
                                                                         selected: false))
             })
             modelAvailableTurnDay[0].selected = true
-            if let emptySlots = availableTurns[0].emptySlots {
-                self.emptySlots = emptySlots
+            if let firstKey = modelAvailableTurnDay[0].date {
+                mapEmptySlots(from: availableDates, forKey: firstKey)
             }
         }
         DispatchQueue.main.async {
@@ -131,9 +137,9 @@ extension CheckAvailabilityViewController: UICollectionViewDelegate {
             modelAvailableTurnDay.filter({ $0.selected == true }).first?.selected = false
             modelAvailableTurnDay[indexPath.row].selected = true
             emptySlots.forEach({ $0.selected = false })
-            if let availableTurns = modelCheckTurnsAvailability?.availableTurns,
-                let emptySlots = availableTurns[indexPath.row].emptySlots {
-                self.emptySlots = emptySlots
+            if let availableDates = modelCheckTurnsAvailability?.availableDates,
+                let key = modelAvailableTurnDay[indexPath.row].date {
+                mapEmptySlots(from: availableDates, forKey: key)
             }
             checkAvailabilityView.setBookNowButton(to: false)
             checkAvailabilityView.daysCollectionView?.reloadData()

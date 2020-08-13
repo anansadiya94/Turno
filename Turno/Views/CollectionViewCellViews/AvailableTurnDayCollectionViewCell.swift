@@ -39,7 +39,7 @@ class AvailableTurnDayCollectionViewCell: UICollectionViewCell {
             dayLabel.labelTheme = RegularTheme(label: modelAvailableTurnDay.day ?? "", fontSize: 17,
                                                textColor: selected ? .white : .primary,
                                                textAlignment: .center)
-            dateLabel.labelTheme = RegularTheme(label: modelAvailableTurnDay.date ?? "", fontSize: 17,
+            dateLabel.labelTheme = RegularTheme(label: modelAvailableTurnDay.date?.toDisplayableDate(type: .date) ?? "", fontSize: 17,
                                                 textColor: selected ? .white : .primary,
                                                 textAlignment: .center)
         }

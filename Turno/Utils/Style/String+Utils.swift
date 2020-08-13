@@ -37,7 +37,7 @@ extension String {
         return df.string(from: date)
     }
     
-    static func fromHout(_ date: Date) -> String {
+    static func fromHour(_ date: Date) -> String {
         let df = DateFormatter()
         df.dateFormat = "HH:mm"
         return df.string(from: date)
@@ -51,9 +51,19 @@ extension String {
             case .date:
                 return String.fromDate(date)
             case .hour:
-                return String.fromHout(date)
+                return String.fromHour(date)
             }
         }
         return nil
+    }
+    
+    func fromDisplayableHourToFormatted() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        guard let date = dateFormatter.date(from: self) else {
+            return self
+        }
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return dateFormatter.string(from: date)
     }
 }

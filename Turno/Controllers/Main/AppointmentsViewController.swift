@@ -78,8 +78,8 @@ class AppointmentsViewController: GenericTableView<AppointmentsListDescriptive> 
     
     @objc func callNowTappedAction(_ notification: NSNotification) {
         if let dict = notification.userInfo as NSDictionary? {
-            if let identifier = dict["identifier"] as? String {
-                presenterAppointments.callNowTapped(turnId: identifier)
+            if let phone = dict["phone"] as? String {
+                presenterAppointments.callNowTapped(phone: phone)
             }
         }
     }
@@ -103,5 +103,9 @@ extension AppointmentsViewController: PresenterAppointmentsView {
     
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
         showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
+    }
+    
+    func call(_ number: String) {
+        self.callNumber(number)
     }
 }

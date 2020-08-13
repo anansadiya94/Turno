@@ -21,7 +21,8 @@ enum APIRouter {
     case addToFavorites(modelFavoritesTask: ModelFavoritesTask)
     case removeToFavorites(modelFavoritesTask: ModelFavoritesTask)
     case cancelTurn(modelCancelTurnTask: ModelCancelTurnTask)
-    case checkTurnsAvailability(modelCheckTurnsAvailabilityTask: ModelCheckTurnsAvailabilityTask)
+    case getAvailableTimes(modelCheckTurnsAvailabilityTask: ModelCheckTurnsAvailabilityTask)
+    case book(modelBookTask: ModelBookTask)
 }
 
 extension APIRouter: TargetType {
@@ -39,13 +40,14 @@ extension APIRouter: TargetType {
         case .addToFavorites: return kAddToFavorites
         case .removeToFavorites: return kRemoveFromFavorites
         case .cancelTurn: return kCancelTurn
-        case .checkTurnsAvailability: return kCheckTurnsAvailability
+        case .getAvailableTimes: return kGetAvailableTimes
+        case .book: return kBook
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn, .checkTurnsAvailability:
+        case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn, .getAvailableTimes, .book:
             return .post
         }
     }
@@ -64,8 +66,10 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelFavoritesTask)
         case .cancelTurn(let modelCancelTurnTask):
             return .requestJSONEncodable(modelCancelTurnTask)
-        case .checkTurnsAvailability(let modelCheckTurnsAvailabilityTask):
+        case .getAvailableTimes(let modelCheckTurnsAvailabilityTask):
             return .requestJSONEncodable(modelCheckTurnsAvailabilityTask)
+        case .book(let modelBookTask):
+            return .requestJSONEncodable(modelBookTask)
         }
     }
     
@@ -78,7 +82,8 @@ extension APIRouter: TargetType {
         headers = ["Content-type": "application/json; charset=UTF-8"]
         
         switch self {
-        case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn, .checkTurnsAvailability:
+        case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn, .getAvailableTimes,
+             .book:
             headers["Authorization"] = Preferences.getAuthorization() 
         default:
             break

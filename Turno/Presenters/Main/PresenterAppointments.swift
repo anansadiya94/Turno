@@ -11,6 +11,7 @@ import Moya
 
 protocol PresenterAppointmentsView: PresenterParentView {
     func didSetData(model: AppointmentsListDescriptive)
+    func call(_ number: String)
 }
 
 class PresenterAppointments {
@@ -30,7 +31,6 @@ class PresenterAppointments {
     
     // MARK: - Private methods
     private func notifyView() {
-        //GET TURNS
         var newListModel: [ModelAppointment] = []
         for model in modelList {
             if let turns = model.turns {
@@ -38,7 +38,8 @@ class PresenterAppointments {
                                                                     name: model.name,
                                                                     image: model.image,
                                                                     address: model.address,
-                                                                    turn: $0))})
+                                                                    turn: $0,
+                                                                    phone: model.phone))})
             }
         }
         
@@ -99,7 +100,7 @@ class PresenterAppointments {
         }
     }
     
-    func callNowTapped(turnId: String) {
-        //TODO
+    func callNowTapped(phone: String) {
+        self.view?.call(phone)
     }
 }

@@ -34,7 +34,7 @@ class AvailableTurnHourCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Interface
     func config(emptySlot: EmptySlot) {
         self.baseView.backgroundColor = emptySlot.selected ? .primary : .white
-        hourLabel.labelTheme = RegularTheme(label: emptySlot.dateTimeUTC?.toDisplayableDate(type: .hour) ?? "",
+        hourLabel.labelTheme = RegularTheme(label: emptySlot.slot?.toDisplayableDate(type: .hour) ?? "",
                                             fontSize: 17, textColor: emptySlot.selected ? .white : .primary, textAlignment: .center)
     }
 }

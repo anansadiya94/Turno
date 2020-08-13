@@ -38,7 +38,7 @@ class PresenterCheckAvailability {
     func fetchData() {
         self.view?.startWaitingView()
         let modelCheckTurnsAvailabilityTask = ModelCheckTurnsAvailabilityTask(services: [])
-        networkManager.checkTurnsAvailability(modelTask: modelCheckTurnsAvailabilityTask) { (modelCheckTurnsAvailability, error) in
+        networkManager.getAvailableTimes(modelTask: modelCheckTurnsAvailabilityTask) { (modelCheckTurnsAvailability, error) in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
@@ -71,7 +71,28 @@ class PresenterCheckAvailability {
     
     // MARK: - Public Interface
     func bookNowButtonTapped(bookedSlot: EmptySlot?) {
-        bookedSlot?.services = bookedServices
-        //TODO: Call API
+        self.view?.startWaitingView()
+        let modelBookTask = ModelBookTask(servicesToBook: bookedServices,
+                                          dateTime: bookedSlot?.slot?.fromDisplayableHourToFormatted())
+        networkManager.book(modelTask: modelBookTask) { _, error in
+            if error as? MoyaError != nil {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            if let error = error as? AppError {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: error.title,
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            self.view?.stopWaitingView()
+            //TODO: Booked successfully. What to do next?
+        }
     }
 }
