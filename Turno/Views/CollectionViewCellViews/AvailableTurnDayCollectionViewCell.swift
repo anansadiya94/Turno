@@ -36,7 +36,7 @@ class AvailableTurnDayCollectionViewCell: UICollectionViewCell {
     func config(modelAvailableTurnDay: ModelAvailableTurnDay) {
         if let selected = modelAvailableTurnDay.selected {
             self.baseView.backgroundColor = selected ? .primary : .white
-            dayLabel.labelTheme = RegularTheme(label: modelAvailableTurnDay.day ?? "", fontSize: 17,
+            dayLabel.labelTheme = RegularTheme(label: modelAvailableTurnDay.date?.toDisplayDay() ?? "", fontSize: 17,
                                                textColor: selected ? .white : .primary,
                                                textAlignment: .center)
             dateLabel.labelTheme = RegularTheme(label: modelAvailableTurnDay.date?.toDisplayableDate(type: .date) ?? "", fontSize: 17,

@@ -66,4 +66,13 @@ extension String {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return dateFormatter.string(from: date)
     }
+    
+    func toDisplayDay() -> String? {
+        if let date = self.toDate() {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE"
+            return dateFormatter.string(from: date)
+        }
+        return nil
+    }
 }

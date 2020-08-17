@@ -31,12 +31,10 @@ class EmptySlot {
 }
 
 class ModelAvailableTurnDay {
-    let day: String?
     let date: String?
     var selected: Bool?
     
-    init(day: String? = nil, date: String? = nil, selected: Bool? = nil) {
-        self.day = day
+    init(date: String? = nil, selected: Bool? = nil) {
         self.date = date
         self.selected = selected
     }

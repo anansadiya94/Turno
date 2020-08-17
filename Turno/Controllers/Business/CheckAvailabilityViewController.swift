@@ -53,6 +53,7 @@ class CheckAvailabilityViewController: ParentViewController {
     }
     
     private func mapEmptySlots(from availableDates: [String: [String]], forKey key: String) {
+        emptySlots = []
         if let emptySlots = availableDates[key] {
             emptySlots.forEach({ self.emptySlots.append(EmptySlot(slot: $0, selected: false)) })
         }
@@ -71,8 +72,7 @@ extension CheckAvailabilityViewController: PresenterCheckAvailabilityView {
         self.modelCheckTurnsAvailability = modelCheckTurnsAvailability
         if let availableDates = modelCheckTurnsAvailability.availableDates {
             availableDates.forEach({
-                self.modelAvailableTurnDay.append(ModelAvailableTurnDay(day: "TODO",
-                                                                        date: $0.key,
+                self.modelAvailableTurnDay.append(ModelAvailableTurnDay(date: $0.key,
                                                                         selected: false))
             })
             modelAvailableTurnDay[0].selected = true
