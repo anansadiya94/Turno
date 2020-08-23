@@ -48,4 +48,4 @@
 "confirm_message_key" = "אנא להיות שם 5 דקות לפני התור שלך. הודע או לבטל במקרה שאתה לא יכול לעשות את זה בזמן.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
-"total_services_time_key" = "זמן שירותים סה"כ הוא:% @";
+"total_services_time_key" = "זמן שירותים סה'כ הוא:% @";
