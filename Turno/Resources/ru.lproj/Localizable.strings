@@ -44,6 +44,8 @@
 "call_now_key" = "Позвони сейчас";
 "open_in_key" = "Открыть в";
 "book_now_key" = "Забронируйте сейчас!";
+"confirm_key" = "Подтверждение";
+"confirm_message_key" = "Пожалуйста, там 5 минут до своей очереди. Уведомлять или отменить в случае, если вы не можете сделать это вовремя.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Общее время услуги составляет:% @";

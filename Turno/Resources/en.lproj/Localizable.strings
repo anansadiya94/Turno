@@ -44,6 +44,8 @@
 "call_now_key" = "Call now";
 "open_in_key" = "Open in";
 "book_now_key" = "Book now!";
+"confirm_key" = "Confirm";
+"confirm_message_key" = "Please be there 5 mins before your turn. Notify or cancel in case you can’t make it in time.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Total services time is: %@";

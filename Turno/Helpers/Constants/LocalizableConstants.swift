@@ -9,7 +9,7 @@
 import Foundation
 
 enum LocalizedConstants: String {
-
+    
     case    first_onboarding_title_key
     case    first_onboarding_subtitle_key
     case    second_onboarding_title_key
@@ -54,6 +54,8 @@ enum LocalizedConstants: String {
     case    call_now_key
     case    open_in_key
     case    book_now_key
+    case    confirm_key
+    case    confirm_message_key
     
     case    total_services_time_key
 }

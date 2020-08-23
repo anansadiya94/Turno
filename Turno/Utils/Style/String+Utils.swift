@@ -75,4 +75,14 @@ extension String {
         }
         return nil
     }
+    
+    func calculateEndDate(adding duration: Int) -> String? {
+        if let startDate = self.toDate() {
+            let endDate = startDate.addingTimeInterval(TimeInterval(duration * 60))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            return dateFormatter.string(from: endDate)
+        }
+        return nil
+    }
 }
