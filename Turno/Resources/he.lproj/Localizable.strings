@@ -43,3 +43,8 @@
 "check_availability_key" = "בדוק זמינות";
 "call_now_key" = "התקשר עכשיו";
 "open_in_key" = "להיפתח ב";
+"book_now_key" = "להזמין עכשיו!";
+
+/*  App Translations.xlsx - iOS - Static resources  */
+"total_services_time_key" = "זמן שירותים סהכ הוא:% @";
+

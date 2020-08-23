@@ -78,7 +78,7 @@ class PresenterInstallation {
         self.view?.startWaitingView()
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
             let modelSignUpTask = ModelSignUpTask(phoneNumber: phoneNumber, fullName: fullName)
-            networkManager.signUp(modelSignUpTask: modelSignUpTask) { (modelSignUp, error) in
+            networkManager.signUp(modelTask: modelSignUpTask) { (modelSignUp, error) in
                 if error as? MoyaError != nil {
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,

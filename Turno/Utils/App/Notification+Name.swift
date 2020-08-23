@@ -18,8 +18,8 @@ struct GenericEntity {
 }
 
 struct Appointments {
-    static let cancelTapped = Notification.Name(kNotificaitonGenericEntityCellIsFavoriteTapped)
-    static let callNowTapped = Notification.Name(kNotificaitonGenericEntityCellIsFavoriteTapped)
+    static let cancelTapped = Notification.Name(kNotificaitonCancelTapped)
+    static let callNowTapped = Notification.Name(kNotificaitonCallNowTapped)
 }
 
 struct Business {

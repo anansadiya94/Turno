@@ -1,57 +1,44 @@
 //
-//  PresenterAppointments.swift
+//  PresenterCheckAvailability.swift
 //  Turno
 //
-//  Created by Anan Sadiya on 07/07/2020.
+//  Created by Anan Sadiya on 06/08/2020.
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
 import UIKit
 import Moya
 
-protocol PresenterAppointmentsView: PresenterParentView {
-    func didSetData(model: AppointmentsListDescriptive)
-    func call(_ number: String)
+protocol PresenterCheckAvailabilityView: PresenterParentView {
+    func didSetData(name: String?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability, totalServicesTime: String)
 }
 
-class PresenterAppointments {
+class PresenterCheckAvailability {
     
     // MARK: - Properties
-    private weak var view: PresenterAppointmentsView?
+    private weak var view: PresenterCheckAvailabilityView?
     var delegate: SelectButtonEntity!
-    var modelList = [ModelBusiness]()
+    var identifier: String?
+    var name: String?
+    var bookedServices: [Service]?
     let networkManager = NetworkManager()
+    var modelCheckTurnsAvailability = ModelCheckTurnsAvailability()
     
     // MARK: - init Methods
-    init(view: PresenterAppointmentsView, delegate: SelectButtonEntity) {
+    init(view: PresenterCheckAvailabilityView, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?) {
         self.view = view
-        self.fetchData()
         self.delegate = delegate
+        self.identifier = identifier
+        self.name = name
+        self.bookedServices = bookedServices
+        self.fetchData()
     }
     
     // MARK: - Private methods
-    private func notifyView() {
-        var newListModel: [ModelAppointment] = []
-        for model in modelList {
-            if let turns = model.turns {
-                turns.forEach({newListModel.append(ModelAppointment(identifier: model.identifier,
-                                                                    name: model.name,
-                                                                    image: model.image,
-                                                                    address: model.address,
-                                                                    turn: $0,
-                                                                    phone: model.phone))})
-            }
-        }
-        
-        let appointmentsListDescriptive = AppointmentsListDescriptive(modelList: newListModel)
-        self.view?.didSetData(model: appointmentsListDescriptive)
-    }
-    
-    // MARK: - Public Interface
     func fetchData() {
         self.view?.startWaitingView()
-        let modelBusinessTask = ModelBusinessTask(query: "")
-        networkManager.getBusinesses(modelTask: modelBusinessTask) { (modelList, error) in
+        let modelCheckTurnsAvailabilityTask = ModelCheckTurnsAvailabilityTask(services: [])
+        networkManager.getAvailableTimes(modelTask: modelCheckTurnsAvailabilityTask) { (modelCheckTurnsAvailability, error) in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
@@ -68,18 +55,26 @@ class PresenterAppointments {
                                          completion: nil)
                 return
             }
-            if let modelList = modelList {
+            if let modelCheckTurnsAvailability = modelCheckTurnsAvailability {
                 self.view?.stopWaitingView()
-                self.modelList = modelList
+                self.modelCheckTurnsAvailability = modelCheckTurnsAvailability
                 self.notifyView()
             }
         }
     }
     
-    func cancelTapped(turnId: String) {
+    private func notifyView() {
+        let minutesToHoursMinutes = ServiceMinutesToHoursMinutes.minutesToHoursMinutes(bookedServices: bookedServices)
+        view?.didSetData(name: name, modelCheckTurnsAvailability: modelCheckTurnsAvailability,
+                         totalServicesTime: "\(minutesToHoursMinutes.hours)h \(minutesToHoursMinutes.leftMinutes)m")
+    }
+    
+    // MARK: - Public Interface
+    func bookNowButtonTapped(bookedSlot: EmptySlot?) {
         self.view?.startWaitingView()
-        let modelCancelTurnTask: ModelCancelTurnTask = ModelCancelTurnTask(turnId: turnId)
-        networkManager.cancelTurn(modelTask: modelCancelTurnTask) { _, error in
+        let modelBookTask = ModelBookTask(servicesToBook: bookedServices,
+                                          dateTime: bookedSlot?.slot?.fromDisplayableHourToFormatted())
+        networkManager.book(modelTask: modelBookTask) { _, error in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
@@ -97,10 +92,7 @@ class PresenterAppointments {
                 return
             }
             self.view?.stopWaitingView()
+            //TODO: Booked successfully. What to do next?
         }
-    }
-    
-    func callNowTapped(phone: String) {
-        self.view?.call(phone)
     }
 }

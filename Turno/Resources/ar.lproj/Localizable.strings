@@ -43,3 +43,7 @@
 "check_availability_key" = "التحقق من الصلاحية";
 "call_now_key" = "اتصل الان";
 "open_in_key" = "في فتح";
+"book_now_key" = "احجز الآن!";
+
+/*  App Translations.xlsx - iOS - Static resources  */
+"total_services_time_key" = "الساعة مجموع الخدمات هو:٪ @";

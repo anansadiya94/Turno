@@ -68,7 +68,7 @@ class PresenterFavorites {
             let isFavorite = model.isFavorite {
             let modelFavoritesTask = ModelFavoritesTask(businessId: identifier)
             if isFavorite {
-                networkManager.removeFromFavorites(modelFavoritesTask: modelFavoritesTask) { _, error in
+                networkManager.removeFromFavorites(modelTask: modelFavoritesTask) { _, error in
                     if error as? MoyaError != nil {
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,

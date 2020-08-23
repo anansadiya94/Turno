@@ -21,6 +21,7 @@
 		9E23F434248CED4E003D031F /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F433248CED4E003D031F /* OTPTextField.swift */; };
 		9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F435248CED7D003D031F /* OTPStackView.swift */; };
 		9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */; };
+		9E3DFE1124E08D3700873454 /* ServiceMinutesToHoursMinutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3DFE1024E08D3700873454 /* ServiceMinutesToHoursMinutes.swift */; };
 		9E418CF724A8FAF900232082 /* UIView+AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E418CF624A8FAF900232082 /* UIView+AddShadow.swift */; };
 		9E4CACE02494CF9400AA72E0 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */; };
 		9E4CACE22494D24500AA72E0 /* ModelSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */; };
@@ -49,6 +50,9 @@
 		9E5AD83424C89B6C00100526 /* UIViewController+SendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5AD83324C89B6C00100526 /* UIViewController+SendEmail.swift */; };
 		9E6184D124C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6184CF24C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift */; };
 		9E6184D224C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E6184D024C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib */; };
+		9E6958B524DC5868007129B2 /* PresenterCheckAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6958B424DC5868007129B2 /* PresenterCheckAvailability.swift */; };
+		9E6958B724DC5879007129B2 /* CheckAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6958B624DC5879007129B2 /* CheckAvailabilityViewController.swift */; };
+		9E6958B924DC5883007129B2 /* CheckAvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6958B824DC5883007129B2 /* CheckAvailabilityView.swift */; };
 		9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */; };
 		9E764472248E919600CDAF89 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E764471248E919600CDAF89 /* ParentViewController.swift */; };
 		9E764474248E91F800CDAF89 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E764473248E91F800CDAF89 /* LoadingViewController.swift */; };
@@ -138,6 +142,11 @@
 		9EE3EF4C24B4D6F70049EC0A /* AppointmentsListDescriptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3EF4B24B4D6F70049EC0A /* AppointmentsListDescriptive.swift */; };
 		9EE3EF4E24B4D7A90049EC0A /* PresenterAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3EF4D24B4D7A90049EC0A /* PresenterAppointments.swift */; };
 		9EED2F8224A3D35100598586 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED2F8124A3D35100598586 /* UIView+RoundCorners.swift */; };
+		9EF00ADD24E0366A006636DF /* ModelCheckTurnsAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF00ADC24E0366A006636DF /* ModelCheckTurnsAvailability.swift */; };
+		9EF00AE024E03FFF006636DF /* AvailableTurnDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF00ADE24E03FFF006636DF /* AvailableTurnDayCollectionViewCell.swift */; };
+		9EF00AE124E03FFF006636DF /* AvailableTurnDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF00ADF24E03FFF006636DF /* AvailableTurnDayCollectionViewCell.xib */; };
+		9EF00AE424E0400D006636DF /* AvailableTurnHourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF00AE224E0400D006636DF /* AvailableTurnHourCollectionViewCell.swift */; };
+		9EF00AE524E0400D006636DF /* AvailableTurnHourCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF00AE324E0400D006636DF /* AvailableTurnHourCollectionViewCell.xib */; };
 		B4AD2AA673D0E8FDDD1649AA /* Pods_Turno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60536D8BBF639461D5CB90FC /* Pods_Turno.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +167,7 @@
 		9E23F433248CED4E003D031F /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		9E23F435248CED7D003D031F /* OTPStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift"; sourceTree = "<group>"; };
+		9E3DFE1024E08D3700873454 /* ServiceMinutesToHoursMinutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMinutesToHoursMinutes.swift; sourceTree = "<group>"; };
 		9E418CF624A8FAF900232082 /* UIView+AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddShadow.swift"; sourceTree = "<group>"; };
 		9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSignUp.swift; sourceTree = "<group>"; };
@@ -186,6 +196,9 @@
 		9E5AD83324C89B6C00100526 /* UIViewController+SendEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SendEmail.swift"; sourceTree = "<group>"; };
 		9E6184CF24C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessAppointmentTableViewCell.swift; sourceTree = "<group>"; };
 		9E6184D024C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessAppointmentTableViewCell.xib; sourceTree = "<group>"; };
+		9E6958B424DC5868007129B2 /* PresenterCheckAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterCheckAvailability.swift; sourceTree = "<group>"; };
+		9E6958B624DC5879007129B2 /* CheckAvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityViewController.swift; sourceTree = "<group>"; };
+		9E6958B824DC5883007129B2 /* CheckAvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityView.swift; sourceTree = "<group>"; };
 		9E6D16BA248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCustomButtonWithMargin.swift; sourceTree = "<group>"; };
 		9E764471248E919600CDAF89 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		9E764473248E91F800CDAF89 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +294,11 @@
 		9EE3EF4B24B4D6F70049EC0A /* AppointmentsListDescriptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsListDescriptive.swift; sourceTree = "<group>"; };
 		9EE3EF4D24B4D7A90049EC0A /* PresenterAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterAppointments.swift; sourceTree = "<group>"; };
 		9EED2F8124A3D35100598586 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
+		9EF00ADC24E0366A006636DF /* ModelCheckTurnsAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCheckTurnsAvailability.swift; sourceTree = "<group>"; };
+		9EF00ADE24E03FFF006636DF /* AvailableTurnDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableTurnDayCollectionViewCell.swift; sourceTree = "<group>"; };
+		9EF00ADF24E03FFF006636DF /* AvailableTurnDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvailableTurnDayCollectionViewCell.xib; sourceTree = "<group>"; };
+		9EF00AE224E0400D006636DF /* AvailableTurnHourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableTurnHourCollectionViewCell.swift; sourceTree = "<group>"; };
+		9EF00AE324E0400D006636DF /* AvailableTurnHourCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvailableTurnHourCollectionViewCell.xib; sourceTree = "<group>"; };
 		C163364AA1CFF3575881BBA7 /* Pods-Turno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.debug.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -351,6 +369,7 @@
 				9E4CACE12494D24500AA72E0 /* ModelSignUp.swift */,
 				9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */,
 				9EB43D7624A3A77300B93C34 /* ModelBusiness.swift */,
+				9EF00ADC24E0366A006636DF /* ModelCheckTurnsAvailability.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -359,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				9E4DE1AA24C3357800EC1FF2 /* BusinessViewController.swift */,
+				9E6958B624DC5879007129B2 /* CheckAvailabilityViewController.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -367,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				9E4DE1B024C33BB800EC1FF2 /* BusinessView.swift */,
+				9E6958B824DC5883007129B2 /* CheckAvailabilityView.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -375,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				9E4DE1AC24C335EB00EC1FF2 /* PresenterBusiness.swift */,
+				9E6958B424DC5868007129B2 /* PresenterCheckAvailability.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -451,6 +473,7 @@
 				9E9B87F2248D3702009B1448 /* ServiceViewController.swift */,
 				9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */,
 				9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */,
+				9E3DFE1024E08D3700873454 /* ServiceMinutesToHoursMinutes.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -601,6 +624,8 @@
 			isa = PBXGroup;
 			children = (
 				9EA657F12488173100F7952A /* OnboardingCollectionViewCell.swift */,
+				9EF00ADE24E03FFF006636DF /* AvailableTurnDayCollectionViewCell.swift */,
+				9EF00AE224E0400D006636DF /* AvailableTurnHourCollectionViewCell.swift */,
 			);
 			path = CollectionViewCellViews;
 			sourceTree = "<group>";
@@ -683,6 +708,8 @@
 			isa = PBXGroup;
 			children = (
 				9EA6582E24881C6300F7952A /* OnboardingCollectionViewCell.xib */,
+				9EF00ADF24E03FFF006636DF /* AvailableTurnDayCollectionViewCell.xib */,
+				9EF00AE324E0400D006636DF /* AvailableTurnHourCollectionViewCell.xib */,
 			);
 			path = CollectionViewNibs;
 			sourceTree = "<group>";
@@ -916,9 +943,11 @@
 				9EA65800248817E400F7952A /* OpenSans-Bold.ttf in Resources */,
 				9E764479248E93EA00CDAF89 /* loading.json in Resources */,
 				9EA658092488184A00F7952A /* Cairo-Bold.ttf in Resources */,
+				9EF00AE124E03FFF006636DF /* AvailableTurnDayCollectionViewCell.xib in Resources */,
 				9EA6580A2488184A00F7952A /* Cairo-Light.ttf in Resources */,
 				9E9B87E9248D35E9009B1448 /* Favorites.storyboard in Resources */,
 				9EA658152488185B00F7952A /* Assistant-Regular.ttf in Resources */,
+				9EF00AE524E0400D006636DF /* AvailableTurnHourCollectionViewCell.xib in Resources */,
 				9E6184D224C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib in Resources */,
 				9E9B87E7248D35E9009B1448 /* Main.storyboard in Resources */,
 				9E9B87E8248D35E9009B1448 /* Appointments.storyboard in Resources */,
@@ -997,6 +1026,7 @@
 				9E9B87F5248D374E009B1448 /* ViewControllersConstants.swift in Sources */,
 				9E5AD82D24C893B900100526 /* InformationTableViewCell.swift in Sources */,
 				9E4CACE22494D24500AA72E0 /* ModelSignUp.swift in Sources */,
+				9EF00ADD24E0366A006636DF /* ModelCheckTurnsAvailability.swift in Sources */,
 				9E6184D124C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift in Sources */,
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,
@@ -1009,6 +1039,7 @@
 				9E55BD5D248ACF7A004F401B /* CustomTextField.swift in Sources */,
 				9EA657C52488105E00F7952A /* ServiceOnboarding.swift in Sources */,
 				9E55DBF824C4CD7C00361B24 /* ServiceTableViewCell.swift in Sources */,
+				9E6958B524DC5868007129B2 /* PresenterCheckAvailability.swift in Sources */,
 				9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */,
 				9E418CF724A8FAF900232082 /* UIView+AddShadow.swift in Sources */,
 				9EA657D92488157300F7952A /* AutoLayout.swift in Sources */,
@@ -1016,6 +1047,7 @@
 				9EA6581E248819EA00F7952A /* UICollectionView+OnBoardingViewController.swift in Sources */,
 				9E9B87F3248D3702009B1448 /* ServiceViewController.swift in Sources */,
 				9E0B75A7248986AF00B25313 /* WelcomeViewController.swift in Sources */,
+				9E6958B724DC5879007129B2 /* CheckAvailabilityViewController.swift in Sources */,
 				9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */,
 				9EED2F8224A3D35100598586 /* UIView+RoundCorners.swift in Sources */,
 				9EA658182488193A00F7952A /* RoundedCustomButton.swift in Sources */,
@@ -1024,6 +1056,7 @@
 				9E4CACE52494D8AC00AA72E0 /* API.swift in Sources */,
 				9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */,
 				9EA657F22488173100F7952A /* OnboardingCollectionViewCell.swift in Sources */,
+				9EF00AE024E03FFF006636DF /* AvailableTurnDayCollectionViewCell.swift in Sources */,
 				9E00041D2490012500E41A9A /* UIViewController+OpenUrl.swift in Sources */,
 				9EA657E82488167200F7952A /* NotificationCenterConstants.swift in Sources */,
 				9EA657E32488161C00F7952A /* PresenterOnboarding.swift in Sources */,
@@ -1035,6 +1068,7 @@
 				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
 				9EB43D6F24A3A38300B93C34 /* Descriptive.swift in Sources */,
 				9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */,
+				9E3DFE1124E08D3700873454 /* ServiceMinutesToHoursMinutes.swift in Sources */,
 				9E9880ED248BBABD00D78959 /* PresenterActivation.swift in Sources */,
 				9E4CACE92494EBE800AA72E0 /* ModelVerify.swift in Sources */,
 				9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */,
@@ -1061,6 +1095,7 @@
 				9E9B87EF248D3623009B1448 /* FavoritesViewController.swift in Sources */,
 				9E5AD83024C89A1500100526 /* UIViewController+MapOptions.swift in Sources */,
 				9E9880E7248BB9E500D78959 /* User.swift in Sources */,
+				9E6958B924DC5883007129B2 /* CheckAvailabilityView.swift in Sources */,
 				9E0B75A02489837E00B25313 /* Fonts.swift in Sources */,
 				9EB43D7A24A3A87400B93C34 /* GenericListDescriptive.swift in Sources */,
 				9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */,
@@ -1083,6 +1118,7 @@
 				9E764472248E919600CDAF89 /* ParentViewController.swift in Sources */,
 				9E5AD83424C89B6C00100526 /* UIViewController+SendEmail.swift in Sources */,
 				9EB43D7F24A3ABA000B93C34 /* GenericView.swift in Sources */,
+				9EF00AE424E0400D006636DF /* AvailableTurnHourCollectionViewCell.swift in Sources */,
 				9E4DE1B124C33BB800EC1FF2 /* BusinessView.swift in Sources */,
 				9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,

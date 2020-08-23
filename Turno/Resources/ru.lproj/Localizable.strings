@@ -43,3 +43,7 @@
 "check_availability_key" = "Проверить наличие свободных мест";
 "call_now_key" = "Позвони сейчас";
 "open_in_key" = "Открыть в";
+"book_now_key" = "Забронируйте сейчас!";
+
+/*  App Translations.xlsx - iOS - Static resources  */
+"total_services_time_key" = "Общее время услуги составляет:% @";

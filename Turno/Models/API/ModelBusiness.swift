@@ -110,6 +110,7 @@ struct ModelAppointment {
     var image: String?
     var address: String?
     var turn: Turn?
+    var phone: String?
 }
 
 struct ModelModifyService {

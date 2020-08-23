@@ -12,21 +12,23 @@ import Moya
 protocol Networkable {
     var provider: MoyaProvider<APIRouter> { get }
     
-    func signUp(modelSignUpTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void)
-    func verify(modelVerifyTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void)
-    func getBusinesses(modelBusinessTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void)
+    func signUp(modelTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void)
+    func verify(modelTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void)
+    func getBusinesses(modelTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void)
     func getFavorites(completion: @escaping ([ModelBusiness]?, Error?) -> Void)
-    func addToFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
-    func removeFromFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
-    func cancelTurn(modelCancelTurnTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void)
+    func addToFavorites(modelTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
+    func removeFromFavorites(modelTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
+    func cancelTurn(modelTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void)
+    func getAvailableTimes(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void)
+    func book(modelTask: ModelBookTask, completion: @escaping (Bool?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
     
     let provider = MoyaProvider<APIRouter>()
     
-    func signUp(modelSignUpTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void) {
-        provider.request(.signUp(modelSignUpTask: modelSignUpTask)) { result in
+    func signUp(modelTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void) {
+        provider.request(.signUp(modelSignUpTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -47,8 +49,8 @@ class NetworkManager: Networkable {
         }
     }
     
-    func verify(modelVerifyTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void) {
-        provider.request(.verify(modelVerifyTask: modelVerifyTask)) { result in
+    func verify(modelTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void) {
+        provider.request(.verify(modelVerifyTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -69,8 +71,8 @@ class NetworkManager: Networkable {
         }
     }
     
-    func getBusinesses(modelBusinessTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void) {
-        provider.request(.getBusinesses(modelBusinessTask: modelBusinessTask)) { result in
+    func getBusinesses(modelTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void) {
+        provider.request(.getBusinesses(modelBusinessTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -113,8 +115,8 @@ class NetworkManager: Networkable {
         }
     }
     
-    func addToFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void) {
-        provider.request(.addToFavorites(modelFavoritesTask: modelFavoritesTask)) { result in
+    func addToFavorites(modelTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.addToFavorites(modelFavoritesTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -129,8 +131,8 @@ class NetworkManager: Networkable {
         }
     }
     
-    func removeFromFavorites(modelFavoritesTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void) {
-        provider.request(.removeToFavorites(modelFavoritesTask: modelFavoritesTask)) { result in
+    func removeFromFavorites(modelTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.removeToFavorites(modelFavoritesTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -145,8 +147,46 @@ class NetworkManager: Networkable {
         }
     }
     
-    func cancelTurn(modelCancelTurnTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void) {
-        provider.request(.cancelTurn(modelCancelTurnTask: modelCancelTurnTask)) { result in
+    func cancelTurn(modelTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.cancelTurn(modelCancelTurnTask: modelTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                switch value.statusCode {
+                case 200:
+                    completion(true, nil)
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func getAvailableTimes(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void) {
+        provider.request(.getAvailableTimes(modelCheckTurnsAvailabilityTask: modelTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let modelList = try decoder.decode(ModelCheckTurnsAvailability.self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(modelList, nil)
+                    default:
+                        break
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func book(modelTask: ModelBookTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.book(modelBookTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)

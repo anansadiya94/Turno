@@ -27,6 +27,7 @@ class AppointmentTableViewCell: UITableViewCell {
     @IBOutlet weak var callNowButton: RoundedCustomButton!
     
     var identifier: String?
+    var phone: String?
     
     // MARK: - UICollectionViewCell
     override func awakeFromNib() {
@@ -89,8 +90,8 @@ class AppointmentTableViewCell: UITableViewCell {
     }
     
     @IBAction func callNowTapped(_ sender: Any) {
-        if let identifier = self.identifier {
-            let dict: [String: String] = ["identifier": identifier]
+        if let phone = self.phone {
+            let dict: [String: String] = ["phone": phone]
             NotificationCenter.default.post(name: Appointments.callNowTapped, object: nil,
                                             userInfo: dict)
         }
@@ -99,12 +100,13 @@ class AppointmentTableViewCell: UITableViewCell {
     // MARK: - Public Interface
     func config(model: ModelAppointment) {
         self.identifier = model.turn?.identifier
+        self.phone = model.phone
         setThumbnailImageView(url: model.image)
         titleLabel.labelTheme = BoldTheme(label: model.name ?? "",
                                           fontSize: 30,
                                           textColor: .white,
                                           textAlignment: .center)
-        dateLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toDisplayableDate() ?? "",
+        dateLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toDisplayableDate(type: .dateAndHour) ?? "",
                                          fontSize: 20,
                                          textColor: .black,
                                          textAlignment: .left)

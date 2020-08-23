@@ -67,7 +67,6 @@ class BusinessView: UIView {
             checkAvailabilityButton.heightAnchor.constraint(equalToConstant: 44.0),
             checkAvailabilityButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
             checkAvailabilityButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
-            
         ])
     }
     

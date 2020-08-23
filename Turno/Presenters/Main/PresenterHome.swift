@@ -38,7 +38,7 @@ class PresenterHome {
     func fetchData() {
         self.view?.startWaitingView()
         let modelBusinessTask = ModelBusinessTask(query: "")
-        networkManager.getBusinesses(modelBusinessTask: modelBusinessTask) { (modelList, error) in
+        networkManager.getBusinesses(modelTask: modelBusinessTask) { (modelList, error) in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
@@ -73,7 +73,7 @@ class PresenterHome {
             let isFavorite = modelList[index].isFavorite {
             let modelFavoritesTask = ModelFavoritesTask(businessId: identifier)
             if isFavorite {
-                networkManager.removeFromFavorites(modelFavoritesTask: modelFavoritesTask) { _, error in
+                networkManager.removeFromFavorites(modelTask: modelFavoritesTask) { _, error in
                     if error as? MoyaError != nil {
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
@@ -94,7 +94,7 @@ class PresenterHome {
                 modelList[index].isFavoriteTapped()
                 
             } else {
-                networkManager.addToFavorites(modelFavoritesTask: modelFavoritesTask) { _, error in
+                networkManager.addToFavorites(modelTask: modelFavoritesTask) { _, error in
                     if error as? MoyaError != nil {
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
