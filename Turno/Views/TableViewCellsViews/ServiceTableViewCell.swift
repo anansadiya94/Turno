@@ -10,6 +10,11 @@ import UIKit
 
 let kMaxServices: Int = 5
 
+enum ServiceTableViewCellType {
+    case book
+    case booked
+}
+
 class ServiceTableViewCell: UITableViewCell {
     
     // MARK: - Properties
@@ -21,6 +26,7 @@ class ServiceTableViewCell: UITableViewCell {
     
     var identifier: String?
     var count: Int?
+    var type: ServiceTableViewCellType?
     
     // MARK: - UICollectionViewCell
     override func awakeFromNib() {
@@ -30,26 +36,48 @@ class ServiceTableViewCell: UITableViewCell {
     
     // MARK: - Private methods
     private func setButtons(_ count: Int) {
-        switch count {
-        case 0:
-            minusButton.isEnabled = false
-            minusButton.tintColor = UIColor.red.withAlphaComponent(0.5)
-            plusButton.isEnabled = true
-            plusButton.tintColor = .primary
-        case 1...kMaxServices-1:
-            minusButton.isEnabled =  true
-            minusButton.tintColor = .red
-            plusButton.isEnabled = true
-            plusButton.tintColor = .primary
-        case kMaxServices:
-            plusButton.isEnabled = false
-            plusButton.tintColor = UIColor.primary.withAlphaComponent(0.5)
-        default:
-            break
+        if let type = type {
+            switch type {
+            case .book:
+                plusButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+                minusButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
+                switch count {
+                case 0:
+                    minusButton.isEnabled = false
+                    minusButton.tintColor = UIColor.red.withAlphaComponent(0.5)
+                    plusButton.isEnabled = true
+                    plusButton.tintColor = .primary
+                case 1...kMaxServices-1:
+                    minusButton.isEnabled =  true
+                    minusButton.tintColor = .red
+                    plusButton.isEnabled = true
+                    plusButton.tintColor = .primary
+                case kMaxServices:
+                    plusButton.isEnabled = false
+                    plusButton.tintColor = UIColor.primary.withAlphaComponent(0.5)
+                default:
+                    break
+                }
+            case .booked:
+                plusButton.isEnabled = false
+                plusButton.setImage(nil, for: .normal)
+                minusButton.isEnabled = false
+                minusButton.setImage(nil, for: .normal)
+            }
         }
     }
     
     private func setCountLabel(_ count: Int) {
+        if let type = type {
+            switch type {
+            case .booked:
+                countLabel.layer.masksToBounds = true
+                countLabel.layer.cornerRadius = countLabel.frame.width/2
+                countLabel.backgroundColor = .primary
+            default:
+                break
+            }
+        }
         countLabel.labelTheme = RegularTheme(label: "\(count)",
             fontSize: 17,
             textColor: .black,
@@ -87,8 +115,9 @@ class ServiceTableViewCell: UITableViewCell {
     }
     
     // MARK: - Public Interface
-    func config(service: Service) {
+    func config(service: Service, type: ServiceTableViewCellType) {
         self.identifier = service.identifier
+        self.type = type
         nameLabel.labelTheme = SemiBoldTheme(label: service.serviceName ?? "",
                                              fontSize: 17,
                                              textColor: .black,

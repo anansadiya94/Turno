@@ -11,9 +11,11 @@ import UIKit
 class ConfirmationView: UIView {
     
     // MARK: - Properties
+    @UseAutoLayout var headerStacakView = UIStackView()
     @UseAutoLayout var dayLabel = CustomLabel()
     @UseAutoLayout var startTimeLabel = CustomLabel()
     @UseAutoLayout var endTimeLabel = CustomLabel()
+    @UseAutoLayout var tableView =  UITableView()
     @UseAutoLayout var confirmMessageLabel = CustomLabel()
     @UseAutoLayout var confitmButton = RoundedCustomButton()
     
@@ -23,6 +25,7 @@ class ConfirmationView: UIView {
         createConfirmNowButton()
         createConfirmMessageLabel()
         createHeaderStackView()
+        createTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -56,11 +59,10 @@ class ConfirmationView: UIView {
     }
     
     func createHeaderStackView() {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        stackView.spacing = 0
+        headerStacakView.axis = .horizontal
+        headerStacakView.distribution = .fillEqually
+        headerStacakView.alignment = .fill
+        headerStacakView.spacing = 0
         
         let dayTitleLabel = CustomLabel()
         dayTitleLabel.labelTheme = BoldTheme(label: "Day", fontSize: 20,
@@ -95,16 +97,32 @@ class ConfirmationView: UIView {
         endTimeStackView.addArrangedSubview(endTimeTitleLabel)
         endTimeStackView.addArrangedSubview(endTimeLabel)
         
-        stackView.addArrangedSubview(dayStackView)
-        stackView.addArrangedSubview(startTimeStackView)
-        stackView.addArrangedSubview(endTimeStackView)
+        headerStacakView.addArrangedSubview(dayStackView)
+        headerStacakView.addArrangedSubview(startTimeStackView)
+        headerStacakView.addArrangedSubview(endTimeStackView)
         
-        self.addSubview(stackView)
+        self.addSubview(headerStacakView)
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
-        stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        headerStacakView.translatesAutoresizingMaskIntoConstraints = false
+        headerStacakView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
+        headerStacakView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        headerStacakView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+    }
+    
+    private func createTableView() {
+        addSubview(tableView)
+        tableView.alwaysBounceVertical = true
+        tableView.automaticallyAdjustsScrollIndicatorInsets = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: headerStacakView.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: confirmMessageLabel.topAnchor),
+            tableView.leftAnchor.constraint(equalTo: leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: rightAnchor)
+        ])
     }
     
     // MARK: - Public Interface

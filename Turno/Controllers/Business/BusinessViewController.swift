@@ -75,7 +75,7 @@ class BusinessViewController: ParentViewController {
     private func serviceCell(_ indexPath: IndexPath) -> UITableViewCell {
         if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kServiceCellID, for: indexPath) as? ServiceTableViewCell,
             let service = services?[indexPath.row] {
-            cell.config(service: service)
+            cell.config(service: service, type: .book)
             return cell
         }
         return UITableViewCell()

@@ -14,11 +14,14 @@ class ConfirmationViewController: ParentViewController {
     var presenterConfirmation: PresenterConfirmation!
     @UseAutoLayout var confirmationView = ConfirmationView()
     
+    var bookedServices: [Service]?
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         setConfirmationViewConstraints()
         addTarget()
+        setTableView()
     }
     
     // MARK: - Private methods
@@ -34,6 +37,12 @@ class ConfirmationViewController: ParentViewController {
     
     private func addTarget() {
         confirmationView.confitmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+    }
+    
+    private func setTableView() {
+        confirmationView.tableView.dataSource = self
+        confirmationView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
+                                            forCellReuseIdentifier: kServiceCellID)
     }
     
     private func calculateDuration(to bookedServices: [Service]?) -> Int {
@@ -58,6 +67,7 @@ class ConfirmationViewController: ParentViewController {
 // MARK: - PresenterConfirmationView methods
 extension ConfirmationViewController: PresenterConfirmationView {
     func didSetData(name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
+        self.bookedServices = bookedServices
         DispatchQueue.main.async {
             self.navigationItem.title = name
             let day = bookedSlot?.slot?.toDisplayableDate(type: .date)
@@ -68,6 +78,7 @@ extension ConfirmationViewController: PresenterConfirmationView {
             self.confirmationView.setHeaderStackViewData(day: day,
                                                          startTime: startTime,
                                                          endTime: endTime)
+            self.confirmationView.tableView.reloadData()
         }
     }
     
@@ -81,5 +92,21 @@ extension ConfirmationViewController: PresenterConfirmationView {
     
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
         showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
+    }
+}
+
+// MARK: - UITableViewDataSource methods
+extension ConfirmationViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bookedServices?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = confirmationView.tableView.dequeueReusableCell(withIdentifier: kServiceCellID, for: indexPath) as? ServiceTableViewCell,
+            let service = bookedServices?[indexPath.row] {
+            cell.config(service: service, type: .booked)
+            return cell
+        }
+        return UITableViewCell()
     }
 }
