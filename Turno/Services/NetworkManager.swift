@@ -20,7 +20,7 @@ protocol Networkable {
     func removeFromFavorites(modelTask: ModelFavoritesTask, completion: @escaping (Bool?, Error?) -> Void)
     func cancelTurn(modelTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void)
     func getAvailableTimes(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void)
-    func book(modelTask: ModelBookTask, completion: @escaping (Bool?, Error?) -> Void)
+    func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -185,17 +185,23 @@ class NetworkManager: Networkable {
         }
     }
     
-    func book(modelTask: ModelBookTask, completion: @escaping (Bool?, Error?) -> Void) {
+    func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void) {
         provider.request(.book(modelBookTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                switch value.statusCode {
-                case 200:
-                    completion(true, nil)
-                default:
-                    break
+                let decoder = JSONDecoder()
+                do {
+                    let turn = try decoder.decode(Turn.self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(turn, nil)
+                    default:
+                        break
+                    }
+                } catch let error {
+                    completion(nil, error)
                 }
             }
         }

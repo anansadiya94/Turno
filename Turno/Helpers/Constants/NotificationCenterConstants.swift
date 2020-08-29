@@ -22,6 +22,7 @@ let kNotificaitonGenericEntityCellTapped = "genericEntityCellTapped"
 //Appointments:
 let kNotificaitonCancelTapped = "cancelTapped"
 let kNotificaitonCallNowTapped = "callNowTapped"
+let kNotificaitonAppointmentConfirmed = "appointmentConfirmed"
 
 //Business:
 let kNotificaitonBusinessModifyModel = "modifyModel"

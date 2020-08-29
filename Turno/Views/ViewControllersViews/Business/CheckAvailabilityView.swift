@@ -44,7 +44,7 @@ class CheckAvailabilityView: UIView {
         ])
     }
     
-    func createTotalServicesTimeLabel() {
+    private func createTotalServicesTimeLabel() {
         addSubview(totalServicesTimeLabel)
         totalServicesTimeLabel.labelTheme = SemiBoldTheme(label: "", fontSize: 20, textColor: .black, textAlignment: .left)
         

@@ -70,12 +70,14 @@ class BusinessViewController: ParentViewController {
                                                name: Business.modifyModel, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(cancelTappedAction(_:)),
                                                name: Appointments.cancelTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appointmentConfirmedAction(_:)),
+                                               name: Appointments.appointmentConfirmed, object: nil)
     }
     
     private func serviceCell(_ indexPath: IndexPath) -> UITableViewCell {
         if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kServiceCellID, for: indexPath) as? ServiceTableViewCell,
             let service = services?[indexPath.row] {
-            cell.config(service: service)
+            cell.config(service: service, type: .book)
             return cell
         }
         return UITableViewCell()
@@ -126,6 +128,14 @@ class BusinessViewController: ParentViewController {
         if let dict = notification.userInfo as NSDictionary? {
             if let identifier = dict["identifier"] as? String {
                 presenterBusiness.cancelTapped(turnId: identifier)
+            }
+        }
+    }
+    
+    @objc func appointmentConfirmedAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let bookedTurn = dict["bookedTurn"] as? Turn {
+                presenterBusiness.appointmentConfirmed(bookedTurn: bookedTurn)
             }
         }
     }
@@ -196,6 +206,13 @@ extension BusinessViewController: PresenterBusinessView {
     
     func call(_ number: String) {
         self.callNumber(number)
+    }
+    
+    func appointmentConfirmed(bookedTurn: Turn) {
+        turns?.append(bookedTurn)
+        
+        self.businessView.segmentedControl.selectedSegmentIndex = 1
+        self.businessView.tableView.reloadData()
     }
     
     func startWaitingView() {

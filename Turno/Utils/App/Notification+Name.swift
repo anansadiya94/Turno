@@ -20,6 +20,7 @@ struct GenericEntity {
 struct Appointments {
     static let cancelTapped = Notification.Name(kNotificaitonCancelTapped)
     static let callNowTapped = Notification.Name(kNotificaitonCallNowTapped)
+    static let appointmentConfirmed = Notification.Name(kNotificaitonAppointmentConfirmed)
 }
 
 struct Business {

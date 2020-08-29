@@ -37,7 +37,17 @@ extension MainCoordinator {
     }
     
     func showCheckAvailabilityScreen(identifier: String?, name: String?, bookedServices: [Service]?) {
-        let screen = ScreenFactory.makeshowCheckAvailabilityScreen(delegate: self, identifier: identifier, name: name, bookedServices: bookedServices)
+        let screen = ScreenFactory.makeCheckAvailabilityScreen(delegate: self, identifier: identifier, name: name, bookedServices: bookedServices)
+        pushViewByExploreInnerViewController(screen: screen)
+    }
+    
+    func showConfirmationScreen(identifier: String?, name: String?, bookedServices: [Service]?,
+                                bookedSlot: EmptySlot?) {
+        let screen = ScreenFactory.makeConfirmationScreen(delegate: self,
+                                                          identifier: identifier,
+                                                          name: name,
+                                                          bookedServices: bookedServices,
+                                                          bookedSlot: bookedSlot)
         pushViewByExploreInnerViewController(screen: screen)
     }
 }
@@ -49,5 +59,9 @@ extension MainCoordinator: SelectButtonEntity {
     
     func didSelectCheckAvailability(identifier: String?, name: String?, bookedServices: [Service]?) {
         showCheckAvailabilityScreen(identifier: identifier, name: name, bookedServices: bookedServices)
+    }
+    
+    func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
+        showConfirmationScreen(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot)
     }
 }

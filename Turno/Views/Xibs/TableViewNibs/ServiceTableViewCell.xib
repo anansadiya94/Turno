@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -34,24 +34,26 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nmg-Eg-XrX">
-                        <rect key="frame" x="178" y="42" width="134" height="22"/>
+                        <rect key="frame" x="214" y="38" width="98" height="30"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWf-0k-57n">
-                                <rect key="frame" x="0.0" y="0.0" width="42" height="22"/>
-                                <state key="normal" image="minus.circle.fill" catalog="system"/>
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 <connections>
                                     <action selector="minusButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5Qv-FM-9W7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jh-oI-pBp" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
-                                <rect key="frame" x="46" y="0.0" width="42" height="22"/>
+                                <rect key="frame" x="34" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Lkd-wm-xNI"/>
+                                    <constraint firstAttribute="height" constant="30" id="uTE-cd-EmA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adO-3J-wPw">
-                                <rect key="frame" x="92" y="0.0" width="42" height="22"/>
-                                <state key="normal" image="plus.circle.fill" catalog="system"/>
+                                <rect key="frame" x="68" y="0.0" width="30" height="30"/>
                                 <connections>
                                     <action selector="plusButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="poK-ua-cse"/>
                                 </connections>
@@ -80,8 +82,4 @@
             <point key="canvasLocation" x="58" y="130"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
-    </resources>
 </document>

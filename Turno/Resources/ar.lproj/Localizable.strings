@@ -44,6 +44,8 @@
 "call_now_key" = "اتصل الان";
 "open_in_key" = "في فتح";
 "book_now_key" = "احجز الآن!";
+"confirm_key" = "تؤكد";
+"confirm_message_key" = "يرجى أن يكون هناك 5 دقائق قبل دورك. إعلام أو إلغاء في حال لم تتمكن من جعلها في الوقت المناسب.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو:٪ @";
