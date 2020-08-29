@@ -82,6 +82,16 @@ extension ConfirmationViewController: PresenterConfirmationView {
         }
     }
     
+    func popToBusinessViewController(animated: Bool) {
+        if let viewControllers = self.navigationController?.viewControllers {
+            viewControllers.forEach({viewController in
+                if viewController.isKind(of: BusinessViewController.self) {
+                    _ =  self.navigationController?.popToViewController(viewController, animated: animated)
+                }
+            })
+        }
+    }
+    
     func startWaitingView() {
         startWaiting()
     }

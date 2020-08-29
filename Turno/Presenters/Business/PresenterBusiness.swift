@@ -15,6 +15,7 @@ protocol PresenterBusinessView: PresenterParentView {
     func openMap(model: ModelLocation)
     func send(email: String)
     func call(_ number: String)
+    func appointmentConfirmed(bookedTurn: Turn)
 }
 
 class PresenterBusiness {
@@ -97,5 +98,9 @@ class PresenterBusiness {
                                         self.cancelTurnConfirmed(turnId: turnId)
                                     }
         })
+    }
+    
+    func appointmentConfirmed(bookedTurn: Turn) {
+        view?.appointmentConfirmed(bookedTurn: bookedTurn)
     }
 }

@@ -11,6 +11,7 @@ import Moya
 
 protocol PresenterConfirmationView: PresenterParentView {
     func didSetData(name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?)
+    func popToBusinessViewController(animated: Bool)
 }
 
 class PresenterConfirmation {
@@ -45,7 +46,7 @@ class PresenterConfirmation {
         self.view?.startWaitingView()
         let modelBookTask = ModelBookTask(servicesToBook: bookedServices,
                                           dateTime: bookedSlot?.slot?.fromDisplayableHourToFormatted())
-        networkManager.book(modelTask: modelBookTask) { _, error in
+        networkManager.book(modelTask: modelBookTask) { bookedTurn, error in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
@@ -63,7 +64,12 @@ class PresenterConfirmation {
                 return
             }
             self.view?.stopWaitingView()
-            //TODO: Booked successfully. What to do next?
+            self.view?.popToBusinessViewController(animated: true)
+            if let bookedTurn = bookedTurn {
+                let bookedTurnDict: [String: Turn] = ["bookedTurn": bookedTurn]
+                NotificationCenter.default.post(name: Appointments.appointmentConfirmed, object: nil,
+                userInfo: bookedTurnDict)
+            }
         }
     }
 }

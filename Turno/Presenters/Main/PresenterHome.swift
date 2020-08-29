@@ -92,7 +92,6 @@ class PresenterHome {
                     }
                 }
                 modelList[index].isFavoriteTapped()
-                
             } else {
                 networkManager.addToFavorites(modelTask: modelFavoritesTask) { _, error in
                     if error as? MoyaError != nil {
