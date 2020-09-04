@@ -93,6 +93,14 @@ extension AppointmentsViewController: PresenterAppointmentsView {
         refreshControl.endRefreshing()
     }
     
+    func showEmptyMessage(message: String) {
+        self.genericView.tableView.emptyMessage(message)
+    }
+    
+    func removeEmptyMessage() {
+        self.genericView.tableView.removeEmptyMessage()
+    }
+    
     func startWaitingView() {
         startWaiting()
     }
