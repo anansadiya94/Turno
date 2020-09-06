@@ -74,7 +74,33 @@ class PresenterBusiness {
     }
     
     func checkAvailabilityButtonTapped(identifier: String?, bookedServices: [Service]?) {
-        delegate.didSelectCheckAvailability(identifier: identifier, name: model?.name, bookedServices: bookedServices)
+        self.view?.startWaitingView()
+        let modelCheckTurnsAvailabilityTask = ModelCheckTurnsAvailabilityTask(services: [])
+        networkManager.getAvailableTimes(modelTask: modelCheckTurnsAvailabilityTask) { (modelCheckTurnsAvailability, error) in
+            if error as? MoyaError != nil {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            if let error = error as? AppError {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: error.title,
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            if let modelCheckTurnsAvailability = modelCheckTurnsAvailability {
+                self.view?.stopWaitingView()
+                self.delegate.didSelectCheckAvailability(identifier: identifier, name: self.model?.name,
+                                                         bookedServices: bookedServices,
+                                                         modelCheckTurnsAvailability: modelCheckTurnsAvailability)
+            }
+        }
+        
     }
     
     func openMaps(model: ModelLocation) {

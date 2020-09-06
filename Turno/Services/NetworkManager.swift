@@ -40,7 +40,7 @@ class NetworkManager: Networkable {
                     case 200:
                         completion(modelSignUp, nil)
                     default:
-                        completion(nil, AppError(title: modelSignUp.title ?? "", message: modelSignUp.message ?? ""))
+                        completion(nil, AppError(title: modelSignUp.title ?? "", message: modelSignUp.message ?? "", code: value.statusCode))
                     }
                 } catch let error {
                     completion(nil, error)
@@ -62,7 +62,7 @@ class NetworkManager: Networkable {
                     case 200:
                         completion(modelVerify, nil)
                     default:
-                        completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? ""))
+                        completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? "", code: value.statusCode))
                     }
                 } catch let error {
                     completion(nil, error)
@@ -175,6 +175,8 @@ class NetworkManager: Networkable {
                     switch value.statusCode {
                     case 200:
                         completion(modelList, nil)
+                    // TODO: No available times code
+//                    completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? "", code: value.statusCode))
                     default:
                         break
                     }
@@ -197,6 +199,8 @@ class NetworkManager: Networkable {
                     switch value.statusCode {
                     case 200:
                         completion(turn, nil)
+                    // TODO: Can't book code
+//                    completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? "", code: value.statusCode))
                     default:
                         break
                     }
