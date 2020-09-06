@@ -9,18 +9,30 @@
 import UIKit
 
 extension UITableView {
-    func emptyMessage(_ message: String) {
+    func emptyMessage(title: String, message: String) {
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: bounds.size.width, height: bounds.size.height))
-        let messageLabel = UILabel(frame: rect)
-        messageLabel.text = message
-        messageLabel.textColor = .black
-        messageLabel.alpha = 0.5
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        messageLabel.font = UIFont(name: ServiceAppFont.regularFont, size: 15) ?? .systemFont(ofSize: 15)
-        messageLabel.sizeToFit()
-
-        backgroundView = messageLabel
+        let view = UIView(frame: rect)
+        let stackView = UIStackView()
+        let titleLabel = CustomLabel()
+        let messageLabel = CustomLabel()
+        
+        titleLabel.labelTheme = BoldTheme(label: title, fontSize: 20, textColor: .black, textAlignment: .center)
+        messageLabel.labelTheme = RegularTheme(label: message, fontSize: 15, textColor: .black, textAlignment: .center)
+        
+        view.addSubview(stackView)
+        
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .center
+        stackView.spacing = 8
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(messageLabel)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    
+        backgroundView = view
         separatorStyle = .none
     }
     

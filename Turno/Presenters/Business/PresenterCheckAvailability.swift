@@ -72,5 +72,6 @@ class PresenterCheckAvailability {
     // MARK: - Public Interface
     func bookNowButtonTapped(bookedSlot: EmptySlot?) {
         delegate.didSelectConfirm(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot)
+        
     }
 }

@@ -11,7 +11,7 @@ import Moya
 
 protocol PresenterFavoritesView: PresenterParentView {
     func didSetData(model: GenericListDescriptive)
-    func showEmptyMessage(message: String)
+    func showEmptyMessage(title: String, message: String)
     func removeEmptyMessage()
 }
 
@@ -62,7 +62,9 @@ class PresenterFavorites {
                 self.modelList = modelList
             } else {
                 self.modelList = []
-                self.view?.showEmptyMessage(message: "No favorites found")   
+                // TODO: Translate
+                self.view?.showEmptyMessage(title: "No favorites found",
+                                            message: "You haven’t liked any business yet.")
             }
             self.notifyView()
         }

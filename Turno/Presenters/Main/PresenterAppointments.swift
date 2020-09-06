@@ -12,7 +12,7 @@ import Moya
 protocol PresenterAppointmentsView: PresenterParentView {
     func didSetData(model: AppointmentsListDescriptive)
     func call(_ number: String)
-    func showEmptyMessage(message: String)
+    func showEmptyMessage(title: String, message: String)
     func removeEmptyMessage()
 }
 
@@ -76,7 +76,9 @@ class PresenterAppointments {
                 self.modelList = modelList
             } else {
                 self.modelList = []
-                self.view?.showEmptyMessage(message: "No turns found")
+                // TODO: Translate
+                self.view?.showEmptyMessage(title: "No turns found",
+                                            message: "Schedule a turn to see it here.")
             }
             self.notifyView()
         }

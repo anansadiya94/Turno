@@ -83,8 +83,8 @@ extension FavoritesViewController: PresenterFavoritesView {
         refreshControl.endRefreshing()
     }
     
-    func showEmptyMessage(message: String) {
-        self.genericView.tableView.emptyMessage(message)
+    func showEmptyMessage(title: String, message: String) {
+        self.genericView.tableView.emptyMessage(title: title, message: message)
     }
     
     func removeEmptyMessage() {
