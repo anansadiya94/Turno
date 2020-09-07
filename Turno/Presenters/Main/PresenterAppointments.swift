@@ -12,6 +12,8 @@ import Moya
 protocol PresenterAppointmentsView: PresenterParentView {
     func didSetData(model: AppointmentsListDescriptive)
     func call(_ number: String)
+    func showEmptyMessage(title: String, message: String)
+    func removeEmptyMessage()
 }
 
 class PresenterAppointments {
@@ -50,6 +52,7 @@ class PresenterAppointments {
     // MARK: - Public Interface
     func fetchData() {
         self.view?.startWaitingView()
+        self.view?.removeEmptyMessage()
         let modelBusinessTask = ModelBusinessTask(query: "")
         networkManager.getBusinesses(modelTask: modelBusinessTask) { (modelList, error) in
             if error as? MoyaError != nil {
@@ -68,11 +71,16 @@ class PresenterAppointments {
                                          completion: nil)
                 return
             }
-            if let modelList = modelList {
-                self.view?.stopWaitingView()
+            self.view?.stopWaitingView()
+            if let modelList = modelList, !modelList.isEmpty {
                 self.modelList = modelList
-                self.notifyView()
+            } else {
+                self.modelList = []
+                // TODO: Translate
+                self.view?.showEmptyMessage(title: "No turns found",
+                                            message: "Schedule a turn to see it here.")
             }
+            self.notifyView()
         }
     }
     

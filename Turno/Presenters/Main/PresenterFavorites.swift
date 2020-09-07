@@ -11,6 +11,8 @@ import Moya
 
 protocol PresenterFavoritesView: PresenterParentView {
     func didSetData(model: GenericListDescriptive)
+    func showEmptyMessage(title: String, message: String)
+    func removeEmptyMessage()
 }
 
 class PresenterFavorites {
@@ -37,6 +39,7 @@ class PresenterFavorites {
     // MARK: - Public Interface
     func fetchData() {
         self.view?.startWaitingView()
+        self.view?.removeEmptyMessage()
         networkManager.getFavorites { (modelList, error) in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
@@ -54,11 +57,16 @@ class PresenterFavorites {
                                          completion: nil)
                 return
             }
-            if let modelList = modelList {
-                self.view?.stopWaitingView()
+            self.view?.stopWaitingView()
+            if let modelList = modelList, !modelList.isEmpty {
                 self.modelList = modelList
-                self.notifyView()
+            } else {
+                self.modelList = []
+                // TODO: Translate
+                self.view?.showEmptyMessage(title: "No favorites found",
+                                            message: "You haven’t liked any business yet.")
             }
+            self.notifyView()
         }
     }
     

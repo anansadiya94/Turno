@@ -74,6 +74,14 @@ class BusinessViewController: ParentViewController {
                                                name: Appointments.appointmentConfirmed, object: nil)
     }
     
+    private func initServices(services: [Service]?) -> [Service]? {
+        guard let servicesInit = services else { return nil }
+        for index in 0..<servicesInit.count {
+            servicesInit[index].count = 0
+        }
+        return servicesInit
+    }
+    
     private func serviceCell(_ indexPath: IndexPath) -> UITableViewCell {
         if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kServiceCellID, for: indexPath) as? ServiceTableViewCell,
             let service = services?[indexPath.row] {
@@ -159,7 +167,6 @@ class BusinessViewController: ParentViewController {
         }
     }
     
-    // MARK: - UI interaction methods
     @objc private func handleSegmentControl() {
         businessView.setView()
         businessView.tableView.reloadData()
@@ -172,11 +179,7 @@ extension BusinessViewController: PresenterBusinessView {
         self.model = model
         self.turns = model.turns
         
-        guard let servicesInit = model.services else { return }
-        for index in 0..<servicesInit.count {
-            servicesInit[index].count = 0
-        }
-        self.services = servicesInit
+        self.services = initServices(services: model.services)
         
         DispatchQueue.main.async {
             self.navigationItem.title = model.name
@@ -210,6 +213,8 @@ extension BusinessViewController: PresenterBusinessView {
     
     func appointmentConfirmed(bookedTurn: Turn) {
         turns?.append(bookedTurn)
+        
+        self.services = initServices(services: services)
         
         self.businessView.segmentedControl.selectedSegmentIndex = 1
         self.businessView.tableView.reloadData()

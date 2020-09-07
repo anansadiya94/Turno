@@ -22,49 +22,23 @@ class PresenterCheckAvailability {
     var name: String?
     var bookedServices: [Service]?
     let networkManager = NetworkManager()
-    var modelCheckTurnsAvailability = ModelCheckTurnsAvailability()
+    var modelCheckTurnsAvailability: ModelCheckTurnsAvailability?
     
     // MARK: - init Methods
-    init(view: PresenterCheckAvailabilityView, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?) {
+    init(view: PresenterCheckAvailabilityView, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
         self.view = view
         self.delegate = delegate
         self.identifier = identifier
         self.name = name
         self.bookedServices = bookedServices
-        self.fetchData()
+        self.modelCheckTurnsAvailability = modelCheckTurnsAvailability
+        self.notifyView()
     }
     
     // MARK: - Private methods
-    private func fetchData() {
-        self.view?.startWaitingView()
-        let modelCheckTurnsAvailabilityTask = ModelCheckTurnsAvailabilityTask(services: [])
-        networkManager.getAvailableTimes(modelTask: modelCheckTurnsAvailabilityTask) { (modelCheckTurnsAvailability, error) in
-            if error as? MoyaError != nil {
-                self.view?.stopWaitingView()
-                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
-                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                         completion: nil)
-                return
-            }
-            if let error = error as? AppError {
-                self.view?.stopWaitingView()
-                self.view?.showPopupView(withTitle: error.title,
-                                         withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                         completion: nil)
-                return
-            }
-            if let modelCheckTurnsAvailability = modelCheckTurnsAvailability {
-                self.view?.stopWaitingView()
-                self.modelCheckTurnsAvailability = modelCheckTurnsAvailability
-                self.notifyView()
-            }
-        }
-    }
-    
     private func notifyView() {
         let minutesToHoursMinutes = ServiceMinutesToHoursMinutes.minutesToHoursMinutes(bookedServices: bookedServices)
+        guard let modelCheckTurnsAvailability = modelCheckTurnsAvailability else { return }
         view?.didSetData(name: name, modelCheckTurnsAvailability: modelCheckTurnsAvailability,
                          totalServicesTime: "\(minutesToHoursMinutes.hours)h \(minutesToHoursMinutes.leftMinutes)m")
     }
