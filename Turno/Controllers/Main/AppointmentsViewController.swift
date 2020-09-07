@@ -41,11 +41,7 @@ class AppointmentsViewController: GenericTableView<AppointmentsListDescriptive> 
         super.init(coder: coder)
         super.configureTableView(tableView: genericView.tableView)
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 216
-    }
-    
+
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
         presenterAppointments.fetchData()
     }

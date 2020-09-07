@@ -11,5 +11,4 @@ import Foundation
 struct AppError: Error {
     let title: String?
     let message: String?
-    let code: Int?
 }
