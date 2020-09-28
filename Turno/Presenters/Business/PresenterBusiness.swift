@@ -93,14 +93,22 @@ class PresenterBusiness {
                                          completion: nil)
                 return
             }
-            if let modelCheckTurnsAvailability = modelCheckTurnsAvailability {
+            if let modelCheckTurnsAvailability = modelCheckTurnsAvailability,
+                let isAvailableDatesEmpty = modelCheckTurnsAvailability.availableDates?.isEmpty,
+                !isAvailableDatesEmpty {
                 self.view?.stopWaitingView()
                 self.delegate.didSelectCheckAvailability(identifier: identifier, name: self.model?.name,
                                                          bookedServices: bookedServices,
                                                          modelCheckTurnsAvailability: modelCheckTurnsAvailability)
+            } else {
+                self.view?.stopWaitingView()
+                // TODO: Translate
+                self.view?.showPopupView(withTitle: "No available dates",
+                                         withText: "Sorry! We couldn’t find any availabel date. Check for less services or try again later on.",
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
             }
         }
-        
     }
     
     func openMaps(model: ModelLocation) {

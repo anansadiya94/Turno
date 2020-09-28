@@ -13,17 +13,30 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
     // MARK: - Properties
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var dateImageView: UIImageView!
+    @IBOutlet weak var dayLabel: CustomLabel!
     @IBOutlet weak var dateLabel: CustomLabel!
     @IBOutlet weak var servicesImageView: UIImageView!
-    @IBOutlet weak var servicesLabel: CustomLabel!
+    @IBOutlet weak var servicesTableView: UITableView!
     @IBOutlet weak var cancelButton: RoundedCustomButton!
+    @IBOutlet weak var servicesTableViewHeight: NSLayoutConstraint!
     
     var identifier: String?
+    var services: [Service]?
     
     // MARK: - UITableViewCell
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        baseView.backgroundColor = .white
+        servicesTableView.dataSource = self
+        servicesTableView.alwaysBounceVertical = true
+        servicesTableView.automaticallyAdjustsScrollIndicatorInsets = false
+        servicesTableView.contentInsetAdjustmentBehavior = .never
+        servicesTableView.showsVerticalScrollIndicator = false
+        servicesTableView.separatorStyle = .none
+        servicesTableView.tableFooterView = UIView()
+        servicesTableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
+                                             forCellReuseIdentifier: kServiceCellID)
     }
     
     override func layoutSubviews() {
@@ -43,18 +56,23 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
     }
     
     private func setServicesLabel(from turn: Turn) {
-        var services: [String] = []
-        turn.services?.forEach({
-            if let serviceName = $0.serviceName {
-                services.append(serviceName)
+        services = turn.services
+        servicesTableViewHeight.constant = CGFloat(turn.services?.count ?? 0) * 40.0
+        servicesTableView.reloadData()
+    }
+    
+    // TODO: Refactor
+    private func calculateDuration(to bookedServices: [Service]?) -> Int {
+        var duration = 0
+        guard let bookedServices = bookedServices else {
+            return duration
+        }
+        bookedServices.forEach({
+            if let count = $0.count, let durationInMinutes = $0.durationInMinutes {
+                duration += (count * durationInMinutes)
             }
         })
-        let joined = services.joined(separator: ", ")
-        
-        servicesLabel.labelTheme = BoldTheme(label: joined,
-                                             fontSize: 20,
-                                             textColor: .black,
-                                             textAlignment: .left)
+        return duration
     }
     
     // MARK: - UI interaction methods
@@ -70,10 +88,38 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
     func config(turn: Turn) {
         self.identifier = turn.identifier
         
-        dateLabel.labelTheme = BoldTheme(label: turn.dateTimeUTC?.toDisplayableDate(type: .dateAndHour) ?? "",
+        dayLabel.labelTheme = BoldTheme(label: turn.dateTimeUTC?.toDisplayDay() ?? "",
                                          fontSize: 20,
                                          textColor: .black,
                                          textAlignment: .left)
+        
+        let date = turn.dateTimeUTC?.toDisplayableDate(type: .date) ?? ""
+        let starTime = turn.dateTimeUTC?.toDisplayableDate(type: .hour) ?? ""
+        let bookedServicesDuration = self.calculateDuration(to: turn.services)
+        let endTimeDate = turn.dateTimeUTC?.calculateEndDate(adding: bookedServicesDuration)
+        let endTime = endTimeDate?.toDisplayableDate(type: .hour) ?? ""
+        
+        let dateLabelString = date + ", " + starTime + "-" + endTime
+        dateLabel.labelTheme = RegularTheme(label: dateLabelString,
+                                            fontSize: 20,
+                                            textColor: .black,
+                                            textAlignment: .left)
+        
         setServicesLabel(from: turn)
+    }
+}
+
+extension BusinessAppointmentTableViewCell: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return services?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = servicesTableView.dequeueReusableCell(withIdentifier: kServiceCellID, for: indexPath) as? ServiceTableViewCell,
+            let service = services?[indexPath.row] {
+            cell.config(service: service, type: .present)
+            return cell
+        }
+        return UITableViewCell()
     }
 }

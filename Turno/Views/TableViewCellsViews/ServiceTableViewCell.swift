@@ -13,6 +13,7 @@ let kMaxServices: Int = 5
 enum ServiceTableViewCellType {
     case book
     case booked
+    case present
 }
 
 class ServiceTableViewCell: UITableViewCell {
@@ -39,6 +40,7 @@ class ServiceTableViewCell: UITableViewCell {
         if let type = type {
             switch type {
             case .book:
+                durationLabel.isHidden = false
                 plusButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
                 minusButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
                 switch count {
@@ -59,6 +61,13 @@ class ServiceTableViewCell: UITableViewCell {
                     break
                 }
             case .booked:
+                durationLabel.isHidden = true
+                plusButton.isEnabled = false
+                plusButton.setImage(nil, for: .normal)
+                minusButton.isEnabled = false
+                minusButton.setImage(nil, for: .normal)
+            case .present:
+                durationLabel.isHidden = true
                 plusButton.isEnabled = false
                 plusButton.setImage(nil, for: .normal)
                 minusButton.isEnabled = false
@@ -70,18 +79,21 @@ class ServiceTableViewCell: UITableViewCell {
     private func setCountLabel(_ count: Int) {
         if let type = type {
             switch type {
-            case .booked:
+            case .booked, .present:
                 countLabel.layer.masksToBounds = true
                 countLabel.layer.cornerRadius = countLabel.frame.width/2
                 countLabel.backgroundColor = .primary
+                countLabel.labelTheme = RegularTheme(label: "\(count)",
+                    fontSize: 17,
+                    textColor: .white,
+                    textAlignment: .center)
             default:
-                break
+                countLabel.labelTheme = RegularTheme(label: "\(count)",
+                    fontSize: 17,
+                    textColor: .black,
+                    textAlignment: .center)
             }
         }
-        countLabel.labelTheme = RegularTheme(label: "\(count)",
-            fontSize: 17,
-            textColor: .black,
-            textAlignment: .center)
     }
     
     private func modifyModel(_ count: Int) {
