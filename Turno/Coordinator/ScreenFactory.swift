@@ -32,7 +32,8 @@ protocol SelectButtonFavorites: class {
 }
 
 protocol SelectButtonBusiness: class {
-    
+    func addAppointmentTapped()
+    func showAppointmentTapped()
 }
 
 struct ScreenFactory {
@@ -69,8 +70,9 @@ struct ScreenFactory {
     
     //MAIN:
     static func makeUserMainScreen(navigationController: UINavigationController, delegate: SelectButtonEntity) -> UIViewController {
-        let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(sbName: kUserMainStoryboardName,
-                                                                                               vcID: kUserMainViewControllerID) as? UserMainViewController
+        let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
+            sbName: kUserMainStoryboardName,
+            vcID: kUserMainViewControllerID) as? UserMainViewController
         
         if let mainVC = mainViewController {
             if let viewController = mainVC.viewControllers?[0] as? UINavigationController {
@@ -99,15 +101,21 @@ struct ScreenFactory {
     }
     
     static func makeBusinessMainScreen(navigationController: UINavigationController, delegate: SelectButtonBusiness) -> UIViewController {
-        let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(sbName: kBusinessMainStoryboardName,
-                                                                                               vcID: kBusinessMainViewControllerID) as? BusinessMainViewController
+        let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
+            sbName: kBusinessMainStoryboardName,
+            vcID: kBusinessMainViewControllerID) as? BusinessMainViewController
         
-        if let mainViewController = mainViewController {
-            let presenter = PresenterBusinessMain(view: mainViewController)
-            mainViewController.presenterMain = presenter
-            navigationController.viewControllers = [mainViewController]
+        if let mainVC = mainViewController {
+            if let viewController = mainVC.viewControllers?[0] as? UINavigationController {
+                if let homeVC = viewController.topViewController as? BusinessHomeViewController {
+                    let presnter = PresenterBusinessHome(view: homeVC, delegate: delegate)
+                    homeVC.presenterHome = presnter
+                }
+            }
+            let presenter = PresenterBusinessMain(view: mainVC)
+            mainVC.presenterMain = presenter
+            navigationController.viewControllers = [mainVC]
         }
-        
         return navigationController
     }
     
@@ -135,6 +143,14 @@ struct ScreenFactory {
                                               identifier: identifier, name: name,
                                               bookedServices: bookedServices, bookedSlot: bookedSlot)
         viewController.presenterConfirmation = presenter
+        return viewController
+    }
+    
+    static func makeAddAppointmentScreen(delegate: SelectButtonBusiness) -> UIViewController {
+        let viewController = AddAppointmentViewController()
+        let presenter = PresenterAddAppointment(view: viewController,
+                                                delegate: delegate)
+        viewController.presenterAddAppointment = presenter
         return viewController
     }
 }

@@ -85,7 +85,7 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
     }
 }
 
-// MARK: - PresenterHomeView methods
+// MARK: - PresenterUserHomeView methods
 extension UserHomeViewController: PresenterUserHomeView {
     func didSetData(model: GenericListDescriptive) {
         self.source = model

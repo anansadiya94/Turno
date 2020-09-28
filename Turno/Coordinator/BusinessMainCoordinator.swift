@@ -23,7 +23,32 @@ class BusinessMainCoordinator: Coordinator {
 }
 
 extension BusinessMainCoordinator {
+    func pushViewByExploreInnerViewController(screen: UIViewController) {
+        if let mainVC = navigationController.viewControllers[0] as? BusinessMainViewController {
+            if let exploreVC = mainVC.viewControllers?[0] as? UINavigationController {
+                exploreVC.pushViewController(screen, animated: true)
+            }
+        }
+    }
+    
+    func showAddAppointmentScreen(delegate: SelectButtonBusiness) {
+        let screen = ScreenFactory.makeAddAppointmentScreen(delegate: delegate)
+        pushViewByExploreInnerViewController(screen: screen)
+    }
+    
+    func showAppointmentScreen() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .green
+        pushViewByExploreInnerViewController(screen: vc)
+    }
 }
 
 extension BusinessMainCoordinator: SelectButtonBusiness {
+    func addAppointmentTapped() {
+        showAddAppointmentScreen(delegate: self)
+    }
+    
+    func showAppointmentTapped() {
+        showAppointmentScreen()
+    }
 }

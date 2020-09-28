@@ -10,4 +10,5 @@ target 'Turno' do
   pod 'lottie-ios'
   pod 'Moya', '~> 14.0'
   pod 'Kingfisher'
+  pod 'CalendarKit'
 end
