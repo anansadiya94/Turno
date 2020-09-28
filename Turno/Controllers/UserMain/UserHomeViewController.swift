@@ -8,14 +8,14 @@
 
 import UIKit
 
-class HomeViewController: GenericTableView<GenericListDescriptive> {
+class UserHomeViewController: GenericTableView<GenericListDescriptive> {
     
     // MARK: - Properties
     override var navBarTitle: String {
         return LocalizedConstants.home_key.localized
     }
     
-    var presenterHome: PresenterHome!
+    var presenterHome: PresenterUserHome!
     @UseAutoLayout var genericView = GenericView()
     
     // MARK: - UIViewController
@@ -86,7 +86,7 @@ class HomeViewController: GenericTableView<GenericListDescriptive> {
 }
 
 // MARK: - PresenterHomeView methods
-extension HomeViewController: PresenterHomeView {
+extension UserHomeViewController: PresenterUserHomeView {
     func didSetData(model: GenericListDescriptive) {
         self.source = model
         genericView.tableView.reloadData()

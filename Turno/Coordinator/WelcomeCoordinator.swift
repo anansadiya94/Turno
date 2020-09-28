@@ -35,8 +35,8 @@ extension WelcomeCoordinator {
     }
     
     func showMainScreen() {
-        let mainCoordinator = MainCoordinator(window: window, navigationController: navigationController)
-        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        let mainCoordinator = UserMainCoordinator(window: window, navigationController: navigationController)
+        let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController, delegate: mainCoordinator)
         window.rootViewController = screen
     }
 }

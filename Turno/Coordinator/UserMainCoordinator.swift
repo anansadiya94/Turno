@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator {
+class UserMainCoordinator: Coordinator {
     
     private let window: UIWindow
     private let navigationController: UINavigationController
@@ -22,9 +22,9 @@ class MainCoordinator: Coordinator {
     }
 }
 
-extension MainCoordinator {
+extension UserMainCoordinator {
     func pushViewByExploreInnerViewController(screen: UIViewController) {
-        if let mainVC = navigationController.viewControllers[0] as? MainViewController {
+        if let mainVC = navigationController.viewControllers[0] as? UserMainViewController {
             if let exploreVC = mainVC.viewControllers?[0] as? UINavigationController {
                 exploreVC.pushViewController(screen, animated: true)
             }
@@ -55,7 +55,7 @@ extension MainCoordinator {
     }
 }
 
-extension MainCoordinator: SelectButtonEntity {
+extension UserMainCoordinator: SelectButtonEntity {
     func didSelectEntity(model: ModelBusiness) {
         showBusinessScreen(model: model)
     }

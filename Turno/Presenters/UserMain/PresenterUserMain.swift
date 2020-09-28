@@ -8,13 +8,13 @@
 
 import Foundation
 
-class PresenterMain: NSObject {
+class PresenterUserMain: NSObject {
     
     // MARK: - Properties
-    var view: MainViewController!
+    var view: UserMainViewController!
     
     // MARK: - Public Interface
-    init(view: MainViewController) {
+    init(view: UserMainViewController) {
         super.init()
         self.view = view
     }
