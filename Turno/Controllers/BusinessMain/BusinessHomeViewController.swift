@@ -31,10 +31,19 @@ class BusinessHomeViewController: DayViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         dayView.autoScrollToFirstEvent = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Business home"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = ""
+    }
 
     // MARK: - Private methods
     private func setNavigationBar() {
-        navigationItem.title = "Business home"
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.tintColor = .primary
         
@@ -80,7 +89,7 @@ class BusinessHomeViewController: DayViewController {
     }
     
     override func dayViewDidSelectEventView(_ eventView: EventView) {
-        print("Event has been selected: \(eventView.descriptor)")
+//        print("Event has been selected: \(eventView.descriptor)")
         presenterHome.showAppointmentTapped()
     }
 }

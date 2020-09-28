@@ -30,9 +30,56 @@ class PresenterAddAppointment {
         self.delegate = delegate
     }
     
+    private func validateName(_ name: String?) -> Bool {
+        let textFieldErrorType = ServiceTextFieldValidation.validateName(name)
+        switch textFieldErrorType {
+        case .valid:
+            view?.showNameTextFieldLabel(type: textFieldErrorType)
+            return true
+        case .empty_field_key, .invalid_name_key:
+            view?.showNameTextFieldLabel(type: textFieldErrorType)
+        default:
+            break
+        }
+        return false
+    }
+    
+    private func validatePhoneNumber(_ phoneNumber: String?) -> Bool {
+        let textFieldErrorType = ServiceTextFieldValidation.validatePhoneNumber(phoneNumber)
+        switch textFieldErrorType {
+        case .valid:
+            view?.showPhoneNumberTextFieldLabel(type: textFieldErrorType)
+            return true
+        case .empty_field_key, .invalid_phoneNumber_key:
+            view?.showPhoneNumberTextFieldLabel(type: textFieldErrorType)
+        default:
+            break
+        }
+        return false
+    }
+    
+    private func isValid(name: String?, phoneNumber: String?) -> Bool {
+        let isValidateName = validateName(name)
+        let isValidatePhoneNumber = validatePhoneNumber(phoneNumber)
+        if  isValidateName == true && isValidatePhoneNumber == true {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // MARK: - Private methods
     private func notifyView(model: ModelBusiness) {
 //        view?.didSetData(model: model)
+    }
+    
+    // MARK: - UI interaction methods
+    func continueButtonTapped(name: String?, phoneNumber: String?) {
+        if isValid(name: name, phoneNumber: phoneNumber) {
+            let user = User(name: name, phoneNumber: phoneNumber)
+            Preferences.setPrefsUser(user: user)
+            view?.showAlert()
+        }
     }
     
     // MARK: - Public Interface

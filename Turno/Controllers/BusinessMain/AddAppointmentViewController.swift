@@ -59,9 +59,9 @@ class AddAppointmentViewController: ParentViewController {
     
     // MARK: - UI interaction methods
     @objc func continueButtonTapped() {
-//        installationView?.phoneNumberTextField.resignFirstResponder()
-//        presenterInstallation.continueButtonTapped(name: installationView?.nameTextField.text,
-//                                                   phoneNumber: installationView?.phoneNumberTextField.text ?? "")
+        addAppointmentView.phoneNumberTextField.resignFirstResponder()
+        presenterAddAppointment.continueButtonTapped(name: addAppointmentView.nameTextField.text,
+                                                     phoneNumber: addAppointmentView.phoneNumberTextField.text ?? "")
     }
     
     @objc func cancelButtonTapped() {

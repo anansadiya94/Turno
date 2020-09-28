@@ -579,8 +579,8 @@
 		9EA657D22488150F00F7952A /* ViewControllersViews */ = {
 			isa = PBXGroup;
 			children = (
-				9EB292C725223CDC00BB6437 /* BusinessMain */,
 				9E4DE1A824C3356300EC1FF2 /* Business */,
+				9EB292C725223CDC00BB6437 /* BusinessMain */,
 				9EB43D7D24A3AB9900B93C34 /* UserMain */,
 				9E0B75A42489868B00B25313 /* Welcome */,
 				9EA657D32488151D00F7952A /* OnBoarding */,
