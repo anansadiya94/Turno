@@ -442,19 +442,18 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
-		9E9B87D1248D3425009B1448 /* Main */ = {
+		9E9B87D1248D3425009B1448 /* UserMain */ = {
 			isa = PBXGroup;
 			children = (
 				9E9B87D2248D3430009B1448 /* PresenterUserMain.swift */,
-				9E3EE7422521EA1D00CF884B /* PresenterBusinessMain.swift */,
 				9EB43D7B24A3A9A200B93C34 /* PresenterUserHome.swift */,
 				9EAAD3D224A88992008D3EF7 /* PresenterFavorites.swift */,
 				9EE3EF4D24B4D7A90049EC0A /* PresenterAppointments.swift */,
 			);
-			path = Main;
+			path = UserMain;
 			sourceTree = "<group>";
 		};
-		9E9B87D4248D3443009B1448 /* Main */ = {
+		9E9B87D4248D3443009B1448 /* UserMain */ = {
 			isa = PBXGroup;
 			children = (
 				9E9B87D5248D3466009B1448 /* UserMainViewController.swift */,
@@ -462,10 +461,8 @@
 				9E9B87EC248D361A009B1448 /* AppointmentsViewController.swift */,
 				9E9B87EE248D3623009B1448 /* FavoritesViewController.swift */,
 				9E9B87F0248D362A009B1448 /* SettingsViewController.swift */,
-				9E3EE73E2521E9D000CF884B /* BusinessMainViewController.swift */,
-				9E3EE7482521EA9200CF884B /* BusinessHomeViewController.swift */,
 			);
-			path = Main;
+			path = UserMain;
 			sourceTree = "<group>";
 		};
 		9E9B87DC248D3572009B1448 /* Storyboards */ = {
@@ -525,7 +522,8 @@
 				9E764471248E919600CDAF89 /* ParentViewController.swift */,
 				9E764473248E91F800CDAF89 /* LoadingViewController.swift */,
 				9E4DE1A724C3355400EC1FF2 /* Business */,
-				9E9B87D4248D3443009B1448 /* Main */,
+				9EB2929F25222A8B00BB6437 /* BusinessMain */,
+				9E9B87D4248D3443009B1448 /* UserMain */,
 				9E0B75A32489867D00B25313 /* Welcome */,
 				9EA657CE248814C700F7952A /* OnBoarding */,
 			);
@@ -560,7 +558,8 @@
 			isa = PBXGroup;
 			children = (
 				9E4DE1A924C3356B00EC1FF2 /* Business */,
-				9E9B87D1248D3425009B1448 /* Main */,
+				9EB292A125222AA400BB6437 /* BusinessMain */,
+				9E9B87D1248D3425009B1448 /* UserMain */,
 				9E0B75A52489869800B25313 /* Welcome */,
 				9EA657E42488162000F7952A /* OnBoarding */,
 			);
@@ -826,6 +825,23 @@
 				9E4CACE42494D8AC00AA72E0 /* API.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		9EB2929F25222A8B00BB6437 /* BusinessMain */ = {
+			isa = PBXGroup;
+			children = (
+				9E3EE73E2521E9D000CF884B /* BusinessMainViewController.swift */,
+				9E3EE7482521EA9200CF884B /* BusinessHomeViewController.swift */,
+			);
+			path = BusinessMain;
+			sourceTree = "<group>";
+		};
+		9EB292A125222AA400BB6437 /* BusinessMain */ = {
+			isa = PBXGroup;
+			children = (
+				9E3EE7422521EA1D00CF884B /* PresenterBusinessMain.swift */,
+			);
+			path = BusinessMain;
 			sourceTree = "<group>";
 		};
 		9EB43D6B24A3A31A00B93C34 /* Generics */ = {
