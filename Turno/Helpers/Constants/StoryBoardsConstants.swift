@@ -8,4 +8,5 @@
 
 import Foundation
 
-let kMainStoryboardName = "Main"
+let kUserMainStoryboardName = "UserMain"
+let kBusinessMainStoryboardName = "BusinessMain"

@@ -25,7 +25,11 @@ class OnBoardingCoordinator: Coordinator {
             case .unregistered:
                 showWelcomeScreen()
             case .loggedIn:
-                showMainScreen()
+                if AppData.isBusiness {
+                    showBusinessMainScreen()
+                } else {
+                    showMainScreen()
+                }
             case .sessionExpired:
                 showWelcomeScreen()
             }
@@ -50,8 +54,14 @@ extension OnBoardingCoordinator {
     }
     
     func showMainScreen() {
-        let mainCoordinator = MainCoordinator(window: window, navigationController: navigationController)
-        let screen = ScreenFactory.makeMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        let mainCoordinator = UserMainCoordinator(window: window, navigationController: navigationController)
+        let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        window.rootViewController = screen
+    }
+    
+    func showBusinessMainScreen() {
+        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController)
+        let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController, delegate: mainCoordinator)
         window.rootViewController = screen
     }
 }

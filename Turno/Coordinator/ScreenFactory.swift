@@ -31,6 +31,10 @@ protocol SelectButtonFavorites: class {
     func didSelectEntity(id: String)
 }
 
+protocol SelectButtonBusiness: class {
+    
+}
+
 struct ScreenFactory {
     //ONBOARDING:
     static func makeOnboardingScreen(delegate: SelectButtonOnboarding) -> UIViewController {
@@ -64,14 +68,14 @@ struct ScreenFactory {
     }
     
     //MAIN:
-    static func makeMainScreen(navigationController: UINavigationController, delegate: SelectButtonEntity) -> UIViewController {
-        let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(sbName: kMainStoryboardName,
-                                                                                               vcID: kMainViewControllerID) as? MainViewController
+    static func makeUserMainScreen(navigationController: UINavigationController, delegate: SelectButtonEntity) -> UIViewController {
+        let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(sbName: kUserMainStoryboardName,
+                                                                                               vcID: kUserMainViewControllerID) as? UserMainViewController
         
         if let mainVC = mainViewController {
             if let viewController = mainVC.viewControllers?[0] as? UINavigationController {
-                if let homeVC = viewController.topViewController as? HomeViewController {
-                    let presnter = PresenterHome(view: homeVC, delegate: delegate)
+                if let homeVC = viewController.topViewController as? UserHomeViewController {
+                    let presnter = PresenterUserHome(view: homeVC, delegate: delegate)
                     homeVC.presenterHome = presnter
                 }
             }
@@ -87,10 +91,23 @@ struct ScreenFactory {
                     favoritesVC.presenterFavorites = presnter
                 }
             }
-            let presenter = PresenterMain(view: mainVC)
+            let presenter = PresenterUserMain(view: mainVC)
             mainVC.presenterMain = presenter
             navigationController.viewControllers = [mainVC]
         }
+        return navigationController
+    }
+    
+    static func makeBusinessMainScreen(navigationController: UINavigationController, delegate: SelectButtonBusiness) -> UIViewController {
+        let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(sbName: kBusinessMainStoryboardName,
+                                                                                               vcID: kBusinessMainViewControllerID) as? BusinessMainViewController
+        
+        if let mainViewController = mainViewController {
+            let presenter = PresenterBusinessMain(view: mainViewController)
+            mainViewController.presenterMain = presenter
+            navigationController.viewControllers = [mainViewController]
+        }
+        
         return navigationController
     }
     

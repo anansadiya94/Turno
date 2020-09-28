@@ -9,20 +9,20 @@
 import UIKit
 import Moya
 
-protocol PresenterHomeView: PresenterParentView {
+protocol PresenterUserHomeView: PresenterParentView {
     func didSetData(model: GenericListDescriptive)
 }
 
-class PresenterHome {
+class PresenterUserHome {
     
     // MARK: - Properties
-    private weak var view: PresenterHomeView?
+    private weak var view: PresenterUserHomeView?
     var delegate: SelectButtonEntity!
     var modelList = [ModelBusiness]()
     let networkManager = NetworkManager()
     
     // MARK: - init Methods
-    init(view: PresenterHomeView, delegate: SelectButtonEntity) {
+    init(view: PresenterUserHomeView, delegate: SelectButtonEntity) {
         self.view = view
         self.fetchData()
         self.delegate = delegate

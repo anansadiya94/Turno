@@ -8,4 +8,5 @@
 
 import Foundation
 
-let kMainViewControllerID = "MainViewController"
+let kUserMainViewControllerID = "UserMainViewController"
+let kBusinessMainViewControllerID = "BusinessMainViewController"

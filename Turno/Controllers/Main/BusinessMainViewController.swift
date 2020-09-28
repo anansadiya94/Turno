@@ -1,27 +1,25 @@
 //
-//  MainViewController.swift
+//  BusinessMainViewController.swift
 //  Turno
 //
-//  Created by Anan Sadiya on 07/06/2020.
+//  Created by Anan Sadiya on 28/09/2020.
 //  Copyright © 2020 Anan Sadiya. All rights reserved.
 //
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class BusinessMainViewController: UITabBarController {
     
     // MARK: - Properties
-    var presenterMain: PresenterMain!
+    var presenterMain: PresenterBusinessMain!
     private var homeTabBarItem = UITabBarItem()
-    private var appointmentsTabBarItem = UITabBarItem()
-    private var favoritesTabBarItem = UITabBarItem()
     private var settingsTabBarItem = UITabBarItem()
     
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        configureUI()        
+        configureUI()
     }
     
     // MARK: - Private functions
@@ -32,13 +30,11 @@ class MainViewController: UITabBarController {
     
     private func setTabBarItems() {
         homeTabBarItem.image = UIImage(systemName: "house")
-        appointmentsTabBarItem.image = UIImage(systemName: "calendar")
-        favoritesTabBarItem.image = UIImage(systemName: "heart")
         settingsTabBarItem.image = UIImage(systemName: "gear")
     }
     
     private func setTabBar() {
-        let tabBarItems = [homeTabBarItem, appointmentsTabBarItem, favoritesTabBarItem, settingsTabBarItem]
+        let tabBarItems = [homeTabBarItem, settingsTabBarItem]
         tabBar.tintColor = .primary
         guard let viewControllers = self.viewControllers else { return }
         for (viewController, tabBarItem) in zip(viewControllers, tabBarItems) {
