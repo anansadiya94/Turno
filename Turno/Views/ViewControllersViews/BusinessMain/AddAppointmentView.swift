@@ -11,13 +11,17 @@ import UIKit
 class AddAppointmentView: UIView {
     
     // MARK: - Properties
+    @UseAutoLayout var clientInformationLabel = CustomLabel()
     @UseAutoLayout var nameTextField = CustomTextField()
     @UseAutoLayout var nameTextFieldLabel = CustomLabel()
     @UseAutoLayout var phoneNumberTextField = CustomTextField()
     @UseAutoLayout var phoneNumberTextFieldLabel = CustomLabel()
+    @UseAutoLayout var servicesLabel = CustomLabel()
+    @UseAutoLayout var tableView = UITableView()
     @UseAutoLayout var checkAvailabilityButton =  RoundedCustomButton()
     
     // MARK: - Constraints constants
+    private var kViewMargin: CGFloat = 8
     private var kSuperViewMargin: CGFloat = 16
     private var kTextFieldHeight: CGFloat = 44
     
@@ -35,26 +39,40 @@ class AddAppointmentView: UIView {
     // MARK: - Private methods
     private func configureUI() {
         addSubviews()
+        addClientInformationLabel()
         addNameTextField()
         addNameTextFieldLabel()
         addPhoneNumberTextField()
         addPhoneNumberTextFieldLabel()
+        addServicesLabel()
+        createTableView()
         createCheckAvailabilityButton()
     }
     
     private func addSubviews() {
+        self.addSubview(clientInformationLabel)
         self.addSubview(nameTextField)
         self.addSubview(nameTextFieldLabel)
         self.addSubview(phoneNumberTextField)
         self.addSubview(phoneNumberTextFieldLabel)
+        self.addSubview(servicesLabel)
         self.addSubview(checkAvailabilityButton)
+    }
+    
+    private func addClientInformationLabel() {
+        clientInformationLabel.labelTheme = BoldTheme(label: "Client Information:", fontSize: 18.0, textColor: .black, textAlignment: .left)
+        NSLayoutConstraint.activate([
+            clientInformationLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: kViewMargin),
+            clientInformationLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            clientInformationLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
+        ])
     }
     
     private func addNameTextField() {
         nameTextField.textFieldTheme = NameTheme(placeholder: LocalizedConstants.name_key.localized,
                                                  icon: kName, returnKeyType: .next)
         NSLayoutConstraint.activate([
-            nameTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: kSuperViewMargin),
+            nameTextField.topAnchor.constraint(equalTo: clientInformationLabel.bottomAnchor, constant: kViewMargin),
             nameTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
             nameTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
             nameTextField.heightAnchor.constraint(equalToConstant: kTextFieldHeight)
@@ -92,6 +110,15 @@ class AddAppointmentView: UIView {
         ])
     }
     
+    private func addServicesLabel() {
+        servicesLabel.labelTheme = BoldTheme(label: "Services:", fontSize: 18.0, textColor: .black, textAlignment: .left)
+        NSLayoutConstraint.activate([
+            servicesLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: kSuperViewMargin),
+            servicesLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            servicesLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin)
+        ])
+    }
+    
     private func createCheckAvailabilityButton() {
         addSubview(checkAvailabilityButton)
         checkAvailabilityButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.check_availability_key.localized)
@@ -102,6 +129,22 @@ class AddAppointmentView: UIView {
             checkAvailabilityButton.heightAnchor.constraint(equalToConstant: 44.0),
             checkAvailabilityButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
             checkAvailabilityButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
+        ])
+    }
+    
+    private func createTableView() {
+        addSubview(tableView)
+        tableView.alwaysBounceVertical = true
+        tableView.automaticallyAdjustsScrollIndicatorInsets = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
+        
+        NSLayoutConstraint.activate([
+            tableView.bottomAnchor.constraint(equalTo: checkAvailabilityButton.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: servicesLabel.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: leftAnchor, constant: kSuperViewMargin),
+            tableView.rightAnchor.constraint(equalTo: rightAnchor, constant: -kSuperViewMargin)
         ])
     }
     
