@@ -11,20 +11,40 @@ import CalendarKit
 import DateToolsSwift
 
 class BusinessHomeViewController: DayViewController {
-
+    
     // MARK: - Properties
     var presenterHome: PresenterBusinessHome!
     
     var data = [
         ["Elias",
-        "SERVICES"],
+         "SERVICES"],
         ["Ruber",
-        "SERVICES"],
+         "SERVICES"],
         ["Rani",
-        "SERVICES"],
+         "SERVICES"],
         ["Tamer",
-        "SERVICES"]]
-
+         "SERVICES"]]
+    
+    var turns = [
+        Turn(identifier: "dummy1", dateTimeUTC: "2020-09-30T09:00:00", services: [
+            Service(identifier: "1", serviceName: "Test1", durationInMinutes: 10, count: 1),
+            Service(identifier: "2", serviceName: "Test2", durationInMinutes: 20, count: 2),
+            Service(identifier: "3", serviceName: "Test3", durationInMinutes: 30, count: 3),
+            Service(identifier: "4", serviceName: "Test4", durationInMinutes: 10, count: 4)
+        ]),
+        Turn(identifier: "dummy2", dateTimeUTC: "2020-09-30T16:00:00", services: [
+            Service(identifier: "1", serviceName: "Test11", durationInMinutes: 10, count: 3)
+        ]),
+        Turn(identifier: "dummy3", dateTimeUTC: "2020-10-1T09:00:00", services: [
+            Service(identifier: "1", serviceName: "Test111", durationInMinutes: 10, count: 1),
+            Service(identifier: "2", serviceName: "Test222", durationInMinutes: 20, count: 2)
+        ]),
+        Turn(identifier: "dummy4", dateTimeUTC: "2020-10-2T09:00:00", services: [
+            Service(identifier: "1", serviceName: "Test1111", durationInMinutes: 10, count: 1),
+            Service(identifier: "2", serviceName: "Test2222", durationInMinutes: 20, count: 2),
+            Service(identifier: "3", serviceName: "Test3333", durationInMinutes: 30, count: 3)
+        ])
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -41,7 +61,7 @@ class BusinessHomeViewController: DayViewController {
         super.viewWillAppear(animated)
         navigationItem.title = ""
     }
-
+    
     // MARK: - Private methods
     private func setNavigationBar() {
         navigationController?.navigationBar.backgroundColor = .white
@@ -57,40 +77,58 @@ class BusinessHomeViewController: DayViewController {
     
     // Return an array of EventDescriptors for particular date
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
-        let nextOffset = 90
-        var date = date.add(TimeChunk.dateComponents(hours: 11))
         var events = [Event]()
-
-        for user in data {
-            events.append(createEvent(data: user, datePeriod: TimePeriod(beginning: date,
-                                                                         chunk: TimeChunk.dateComponents(minutes: 60))))
-            date = date.add(TimeChunk.dateComponents(minutes: nextOffset))
+        
+        for turn in turns {
+            if let identifier = turn.identifier,
+               let services = turn.services,
+               let beginningTime = turn.dateTimeUTC?.toDate() {
+                events.append(createEvent(turn: turn,
+                                          data: identifier,
+                                          datePeriod: TimePeriod(beginning: beginningTime,
+                                                                 chunk: TimeChunk.dateComponents(minutes: calculateDuration(to: services)))))
+            }
         }
-
+        
         return events
     }
-
-    private func createEvent(data: [String], datePeriod: TimePeriod) -> Event {
+    
+    private func createEvent(turn: Turn?, data: String, datePeriod: TimePeriod) -> Event {
         let event = Event()
+        event.userInfo = turn
+        
         let datePeriod = datePeriod
-
+        
         event.startDate = datePeriod.beginning!
         event.endDate = datePeriod.end!
-
-        var info = data
-
-        let timezone = TimeZone.ReferenceType.default
-        info.append(datePeriod.beginning!.format(with: "dd.MM.YYYY", timeZone: timezone))
-        info.append("\(datePeriod.beginning!.format(with: "HH:mm", timeZone: timezone)) - \(datePeriod.end!.format(with: "HH:mm", timeZone: timezone))")
-        event.text = info.reduce("", {$0 + $1 + "\n"})
-        event.color = .red
-
+        
+        event.text = data
+        event.color = .primary
+        
         return event
     }
     
+    private func calculateDuration(to bookedServices: [Service]?) -> Int {
+        var duration = 0
+        guard let bookedServices = bookedServices else {
+            return duration
+        }
+        bookedServices.forEach({
+            if let count = $0.count, let durationInMinutes = $0.durationInMinutes {
+                duration += (count * durationInMinutes)
+            }
+        })
+        return duration
+    }
+    
     override func dayViewDidSelectEventView(_ eventView: EventView) {
-//        print("Event has been selected: \(eventView.descriptor)")
-        presenterHome.showAppointmentTapped()
+        guard let descriptor = eventView.descriptor as? Event else {
+            return
+        }
+        print("Event has been selected: \(descriptor) \(String(describing: descriptor.userInfo))")
+        if let turn = descriptor.userInfo as? Turn {
+            presenterHome.showAppointmentTapped(turn: turn)
+        }
     }
 }
 

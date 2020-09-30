@@ -33,7 +33,7 @@ protocol SelectButtonFavorites: class {
 
 protocol SelectButtonBusiness: class {
     func addAppointmentTapped()
-    func showAppointmentTapped()
+    func showAppointmentTapped(turn: Turn)
 }
 
 struct ScreenFactory {
@@ -138,6 +138,15 @@ struct ScreenFactory {
     }
     
     static func makeConfirmationScreen(delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) -> UIViewController {
+        let viewController = ConfirmationViewController()
+        let presenter = PresenterConfirmation(view: viewController, delegate: delegate,
+                                              identifier: identifier, name: name,
+                                              bookedServices: bookedServices, bookedSlot: bookedSlot)
+        viewController.presenterConfirmation = presenter
+        return viewController
+    }
+    
+    static func makeConfirmationScreen(delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) -> UIViewController {
         let viewController = ConfirmationViewController()
         let presenter = PresenterConfirmation(view: viewController, delegate: delegate,
                                               identifier: identifier, name: name,

@@ -18,7 +18,7 @@ class PresenterConfirmation {
     
     // MARK: - Properties
     private weak var view: PresenterConfirmationView?
-    var delegate: SelectButtonEntity!
+    var delegate: Any?
     var identifier: String?
     var name: String?
     var bookedServices: [Service]?
@@ -27,6 +27,16 @@ class PresenterConfirmation {
     
     // MARK: - init Methods
     init(view: PresenterConfirmationView, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
+        self.view = view
+        self.delegate = delegate
+        self.identifier = identifier
+        self.name = name
+        self.bookedServices = bookedServices
+        self.bookedSlot = bookedSlot
+        self.notifyView()
+    }
+    
+    init(view: PresenterConfirmationView, delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
         self.view = view
         self.delegate = delegate
         self.identifier = identifier

@@ -36,10 +36,13 @@ extension BusinessMainCoordinator {
         pushViewByExploreInnerViewController(screen: screen)
     }
     
-    func showAppointmentScreen() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .green
-        pushViewByExploreInnerViewController(screen: vc)
+    func showAppointmentScreen(turn: Turn) {
+        let screen = ScreenFactory.makeConfirmationScreen(delegate: self,
+                                                          identifier: turn.identifier,
+                                                          name: "TODO",
+                                                          bookedServices: turn.services,
+                                                          bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true))
+        pushViewByExploreInnerViewController(screen: screen)
     }
 }
 
@@ -48,7 +51,7 @@ extension BusinessMainCoordinator: SelectButtonBusiness {
         showAddAppointmentScreen(delegate: self)
     }
     
-    func showAppointmentTapped() {
-        showAppointmentScreen()
+    func showAppointmentTapped(turn: Turn) {
+        showAppointmentScreen(turn: turn)
     }
 }
