@@ -137,20 +137,26 @@ struct ScreenFactory {
         return viewController
     }
     
-    static func makeConfirmationScreen(delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) -> UIViewController {
+    static func makeConfirmationScreen(delegate: SelectButtonEntity, identifier: String?, name: String?,
+                                       bookedServices: [Service]?, bookedSlot: EmptySlot?,
+                                       confirmationViewType: ConfirmationViewType?) -> UIViewController {
         let viewController = ConfirmationViewController()
         let presenter = PresenterConfirmation(view: viewController, delegate: delegate,
                                               identifier: identifier, name: name,
-                                              bookedServices: bookedServices, bookedSlot: bookedSlot)
+                                              bookedServices: bookedServices, bookedSlot: bookedSlot,
+                                              confirmationViewType: confirmationViewType)
         viewController.presenterConfirmation = presenter
         return viewController
     }
     
-    static func makeConfirmationScreen(delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) -> UIViewController {
+    static func makeConfirmationScreen(delegate: SelectButtonBusiness, identifier: String?, name: String?,
+                                       bookedServices: [Service]?, bookedSlot: EmptySlot?,
+                                       confirmationViewType: ConfirmationViewType?) -> UIViewController {
         let viewController = ConfirmationViewController()
         let presenter = PresenterConfirmation(view: viewController, delegate: delegate,
                                               identifier: identifier, name: name,
-                                              bookedServices: bookedServices, bookedSlot: bookedSlot)
+                                              bookedServices: bookedServices, bookedSlot: bookedSlot,
+                                              confirmationViewType: confirmationViewType)
         viewController.presenterConfirmation = presenter
         return viewController
     }

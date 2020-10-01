@@ -37,6 +37,8 @@ class ConfirmationViewController: ParentViewController {
     
     private func addTarget() {
         confirmationView.confitmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+        confirmationView.cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        confirmationView.blockButton.addTarget(self, action: #selector(blockButtonTapped), for: .touchUpInside)
     }
     
     private func setTableView() {
@@ -62,11 +64,20 @@ class ConfirmationViewController: ParentViewController {
     @objc func confirmButtonTapped() {
         presenterConfirmation.confirmButtonTapped()
     }
+    
+    @objc func cancelButtonTapped() {
+        presenterConfirmation.cancelButtonTapped()
+    }
+    
+    @objc func blockButtonTapped() {
+        presenterConfirmation.blockButtonTapped()
+    }
 }
 
 // MARK: - PresenterConfirmationView methods
 extension ConfirmationViewController: PresenterConfirmationView {
-    func didSetData(name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
+    func didSetData(name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
+                    confirmationViewType: ConfirmationViewType?) {
         self.bookedServices = bookedServices
         DispatchQueue.main.async {
             self.navigationItem.title = name
@@ -78,6 +89,7 @@ extension ConfirmationViewController: PresenterConfirmationView {
             self.confirmationView.setHeaderStackViewData(day: day,
                                                          startTime: startTime,
                                                          endTime: endTime)
+            self.confirmationView.setViewType(to: confirmationViewType)
             self.confirmationView.tableView.reloadData()
         }
     }

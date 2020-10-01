@@ -15,16 +15,6 @@ class BusinessHomeViewController: DayViewController {
     // MARK: - Properties
     var presenterHome: PresenterBusinessHome!
     
-    var data = [
-        ["Elias",
-         "SERVICES"],
-        ["Ruber",
-         "SERVICES"],
-        ["Rani",
-         "SERVICES"],
-        ["Tamer",
-         "SERVICES"]]
-    
     var turns = [
         Turn(identifier: "dummy1", dateTimeUTC: "2020-09-30T09:00:00", services: [
             Service(identifier: "1", serviceName: "Test1", durationInMinutes: 10, count: 1),

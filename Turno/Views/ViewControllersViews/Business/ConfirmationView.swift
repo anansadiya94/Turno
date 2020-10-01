@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ConfirmationViewType {
+    case user
+    case business
+}
+
 class ConfirmationView: UIView {
     
     // MARK: - Properties
@@ -18,10 +23,14 @@ class ConfirmationView: UIView {
     @UseAutoLayout var tableView =  UITableView()
     @UseAutoLayout var confirmMessageLabel = CustomLabel()
     @UseAutoLayout var confitmButton = RoundedCustomButton()
+    @UseAutoLayout var blockButton = RoundedCustomButton()
+    @UseAutoLayout var cancelButton = RoundedCustomButton()
     
     // MARK: - UIView
     override init(frame: CGRect) {
         super.init(frame: frame)
+        createBlockButton()
+        createCancelButton()
         createConfirmNowButton()
         createConfirmMessageLabel()
         createHeaderStackView()
@@ -33,7 +42,35 @@ class ConfirmationView: UIView {
     }
     
     // MARK: - Private methods
+    func createBlockButton() {
+        blockButton.isHidden = true
+        addSubview(blockButton)
+        blockButton.buttonTheme = RoundedBaseTheme(label: "Block user",
+                                                   backgroundColor: .black)
+        
+        NSLayoutConstraint.activate([
+            blockButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
+            blockButton.heightAnchor.constraint(equalToConstant: 44.0),
+            blockButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
+            blockButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
+        ])
+    }
+    
+    func createCancelButton() {
+        cancelButton.isHidden = true
+        addSubview(cancelButton)
+        cancelButton.buttonTheme = RoundedBaseTheme(label: "Cancel turn",
+                                                    backgroundColor: UIColor.red.withAlphaComponent(0.5))
+        
+        NSLayoutConstraint.activate([
+            cancelButton.bottomAnchor.constraint(equalTo: blockButton.topAnchor, constant: -16.0),
+            cancelButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32),
+            cancelButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
+        ])
+    }
+    
     func createConfirmNowButton() {
+        confitmButton.isHidden = true
         addSubview(confitmButton)
         confitmButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.confirm_key.localized)
         
@@ -46,6 +83,7 @@ class ConfirmationView: UIView {
     }
     
     func createConfirmMessageLabel() {
+        confirmMessageLabel.isHidden = true
         addSubview(confirmMessageLabel)
         confirmMessageLabel.labelTheme = Lightheme(label: LocalizedConstants.confirm_message_key.localized,
                                                    fontSize: 18, textColor: .black, textAlignment: .center,
@@ -133,5 +171,17 @@ class ConfirmationView: UIView {
                                                  textAlignment: .center)
         endTimeLabel.labelTheme = RegularTheme(label: endTime ?? "", fontSize: 18, textColor: .black,
                                                textAlignment: .center)
+    }
+    
+    func setViewType(to viewType: ConfirmationViewType?) {
+        guard let viewType = viewType else { return }
+        switch viewType {
+        case .user:
+            confirmMessageLabel.isHidden = false
+            confitmButton.isHidden = false
+        case .business:
+            cancelButton.isHidden = false
+            blockButton.isHidden = false
+        }
     }
 }

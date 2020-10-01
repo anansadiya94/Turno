@@ -41,7 +41,8 @@ extension BusinessMainCoordinator {
                                                           identifier: turn.identifier,
                                                           name: "TODO",
                                                           bookedServices: turn.services,
-                                                          bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true))
+                                                          bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true),
+                                                          confirmationViewType: .business)
         pushViewByExploreInnerViewController(screen: screen)
     }
 }
