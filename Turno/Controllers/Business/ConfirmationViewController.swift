@@ -46,20 +46,7 @@ class ConfirmationViewController: ParentViewController {
         confirmationView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
                                             forCellReuseIdentifier: kServiceCellID)
     }
-    
-    private func calculateDuration(to bookedServices: [Service]?) -> Int {
-        var duration = 0
-        guard let bookedServices = bookedServices else {
-            return duration
-        }
-        bookedServices.forEach({
-            if let count = $0.count, let durationInMinutes = $0.durationInMinutes {
-                duration += (count * durationInMinutes)
-            }
-        })
-        return duration
-    }
-    
+
     // MARK: - UI interaction methods
     @objc func confirmButtonTapped() {
         presenterConfirmation.confirmButtonTapped()
@@ -83,7 +70,7 @@ extension ConfirmationViewController: PresenterConfirmationView {
             self.navigationItem.title = name
             let day = bookedSlot?.slot?.toDisplayableDate(type: .date)
             let startTime = bookedSlot?.slot?.toDisplayableDate(type: .hour)
-            let bookedServicesDuration = self.calculateDuration(to: bookedServices)
+            let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: bookedServices)
             let endTimeDate = bookedSlot?.slot?.calculateEndDate(adding: bookedServicesDuration)
             let endTime = endTimeDate?.toDisplayableDate(type: .hour)
             self.confirmationView.setHeaderStackViewData(day: day,

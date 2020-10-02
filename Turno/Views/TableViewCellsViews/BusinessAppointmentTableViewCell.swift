@@ -61,20 +61,6 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
         servicesTableView.reloadData()
     }
     
-    // TODO: Refactor
-    private func calculateDuration(to bookedServices: [Service]?) -> Int {
-        var duration = 0
-        guard let bookedServices = bookedServices else {
-            return duration
-        }
-        bookedServices.forEach({
-            if let count = $0.count, let durationInMinutes = $0.durationInMinutes {
-                duration += (count * durationInMinutes)
-            }
-        })
-        return duration
-    }
-    
     // MARK: - UI interaction methods
     @IBAction func cancelButtonTapped(_ sender: Any) {
         if let identifier = self.identifier {
@@ -95,7 +81,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
         
         let date = turn.dateTimeUTC?.toDisplayableDate(type: .date) ?? ""
         let starTime = turn.dateTimeUTC?.toDisplayableDate(type: .hour) ?? ""
-        let bookedServicesDuration = self.calculateDuration(to: turn.services)
+        let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: turn.services)
         let endTimeDate = turn.dateTimeUTC?.calculateEndDate(adding: bookedServicesDuration)
         let endTime = endTimeDate?.toDisplayableDate(type: .hour) ?? ""
         

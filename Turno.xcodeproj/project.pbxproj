@@ -17,11 +17,11 @@
 		9E0B75AE24898DB000B25313 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75AD24898DB000B25313 /* CustomButton.swift */; };
 		9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75AF24898DC100B25313 /* CustomButtonTheme.swift */; };
 		9E0B75B224898E5300B25313 /* UIButton+Underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0B75B124898E5300B25313 /* UIButton+Underline.swift */; };
+		9E0E26E32527A1F50062CFC3 /* ServiceTimeCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E26E22527A1F50062CFC3 /* ServiceTimeCalculation.swift */; };
 		9E23F432248CD0DE003D031F /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F431248CD0DE003D031F /* Double+Rounded.swift */; };
 		9E23F434248CED4E003D031F /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F433248CED4E003D031F /* OTPTextField.swift */; };
 		9E23F436248CED7D003D031F /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E23F435248CED7D003D031F /* OTPStackView.swift */; };
 		9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */; };
-		9E3DFE1124E08D3700873454 /* ServiceMinutesToHoursMinutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3DFE1024E08D3700873454 /* ServiceMinutesToHoursMinutes.swift */; };
 		9E3EE73F2521E9D000CF884B /* BusinessMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EE73E2521E9D000CF884B /* BusinessMainViewController.swift */; };
 		9E3EE7432521EA1D00CF884B /* PresenterBusinessMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EE7422521EA1D00CF884B /* PresenterBusinessMain.swift */; };
 		9E3EE7492521EA9200CF884B /* BusinessHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EE7482521EA9200CF884B /* BusinessHomeViewController.swift */; };
@@ -178,11 +178,11 @@
 		9E0B75AD24898DB000B25313 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9E0B75AF24898DC100B25313 /* CustomButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTheme.swift; sourceTree = "<group>"; };
 		9E0B75B124898E5300B25313 /* UIButton+Underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Underline.swift"; sourceTree = "<group>"; };
+		9E0E26E22527A1F50062CFC3 /* ServiceTimeCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTimeCalculation.swift; sourceTree = "<group>"; };
 		9E23F431248CD0DE003D031F /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
 		9E23F433248CED4E003D031F /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		9E23F435248CED7D003D031F /* OTPStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		9E25D00C24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift"; sourceTree = "<group>"; };
-		9E3DFE1024E08D3700873454 /* ServiceMinutesToHoursMinutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMinutesToHoursMinutes.swift; sourceTree = "<group>"; };
 		9E3EE73E2521E9D000CF884B /* BusinessMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMainViewController.swift; sourceTree = "<group>"; };
 		9E3EE7422521EA1D00CF884B /* PresenterBusinessMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterBusinessMain.swift; sourceTree = "<group>"; };
 		9E3EE7482521EA9200CF884B /* BusinessHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHomeViewController.swift; sourceTree = "<group>"; };
@@ -508,7 +508,7 @@
 				9E9B87F2248D3702009B1448 /* ServiceViewController.swift */,
 				9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */,
 				9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */,
-				9E3DFE1024E08D3700873454 /* ServiceMinutesToHoursMinutes.swift */,
+				9E0E26E22527A1F50062CFC3 /* ServiceTimeCalculation.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1142,12 +1142,12 @@
 				9EE3EF4824B4D23C0049EC0A /* AppointmentTableViewCell.swift in Sources */,
 				9E4DE1AF24C33AB000EC1FF2 /* UserMainCoordinator.swift in Sources */,
 				9E4DE1AB24C3357800EC1FF2 /* BusinessViewController.swift in Sources */,
+				9E0E26E32527A1F50062CFC3 /* ServiceTimeCalculation.swift in Sources */,
 				9EF54EB125029738000DC352 /* UITableView+EmpyMessage.swift in Sources */,
 				9E9B87F1248D362A009B1448 /* SettingsViewController.swift in Sources */,
 				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
 				9EB43D6F24A3A38300B93C34 /* Descriptive.swift in Sources */,
 				9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */,
-				9E3DFE1124E08D3700873454 /* ServiceMinutesToHoursMinutes.swift in Sources */,
 				9E9880ED248BBABD00D78959 /* PresenterActivation.swift in Sources */,
 				9E4CACE92494EBE800AA72E0 /* ModelVerify.swift in Sources */,
 				9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */,

@@ -37,7 +37,7 @@ class PresenterCheckAvailability {
     
     // MARK: - Private methods
     private func notifyView() {
-        let minutesToHoursMinutes = ServiceMinutesToHoursMinutes.minutesToHoursMinutes(bookedServices: bookedServices)
+        let minutesToHoursMinutes = ServiceTimeCalculation.minutesToHoursMinutes(bookedServices: bookedServices)
         guard let modelCheckTurnsAvailability = modelCheckTurnsAvailability else { return }
         view?.didSetData(name: name, modelCheckTurnsAvailability: modelCheckTurnsAvailability,
                          totalServicesTime: "\(minutesToHoursMinutes.hours)h \(minutesToHoursMinutes.leftMinutes)m")
