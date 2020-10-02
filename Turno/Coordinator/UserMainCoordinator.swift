@@ -50,7 +50,8 @@ extension UserMainCoordinator {
                                                           identifier: identifier,
                                                           name: name,
                                                           bookedServices: bookedServices,
-                                                          bookedSlot: bookedSlot)
+                                                          bookedSlot: bookedSlot,
+                                                          confirmationViewType: .user)
         pushViewByExploreInnerViewController(screen: screen)
     }
 }

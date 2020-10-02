@@ -52,7 +52,7 @@ struct ModelBusiness: Codable {
     init(identifier: String? = nil, name: String? = nil, image: String? = nil,
          address: String? = nil, description: String? = nil, longitude: Double? = nil,
          latitude: Double? = nil, ownerName: String? = nil, phone: String? = nil,
-         isFavorite: Bool? = nil, turns: [Turn]? = nil) {
+         isFavorite: Bool? = nil, turns: [Turn]? = nil, services: [Service]? = nil) {
         self.identifier = identifier
         self.name = name
         self.image = image
@@ -64,6 +64,7 @@ struct ModelBusiness: Codable {
         self.phone = phone
         self.isFavorite = isFavorite
         self.turns = turns
+        self.services = services
     }
     
     mutating func isFavoriteTapped() {
@@ -93,6 +94,14 @@ class Service: Codable {
     enum CodingKeys: String, CodingKey {
         case serviceName, durationInMinutes, count
         case identifier = "serviceId"
+    }
+    
+    init(identifier: String? = nil, serviceName: String? = nil,
+         durationInMinutes: Int? = nil, count: Int? = nil) {
+        self.identifier = identifier
+        self.serviceName = serviceName
+        self.durationInMinutes = durationInMinutes
+        self.count = count
     }
 }
 

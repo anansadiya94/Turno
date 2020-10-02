@@ -37,6 +37,8 @@ class ConfirmationViewController: ParentViewController {
     
     private func addTarget() {
         confirmationView.confitmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+        confirmationView.cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        confirmationView.blockButton.addTarget(self, action: #selector(blockButtonTapped), for: .touchUpInside)
     }
     
     private func setTableView() {
@@ -44,40 +46,37 @@ class ConfirmationViewController: ParentViewController {
         confirmationView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
                                             forCellReuseIdentifier: kServiceCellID)
     }
-    
-    private func calculateDuration(to bookedServices: [Service]?) -> Int {
-        var duration = 0
-        guard let bookedServices = bookedServices else {
-            return duration
-        }
-        bookedServices.forEach({
-            if let count = $0.count, let durationInMinutes = $0.durationInMinutes {
-                duration += (count * durationInMinutes)
-            }
-        })
-        return duration
-    }
-    
+
     // MARK: - UI interaction methods
     @objc func confirmButtonTapped() {
         presenterConfirmation.confirmButtonTapped()
+    }
+    
+    @objc func cancelButtonTapped() {
+        presenterConfirmation.cancelButtonTapped()
+    }
+    
+    @objc func blockButtonTapped() {
+        presenterConfirmation.blockButtonTapped()
     }
 }
 
 // MARK: - PresenterConfirmationView methods
 extension ConfirmationViewController: PresenterConfirmationView {
-    func didSetData(name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
+    func didSetData(name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
+                    confirmationViewType: ConfirmationViewType?) {
         self.bookedServices = bookedServices
         DispatchQueue.main.async {
             self.navigationItem.title = name
             let day = bookedSlot?.slot?.toDisplayableDate(type: .date)
             let startTime = bookedSlot?.slot?.toDisplayableDate(type: .hour)
-            let bookedServicesDuration = self.calculateDuration(to: bookedServices)
+            let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: bookedServices)
             let endTimeDate = bookedSlot?.slot?.calculateEndDate(adding: bookedServicesDuration)
             let endTime = endTimeDate?.toDisplayableDate(type: .hour)
             self.confirmationView.setHeaderStackViewData(day: day,
                                                          startTime: startTime,
                                                          endTime: endTime)
+            self.confirmationView.setViewType(to: confirmationViewType)
             self.confirmationView.tableView.reloadData()
         }
     }
