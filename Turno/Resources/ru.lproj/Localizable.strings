@@ -13,8 +13,8 @@
 "agree_to_terms_key" = "Путем выбора Продолжить, вы соглашаетесь с нашими условиями и нашей политики.";
 "continue_key" = "Продолжать";
 "privacy_policy_key" = "политика конфиденциальности";
-"installation_key" = "Монтаж";
-"name_key" = "название";
+"installation_key" = "Установка";
+"name_key" = "имя";
 "phone_number_key" = "Телефонный номер";
 "phone_number_question_key" = "Это ваш номер телефона?";
 "edit_key" = "РЕДАКТИРОВАТЬ";
@@ -25,17 +25,18 @@
 "six_digit_code_key" = "Ваш код 6 цифр";
 "resend_sms_key" = "Resend SMS";
 "activate_by_call_key" = "Активировать вызов";
-"finish_key" = "финиш";
+"finish_key" = "Конец";
 "cancel_key" = "Отмена";
 "empty_field_key" = "Это поле не может быть пустым";
 "invalid_name_key" = "Поле Имя должно быть в пределах от 2 до 30 символов";
 "invalid_phoneNumber_key" = "Пожалуйста, введите действующий телефонный номер";
-"home_key" = "Домой";
+"home_key" = "Главная";
 "my_turns_key" = "Мои повороты";
 "favorites_key" = "Избранные";
 "settings_key" = "настройки";
-"ok_key" = "Хорошо";
+"ok_key" = "В порядке";
 "generic_error_title_key" = "Что-то пошло не так...";
+"generic_error_message_key" = "Пожалуйста, попробуйте позже.";
 "connection_failed_error_title_key" = "Ошибка подключения";
 "connection_failed_error_message_key" = "Там может быть проблема с подключением к Интернету. Пожалуйста, попробуйте еще раз.";
 "services_key" = "Сервисы";
@@ -46,6 +47,10 @@
 "book_now_key" = "Забронируйте сейчас!";
 "confirm_key" = "Подтверждение";
 "confirm_message_key" = "Пожалуйста, там 5 минут до своей очереди. Уведомлять или отменить в случае, если вы не можете сделать это вовремя.";
+"no_favorites_error_title_key" = "Избранные не найдено";
+"no_favorites_error_message_key" = "Вы не понравился какой-либо бизнес еще.";
+"no_turns_error_title_key" = "Не найдено ни одной очереди";
+"no_turns_error_message_key" = "График очереди, чтобы увидеть его здесь.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Общее время услуги составляет:% @";

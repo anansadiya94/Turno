@@ -30,12 +30,13 @@
 "empty_field_key" = "Este campo no puede estar vacío";
 "invalid_name_key" = "El campo nombre debe ser de entre 2 y 30 caracteres";
 "invalid_phoneNumber_key" = "Por favor ingrese un número de teléfono válido";
-"home_key" = "Hogar";
+"home_key" = "Casa";
 "my_turns_key" = "Mis vueltas";
 "favorites_key" = "favoritos";
 "settings_key" = "ajustes";
 "ok_key" = "Okay";
 "generic_error_title_key" = "Algo salió mal...";
+"generic_error_message_key" = "Por favor, inténtelo de nuevo más tarde.";
 "connection_failed_error_title_key" = "La conexión falló";
 "connection_failed_error_message_key" = "Puede haber un problema con la conexión a Internet. Inténtalo de nuevo.";
 "services_key" = "Servicios";
@@ -46,6 +47,10 @@
 "book_now_key" = "¡Reservar ahora!";
 "confirm_key" = "Confirmar";
 "confirm_message_key" = "Tenga allí 5 minutos antes de su turno. Notificar o cancela en caso de no poder llegar a tiempo.";
+"no_favorites_error_title_key" = "No se han encontrado favoritos";
+"no_favorites_error_message_key" = "No ha gustado cualquier negocio todavía.";
+"no_turns_error_title_key" = "No se encontraron vueltas";
+"no_turns_error_message_key" = "Programar un turno para ver aquí.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "el tiempo total de servicios es:% @";

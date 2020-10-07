@@ -16,8 +16,12 @@ extension UIViewController {
             if application.canOpenURL(phoneCallURL) == true {
                 application.open(phoneCallURL, options: [:], completionHandler: nil)
             } else {
-                // TODO: SHOW ERROR ALERT?
-                print("ERROR PHONE NUMBER")
+                let alert = UIAlertController(title: LocalizedConstants.generic_error_title_key.localized,
+                                              message: LocalizedConstants.generic_error_message_key.localized,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: LocalizedConstants.ok_key.localized,
+                                              style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

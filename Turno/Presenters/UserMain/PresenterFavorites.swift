@@ -61,10 +61,9 @@ class PresenterFavorites {
             if let modelList = modelList, !modelList.isEmpty {
                 self.modelList = modelList
             } else {
-                self.modelList = []
-                // TODO: Translate
-                self.view?.showEmptyMessage(title: "No favorites found",
-                                            message: "You haven’t liked any business yet.")
+                self.modelList = []                
+                self.view?.showEmptyMessage(title: LocalizedConstants.no_favorites_error_title_key.localized,
+                                            message: LocalizedConstants.no_favorites_error_message_key.localized)
             }
             self.notifyView()
         }

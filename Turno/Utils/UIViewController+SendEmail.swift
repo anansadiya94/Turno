@@ -20,8 +20,12 @@ extension UIViewController: MFMailComposeViewControllerDelegate {
             mail.setMessageBody("<p>Message here</p>", isHTML: true)
             present(mail, animated: true)
         } else {
-            // TODO: SHOW ERROR ALERT?
-            print("ERROR EMAIL ADDRESS")
+            let alert = UIAlertController(title: LocalizedConstants.generic_error_title_key.localized,
+                                          message: LocalizedConstants.generic_error_message_key.localized,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: LocalizedConstants.ok_key.localized,
+                                          style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 

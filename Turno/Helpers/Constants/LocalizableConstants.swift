@@ -46,6 +46,7 @@ enum LocalizedConstants: String {
     case    settings_key
     case    ok_key
     case    generic_error_title_key
+    case    generic_error_message_key
     case    connection_failed_error_title_key
     case    connection_failed_error_message_key
     case    services_key
@@ -56,6 +57,10 @@ enum LocalizedConstants: String {
     case    book_now_key
     case    confirm_key
     case    confirm_message_key
+    case    no_favorites_error_title_key
+    case    no_favorites_error_message_key
+    case    no_turns_error_title_key
+    case    no_turns_error_message_key
     
     case    total_services_time_key
 }

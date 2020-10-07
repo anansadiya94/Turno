@@ -75,10 +75,9 @@ class PresenterAppointments {
             if let modelList = modelList, !modelList.isEmpty {
                 self.modelList = modelList
             } else {
-                self.modelList = []
-                // TODO: Translate
-                self.view?.showEmptyMessage(title: "No turns found",
-                                            message: "Schedule a turn to see it here.")
+                self.modelList = []                
+                self.view?.showEmptyMessage(title: LocalizedConstants.no_turns_error_title_key.localized,
+                                            message: LocalizedConstants.no_turns_error_message_key.localized)
             }
             self.notifyView()
         }

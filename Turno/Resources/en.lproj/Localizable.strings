@@ -36,6 +36,7 @@
 "settings_key" = "Settings";
 "ok_key" = "Ok";
 "generic_error_title_key" = "Something went wrong...";
+"generic_error_message_key" = "Please try again later.";
 "connection_failed_error_title_key" = "Connection failed";
 "connection_failed_error_message_key" = "There may be a problem with your internet connection. Please try again.";
 "services_key" = "Services";
@@ -46,6 +47,10 @@
 "book_now_key" = "Book now!";
 "confirm_key" = "Confirm";
 "confirm_message_key" = "Please be there 5 mins before your turn. Notify or cancel in case you can’t make it in time.";
+"no_favorites_error_title_key" = "No favorites found";
+"no_favorites_error_message_key" = "You haven’t liked any business yet.";
+"no_turns_error_title_key" = "No turns found";
+"no_turns_error_message_key" = "Schedule a turn to see it here.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Total services time is: %@";

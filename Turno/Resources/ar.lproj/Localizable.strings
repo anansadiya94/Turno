@@ -33,9 +33,10 @@
 "home_key" = "الصفحة الرئيسية";
 "my_turns_key" = "بلدي يتحول";
 "favorites_key" = "المفضلة";
-"settings_key" = "الإعدادات";
+"settings_key" = "إعدادات";
 "ok_key" = "حسنا";
 "generic_error_title_key" = "هناك خطأ ما...";
+"generic_error_message_key" = "الرجاء معاودة المحاولة في وقت لاحق.";
 "connection_failed_error_title_key" = "فشل الاتصال";
 "connection_failed_error_message_key" = "قد يكون هناك مشكلة مع اتصال الإنترنت الخاص بك. حاول مرة اخرى.";
 "services_key" = "خدمات";
@@ -46,6 +47,10 @@
 "book_now_key" = "احجز الآن!";
 "confirm_key" = "تؤكد";
 "confirm_message_key" = "يرجى أن يكون هناك 5 دقائق قبل دورك. إعلام أو إلغاء في حال لم تتمكن من جعلها في الوقت المناسب.";
+"no_favorites_error_title_key" = "لا توجد المفضلة";
+"no_favorites_error_message_key" = "كنت لم أحب أي عمل حتى الآن.";
+"no_turns_error_title_key" = "لم يتم العثور على المنعطفات";
+"no_turns_error_message_key" = "جدولة بدوره أن نرى هنا.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو:٪ @";

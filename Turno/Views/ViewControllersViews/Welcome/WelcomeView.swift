@@ -106,8 +106,7 @@ class WelcomeView: UIView {
         ])
     }
     
-    private func addFooterView() {
-        //TODO: Should be translated?
+    private func addFooterView() {        
         footerLabel.labelTheme = RegularTheme(label: "@2020 Turno", fontSize: 15,
                                               textColor: .black, textAlignment: .center)
         privacyPolicyButton.buttonTheme = BaseTheme(label: LocalizedConstants.privacy_policy_key.localized, underLine: true)

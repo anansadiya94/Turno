@@ -36,6 +36,7 @@
 "settings_key" = "הגדרות";
 "ok_key" = "בסדר";
 "generic_error_title_key" = "משהו השתבש...";
+"generic_error_message_key" = "בבקשה נסה שוב מאוחר יותר.";
 "connection_failed_error_title_key" = "חיבור נכשל";
 "connection_failed_error_message_key" = "תיתכן בעיה עם החיבור לאינטרנט. בבקשה נסה שוב.";
 "services_key" = "שירותים";
@@ -46,6 +47,10 @@
 "book_now_key" = "להזמין עכשיו!";
 "confirm_key" = "לְאַשֵׁר";
 "confirm_message_key" = "אנא להיות שם 5 דקות לפני התור שלך. הודע או לבטל במקרה שאתה לא יכול לעשות את זה בזמן.";
+"no_favorites_error_title_key" = "לא נמצאו מועדפים";
+"no_favorites_error_message_key" = "לא סימנת כל עסק עדיין.";
+"no_turns_error_title_key" = "אין תורות נמצאות";
+"no_turns_error_message_key" = "תזמן תפנית לראות אותו כאן.";
 
 /*  App Translations.xlsx - iOS - Static resources  */
-"total_services_time_key" = "זמן שירותים סה'כ הוא:% @";
+"total_services_time_key" = "זמן שירותים סה"כ הוא:% @";
