@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "stopwatch.png",
+      "filename" : "Turno2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "stopwatch@2x.png",
+      "filename" : "Turno2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "stopwatch@3x.png",
+      "filename" : "Turno2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
