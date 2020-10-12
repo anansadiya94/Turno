@@ -16,7 +16,7 @@ protocol SelectButtonOnboarding: class {
 protocol SelectButtonWelcome: class {
     func didSelectWelcomeContinueButton()
     func didSelectAlertYesButton(modelSignUp: ModelSignUp)
-    func didOPTTapped()
+    func didOPTTapped(isBusiness: Bool)
 }
 
 protocol SelectButtonEntity: class {
