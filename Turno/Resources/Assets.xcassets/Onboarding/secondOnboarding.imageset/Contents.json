@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "onboarding2.jpg",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "onboarding2@2x.jpg",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "onboarding2@3x.jpg",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "undraw_Booking_re_gw4j.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
