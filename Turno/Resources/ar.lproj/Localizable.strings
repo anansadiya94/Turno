@@ -1,41 +1,43 @@
 
 /*  App Translations.xlsx - Common - Static resources  */
-"first_onboarding_title_key" = "لا تنتظر";
-"first_onboarding_subtitle_key" = "مهلا";
-"second_onboarding_title_key" = "كتاب سهل";
-"second_onboarding_subtitle_key" = "اختيار الأعمال المفضلة لديك، واختيار الخدمات التي سوف ترغب في الحصول على وحجز ساعة ما هو جيد لك.";
+"first_onboarding_title_key" = "لا مزيد من الانتظار";
+"first_onboarding_subtitle_key" = "الحلاق سيكون في انتظاركم";
+"second_onboarding_title_key" = "سهلة وسريعة";
+"second_onboarding_subtitle_key" = "احجز دورك بسهوله وببضع نقرات";
 "third_onboarding_title_key" = "إشعارات";
-"third_onboarding_subtitle_key" = "سيتم إرسال إشعار لك قبل 30 دقيقة من الموعد المحدد.";
+"third_onboarding_subtitle_key" = "سوف نحرص على تذكيرك بلموعد قبل اوانه";
 "next_key" = "التالى";
-"done_key" = "منجز";
-"welcome_to_turno_key" = "مرحبا بكم في Turno";
-"benefits_text_key" = "حجز منصة على الانترنت. لا تضيعوا وقتكم وحجز موعدك القادم.";
-"agree_to_terms_key" = "اختيار المتابعة، فإنك توافق على شروطنا وسياساتنا.";
-"continue_key" = "استمر";
+"done_key" = "انهاء";
+"welcome_to_turno_key" = "Turno ترحب بكم";
+"benefits_text_key" = "نحن هنا لنوفر لك افضل الخدمات وباعلى جوده";
+"agree_to_terms_key" = "باختيارك المتابعة، فإنك توافق على شروطنا وسياساتنا.
+";
+"continue_key" = "استمرار";
 "privacy_policy_key" = "سياسة خاصة";
-"installation_key" = "التركيب";
+"installation_key" = "تثبيت";
 "name_key" = "اسم";
 "phone_number_key" = "رقم الهاتف";
-"phone_number_question_key" = "هذا هو رقم هاتفك؟";
+"phone_number_question_key" = "هل هذا هو رقم هاتفك؟";
 "edit_key" = "تعديل";
 "yes_key" = "نعم";
-"activate_your_account_key" = "فعل حسابك";
-"sms_sent_key" = "لقد قمنا بإرسال رقم الهاتف رمز الخاص بك عن طريق SMS";
+"activate_your_account_key" = "تنشيط الحساب";
+"sms_sent_key" = "لقد قمنا بإرسال رسالة نصية قصيرة إلى رقم هاتفك";
 "wrong_number_key" = "رقم غير صحيح؟";
-"six_digit_code_key" = "أكواد 6 أرقام";
+"six_digit_code_key" = "رمز التحقق";
 "resend_sms_key" = "اعادة الرسال الرسالة";
 "activate_by_call_key" = "تنشيط عن طريق مكالمة";
 "finish_key" = "إنهاء";
 "cancel_key" = "إلغاء";
-"empty_field_key" = "هذا المجال لا يمكن أن يكون فارغا";
-"invalid_name_key" = "يجب أن يكون حقل الاسم في الفترة ما بين 2 و 30 حرفا";
+"empty_field_key" = "هذا الحقل لا يمكن أن يكون فارغا
+";
+"invalid_name_key" = "بين 2 و 30 حرفا";
 "invalid_phoneNumber_key" = "يرجى إدخال رقم هاتف صالح";
 "home_key" = "الصفحة الرئيسية";
-"my_turns_key" = "بلدي يتحول";
-"favorites_key" = "المفضلة";
+"my_turns_key" = "ادواري";
+"favorites_key" = "المفضلون";
 "settings_key" = "إعدادات";
 "ok_key" = "حسنا";
-"generic_error_title_key" = "هناك خطأ ما...";
+"generic_error_title_key" = "حصل خطاء ما";
 "generic_error_message_key" = "الرجاء معاودة المحاولة في وقت لاحق.";
 "connection_failed_error_title_key" = "فشل الاتصال";
 "connection_failed_error_message_key" = "قد يكون هناك مشكلة مع اتصال الإنترنت الخاص بك. حاول مرة اخرى.";
@@ -43,14 +45,14 @@
 "information_key" = "معلومات";
 "check_availability_key" = "التحقق من الصلاحية";
 "call_now_key" = "اتصل الان";
-"open_in_key" = "في فتح";
+"open_in_key" = "يفتح في";
 "book_now_key" = "احجز الآن!";
-"confirm_key" = "تؤكد";
-"confirm_message_key" = "يرجى أن يكون هناك 5 دقائق قبل دورك. إعلام أو إلغاء في حال لم تتمكن من جعلها في الوقت المناسب.";
-"no_favorites_error_title_key" = "لا توجد المفضلة";
-"no_favorites_error_message_key" = "كنت لم أحب أي عمل حتى الآن.";
-"no_turns_error_title_key" = "لم يتم العثور على المنعطفات";
-"no_turns_error_message_key" = "جدولة بدوره أن نرى هنا.";
+"confirm_key" = "تاكيد";
+"confirm_message_key" = "الرجاء التواجد 5 دقائق قبل الموعد. في حال عدم الاماكانيه للقدوم مفضل الغاء الدور وشكرا";
+"no_favorites_error_title_key" = "لم يضاف اي محل مفضل";
+"no_favorites_error_message_key" = "يجب عليك اضافة احد الصالونات للمفضلات";
+"no_turns_error_title_key" = "لم يتم العثور على ادوار";
+"no_turns_error_message_key" = "احجز دورك لتراه هنا";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو:٪ @";
