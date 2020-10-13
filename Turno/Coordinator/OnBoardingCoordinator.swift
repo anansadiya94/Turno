@@ -25,7 +25,7 @@ class OnBoardingCoordinator: Coordinator {
             case .unregistered:
                 showWelcomeScreen()
             case .loggedIn:
-                if AppData.isBusiness {
+                if Preferences.isBusiness() {
                     showBusinessMainScreen()
                 } else {
                     showMainScreen()

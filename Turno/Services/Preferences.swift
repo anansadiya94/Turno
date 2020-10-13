@@ -63,4 +63,11 @@ class Preferences {
         }
         return ""
     }
+    
+    static func isBusiness() -> Bool {
+        if Preferences.getPrefsUser()?.businessId != nil {
+            return true
+        }
+        return false
+    }
 }

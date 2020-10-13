@@ -21,6 +21,8 @@ protocol Networkable {
     func cancelTurn(modelTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void)
     func getAvailableTimes(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void)
     func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void)
+    func getMyBusiness(completion: @escaping (ModelBusiness?, Error?) -> Void)
+    func getMyBookings(completion: @escaping (ModelMyBookings?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -199,6 +201,50 @@ class NetworkManager: Networkable {
                         completion(turn, nil)
                     // TODO: Can't book code
 //                    completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? "", code: value.statusCode))
+                    default:
+                        break
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func getMyBusiness(completion: @escaping (ModelBusiness?, Error?) -> Void) {
+        provider.request(.getMyBusiness) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let modelBusiness = try decoder.decode(ModelBusiness.self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(modelBusiness, nil)
+                    default:
+                        break
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func getMyBookings(completion: @escaping (ModelMyBookings?, Error?) -> Void) {
+        provider.request(.getMyBookings) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let modelMyBookings = try decoder.decode(ModelMyBookings.self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(modelMyBookings, nil)
                     default:
                         break
                     }

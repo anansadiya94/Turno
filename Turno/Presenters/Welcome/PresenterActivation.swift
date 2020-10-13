@@ -44,6 +44,7 @@ class PresenterActivation: NSObject {
         var user = Preferences.getPrefsUser()
         user?.secret = modelVerify.secret
         user?.userId = modelVerify.userId
+        user?.businessId = modelVerify.businessId
         Preferences.setPrefsUser(user: user)
         Preferences.setPrefsAppState(value: .loggedIn)
     }
@@ -114,7 +115,7 @@ class PresenterActivation: NSObject {
                 if let modelVerify = modelVerify {
                     self.setPrefs(modelVerify: modelVerify)
                     self.view?.stopWaitingView()
-                    self.delegate?.didOPTTapped()
+                    self.delegate?.didOPTTapped(isBusiness: (modelVerify.businessId != nil) ? true : false)
                 }
             }
         }

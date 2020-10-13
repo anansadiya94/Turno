@@ -39,6 +39,12 @@ extension WelcomeCoordinator {
         let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController, delegate: mainCoordinator)
         window.rootViewController = screen
     }
+    
+    func showBusinessMainScreen() {
+        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController)
+        let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        window.rootViewController = screen
+    }
 }
 
 extension WelcomeCoordinator: SelectButtonWelcome {
@@ -50,7 +56,11 @@ extension WelcomeCoordinator: SelectButtonWelcome {
         showActivationScreen(delegate: self, modelSignUp: modelSignUp)
     }
     
-    func didOPTTapped() {
-        showMainScreen()
+    func didOPTTapped(isBusiness: Bool) {
+        if isBusiness {
+            showBusinessMainScreen()
+        } else {
+            showMainScreen()
+        }
     }
 }

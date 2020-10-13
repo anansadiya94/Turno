@@ -31,8 +31,8 @@ extension BusinessMainCoordinator {
         }
     }
     
-    func showAddAppointmentScreen(delegate: SelectButtonBusiness) {
-        let screen = ScreenFactory.makeAddAppointmentScreen(delegate: delegate)
+    func showAddAppointmentScreen(modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) {
+        let screen = ScreenFactory.makeAddAppointmentScreen(modelBusiness: modelBusiness, delegate: delegate)
         pushViewByExploreInnerViewController(screen: screen)
     }
     
@@ -48,8 +48,8 @@ extension BusinessMainCoordinator {
 }
 
 extension BusinessMainCoordinator: SelectButtonBusiness {
-    func addAppointmentTapped() {
-        showAddAppointmentScreen(delegate: self)
+    func addAppointmentTapped(modelBusiness: ModelBusiness?) {
+        showAddAppointmentScreen(modelBusiness: modelBusiness, delegate: self)
     }
     
     func showAppointmentTapped(turn: Turn) {

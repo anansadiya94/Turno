@@ -149,8 +149,8 @@ extension AddAppointmentViewController: UITextFieldDelegate {
 
 // MARK: - PresenterAddAppointmentView methods
 extension AddAppointmentViewController: PresenterAddAppointmentView {
-    func didSetData(model: ModelBusiness) {
-        self.services = initServices(services: model.services)
+    func didSetData(modelBusiness: ModelBusiness) {
+        self.services = initServices(services: modelBusiness.services)
         
         DispatchQueue.main.async {
             self.addAppointmentView.tableView.reloadData()
