@@ -23,6 +23,8 @@ enum APIRouter {
     case cancelTurn(modelCancelTurnTask: ModelCancelTurnTask)
     case getAvailableTimes(modelCheckTurnsAvailabilityTask: ModelCheckTurnsAvailabilityTask)
     case book(modelBookTask: ModelBookTask)
+    case getMyBusiness
+    case getMyBookings
 }
 
 extension APIRouter: TargetType {
@@ -42,12 +44,15 @@ extension APIRouter: TargetType {
         case .cancelTurn: return kCancelTurn
         case .getAvailableTimes: return kGetAvailableTimes
         case .book: return kBook
+        case .getMyBusiness: return kGetMyBusiness
+        case .getMyBookings: return kGetMyBookings
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn, .getAvailableTimes, .book:
+        case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites,
+             .cancelTurn, .getAvailableTimes, .book, .getMyBusiness, .getMyBookings:
             return .post
         }
     }
@@ -60,7 +65,7 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelVerify)
         case .getBusinesses(let modelBusinessTask):
             return .requestJSONEncodable(modelBusinessTask)
-        case .getFavorites:
+        case .getFavorites, .getMyBusiness, .getMyBookings:
             return .requestPlain
         case .addToFavorites(let modelFavoritesTask), .removeToFavorites(let modelFavoritesTask):
             return .requestJSONEncodable(modelFavoritesTask)
@@ -82,8 +87,8 @@ extension APIRouter: TargetType {
         headers = ["Content-type": "application/json; charset=UTF-8"]
         
         switch self {
-        case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn, .getAvailableTimes,
-             .book:
+        case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn,
+             .getAvailableTimes, .book, .getMyBusiness, .getMyBookings:
             headers["Authorization"] = Preferences.getAuthorization() 
         default:
             break

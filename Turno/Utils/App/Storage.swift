@@ -37,8 +37,3 @@ extension AppData {
     @Storage(key: KAppFont, defaultValue: "")
     static var appFont: String
 }
-
-extension  AppData {
-    @Storage(key: kIsBusiness, defaultValue: false)
-    static var isBusiness: Bool
-}

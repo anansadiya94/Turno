@@ -10,7 +10,7 @@ import UIKit
 import Moya
 
 protocol PresenterAddAppointmentView: PresenterParentView {
-    func didSetData(model: ModelBusiness)
+    func didSetData(modelBusiness: ModelBusiness)
     func showNameTextFieldLabel(type: TextFieldErrorType)
     func showPhoneNumberTextFieldLabel(type: TextFieldErrorType)
     func showAlert()
@@ -23,24 +23,23 @@ class PresenterAddAppointment {
     // MARK: - Properties
     private weak var view: PresenterAddAppointmentView?
     var delegate: SelectButtonBusiness!
-    var model: ModelBusiness?
+    var modelBusiness: ModelBusiness?
     let networkManager = NetworkManager()
     
     // MARK: - init Methods
-    init(view: PresenterAddAppointmentView, delegate: SelectButtonBusiness) {
+    init(view: PresenterAddAppointmentView, modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) {
         self.view = view
         self.delegate = delegate
+        self.modelBusiness = modelBusiness
         self.notifyView()
     }
     
     private func notifyView() {
-        let model = ModelBusiness(identifier: "test", name: "test", services: [
-            Service(identifier: "1", serviceName: "Test1", durationInMinutes: 10, count: 0),
-            Service(identifier: "2", serviceName: "Test2", durationInMinutes: 20, count: 0),
-            Service(identifier: "3", serviceName: "Test3", durationInMinutes: 30, count: 0),
-            Service(identifier: "4", serviceName: "Test4", durationInMinutes: 10, count: 0)
-        ])
-        view?.didSetData(model: model)
+        guard let modelBusiness = modelBusiness else {
+            //TODO
+            return
+        }
+        view?.didSetData(modelBusiness: modelBusiness)
     }
     
     private func validateName(_ name: String?) -> Bool {

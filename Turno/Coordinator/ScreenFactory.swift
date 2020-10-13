@@ -32,7 +32,7 @@ protocol SelectButtonFavorites: class {
 }
 
 protocol SelectButtonBusiness: class {
-    func addAppointmentTapped()
+    func addAppointmentTapped(modelBusiness: ModelBusiness?)
     func showAppointmentTapped(turn: Turn)
 }
 
@@ -161,9 +161,10 @@ struct ScreenFactory {
         return viewController
     }
     
-    static func makeAddAppointmentScreen(delegate: SelectButtonBusiness) -> UIViewController {
+    static func makeAddAppointmentScreen(modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) -> UIViewController {
         let viewController = AddAppointmentViewController()
         let presenter = PresenterAddAppointment(view: viewController,
+                                                modelBusiness: modelBusiness,
                                                 delegate: delegate)
         viewController.presenterAddAppointment = presenter
         return viewController

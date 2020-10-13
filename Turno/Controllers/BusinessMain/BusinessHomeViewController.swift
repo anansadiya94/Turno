@@ -15,6 +15,10 @@ class BusinessHomeViewController: DayViewController {
     // MARK: - Properties
     var presenterHome: PresenterBusinessHome!
     private var turns: [Turn]?
+    private var modelBusiness: ModelBusiness?
+    
+    var waitingView: LoadingViewController?
+    private var isShownPopup = false
     
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -26,7 +30,7 @@ class BusinessHomeViewController: DayViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "TODO"
+        navigationItem.title = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,7 +50,7 @@ class BusinessHomeViewController: DayViewController {
                let beginningTime = turn.dateTimeUTC?.toDate() {
                 let chunk = TimeChunk.dateComponents(minutes: ServiceTimeCalculation.calculateDuration(to: services))
                 events.append(createEvent(turn: turn,
-                                          data: identifier,
+                                          data: turn.userName ?? "",
                                           datePeriod: TimePeriod(beginning: beginningTime,
                                                                  chunk: chunk)))
             }
@@ -96,8 +100,86 @@ class BusinessHomeViewController: DayViewController {
 
 // MARK: - PresenterBusinessHomeView methods
 extension BusinessHomeViewController: PresenterBusinessHomeView {
-    func didSetData(turns: [Turn]) {
-        self.turns = turns
+    func didSetData(modelBusiness: ModelBusiness, modelMyBookings: ModelMyBookings) {
+        self.modelBusiness = modelBusiness
+        if let myBookings = modelMyBookings.myBookings {
+            self.turns = []
+            myBookings.forEach({
+                $0.value.forEach({
+                    self.turns?.append($0)
+                })
+            })
+        }
+        DispatchQueue.main.async {
+            self.navigationItem.title = modelBusiness.name
+        }
         reloadData()
+    }
+    
+    func startWaitingView() {
+        startWaiting()
+    }
+    
+    func stopWaitingView() {
+        stopWaiting()
+    }
+    
+    func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
+        showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
+    }
+}
+
+extension BusinessHomeViewController {
+    func startWaiting(color: UIColor = .white) {
+        DispatchQueue.main.async {
+            if self.waitingView == nil {
+                self.waitingView = LoadingViewController(containerView: self.view)
+            }
+            self.view.subviews.filter { $0.isKind(of: LoadingViewController.self) }
+                .forEach { $0.removeFromSuperview() }
+            self.waitingView?.start()
+        }
+    }
+
+    func stopWaiting() {
+        DispatchQueue.main.async {
+            self.waitingView?.stop()
+        }
+    }
+    
+    func showPopup(withTitle title: String?, withText text: String?, withButton button: String?, button2: String? = nil, completion: ((Bool?, Bool?) -> Void)?) {
+        if !isShownPopup, presentedViewController == nil, UIApplication.shared.applicationState == .active {
+            isShownPopup = true
+            
+            // Obscure background
+            let alphaView = UIView(frame: self.view.frame)
+            alphaView.backgroundColor = .blackAlpha15
+            alphaView.alpha = 1.0
+            self.view.addSubview(alphaView)
+            
+            // Popup
+            let alert = UIAlertController(title: title, message: text, preferredStyle: UIAlertController.Style.alert)
+            
+            // First action
+            alert.addAction(UIAlertAction(title: button, style: .default, handler: { [weak self] _ in
+                self?.view.subviews.last?.removeFromSuperview()
+                self?.isShownPopup = false
+                completion?(true, nil)
+            }))
+            
+            // Second Action
+            if let button2 = button2 {
+                alert.addAction(UIAlertAction(title: button2, style: .default, handler: { [weak self] _ in
+                    self?.view.subviews.last?.removeFromSuperview()
+                    self?.isShownPopup = false
+                    completion?(nil, true)
+                }))
+            }
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            debugPrint("There is still a popup ...")
+        }
     }
 }

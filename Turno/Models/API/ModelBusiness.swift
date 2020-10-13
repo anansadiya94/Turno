@@ -77,10 +77,12 @@ struct ModelBusiness: Codable {
 struct Turn: Codable {
     var identifier: String?
     var dateTimeUTC: String?
+    var userName: String?
+    var userPhone: String?
     var services: [Service]?
     
     enum CodingKeys: String, CodingKey {
-        case dateTimeUTC, services
+        case dateTimeUTC, userName, userPhone, services
         case identifier = "turnId"
     }
 }
@@ -142,5 +144,13 @@ struct ModelCancelTurnTask: Codable {
     
     enum CodingKeys: String, CodingKey {
         case turnId
+    }
+}
+
+struct ModelMyBookings: Codable {
+    let myBookings: [String: [Turn]]?
+    
+    init(myBookings: [String: [Turn]]? = nil) {
+        self.myBookings = myBookings
     }
 }
