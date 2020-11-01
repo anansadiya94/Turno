@@ -56,7 +56,7 @@ class AddAppointmentViewController: ParentViewController {
     }
     
     private func addTarget() {
-//        addAppointmentView?.checkAvailabilityButton.addTarget(self, action: #selector(checkAvailabilityButtonTapped), for: .touchUpInside)
+        addAppointmentView.checkAvailabilityButton.addTarget(self, action: #selector(checkAvailabilityButtonTapped), for: .touchUpInside)
     }
     
     private func addObservers() {
@@ -86,8 +86,6 @@ class AddAppointmentViewController: ParentViewController {
     // MARK: - UI interaction methods
     @objc func continueButtonTapped() {
         addAppointmentView.phoneNumberTextField.resignFirstResponder()
-        presenterAddAppointment.continueButtonTapped(name: addAppointmentView.nameTextField.text,
-                                                     phoneNumber: addAppointmentView.phoneNumberTextField.text ?? "")
     }
     
     @objc func cancelButtonTapped() {
@@ -111,8 +109,9 @@ class AddAppointmentViewController: ParentViewController {
     }
     
     @objc func checkAvailabilityButtonTapped() {
-        let bookedServices = services?.filter({ $0.count ?? 0 >= 1 })
-        presenterAddAppointment.checkAvailabilityButtonTapped(identifier: model?.identifier, bookedServices: bookedServices)
+        presenterAddAppointment.continueButtonTapped(name: addAppointmentView.nameTextField.text,
+                                                     phoneNumber: addAppointmentView.phoneNumberTextField.text ?? "")
+        
     }
 }
 
@@ -210,9 +209,9 @@ extension AddAppointmentViewController: PresenterAddAppointmentView {
         addAppointmentView.setTextFieldLayer(textField: addAppointmentView.phoneNumberTextField, isValid: isValid)
     }
     
-    func showAlert() {
-        let modelAlertPopUp = ModelAlertPopup(title: LocalizedConstants.phone_number_question_key.localized,
-                                              message: Preferences.getPrefsUser()?.phoneNumber,
+    func showAlert(customer: Customer) {
+        let modelAlertPopUp = ModelAlertPopup(title: "Is this \(customer.name ?? "")'s phone number?", //TOOD: Translate
+                                              message: customer.phoneNumber,
                                               action1: LocalizedConstants.edit_key.localized,
                                               action2: LocalizedConstants.yes_key.localized)
         self.showPopup(withTitle: modelAlertPopUp.title, withText: modelAlertPopUp.message,
@@ -222,7 +221,9 @@ extension AddAppointmentViewController: PresenterAddAppointmentView {
                             self.addAppointmentView.phoneNumberTextField.becomeFirstResponder()
                         }
                         if action2 != nil && action2 == true {
-//                            self.addAppointmentView.alertYesButtonTapped()
+                            let bookedServices = self.services?.filter({ $0.count ?? 0 >= 1 })
+                            self.presenterAddAppointment.checkAvailabilityButtonTapped(identifier: self.model?.identifier,
+                                                                                       bookedServices: bookedServices)
                         }
                         
         })

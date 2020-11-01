@@ -13,7 +13,7 @@ protocol PresenterAddAppointmentView: PresenterParentView {
     func didSetData(modelBusiness: ModelBusiness)
     func showNameTextFieldLabel(type: TextFieldErrorType)
     func showPhoneNumberTextFieldLabel(type: TextFieldErrorType)
-    func showAlert()
+    func showAlert(customer: Customer)
     func modifyModel(identifier: String, count: Int)
     func appointmentConfirmed(bookedTurn: Turn)
 }
@@ -25,6 +25,7 @@ class PresenterAddAppointment {
     var delegate: SelectButtonBusiness!
     var modelBusiness: ModelBusiness?
     let networkManager = NetworkManager()
+    var customer: Customer?
     
     // MARK: - init Methods
     init(view: PresenterAddAppointmentView, modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) {
@@ -34,6 +35,7 @@ class PresenterAddAppointment {
         self.notifyView()
     }
     
+    // MARK: - Private methods
     private func notifyView() {
         guard let modelBusiness = modelBusiness else {
             //TODO
@@ -80,17 +82,12 @@ class PresenterAddAppointment {
         }
     }
     
-    // MARK: - Private methods
-    private func notifyView(model: ModelBusiness) {
-//        view?.didSetData(model: model)
-    }
-    
     // MARK: - UI interaction methods
     func continueButtonTapped(name: String?, phoneNumber: String?) {
         if isValid(name: name, phoneNumber: phoneNumber) {
-            let user = User(name: name, phoneNumber: phoneNumber)
-            Preferences.setPrefsUser(user: user)
-            view?.showAlert()
+            customer = Customer(name: name, phoneNumber: phoneNumber)
+            guard let customer = customer else { return }
+            view?.showAlert(customer: customer)
         }
     }
     
@@ -123,9 +120,10 @@ class PresenterAddAppointment {
                 let isAvailableDatesEmpty = modelCheckTurnsAvailability.availableDates?.isEmpty,
                 !isAvailableDatesEmpty {
                 self.view?.stopWaitingView()
-//                self.delegate.didSelectCheckAvailability(identifier: identifier, name: self.model?.name,
-//                                                         bookedServices: bookedServices,
-//                                                         modelCheckTurnsAvailability: modelCheckTurnsAvailability)
+                self.delegate.didSelectCheckAvailability(identifier: identifier, name: self.modelBusiness?.name,
+                                                         bookedServices: bookedServices,
+                                                         modelCheckTurnsAvailability: modelCheckTurnsAvailability,
+                                                         customer: self.customer)
             } else {
                 self.view?.stopWaitingView()
                 // TODO: Translate

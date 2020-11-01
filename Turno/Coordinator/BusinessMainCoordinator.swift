@@ -42,7 +42,28 @@ extension BusinessMainCoordinator {
                                                           name: "TODO",
                                                           bookedServices: turn.services,
                                                           bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true),
-                                                          confirmationViewType: .business)
+                                                          confirmationViewType: .business,
+                                                          customer: Customer(name: turn.userName, phoneNumber: turn.userPhone))
+        pushViewByExploreInnerViewController(screen: screen)
+    }
+    
+    func showCheckAvailabilityScreen(identifier: String?, name: String?, bookedServices: [Service]?,
+                                     modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
+                                     customer: Customer?) {
+        let screen = ScreenFactory.makeCheckAvailabilityScreen(delegate: self, identifier: identifier, name: name,
+                                                               bookedServices: bookedServices,
+                                                               modelCheckTurnsAvailability: modelCheckTurnsAvailability, customer: customer)
+        pushViewByExploreInnerViewController(screen: screen)
+    }
+    
+    func showConfirmationScreen(identifier: String?, name: String?, bookedServices: [Service]?,
+                                bookedSlot: EmptySlot?, customer: Customer?) {
+        let screen = ScreenFactory.makeConfirmationScreen(delegate: self,
+                                                          identifier: identifier,
+                                                          name: name,
+                                                          bookedServices: bookedServices,
+                                                          bookedSlot: bookedSlot,
+                                                          confirmationViewType: .user, customer: customer)
         pushViewByExploreInnerViewController(screen: screen)
     }
 }
@@ -54,5 +75,18 @@ extension BusinessMainCoordinator: SelectButtonBusiness {
     
     func showAppointmentTapped(turn: Turn) {
         showAppointmentScreen(turn: turn)
+    }
+    
+    func didSelectCheckAvailability(identifier: String?, name: String?,
+                                    bookedServices: [Service]?,
+                                    modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
+                                    customer: Customer?) {
+        showCheckAvailabilityScreen(identifier: identifier, name: name, bookedServices: bookedServices,
+                                    modelCheckTurnsAvailability: modelCheckTurnsAvailability, customer: customer)
+    }
+    
+    func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?,
+                          bookedSlot: EmptySlot?, customer: Customer?) {
+        showConfirmationScreen(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot, customer: customer)
     }
 }

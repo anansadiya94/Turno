@@ -17,12 +17,13 @@ class PresenterCheckAvailability {
     
     // MARK: - Properties
     private weak var view: PresenterCheckAvailabilityView?
-    var delegate: SelectButtonEntity!
+    var delegate: Any?
     var identifier: String?
     var name: String?
     var bookedServices: [Service]?
     let networkManager = NetworkManager()
     var modelCheckTurnsAvailability: ModelCheckTurnsAvailability?
+    var customer: Customer?
     
     // MARK: - init Methods
     init(view: PresenterCheckAvailabilityView, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
@@ -32,6 +33,17 @@ class PresenterCheckAvailability {
         self.name = name
         self.bookedServices = bookedServices
         self.modelCheckTurnsAvailability = modelCheckTurnsAvailability
+        self.notifyView()
+    }
+    
+    init(view: PresenterCheckAvailabilityView, delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?, customer: Customer?) {
+        self.view = view
+        self.delegate = delegate
+        self.identifier = identifier
+        self.name = name
+        self.bookedServices = bookedServices
+        self.modelCheckTurnsAvailability = modelCheckTurnsAvailability
+        self.customer = customer
         self.notifyView()
     }
     
@@ -45,6 +57,11 @@ class PresenterCheckAvailability {
     
     // MARK: - Public Interface
     func bookNowButtonTapped(bookedSlot: EmptySlot?) {
-        delegate.didSelectConfirm(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot)
+        if let delegate = delegate as? SelectButtonEntity {
+            delegate.didSelectConfirm(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot)
+        }
+        if let delegate = delegate as? SelectButtonBusiness {
+            delegate.didSelectConfirm(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot, customer: customer)
+        }
     }
 }
