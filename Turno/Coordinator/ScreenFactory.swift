@@ -34,6 +34,11 @@ protocol SelectButtonFavorites: class {
 protocol SelectButtonBusiness: class {
     func addAppointmentTapped(modelBusiness: ModelBusiness?)
     func showAppointmentTapped(turn: Turn)
+    func didSelectCheckAvailability(identifier: String?, name: String?,
+                                    bookedServices: [Service]?,
+                                    modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
+                                    customer: Customer?)
+    func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, customer: Customer?)
 }
 
 struct ScreenFactory {
@@ -137,6 +142,18 @@ struct ScreenFactory {
         return viewController
     }
     
+    static func makeCheckAvailabilityScreen(delegate: SelectButtonBusiness, identifier: String?, name: String?,
+                                            bookedServices: [Service]?,
+                                            modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
+                                            customer: Customer?) -> UIViewController {
+        let viewController = CheckAvailabilityViewController()
+        let presenter = PresenterCheckAvailability(view: viewController, delegate: delegate, identifier: identifier,
+                                                   name: name, bookedServices: bookedServices,
+                                                   modelCheckTurnsAvailability: modelCheckTurnsAvailability, customer: customer)
+        viewController.presenterCheckAvailability = presenter
+        return viewController
+    }
+    
     static func makeConfirmationScreen(delegate: SelectButtonEntity, identifier: String?, name: String?,
                                        bookedServices: [Service]?, bookedSlot: EmptySlot?,
                                        confirmationViewType: ConfirmationViewType?) -> UIViewController {
@@ -151,12 +168,13 @@ struct ScreenFactory {
     
     static func makeConfirmationScreen(delegate: SelectButtonBusiness, identifier: String?, name: String?,
                                        bookedServices: [Service]?, bookedSlot: EmptySlot?,
-                                       confirmationViewType: ConfirmationViewType?) -> UIViewController {
+                                       confirmationViewType: ConfirmationViewType?,
+                                       customer: Customer?) -> UIViewController {
         let viewController = ConfirmationViewController()
         let presenter = PresenterConfirmation(view: viewController, delegate: delegate,
                                               identifier: identifier, name: name,
                                               bookedServices: bookedServices, bookedSlot: bookedSlot,
-                                              confirmationViewType: confirmationViewType)
+                                              confirmationViewType: confirmationViewType, customer: customer)
         viewController.presenterConfirmation = presenter
         return viewController
     }

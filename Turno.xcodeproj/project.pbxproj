@@ -128,6 +128,7 @@
 		9EA6582724881AF000F7952A /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582624881AF000F7952A /* ScreenFactory.swift */; };
 		9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6582A24881BBD00F7952A /* WelcomeCoordinator.swift */; };
 		9EA6582F24881C6300F7952A /* OnboardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA6582E24881C6300F7952A /* OnboardingCollectionViewCell.xib */; };
+		9EA7F119254F26B40046BE49 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA7F118254F26B40046BE49 /* Customer.swift */; };
 		9EAAD3D324A88992008D3EF7 /* PresenterFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAD3D224A88992008D3EF7 /* PresenterFavorites.swift */; };
 		9EB14F3C2485048B0085E885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB14F3B2485048B0085E885 /* AppDelegate.swift */; };
 		9EB14F452485048C0085E885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB14F442485048C0085E885 /* Assets.xcassets */; };
@@ -289,6 +290,7 @@
 		9EA6582624881AF000F7952A /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
 		9EA6582A24881BBD00F7952A /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
 		9EA6582E24881C6300F7952A /* OnboardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCollectionViewCell.xib; sourceTree = "<group>"; };
+		9EA7F118254F26B40046BE49 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		9EAAD3D224A88992008D3EF7 /* PresenterFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFavorites.swift; sourceTree = "<group>"; };
 		9EB14F382485048B0085E885 /* Turno.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turno.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB14F3B2485048B0085E885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				9E9880E6248BB9E500D78959 /* User.swift */,
 				9E9B87FA248D4B6A009B1448 /* AppState.swift */,
 				9EBAAE7324979E120011B160 /* AppError.swift */,
+				9EA7F118254F26B40046BE49 /* Customer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1200,6 +1203,7 @@
 				9EF00AE424E0400D006636DF /* AvailableTurnHourCollectionViewCell.swift in Sources */,
 				9E4DE1B124C33BB800EC1FF2 /* BusinessView.swift in Sources */,
 				9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */,
+				9EA7F119254F26B40046BE49 /* Customer.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,
 				9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */,
 				9EA657EC248816A800F7952A /* UserDefaultsConstants.swift in Sources */,

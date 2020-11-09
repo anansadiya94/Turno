@@ -26,6 +26,7 @@ class BusinessHomeViewController: DayViewController {
         setNavigationBar()
         edgesForExtendedLayout = UIRectEdge.bottom
         dayView.autoScrollToFirstEvent = true
+        addObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,8 +46,7 @@ class BusinessHomeViewController: DayViewController {
         var events: [Event] = []
         
         for turn in turns {
-            if let identifier = turn.identifier,
-               let services = turn.services,
+            if let services = turn.services,
                let beginningTime = turn.dateTimeUTC?.toDate() {
                 let chunk = TimeChunk.dateComponents(minutes: ServiceTimeCalculation.calculateDuration(to: services))
                 events.append(createEvent(turn: turn,
@@ -92,9 +92,22 @@ class BusinessHomeViewController: DayViewController {
         return event
     }
     
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(appointmentConfirmedAction(_:)),
+                                               name: Appointments.appointmentConfirmed, object: nil)
+    }
+    
     // MARK: - UI interaction methods
     @objc func addTapped() {
         presenterHome.addAppointmentTapped()
+    }
+    
+    @objc func appointmentConfirmedAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let bookedTurn = dict["bookedTurn"] as? Turn {
+                presenterHome.appointmentConfirmed(bookedTurn: bookedTurn)
+            }
+        }
     }
 }
 
@@ -126,6 +139,11 @@ extension BusinessHomeViewController: PresenterBusinessHomeView {
     
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
         showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
+    }
+    
+    func appointmentConfirmed(bookedTurn: Turn) {
+        turns?.append(bookedTurn)
+        reloadData()
     }
 }
 

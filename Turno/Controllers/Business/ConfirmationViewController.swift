@@ -38,7 +38,7 @@ class ConfirmationViewController: ParentViewController {
     private func addTarget() {
         confirmationView.confitmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         confirmationView.cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
-        confirmationView.blockButton.addTarget(self, action: #selector(blockButtonTapped), for: .touchUpInside)
+        confirmationView.callNow.addTarget(self, action: #selector(callNowButtonTapped), for: .touchUpInside)
     }
     
     private func setTableView() {
@@ -46,7 +46,18 @@ class ConfirmationViewController: ParentViewController {
         confirmationView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
                                             forCellReuseIdentifier: kServiceCellID)
     }
-
+    
+    private func addRightBarButton(viewType: ConfirmationViewType?) {
+        guard let viewType = viewType else { return }
+        switch viewType {
+        case .user:
+            navigationItem.rightBarButtonItem = nil
+        case .business:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "lock"),
+                                                                style: .plain, target: self, action: #selector(blockButtonTapped))
+        }
+    }
+    
     // MARK: - UI interaction methods
     @objc func confirmButtonTapped() {
         presenterConfirmation.confirmButtonTapped()
@@ -54,6 +65,10 @@ class ConfirmationViewController: ParentViewController {
     
     @objc func cancelButtonTapped() {
         presenterConfirmation.cancelButtonTapped()
+    }
+    
+    @objc func callNowButtonTapped() {
+        presenterConfirmation.callNowButtonTapped()
     }
     
     @objc func blockButtonTapped() {
@@ -66,13 +81,14 @@ extension ConfirmationViewController: PresenterConfirmationView {
     func didSetData(name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
                     confirmationViewType: ConfirmationViewType?) {
         self.bookedServices = bookedServices
+        let day = bookedSlot?.slot?.toDisplayableDate(type: .date)
+        let startTime = bookedSlot?.slot?.toDisplayableDate(type: .hour)
+        let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: bookedServices)
+        let endTimeDate = bookedSlot?.slot?.calculateEndDate(adding: bookedServicesDuration)
+        let endTime = endTimeDate?.toDisplayableDate(type: .hour)
         DispatchQueue.main.async {
             self.navigationItem.title = name
-            let day = bookedSlot?.slot?.toDisplayableDate(type: .date)
-            let startTime = bookedSlot?.slot?.toDisplayableDate(type: .hour)
-            let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: bookedServices)
-            let endTimeDate = bookedSlot?.slot?.calculateEndDate(adding: bookedServicesDuration)
-            let endTime = endTimeDate?.toDisplayableDate(type: .hour)
+            self.addRightBarButton(viewType: confirmationViewType)
             self.confirmationView.setHeaderStackViewData(day: day,
                                                          startTime: startTime,
                                                          endTime: endTime)
@@ -89,6 +105,20 @@ extension ConfirmationViewController: PresenterConfirmationView {
                 }
             })
         }
+    }
+    
+    func popToBusinessHomeViewController(animated: Bool) {
+        if let viewControllers = self.navigationController?.viewControllers {
+            viewControllers.forEach({viewController in
+                if viewController.isKind(of: BusinessHomeViewController.self) {
+                    _ =  self.navigationController?.popToViewController(viewController, animated: animated)
+                }
+            })
+        }
+    }
+    
+    func call(_ number: String) {
+        self.callNumber(number)
     }
     
     func startWaitingView() {

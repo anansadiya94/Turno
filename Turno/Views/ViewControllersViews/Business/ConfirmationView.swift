@@ -23,13 +23,13 @@ class ConfirmationView: UIView {
     @UseAutoLayout var tableView =  UITableView()
     @UseAutoLayout var confirmMessageLabel = CustomLabel()
     @UseAutoLayout var confitmButton = RoundedCustomButton()
-    @UseAutoLayout var blockButton = RoundedCustomButton()
+    @UseAutoLayout var callNow = RoundedCustomButton()
     @UseAutoLayout var cancelButton = RoundedCustomButton()
     
     // MARK: - UIView
     override init(frame: CGRect) {
         super.init(frame: frame)
-        createBlockButton()
+        createCallNowButton()
         createCancelButton()
         createConfirmNowButton()
         createConfirmMessageLabel()
@@ -42,17 +42,17 @@ class ConfirmationView: UIView {
     }
     
     // MARK: - Private methods
-    func createBlockButton() {
-        blockButton.isHidden = true
-        addSubview(blockButton)
-        blockButton.buttonTheme = RoundedBaseTheme(label: "Block user",
-                                                   backgroundColor: .black)
+    func createCallNowButton() {
+        callNow.isHidden = true
+        addSubview(callNow)
+        callNow.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.call_now_key.localized, backgroundColor: .white,
+                                               borderColor: UIColor.primary.cgColor, titleColor: .primary)
         
         NSLayoutConstraint.activate([
-            blockButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
-            blockButton.heightAnchor.constraint(equalToConstant: 44.0),
-            blockButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
-            blockButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
+            callNow.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
+            callNow.heightAnchor.constraint(equalToConstant: 44.0),
+            callNow.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
+            callNow.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
         ])
     }
     
@@ -63,7 +63,8 @@ class ConfirmationView: UIView {
                                                     backgroundColor: UIColor.red.withAlphaComponent(0.5))
         
         NSLayoutConstraint.activate([
-            cancelButton.bottomAnchor.constraint(equalTo: blockButton.topAnchor, constant: -16.0),
+            cancelButton.bottomAnchor.constraint(equalTo: callNow.topAnchor, constant: -16.0),
+            cancelButton.heightAnchor.constraint(equalToConstant: 44.0),
             cancelButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32),
             cancelButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
         ])
@@ -181,7 +182,7 @@ class ConfirmationView: UIView {
             confitmButton.isHidden = false
         case .business:
             cancelButton.isHidden = false
-            blockButton.isHidden = false
+            callNow.isHidden = false
         }
     }
 }

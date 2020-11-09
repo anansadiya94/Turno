@@ -14,6 +14,7 @@ protocol PresenterBusinessHomeView: class {
     func startWaitingView()
     func stopWaitingView()
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?)
+    func appointmentConfirmed(bookedTurn: Turn)
 }
 
 class PresenterBusinessHome {
@@ -118,5 +119,9 @@ class PresenterBusinessHome {
     
     func showAppointmentTapped(turn: Turn) {
         delegate.showAppointmentTapped(turn: turn)
+    }
+    
+    func appointmentConfirmed(bookedTurn: Turn) {
+        view?.appointmentConfirmed(bookedTurn: bookedTurn)
     }
 }
