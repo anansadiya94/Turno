@@ -470,7 +470,6 @@
 				9E9B87EA248D360F009B1448 /* UserHomeViewController.swift */,
 				9E9B87EC248D361A009B1448 /* AppointmentsViewController.swift */,
 				9E9B87EE248D3623009B1448 /* FavoritesViewController.swift */,
-				9E9B87F0248D362A009B1448 /* SettingsViewController.swift */,
 			);
 			path = UserMain;
 			sourceTree = "<group>";
@@ -532,6 +531,7 @@
 			children = (
 				9E764471248E919600CDAF89 /* ParentViewController.swift */,
 				9E764473248E91F800CDAF89 /* LoadingViewController.swift */,
+				9E9B87F0248D362A009B1448 /* SettingsViewController.swift */,
 				9E4DE1A724C3355400EC1FF2 /* Business */,
 				9EB2929F25222A8B00BB6437 /* BusinessMain */,
 				9E9B87D4248D3443009B1448 /* UserMain */,

@@ -33,8 +33,8 @@ class GenericView: UIView {
         tableView.showsVerticalScrollIndicator = false
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor, constant: 8.0),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
