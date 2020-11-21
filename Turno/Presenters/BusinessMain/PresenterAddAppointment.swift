@@ -15,7 +15,6 @@ protocol PresenterAddAppointmentView: PresenterParentView {
     func showPhoneNumberTextFieldLabel(type: TextFieldErrorType)
     func showAlert(customer: Customer)
     func modifyModel(identifier: String, count: Int)
-    func appointmentConfirmed(bookedTurn: Turn)
 }
 
 class PresenterAddAppointment {
@@ -133,9 +132,5 @@ class PresenterAddAppointment {
                                          completion: nil)
             }
         }
-    }
-
-    func appointmentConfirmed(bookedTurn: Turn) {
-        view?.appointmentConfirmed(bookedTurn: bookedTurn)
     }
 }

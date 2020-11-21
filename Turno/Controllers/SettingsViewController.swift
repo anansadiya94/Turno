@@ -129,7 +129,7 @@ extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.tintColor = .black
-        cell.imageView?.image = UIImage(systemName:  settingsRows[indexPath.section][indexPath.row].image)
+        cell.imageView?.image = UIImage(systemName: settingsRows[indexPath.section][indexPath.row].image)
         cell.textLabel?.text = settingsRows[indexPath.section][indexPath.row].text
         return cell
     }
