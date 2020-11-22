@@ -10,6 +10,7 @@ import Foundation
 
 // Common
 let kLogo = "logo"
+let kDefaultImage = "defaultImage"
 
 // Onboarding
 let kFirstOnboardingBackgroundImage = "firstOnboarding"

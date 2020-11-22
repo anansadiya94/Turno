@@ -29,19 +29,9 @@ class BusinessHomeViewController: DayViewController {
         addObserver()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = ""
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = ""
-    }
-    
     // MARK: - DayViewController methods
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
-        guard let turns = turns else { return [] } // TODO: When no turns?
+        guard let turns = turns else { return [] }
         
         var events: [Event] = []
         
@@ -97,6 +87,14 @@ class BusinessHomeViewController: DayViewController {
                                                name: Appointments.appointmentConfirmed, object: nil)
     }
     
+    private func handleEmptyState() {
+        // TODO: Translate
+        self.showPopup(withTitle: "Empty state",
+                       withText: "Tap on '+' to add turns.",
+                       withButton: LocalizedConstants.ok_key.localized,
+                       completion: nil)
+    }
+    
     // MARK: - UI interaction methods
     @objc func addTapped() {
         presenterHome.addAppointmentTapped()
@@ -125,6 +123,9 @@ extension BusinessHomeViewController: PresenterBusinessHomeView {
         }
         DispatchQueue.main.async {
             self.navigationItem.title = modelBusiness.name
+        }
+        if let turns = self.turns, turns.isEmpty {
+            handleEmptyState()
         }
         reloadData()
     }

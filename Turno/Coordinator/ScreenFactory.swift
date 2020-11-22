@@ -25,6 +25,7 @@ protocol SelectButtonEntity: class {
                                     bookedServices: [Service]?,
                                     modelCheckTurnsAvailability: ModelCheckTurnsAvailability?)
     func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?)
+    func didSelectChangeToBusiness()
 }
 
 protocol SelectButtonFavorites: class {
@@ -39,6 +40,7 @@ protocol SelectButtonBusiness: class {
                                     modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
                                     customer: Customer?)
     func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, customer: Customer?)
+    func didSelectChangeToUser()
 }
 
 struct ScreenFactory {
@@ -98,6 +100,12 @@ struct ScreenFactory {
                     favoritesVC.presenterFavorites = presnter
                 }
             }
+            if let viewController = mainVC.viewControllers?[3] as? UINavigationController {
+                if let settingsVC = viewController.topViewController as? SettingsViewController {
+                    let presnter = PresenterSettings(view: settingsVC, delegate: delegate)
+                    settingsVC.presenterSettings = presnter
+                }
+            }
             let presenter = PresenterUserMain(view: mainVC)
             mainVC.presenterMain = presenter
             navigationController.viewControllers = [mainVC]
@@ -115,6 +123,12 @@ struct ScreenFactory {
                 if let homeVC = viewController.topViewController as? BusinessHomeViewController {
                     let presnter = PresenterBusinessHome(view: homeVC, delegate: delegate)
                     homeVC.presenterHome = presnter
+                }
+            }
+            if let viewController = mainVC.viewControllers?[1] as? UINavigationController {
+                if let settingsVC = viewController.topViewController as? SettingsViewController {
+                    let presnter = PresenterSettings(view: settingsVC, delegate: delegate)
+                    settingsVC.presenterSettings = presnter
                 }
             }
             let presenter = PresenterBusinessMain(view: mainVC)

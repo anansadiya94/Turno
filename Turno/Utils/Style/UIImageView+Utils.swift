@@ -17,7 +17,9 @@ extension UIImageView {
                 switch result {
                 case .failure(let error):
                     debugPrint(error.localizedDescription)
-                //TODO set default image
+                    DispatchQueue.main.async {
+                        self?.image = UIImage(named: kDefaultImage)
+                    }
                 case .success(let imageResult):
                     DispatchQueue.main.async {
                         self?.image = imageResult.image
@@ -25,7 +27,9 @@ extension UIImageView {
                 }
             }
         } else {
-            //TODO set default image
+            DispatchQueue.main.async {
+                self.image = UIImage(named: kDefaultImage)
+            }
         }
     }
 }

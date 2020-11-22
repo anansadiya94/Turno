@@ -37,7 +37,7 @@ enum SettingsRows {
     
     var text: String {
         switch self {
-        case .editProfile: return "Edit profile"
+        case .editProfile: return "Edit Profile"
         case .businessConfiguration: return "Business Configuration"
         case .blockedUsers: return "Blocked Users"
         case .notifications: return "Notifications"
@@ -58,7 +58,7 @@ class SettingsViewController: ParentViewController {
         return LocalizedConstants.settings_key.localized
     }
     
-    var presenterHome: PresenterUserHome!
+    var presenterSettings: PresenterSettings!
     @UseAutoLayout var genericView = GenericView()
     private var settingsRows: [[SettingsRows]] = [[]]
     let headerTitles = ["Account", "App", "Business"]
@@ -85,8 +85,9 @@ class SettingsViewController: ParentViewController {
     
     private func setTableView() {
         genericView.tableView.dataSource = self
+        genericView.tableView.delegate = self
         genericView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
-                                        forCellReuseIdentifier: kServiceCellID)
+                                       forCellReuseIdentifier: kServiceCellID)
         genericView.tableView.tableFooterView = UIView()
     }
     
@@ -105,7 +106,12 @@ class SettingsViewController: ParentViewController {
         ]
         var businessSettingRows: [SettingsRows] = []
         if Preferences.isBusiness() {
-            businessSettingRows = [.changeToUser]
+            if AppData.isBusiness {
+                businessSettingRows = [.changeToUser]
+            } else {
+                businessSettingRows = [.changeToBusiness]
+            }
+            
         }
         if businessSettingRows.isEmpty {
             settingsRows = [accountSettingRows, appSettingRows]
@@ -116,7 +122,7 @@ class SettingsViewController: ParentViewController {
     }
 }
 
-// MARK: - PresenterUserHomeView methods
+// MARK: - UITableViewDataSource methods
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return settingsRows.count
@@ -128,6 +134,7 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.selectionStyle = .none
         cell.tintColor = .black
         cell.imageView?.image = UIImage(systemName: settingsRows[indexPath.section][indexPath.row].image)
         cell.textLabel?.text = settingsRows[indexPath.section][indexPath.row].text
@@ -139,5 +146,44 @@ extension SettingsViewController: UITableViewDataSource {
             return headerTitles[section]
         }
         return nil
+    }
+}
+
+// MARK: - UITableViewDelegate methods
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch settingsRows[indexPath.section][indexPath.row] {
+        case .changeToUser:
+            presenterSettings.changeToUser()
+        case .changeToBusiness:
+            presenterSettings.changeToBusiness()
+        case .share:
+            presenterSettings.share()
+        case .notifications:
+            presenterSettings.notifications()
+        default:
+            break
+        }
+    }
+}
+
+extension SettingsViewController: PresenterSettingsView {
+    func startWaitingView() {
+        startWaiting()
+    }
+    
+    func stopWaitingView() {
+        stopWaiting()
+    }
+    
+    func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
+        showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
+    }
+    
+    func share() {
+        if let appUrl = URL(string: "https://apps.apple.com/es/app/affinity-publisher/id881418622?l=en&mt=12") {
+            let activityViewController = UIActivityViewController(activityItems: [appUrl], applicationActivities: nil)
+            present(activityViewController, animated: true)
+        }
     }
 }
