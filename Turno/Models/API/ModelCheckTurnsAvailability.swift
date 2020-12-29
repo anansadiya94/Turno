@@ -12,8 +12,10 @@ struct ModelCheckTurnsAvailabilityTask: Codable {
     var services: [Service]?
 }
 
-struct ModelCheckTurnsAvailability: Codable {
+struct ModelCheckTurnsAvailability: Codable, ModelApiError {
     let availableDates: [String: [String]]?
+    var title: String?
+    var message: String?
     
     init(availableDates: [String: [String]]? = nil) {
         self.availableDates = availableDates

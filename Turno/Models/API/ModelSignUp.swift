@@ -11,7 +11,6 @@ import Foundation
 typealias Codable = Encodable & Decodable
 
 struct ModelSignUpTask: Codable {
-    
     var phoneNumber: String
     var fullName: String
     
@@ -20,8 +19,7 @@ struct ModelSignUpTask: Codable {
     }
 }
 
-struct ModelSignUp: Codable {
-    
+struct ModelSignUp: Codable, ModelApiError {
     var nextOption: String?
     var remainingTimeInSeconds: Int?
     var title: String?

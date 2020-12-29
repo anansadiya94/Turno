@@ -9,7 +9,6 @@
 import Foundation
 
 struct ModelVerifyTask: Codable {
-    
     var phoneNumber: String
     var verificationCode: String
     
@@ -18,8 +17,7 @@ struct ModelVerifyTask: Codable {
     }
 }
 
-struct ModelVerify: Codable {
-    
+struct ModelVerify: Codable, ModelApiError {
     var secret: String?
     var userId: String?
     var businessId: String?

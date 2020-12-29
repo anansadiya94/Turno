@@ -55,6 +55,7 @@
 		9E5AD83024C89A1500100526 /* UIViewController+MapOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5AD82F24C89A1500100526 /* UIViewController+MapOptions.swift */; };
 		9E5AD83224C89B4D00100526 /* UIViewController+CallNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5AD83124C89B4D00100526 /* UIViewController+CallNumber.swift */; };
 		9E5AD83424C89B6C00100526 /* UIViewController+SendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5AD83324C89B6C00100526 /* UIViewController+SendEmail.swift */; };
+		9E5DC46C259BC11300F84DC7 /* ModelApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5DC46B259BC11300F84DC7 /* ModelApiError.swift */; };
 		9E6184D124C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6184CF24C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift */; };
 		9E6184D224C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E6184D024C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib */; };
 		9E6958B524DC5868007129B2 /* PresenterCheckAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6958B424DC5868007129B2 /* PresenterCheckAvailability.swift */; };
@@ -219,6 +220,7 @@
 		9E5AD82F24C89A1500100526 /* UIViewController+MapOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+MapOptions.swift"; sourceTree = "<group>"; };
 		9E5AD83124C89B4D00100526 /* UIViewController+CallNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+CallNumber.swift"; sourceTree = "<group>"; };
 		9E5AD83324C89B6C00100526 /* UIViewController+SendEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SendEmail.swift"; sourceTree = "<group>"; };
+		9E5DC46B259BC11300F84DC7 /* ModelApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApiError.swift; sourceTree = "<group>"; };
 		9E6184CF24C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessAppointmentTableViewCell.swift; sourceTree = "<group>"; };
 		9E6184D024C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessAppointmentTableViewCell.xib; sourceTree = "<group>"; };
 		9E6958B424DC5868007129B2 /* PresenterCheckAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterCheckAvailability.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				9E4CACE82494EBE800AA72E0 /* ModelVerify.swift */,
 				9EB43D7624A3A77300B93C34 /* ModelBusiness.swift */,
 				9EF00ADC24E0366A006636DF /* ModelCheckTurnsAvailability.swift */,
+				9E5DC46B259BC11300F84DC7 /* ModelApiError.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1122,6 +1125,7 @@
 				9EA6582B24881BBD00F7952A /* WelcomeCoordinator.swift in Sources */,
 				9E418CF724A8FAF900232082 /* UIView+AddShadow.swift in Sources */,
 				9EA657D92488157300F7952A /* AutoLayout.swift in Sources */,
+				9E5DC46C259BC11300F84DC7 /* ModelApiError.swift in Sources */,
 				9EB43D6D24A3A32800B93C34 /* GenericTableView.swift in Sources */,
 				9EA6581E248819EA00F7952A /* UICollectionView+OnBoardingViewController.swift in Sources */,
 				9E9B87F3248D3702009B1448 /* ServiceViewController.swift in Sources */,
