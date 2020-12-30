@@ -62,8 +62,6 @@ class AddAppointmentViewController: ParentViewController {
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(modifyModelAction(_:)),
                                                name: Business.modifyModel, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(appointmentConfirmedAction(_:)),
-                                               name: Appointments.appointmentConfirmed, object: nil)
     }
     
     private func configureTextFields() {
@@ -96,14 +94,6 @@ class AddAppointmentViewController: ParentViewController {
         if let dict = notification.userInfo as NSDictionary? {
             if let model = dict["model"] as? ModelModifyService {
                 presenterAddAppointment.modifyModel(identifier: model.identifier, count: model.count)
-            }
-        }
-    }
-    
-    @objc func appointmentConfirmedAction(_ notification: NSNotification) {
-        if let dict = notification.userInfo as NSDictionary? {
-            if let bookedTurn = dict["bookedTurn"] as? Turn {
-                presenterAddAppointment.appointmentConfirmed(bookedTurn: bookedTurn)
             }
         }
     }
@@ -166,11 +156,7 @@ extension AddAppointmentViewController: PresenterAddAppointmentView {
         }
         addAppointmentView.setCheckAvailabilityButton(count)
     }
-    
-    func appointmentConfirmed(bookedTurn: Turn) {
-        //TODO
-    }
-    
+
     func showNameTextFieldLabel(type: TextFieldErrorType) {
         var isValid: Bool = true
         var message = ""

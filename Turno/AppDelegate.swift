@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appCoordinator: AppCoordinator!
         appCoordinator = AppCoordinator(window: window!, navigationController: UINavigationController())
         appCoordinator.start()
+        
+        registerForPushNotifications()
         
         window?.makeKeyAndVisible()
         return true
@@ -34,5 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             AppData.appFont = "OpenSans"
         }
+    }
+    
+    private func registerForPushNotifications() {
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+                print("Permission granted: \(granted)")
+            }
     }
 }

@@ -178,7 +178,7 @@ class NetworkManager: Networkable {
                     case 200:
                         completion(modelList, nil)
                     default:
-                        break
+                        completion(nil, AppError(title: modelList.title ?? "", message: modelList.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)

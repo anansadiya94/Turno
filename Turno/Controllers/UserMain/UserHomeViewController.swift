@@ -53,8 +53,8 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
     // MARK: - Private methods
     private func setGenericViewConstraints() {
         NSLayoutConstraint.activate([
-            genericView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            genericView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            genericView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8.0),
+            genericView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
             genericView.leftAnchor.constraint(equalTo: view.leftAnchor),
             genericView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])

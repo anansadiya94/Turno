@@ -54,6 +54,12 @@ extension UserMainCoordinator {
                                                           confirmationViewType: .user)
         pushViewByExploreInnerViewController(screen: screen)
     }
+    
+    func showBusinessMainScreen() {
+        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController)
+        let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        window.rootViewController = screen
+    }
 }
 
 extension UserMainCoordinator: SelectButtonEntity {
@@ -69,5 +75,9 @@ extension UserMainCoordinator: SelectButtonEntity {
     
     func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
         showConfirmationScreen(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot)
+    }
+    
+    func didSelectChangeToBusiness() {
+        showBusinessMainScreen()
     }
 }

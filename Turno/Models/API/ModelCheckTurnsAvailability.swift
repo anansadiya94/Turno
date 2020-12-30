@@ -9,11 +9,18 @@
 import Foundation
 
 struct ModelCheckTurnsAvailabilityTask: Codable {
-    var services: [Service]?
+    var servicesToBook: [ServiceToBook]?
 }
 
-struct ModelCheckTurnsAvailability: Codable {
+struct ServiceToBook: Codable {
+    var identifier: String?
+    var count: Int?
+}
+
+struct ModelCheckTurnsAvailability: Codable, ModelApiError {
     let availableDates: [String: [String]]?
+    var title: String?
+    var message: String?
     
     init(availableDates: [String: [String]]? = nil) {
         self.availableDates = availableDates
