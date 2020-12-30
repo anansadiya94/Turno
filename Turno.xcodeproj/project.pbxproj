@@ -151,6 +151,12 @@
 		9EB43D7C24A3A9A200B93C34 /* PresenterUserHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB43D7B24A3A9A200B93C34 /* PresenterUserHome.swift */; };
 		9EB43D7F24A3ABA000B93C34 /* GenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB43D7E24A3ABA000B93C34 /* GenericView.swift */; };
 		9EBAAE7424979E120011B160 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBAAE7324979E120011B160 /* AppError.swift */; };
+		9EC192F5259CF1C600A0DBC9 /* BlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC192F4259CF1C600A0DBC9 /* BlockedUsersViewController.swift */; };
+		9EC192F8259CF21800A0DBC9 /* PresenterBlockedUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC192F7259CF21800A0DBC9 /* PresenterBlockedUsers.swift */; };
+		9EC192FB259CF38100A0DBC9 /* ModelMyBlockedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC192FA259CF38100A0DBC9 /* ModelMyBlockedList.swift */; };
+		9EC19300259CF71D00A0DBC9 /* BlockedUsersListDescriptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC192FF259CF71D00A0DBC9 /* BlockedUsersListDescriptive.swift */; };
+		9EC19303259CF74A00A0DBC9 /* BlockedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC19302259CF74A00A0DBC9 /* BlockedUserTableViewCell.swift */; };
+		9EC19306259CF7EA00A0DBC9 /* BlockedUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC19305259CF7EA00A0DBC9 /* BlockedUserTableViewCell.xib */; };
 		9EE3EF4824B4D23C0049EC0A /* AppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3EF4724B4D23C0049EC0A /* AppointmentTableViewCell.swift */; };
 		9EE3EF4A24B4D2500049EC0A /* AppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EE3EF4924B4D2500049EC0A /* AppointmentTableViewCell.xib */; };
 		9EE3EF4C24B4D6F70049EC0A /* AppointmentsListDescriptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3EF4B24B4D6F70049EC0A /* AppointmentsListDescriptive.swift */; };
@@ -320,6 +326,12 @@
 		9EB43D7B24A3A9A200B93C34 /* PresenterUserHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterUserHome.swift; sourceTree = "<group>"; };
 		9EB43D7E24A3ABA000B93C34 /* GenericView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericView.swift; sourceTree = "<group>"; };
 		9EBAAE7324979E120011B160 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		9EC192F4259CF1C600A0DBC9 /* BlockedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersViewController.swift; sourceTree = "<group>"; };
+		9EC192F7259CF21800A0DBC9 /* PresenterBlockedUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterBlockedUsers.swift; sourceTree = "<group>"; };
+		9EC192FA259CF38100A0DBC9 /* ModelMyBlockedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMyBlockedList.swift; sourceTree = "<group>"; };
+		9EC192FF259CF71D00A0DBC9 /* BlockedUsersListDescriptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersListDescriptive.swift; sourceTree = "<group>"; };
+		9EC19302259CF74A00A0DBC9 /* BlockedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserTableViewCell.swift; sourceTree = "<group>"; };
+		9EC19305259CF7EA00A0DBC9 /* BlockedUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlockedUserTableViewCell.xib; sourceTree = "<group>"; };
 		9EE3EF4724B4D23C0049EC0A /* AppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTableViewCell.swift; sourceTree = "<group>"; };
 		9EE3EF4924B4D2500049EC0A /* AppointmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentTableViewCell.xib; sourceTree = "<group>"; };
 		9EE3EF4B24B4D6F70049EC0A /* AppointmentsListDescriptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsListDescriptive.swift; sourceTree = "<group>"; };
@@ -406,6 +418,7 @@
 				9EB43D7624A3A77300B93C34 /* ModelBusiness.swift */,
 				9EF00ADC24E0366A006636DF /* ModelCheckTurnsAvailability.swift */,
 				9E5DC46B259BC11300F84DC7 /* ModelApiError.swift */,
+				9EC192FA259CF38100A0DBC9 /* ModelMyBlockedList.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -854,6 +867,7 @@
 				9E3EE73E2521E9D000CF884B /* BusinessMainViewController.swift */,
 				9E3EE7482521EA9200CF884B /* BusinessHomeViewController.swift */,
 				9EB292C425223CD000BB6437 /* AddAppointmentViewController.swift */,
+				9EC192F4259CF1C600A0DBC9 /* BlockedUsersViewController.swift */,
 			);
 			path = BusinessMain;
 			sourceTree = "<group>";
@@ -864,6 +878,7 @@
 				9E3EE7422521EA1D00CF884B /* PresenterBusinessMain.swift */,
 				9EB292C12522384200BB6437 /* PresenterBusinessHome.swift */,
 				9EB292CC25223D8A00BB6437 /* PresenterAddAppointment.swift */,
+				9EC192F7259CF21800A0DBC9 /* PresenterBlockedUsers.swift */,
 			);
 			path = BusinessMain;
 			sourceTree = "<group>";
@@ -891,6 +906,7 @@
 			children = (
 				9EB43D7124A3A53C00B93C34 /* GenericEntityTableViewCell.swift */,
 				9EE3EF4724B4D23C0049EC0A /* AppointmentTableViewCell.swift */,
+				9EC19302259CF74A00A0DBC9 /* BlockedUserTableViewCell.swift */,
 				9E55DBF624C4CD7C00361B24 /* ServiceTableViewCell.swift */,
 				9E6184CF24C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift */,
 				9E5AD82B24C893B900100526 /* InformationTableViewCell.swift */,
@@ -906,6 +922,7 @@
 				9E55DBF724C4CD7C00361B24 /* ServiceTableViewCell.xib */,
 				9E6184D024C5F4E00006C095 /* BusinessAppointmentTableViewCell.xib */,
 				9E5AD82C24C893B900100526 /* InformationTableViewCell.xib */,
+				9EC19305259CF7EA00A0DBC9 /* BlockedUserTableViewCell.xib */,
 			);
 			path = TableViewNibs;
 			sourceTree = "<group>";
@@ -915,6 +932,7 @@
 			children = (
 				9EB43D7924A3A87400B93C34 /* GenericListDescriptive.swift */,
 				9EE3EF4B24B4D6F70049EC0A /* AppointmentsListDescriptive.swift */,
+				9EC192FF259CF71D00A0DBC9 /* BlockedUsersListDescriptive.swift */,
 			);
 			path = DescriptiveImplementation;
 			sourceTree = "<group>";
@@ -1011,6 +1029,7 @@
 				9E3EE7502521EBC300CF884B /* BusinessMain.storyboard in Resources */,
 				9EA65802248817E400F7952A /* OpenSans-Regular.ttf in Resources */,
 				9EA6582F24881C6300F7952A /* OnboardingCollectionViewCell.xib in Resources */,
+				9EC19306259CF7EA00A0DBC9 /* BlockedUserTableViewCell.xib in Resources */,
 				9EA6580B2488184A00F7952A /* Cairo-Regular.ttf in Resources */,
 				9EA658122488185B00F7952A /* Assistant-Light.ttf in Resources */,
 				9E9B87E6248D35E9009B1448 /* Settings.storyboard in Resources */,
@@ -1143,6 +1162,7 @@
 				9EED9B1D24F2D4C900B207FA /* PresenterConfirmation.swift in Sources */,
 				9EF00AE024E03FFF006636DF /* AvailableTurnDayCollectionViewCell.swift in Sources */,
 				9E00041D2490012500E41A9A /* UIViewController+OpenUrl.swift in Sources */,
+				9EC192F5259CF1C600A0DBC9 /* BlockedUsersViewController.swift in Sources */,
 				9EA657E82488167200F7952A /* NotificationCenterConstants.swift in Sources */,
 				9EED9B1B24F2D4B900B207FA /* ConfirmationView.swift in Sources */,
 				9EA657E32488161C00F7952A /* PresenterOnboarding.swift in Sources */,
@@ -1174,10 +1194,12 @@
 				9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */,
 				9EA657DD2488159400F7952A /* UIColor+Color.swift in Sources */,
 				9EB292CD25223D8A00BB6437 /* PresenterAddAppointment.swift in Sources */,
+				9EC192FB259CF38100A0DBC9 /* ModelMyBlockedList.swift in Sources */,
 				9E5AD83224C89B4D00100526 /* UIViewController+CallNumber.swift in Sources */,
 				9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */,
 				9E0B75A2248985C200B25313 /* ServiceAppFont.swift in Sources */,
 				9E4CACE02494CF9400AA72E0 /* APIRouter.swift in Sources */,
+				9EC19303259CF74A00A0DBC9 /* BlockedUserTableViewCell.swift in Sources */,
 				9E9B87F7248D375D009B1448 /* StoryBoardsConstants.swift in Sources */,
 				9E23F434248CED4E003D031F /* OTPTextField.swift in Sources */,
 				9EA657F72488177600F7952A /* CustomLabelThemes.swift in Sources */,
@@ -1215,10 +1237,12 @@
 				9E9880EB248BBAB000D78959 /* ActivationViewController.swift in Sources */,
 				9EA7F119254F26B40046BE49 /* Customer.swift in Sources */,
 				9E0B75A9248986BA00B25313 /* WelcomeView.swift in Sources */,
+				9EC192F8259CF21800A0DBC9 /* PresenterBlockedUsers.swift in Sources */,
 				9E55BD62248AD27E004F401B /* UIViewController+HideKeyboardWhenTappedAround.swift in Sources */,
 				9EA657EC248816A800F7952A /* UserDefaultsConstants.swift in Sources */,
 				9EA657DF248815CB00F7952A /* CellsConstants.swift in Sources */,
 				9E4DE1B324C3457800EC1FF2 /* UIImageView+Utils.swift in Sources */,
+				9EC19300259CF71D00A0DBC9 /* BlockedUsersListDescriptive.swift in Sources */,
 				9E9B87ED248D361A009B1448 /* AppointmentsViewController.swift in Sources */,
 				9EB43D7C24A3A9A200B93C34 /* PresenterUserHome.swift in Sources */,
 				9EB43D7224A3A53C00B93C34 /* GenericEntityTableViewCell.swift in Sources */,

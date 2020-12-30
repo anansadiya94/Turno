@@ -53,4 +53,10 @@ class PresenterSettings: NSObject {
            UIApplication.shared.open(settingsUrl)
          }
     }
+    
+    func blockedUsers() {
+        if let delegate = delegate as? SelectButtonBusiness {
+            delegate.didSelectBlockedUsers()
+        }
+    }
 }

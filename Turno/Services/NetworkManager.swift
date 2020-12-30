@@ -23,6 +23,7 @@ protocol Networkable {
     func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void)
     func getMyBusiness(completion: @escaping (ModelBusiness?, Error?) -> Void)
     func getMyBookings(completion: @escaping (ModelMyBookings?, Error?) -> Void)
+    func getMyBlockedList(completion: @escaping ([ModelBlockedUser]?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -245,6 +246,28 @@ class NetworkManager: Networkable {
                     switch value.statusCode {
                     case 200:
                         completion(modelMyBookings, nil)
+                    default:
+                        break
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func getMyBlockedList(completion: @escaping ([ModelBlockedUser]?, Error?) -> Void) {
+        provider.request(.getMyBlockedList) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let modelList = try decoder.decode([ModelBlockedUser].self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(modelList, nil)
                     default:
                         break
                     }

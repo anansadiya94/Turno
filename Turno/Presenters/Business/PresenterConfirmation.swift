@@ -88,6 +88,10 @@ class PresenterConfirmation {
         }
     }
     
+    private func blockUserConfirmed() {
+        // TODO: BLOCK USER REQUEST
+    }
+    
     // MARK: - Public Interface
     func confirmButtonTapped() {
         self.view?.startWaitingView()
@@ -133,7 +137,7 @@ class PresenterConfirmation {
                                  button2: LocalizedConstants.yes_key.localized,
                                  completion: { (_, action2) in
                                     if action2 != nil && action2 == true {
-                                        print("YES TAPPED") //TODO
+                                        self.blockUserConfirmed()
                                     }})
     }
 }

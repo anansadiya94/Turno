@@ -26,3 +26,7 @@ struct Appointments {
 struct Business {
     static let modifyModel = Notification.Name(kNotificaitonBusinessModifyModel)
 }
+
+struct BlockedUsers {
+    static let unblockTapped = Notification.Name(kNotificaitonUnblockTapped)
+}

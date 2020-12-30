@@ -25,6 +25,7 @@ enum APIRouter {
     case book(modelBookTask: ModelBookTask)
     case getMyBusiness
     case getMyBookings
+    case getMyBlockedList
 }
 
 extension APIRouter: TargetType {
@@ -46,13 +47,14 @@ extension APIRouter: TargetType {
         case .book: return kBook
         case .getMyBusiness: return kGetMyBusiness
         case .getMyBookings: return kGetMyBookings
+        case .getMyBlockedList: return kGetMyBlockedList
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites,
-             .cancelTurn, .getAvailableTimes, .book, .getMyBusiness, .getMyBookings:
+             .cancelTurn, .getAvailableTimes, .book, .getMyBusiness, .getMyBookings, .getMyBlockedList:
             return .post
         }
     }
@@ -65,7 +67,7 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelVerify)
         case .getBusinesses(let modelBusinessTask):
             return .requestJSONEncodable(modelBusinessTask)
-        case .getFavorites, .getMyBusiness, .getMyBookings:
+        case .getFavorites, .getMyBusiness, .getMyBookings, .getMyBlockedList:
             return .requestPlain
         case .addToFavorites(let modelFavoritesTask), .removeToFavorites(let modelFavoritesTask):
             return .requestJSONEncodable(modelFavoritesTask)
@@ -88,7 +90,7 @@ extension APIRouter: TargetType {
         
         switch self {
         case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn,
-             .getAvailableTimes, .book, .getMyBusiness, .getMyBookings:
+             .getAvailableTimes, .book, .getMyBusiness, .getMyBookings, .getMyBlockedList:
             headers["Authorization"] = Preferences.getAuthorization() 
         default:
             break
