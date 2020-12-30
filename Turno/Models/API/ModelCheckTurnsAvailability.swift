@@ -9,7 +9,12 @@
 import Foundation
 
 struct ModelCheckTurnsAvailabilityTask: Codable {
-    var services: [Service]?
+    var servicesToBook: [ServiceToBook]?
+}
+
+struct ServiceToBook: Codable {
+    var identifier: String?
+    var count: Int?
 }
 
 struct ModelCheckTurnsAvailability: Codable, ModelApiError {

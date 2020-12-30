@@ -97,7 +97,9 @@ class PresenterAddAppointment {
     
     func checkAvailabilityButtonTapped(identifier: String?, bookedServices: [Service]?) {
         self.view?.startWaitingView()
-        let modelCheckTurnsAvailabilityTask = ModelCheckTurnsAvailabilityTask(services: [])
+        var servicesToBook: [ServiceToBook] = []
+        bookedServices?.forEach({ servicesToBook.append(ServiceToBook(identifier: $0.identifier, count: $0.count)) })
+        let modelCheckTurnsAvailabilityTask = ModelCheckTurnsAvailabilityTask(servicesToBook: servicesToBook)
         networkManager.getAvailableTimes(modelTask: modelCheckTurnsAvailabilityTask) { (modelCheckTurnsAvailability, error) in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
