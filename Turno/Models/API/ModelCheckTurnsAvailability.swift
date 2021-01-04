@@ -15,6 +15,12 @@ struct ModelCheckTurnsAvailabilityTask: Codable {
 struct ServiceToBook: Codable {
     var identifier: String?
     var count: Int?
+    var durationInMinutes: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case count, durationInMinutes
+        case identifier = "id"
+    }
 }
 
 struct ModelCheckTurnsAvailability: Codable, ModelApiError {
