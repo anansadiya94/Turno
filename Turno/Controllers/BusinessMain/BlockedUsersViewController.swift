@@ -53,7 +53,7 @@ class BlockedUsersViewController: GenericTableView<BlockedUsersListDescriptive> 
         navigationController?.navigationBar.tintColor = .primary
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
-                                                            style: .plain, target: self, action: #selector(addTapped))
+                                                            style: .plain, target: self, action: #selector(addTappedAction))
     }
     
     private func setGenericViewConstraints() {
@@ -71,7 +71,7 @@ class BlockedUsersViewController: GenericTableView<BlockedUsersListDescriptive> 
     }
     
     // MARK: - UI interaction methods
-    @objc func addTapped() {
+    @objc func addTappedAction() {
         presenterBlockedUsers.addTapped()
     }
     
@@ -110,5 +110,36 @@ extension BlockedUsersViewController: PresenterBlockedUsersView {
     
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
         showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
+    }
+    
+    func addTapped(title: String, message: String) {
+        // Obscure background
+        let alphaView = UIView(frame: self.view.frame)
+        alphaView.backgroundColor = .blackAlpha15
+        alphaView.alpha = 1.0
+        self.view.addSubview(alphaView)
+        
+        // Popup
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        // First action
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [weak self] _ in
+            self?.view.subviews.last?.removeFromSuperview()
+        }))
+        
+        var textField = UITextField()
+        // Second Action
+        alert.addAction(UIAlertAction(title: "Block", style: .default, handler: { [weak self] _ in
+            self?.view.subviews.last?.removeFromSuperview()
+            self?.presenterBlockedUsers.blockUser(phoneNumber: textField.text!)
+        }))
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Enter phone number"
+            alertTextField.keyboardType = .phonePad
+            textField = alertTextField
+        }
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

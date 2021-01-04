@@ -13,3 +13,13 @@ struct ModelBlockedUser: Codable {
     let fullName: String?
     let phoneNumber: String?
 }
+
+struct ModelBlockUser: Codable {
+    let userId: String?
+    let phoneNumber: String?
+    
+    init(userId: String? = nil, phoneNumber: String? = nil) {
+        self.userId = userId
+        self.phoneNumber = phoneNumber
+    }
+}

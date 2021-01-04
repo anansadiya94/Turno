@@ -13,6 +13,7 @@ protocol PresenterBlockedUsersView: PresenterParentView {
     func didSetData(model: BlockedUsersListDescriptive)
     func showEmptyMessage(title: String, message: String)
     func removeEmptyMessage()
+    func addTapped(title: String, message: String)
 }
 
 class PresenterBlockedUsers {
@@ -37,7 +38,29 @@ class PresenterBlockedUsers {
     }
     
     private func unblockConfirmed(userId: String?) {
-        // TODO: MAKE THE API CALL
+        if let userId = userId {
+            let modelBlockUser = ModelBlockUser(userId: userId)
+            networkManager.unblockUser(modelBlockUser: modelBlockUser
+            ) { _, error in
+                if error as? MoyaError != nil {
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                             withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             completion: nil)
+                    return
+                }
+                if let error = error as? AppError {
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: error.title,
+                                             withText: error.message,
+                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             completion: nil)
+                    return
+                }
+                self.fetchData()
+            }
+        }
     }
     
     // MARK: - Public Interface
@@ -75,7 +98,7 @@ class PresenterBlockedUsers {
     }
     
     func addTapped() {
-        // TODO
+        self.view?.addTapped(title: "User to block", message: "")
     }
     
     func unblockTapped(userId: String?) {
@@ -88,5 +111,30 @@ class PresenterBlockedUsers {
                                         self.unblockConfirmed(userId: userId)
                                     }
         })
+    }
+    
+    func blockUser(phoneNumber: String) {
+        self.view?.startWaitingView()
+        self.view?.removeEmptyMessage()
+        let modelBlockUser = ModelBlockUser(phoneNumber: phoneNumber)
+        networkManager.blockUser(modelBlockUser: modelBlockUser) { _, error in
+            if error as? MoyaError != nil {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            if let error = error as? AppError {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: error.title,
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            self.fetchData()
+        }
     }
 }
