@@ -15,10 +15,9 @@ struct ModelCheckTurnsAvailabilityTask: Codable {
 struct ServiceToBook: Codable {
     var identifier: String?
     var count: Int?
-    var durationInMinutes: Int?
     
     enum CodingKeys: String, CodingKey {
-        case count, durationInMinutes
+        case count
         case identifier = "id"
     }
 }
@@ -54,6 +53,6 @@ class ModelAvailableTurnDay {
 }
 
 struct ModelBookTask: Codable {
-    var servicesToBook: [Service]?
+    var servicesToBook: [ServiceToBook]?
     var dateTime: String?
 }

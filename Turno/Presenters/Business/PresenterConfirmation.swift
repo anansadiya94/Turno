@@ -95,7 +95,10 @@ class PresenterConfirmation {
     // MARK: - Public Interface
     func confirmButtonTapped() {
         self.view?.startWaitingView()
-        let modelBookTask = ModelBookTask(servicesToBook: bookedServices,
+        var servicesToBook: [ServiceToBook] = []
+        bookedServices?.forEach({ servicesToBook.append(ServiceToBook(identifier: $0.identifier,
+                                                                      count: $0.count)) })
+        let modelBookTask = ModelBookTask(servicesToBook: servicesToBook,
                                           dateTime: bookedSlot?.slot?.fromDisplayableHourToFormatted())
         networkManager.book(modelTask: modelBookTask) { bookedTurn, error in
             if error as? MoyaError != nil {
