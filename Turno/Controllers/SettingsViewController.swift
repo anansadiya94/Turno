@@ -161,6 +161,8 @@ extension SettingsViewController: UITableViewDelegate {
             presenterSettings.share()
         case .notifications:
             presenterSettings.notifications()
+        case .blockedUsers:
+            presenterSettings.blockedUsers()
         default:
             break
         }

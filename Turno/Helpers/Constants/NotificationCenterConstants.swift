@@ -26,3 +26,6 @@ let kNotificaitonAppointmentConfirmed = "appointmentConfirmed"
 
 //Business:
 let kNotificaitonBusinessModifyModel = "modifyModel"
+
+//Blocked users:
+let kNotificaitonUnblockTapped = "unblockTapped"

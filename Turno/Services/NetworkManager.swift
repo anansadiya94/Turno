@@ -23,6 +23,9 @@ protocol Networkable {
     func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void)
     func getMyBusiness(completion: @escaping (ModelBusiness?, Error?) -> Void)
     func getMyBookings(completion: @escaping (ModelMyBookings?, Error?) -> Void)
+    func getMyBlockedList(completion: @escaping ([ModelBlockedUser]?, Error?) -> Void)
+    func unblockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void)
+    func blockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -250,6 +253,60 @@ class NetworkManager: Networkable {
                     }
                 } catch let error {
                     completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func getMyBlockedList(completion: @escaping ([ModelBlockedUser]?, Error?) -> Void) {
+        provider.request(.getMyBlockedList) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let modelList = try decoder.decode([ModelBlockedUser].self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(modelList, nil)
+                    default:
+                        break
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func unblockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.unblockUser(modelBlockUser: modelBlockUser)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                switch value.statusCode {
+                case 200:
+                    completion(true, nil)
+                default:
+                    completion(false, nil)
+                }
+            }
+        }
+    }
+    
+    func blockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.blockUser(modelBlockUser: modelBlockUser)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                switch value.statusCode {
+                case 200:
+                    completion(true, nil)
+                default:
+                    completion(false, nil)
                 }
             }
         }

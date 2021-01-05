@@ -73,6 +73,16 @@ class PresenterAppointments {
         }
     }
     
+    private func areThereTurns(modelList: [ModelBusiness]) -> Bool {
+        var areThereTurns = false
+        modelList.forEach { (model) in
+            if let turns = model.turns, !turns.isEmpty {
+                areThereTurns = true
+            }
+        }
+        return areThereTurns
+    }
+    
     // MARK: - Public Interface
     func fetchData() {
         self.view?.startWaitingView()
@@ -96,7 +106,7 @@ class PresenterAppointments {
                 return
             }
             self.view?.stopWaitingView()
-            if let modelList = modelList, !modelList.isEmpty {
+            if let modelList = modelList, !modelList.isEmpty, self.areThereTurns(modelList: modelList) {
                 self.modelList = modelList
             } else {
                 self.modelList = []                

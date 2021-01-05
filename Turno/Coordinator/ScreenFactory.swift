@@ -41,6 +41,7 @@ protocol SelectButtonBusiness: class {
                                     customer: Customer?)
     func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, customer: Customer?)
     func didSelectChangeToUser()
+    func didSelectBlockedUsers()
 }
 
 struct ScreenFactory {
@@ -199,6 +200,13 @@ struct ScreenFactory {
                                                 modelBusiness: modelBusiness,
                                                 delegate: delegate)
         viewController.presenterAddAppointment = presenter
+        return viewController
+    }
+    
+    static func makeBlockedUsersScreen(delegate: SelectButtonBusiness) -> UIViewController {
+        let viewController = BlockedUsersViewController()
+        let presenter = PresenterBlockedUsers(view: viewController, delegate: delegate)
+        viewController.presenterBlockedUsers = presenter
         return viewController
     }
 }
