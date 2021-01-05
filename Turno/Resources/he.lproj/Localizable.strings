@@ -32,15 +32,14 @@
 "invalid_name_key" = "בין 2 ל -30 תווים";
 "invalid_phoneNumber_key" = "בבקשה הכנס מספר טלפון תקין";
 "home_key" = "בית";
-"my_turns_key" = "התורים שלי";
+"my_turns_key" = "הפניות שלי";
 "favorites_key" = "מועדפים";
 "settings_key" = "הגדרות";
 "ok_key" = "בסדר";
 "generic_error_title_key" = "משהו השתבש...";
-"generic_error_message_key" = "נסה שוב מאוחר יותר";
+"generic_error_message_key" = "בבקשה נסה שוב מאוחר יותר.";
 "connection_failed_error_title_key" = "חיבור נכשל";
-"connection_failed_error_message_key" = "יתכן ויש בעיה עם חיבור האינטרנט שלך. נסה שוב מאוחר יותר
-";
+"connection_failed_error_message_key" = "אולי יש בעיה עם חיבור האינטרנט שלך. בבקשה נסה שוב.";
 "services_key" = "שירותים";
 "information_key" = "מֵידָע";
 "check_availability_key" = "בדוק זמינות";
@@ -48,11 +47,24 @@
 "open_in_key" = "נפתח";
 "book_now_key" = "להזמין עכשיו!";
 "confirm_key" = "לְאַשֵׁר";
-"confirm_message_key" = "נא להגיע 5 דקות לפני הזמן. במידה ואי אפשר נא לבטל את התור.";
+"confirm_message_key" = "אנא להיות שם 5 דקות לפני התור שלך. הודע או לבטל במקרה שאתה לא יכול לעשות את זה בזמן.";
 "no_favorites_error_title_key" = "לא נמצאו מועדפים";
-"no_favorites_error_message_key" = "לא הוספת עסקים לרשימה עדיין";
-"no_turns_error_title_key" = "לא נמצאו תורים";
-"no_turns_error_message_key" = "הזמן תור כדי לראות אותו כאן";
+"no_favorites_error_message_key" = "לא סימנת כל עסק עדיין.";
+"no_turns_error_title_key" = "אין תורות נמצאות";
+"no_turns_error_message_key" = "הזמן תור לראות אותו כאן";
+"no_available_dates_title_key" = "אין תאריכים זמינים";
+"no_available_dates_message_key" = "מצטער! אנחנו לא הצלחנו למצוא שום תאריך availabel. בדוק לשירותי פחות או לנסות שוב מאוחר יותר.";
+"no_blocked_users_title_key" = "אין משתמשים חסומים";
+"no_blocked_users_message_key" = "לחסום משתמשים כדי לראות אותם כאן.";
+"user_to_block_title_key" = "משתמש כדי לחסום";
+"unblock_user_title_key" = "האם אתה בטוח שאתה רוצה לבטל את חסימת המשתמש הזה?";
+"unblock_user_message_key" = "האם אתה בטוח שאתה רוצה לבטל את חסימת המשתמש הזה?";
+"no_key" = "לא";
+"cancel_turn_title_key" = "האם אתה בטוח שאתה רוצה cancal בתורו זה?";
+"cancel_turn_message_key" = "האם אתה בטוח שאתה רוצה cancal בתורו זה?";
+"no_turns_business_title_key" = "מדינה שוממת";
+"no_turns_business_message_key" = "הקש על + כדי להוסיף סיבובים.";
+"unblock_key" = "שחרור";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "זמן שירותים סהכ הוא:% @";

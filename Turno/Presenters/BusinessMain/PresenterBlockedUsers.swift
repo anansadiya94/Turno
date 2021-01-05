@@ -89,23 +89,22 @@ class PresenterBlockedUsers {
                 self.modelList = modelList
             } else {
                 self.modelList = []
-                // TODO: Translate
-                self.view?.showEmptyMessage(title: "No blocked users",
-                                            message: "block users to see them here.")
+                self.view?.showEmptyMessage(title: LocalizedConstants.no_blocked_users_title_key.localized,
+                                            message: LocalizedConstants.no_blocked_users_message_key.localized)
             }
             self.notifyView()
         }
     }
     
     func addTapped() {
-        self.view?.addTapped(title: "User to block", message: "")
+        self.view?.addTapped(title: LocalizedConstants.user_to_block_title_key.localized, message: "")
     }
     
     func unblockTapped(userId: String?) {
-        // TODO: Translate
-        self.view?.showPopupView(withTitle: "Are you sure you want to unblock this user?",
-                                 withText: "Are you sure you want to unblock this user?",
-                                 withButton: "No", button2: "Yes",
+        self.view?.showPopupView(withTitle: LocalizedConstants.unblock_user_title_key.localized,
+                                 withText: LocalizedConstants.unblock_user_message_key.localized,
+                                 withButton: LocalizedConstants.no_key.localized,
+                                 button2: LocalizedConstants.yes_key.localized,
                                  completion: { (_, yes) in
                                     if yes == true {
                                         self.unblockConfirmed(userId: userId)

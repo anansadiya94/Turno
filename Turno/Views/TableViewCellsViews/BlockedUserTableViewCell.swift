@@ -31,7 +31,7 @@ class BlockedUserTableViewCell: UITableViewCell {
     
     // MARK: - Private methods
     private func setUpView() {
-        unblockButton.buttonTheme = RoundedBaseTheme(label: "Unblock", // TODO: Translate
+        unblockButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.unblock_key.localized,
                                                      backgroundColor: UIColor.black.withAlphaComponent(0.75))
     }
     

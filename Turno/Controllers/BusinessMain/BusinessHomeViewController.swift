@@ -93,9 +93,8 @@ class BusinessHomeViewController: DayViewController {
     }
     
     private func handleEmptyState() {
-        // TODO: Translate
-        self.showPopup(withTitle: "Empty state",
-                       withText: "Tap on '+' to add turns.",
+        self.showPopup(withTitle: LocalizedConstants.no_turns_error_title_key.localized,
+                       withText: LocalizedConstants.no_turns_error_message_key.localized,
                        withButton: LocalizedConstants.ok_key.localized,
                        completion: nil)
     }

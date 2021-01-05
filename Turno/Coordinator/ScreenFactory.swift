@@ -32,6 +32,15 @@ protocol SelectButtonFavorites: class {
     func didSelectEntity(id: String)
 }
 
+struct ConfirmationScreenModel {
+    let identifier: String?
+    let name: String?
+    let bookedServices: [Service]?
+    let bookedSlot: EmptySlot?
+    let confirmationViewType: ConfirmationViewType?
+    let customer: Customer?
+}
+
 protocol SelectButtonBusiness: class {
     func addAppointmentTapped(modelBusiness: ModelBusiness?)
     func showAppointmentTapped(turn: Turn)
@@ -181,15 +190,16 @@ struct ScreenFactory {
         return viewController
     }
     
-    static func makeConfirmationScreen(delegate: SelectButtonBusiness, identifier: String?, name: String?,
-                                       bookedServices: [Service]?, bookedSlot: EmptySlot?,
-                                       confirmationViewType: ConfirmationViewType?,
-                                       customer: Customer?) -> UIViewController {
+    static func makeConfirmationScreen(delegate: SelectButtonBusiness, confirmationScreenModel: ConfirmationScreenModel) -> UIViewController {
         let viewController = ConfirmationViewController()
-        let presenter = PresenterConfirmation(view: viewController, delegate: delegate,
-                                              identifier: identifier, name: name,
-                                              bookedServices: bookedServices, bookedSlot: bookedSlot,
-                                              confirmationViewType: confirmationViewType, customer: customer)
+        let presenter = PresenterConfirmation(view: viewController,
+                                              delegate: delegate,
+                                              identifier: confirmationScreenModel.identifier,
+                                              name: confirmationScreenModel.name,
+                                              bookedServices: confirmationScreenModel.bookedServices,
+                                              bookedSlot: confirmationScreenModel.bookedSlot,
+                                              confirmationViewType: confirmationScreenModel.confirmationViewType,
+                                              customer: confirmationScreenModel.customer)
         viewController.presenterConfirmation = presenter
         return viewController
     }
