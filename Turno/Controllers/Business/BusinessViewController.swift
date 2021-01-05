@@ -216,7 +216,9 @@ extension BusinessViewController: PresenterBusinessView {
         
         self.services = initServices(services: services)
         
+        self.businessView.setCheckAvailabilityButton(0)
         self.businessView.segmentedControl.selectedSegmentIndex = 1
+        self.businessView.setView()
         self.businessView.tableView.reloadData()
     }
     

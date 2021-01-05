@@ -91,6 +91,23 @@ class PresenterBusinessHome {
         }
     }
     
+    func fetchMyBookings() {
+        // TODO: Prevent duplicated calls
+        networkManager.getMyBookings { (modelMyBookings, error) in
+            if let error = error as? AppError {
+                self.view?.showPopupView(withTitle: error.title,
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            if let modelMyBookings = modelMyBookings {
+                self.modelMyBookings = modelMyBookings
+            }
+            self.notifyView()
+        }
+    }
+    
     func addAppointmentTapped() {
         delegate.addAppointmentTapped(modelBusiness: modelBusiness)
     }

@@ -15,10 +15,10 @@ class BusinessView: UIView {
     @UseAutoLayout var segmentedControl = UISegmentedControl(items: [LocalizedConstants.services_key.localized,
                                                                      LocalizedConstants.my_turns_key.localized,
                                                                      LocalizedConstants.information_key.localized])
-    @UseAutoLayout var tableView =  UITableView()
-    @UseAutoLayout var checkAvailabilityButton =  RoundedCustomButton()
+    @UseAutoLayout var tableView = UITableView()
+    @UseAutoLayout var checkAvailabilityButton = RoundedCustomButton()
     
-    var bottomConstraint = NSLayoutConstraint()
+    var checkAvailabilityButtonViewHeight = NSLayoutConstraint()
     
     // MARK: - UIView
     override init(frame: CGRect) {
@@ -61,10 +61,11 @@ class BusinessView: UIView {
         addSubview(checkAvailabilityButton)
         checkAvailabilityButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.check_availability_key.localized)
         setCheckAvailabilityButton(0)
+        checkAvailabilityButtonViewHeight = checkAvailabilityButton.heightAnchor.constraint(equalToConstant: 44.0)
         
         NSLayoutConstraint.activate([
             checkAvailabilityButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
-            checkAvailabilityButton.heightAnchor.constraint(equalToConstant: 44.0),
+            checkAvailabilityButtonViewHeight,
             checkAvailabilityButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
             checkAvailabilityButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
         ])
@@ -78,9 +79,8 @@ class BusinessView: UIView {
         tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
         
-        bottomConstraint = tableView.bottomAnchor.constraint(equalTo: checkAvailabilityButton.topAnchor, constant: -8.0)
         NSLayoutConstraint.activate([
-            bottomConstraint,
+            tableView.bottomAnchor.constraint(equalTo: checkAvailabilityButton.topAnchor),
             tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor)
@@ -97,10 +97,10 @@ class BusinessView: UIView {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             checkAvailabilityButton.isHidden = false
-            bottomConstraint = tableView.bottomAnchor.constraint(equalTo: checkAvailabilityButton.topAnchor, constant: -8.0)
+            checkAvailabilityButtonViewHeight.constant = 44.0
         default:
             checkAvailabilityButton.isHidden = true
-            bottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            checkAvailabilityButtonViewHeight.constant = 0.0
         }
     }
     

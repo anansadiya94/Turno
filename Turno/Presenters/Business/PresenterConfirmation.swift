@@ -89,7 +89,62 @@ class PresenterConfirmation {
     }
     
     private func blockUserConfirmed() {
-        // TODO: BLOCK USER REQUEST
+        self.view?.startWaitingView()
+        let modelBlockUser = ModelBlockUser(userId: identifier)
+        networkManager.blockUser(modelBlockUser: modelBlockUser) { _, error in
+            if error as? MoyaError != nil {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            if let error = error as? AppError {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: error.title,
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            self.popToViewController()
+        }
+    }
+    
+    private func cancelTurnConfirmed(turnId: String?) {
+        self.view?.startWaitingView()
+        guard let turnId = turnId else {
+            self.view?.stopWaitingView()
+            self.view?.showPopupView(withTitle: LocalizedConstants.generic_error_title_key.localized,
+                                     withText: LocalizedConstants.generic_error_message_key.localized,
+                                     withButton: LocalizedConstants.ok_key.localized,
+                                     button2: nil,
+                                     completion: nil)
+            return
+        }
+        let modelCancelTurnTask: ModelCancelTurnTask = ModelCancelTurnTask(turnId: turnId)
+        networkManager.cancelTurn(modelTask: modelCancelTurnTask) { _, error in
+            if error as? MoyaError != nil {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
+                                         completion: nil)
+                return
+            }
+            if let error = error as? AppError {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: error.title,
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            self.view?.stopWaitingView()
+            self.popToViewController()
+        }
     }
     
     // MARK: - Public Interface
@@ -124,7 +179,14 @@ class PresenterConfirmation {
     }
     
     func cancelButtonTapped() {
-        // TODO: What should I do now?
+        self.view?.showPopupView(withTitle: "Are you sure you want to cancal this turn?",
+                                 withText: "Are you sure you want to cancal this turn?",
+                                 withButton: "No", button2: "Yes",
+                                 completion: { (_, yes) in
+                                    if yes == true {
+                                        self.cancelTurnConfirmed(turnId: self.identifier)
+                                    }
+        })
     }
     
     func callNowButtonTapped() {

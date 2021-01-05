@@ -49,6 +49,7 @@ class BlockedUsersViewController: GenericTableView<BlockedUsersListDescriptive> 
     
     // MARK: - Private methods
     override func setNavigationBar() {
+        super.setNavigationBar()
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.tintColor = .primary
         
