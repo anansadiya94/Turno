@@ -45,13 +45,14 @@ extension BusinessMainCoordinator {
     }
     
     func showAppointmentScreen(turn: Turn) {
+        let confirmationScreenModel = ConfirmationScreenModel(identifier: turn.identifier,
+                                                              name: "TODO",
+                                                              bookedServices: turn.services,
+                                                              bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true),
+                                                              confirmationViewType: .business,
+                                                              customer: Customer(name: turn.userName, phoneNumber: turn.userPhone))
         let screen = ScreenFactory.makeConfirmationScreen(delegate: self,
-                                                          identifier: turn.identifier,
-                                                          name: "TODO",
-                                                          bookedServices: turn.services,
-                                                          bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true),
-                                                          confirmationViewType: .business,
-                                                          customer: Customer(name: turn.userName, phoneNumber: turn.userPhone))
+                                                          confirmationScreenModel: confirmationScreenModel)
         pushViewByHomeInnerViewController(screen: screen)
     }
     
@@ -66,12 +67,14 @@ extension BusinessMainCoordinator {
     
     func showConfirmationScreen(identifier: String?, name: String?, bookedServices: [Service]?,
                                 bookedSlot: EmptySlot?, customer: Customer?) {
+        let confirmationScreenModel = ConfirmationScreenModel(identifier: identifier,
+                                                              name: name,
+                                                              bookedServices: bookedServices,
+                                                              bookedSlot: bookedSlot,
+                                                              confirmationViewType: .user,
+                                                              customer: customer)
         let screen = ScreenFactory.makeConfirmationScreen(delegate: self,
-                                                          identifier: identifier,
-                                                          name: name,
-                                                          bookedServices: bookedServices,
-                                                          bookedSlot: bookedSlot,
-                                                          confirmationViewType: .user, customer: customer)
+                                                          confirmationScreenModel: confirmationScreenModel)
         pushViewByHomeInnerViewController(screen: screen)
     }
     

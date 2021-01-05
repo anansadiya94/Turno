@@ -179,9 +179,10 @@ class PresenterConfirmation {
     }
     
     func cancelButtonTapped() {
-        self.view?.showPopupView(withTitle: "Are you sure you want to cancal this turn?",
-                                 withText: "Are you sure you want to cancal this turn?",
-                                 withButton: "No", button2: "Yes",
+        self.view?.showPopupView(withTitle: LocalizedConstants.cancel_turn_title_key.localized,
+                                 withText: LocalizedConstants.cancel_turn_message_key.localized,
+                                 withButton: LocalizedConstants.no_key.localized,
+                                 button2: LocalizedConstants.yes_key.localized,
                                  completion: { (_, yes) in
                                     if yes == true {
                                         self.cancelTurnConfirmed(turnId: self.identifier)

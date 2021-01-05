@@ -128,9 +128,8 @@ class PresenterAddAppointment {
                                                          customer: self.customer)
             } else {
                 self.view?.stopWaitingView()
-                // TODO: Translate
-                self.view?.showPopupView(withTitle: "No available dates",
-                                         withText: "Sorry! We couldn’t find any availabel date. Check for less services or try again later on.",
+                self.view?.showPopupView(withTitle: LocalizedConstants.no_available_dates_title_key.localized,
+                                         withText: LocalizedConstants.no_available_dates_message_key.localized,
                                          withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                          completion: nil)
             }

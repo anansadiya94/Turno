@@ -61,6 +61,19 @@ enum LocalizedConstants: String {
     case    no_favorites_error_message_key
     case    no_turns_error_title_key
     case    no_turns_error_message_key
+    case    no_available_dates_title_key
+    case    no_available_dates_message_key
+    case    no_blocked_users_title_key
+    case    no_blocked_users_message_key
+    case    user_to_block_title_key
+    case    unblock_user_title_key
+    case    unblock_user_message_key
+    case    no_key
+    case    cancel_turn_title_key
+    case    cancel_turn_message_key
+    case    no_turns_business_title_key
+    case    no_turns_business_message_key
+    case    unblock_key
     
     case    total_services_time_key
 }
