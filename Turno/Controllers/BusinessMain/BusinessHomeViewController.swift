@@ -93,8 +93,8 @@ class BusinessHomeViewController: DayViewController {
     }
     
     private func handleEmptyState() {
-        self.showPopup(withTitle: LocalizedConstants.no_turns_error_title_key.localized,
-                       withText: LocalizedConstants.no_turns_error_message_key.localized,
+        self.showPopup(withTitle: LocalizedConstants.no_turns_business_title_key.localized,
+                       withText: LocalizedConstants.no_turns_business_message_key.localized,
                        withButton: LocalizedConstants.ok_key.localized,
                        completion: nil)
     }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BusinessAppointmentTableViewCellDelegate: class {
+    func cancelButtonTapped(turnId: String?)
+}
+
 class BusinessAppointmentTableViewCell: UITableViewCell {
     
     // MARK: - Properties
@@ -20,6 +24,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
     @IBOutlet weak var cancelButton: RoundedCustomButton!
     @IBOutlet weak var servicesTableViewHeight: NSLayoutConstraint!
     
+    weak var delegate: BusinessAppointmentTableViewCellDelegate?
     var identifier: String?
     var services: [Service]?
     
@@ -63,11 +68,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
     
     // MARK: - UI interaction methods
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        if let identifier = self.identifier {
-            let dict: [String: String] = ["identifier": identifier]
-            NotificationCenter.default.post(name: Appointments.cancelTapped, object: nil,
-                                            userInfo: dict)
-        }
+        delegate?.cancelButtonTapped(turnId: identifier)
     }
     
     // MARK: - Public Interface

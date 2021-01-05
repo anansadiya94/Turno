@@ -68,8 +68,6 @@ class BusinessViewController: ParentViewController {
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(modifyModelAction(_:)),
                                                name: Business.modifyModel, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(cancelTappedAction(_:)),
-                                               name: Appointments.cancelTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(appointmentConfirmedAction(_:)),
                                                name: Appointments.appointmentConfirmed, object: nil)
     }
@@ -96,6 +94,7 @@ class BusinessViewController: ParentViewController {
                                                                  for: indexPath) as? BusinessAppointmentTableViewCell,
             let turn = turns?[indexPath.row] {
             cell.config(turn: turn)
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()
@@ -128,14 +127,6 @@ class BusinessViewController: ParentViewController {
         if let dict = notification.userInfo as NSDictionary? {
             if let model = dict["model"] as? ModelModifyService {
                 presenterBusiness.modifyModel(identifier: model.identifier, count: model.count)
-            }
-        }
-    }
-    
-    @objc func cancelTappedAction(_ notification: NSNotification) {
-        if let dict = notification.userInfo as NSDictionary? {
-            if let identifier = dict["identifier"] as? String {
-                presenterBusiness.cancelTapped(turnId: identifier)
             }
         }
     }
@@ -287,5 +278,12 @@ extension BusinessViewController: UITableViewDelegate {
         default:
             break
         }
+    }
+}
+
+extension BusinessViewController: BusinessAppointmentTableViewCellDelegate {
+    func cancelButtonTapped(turnId: String?) {
+        guard let turnId = turnId else { return }
+        presenterBusiness.cancelTapped(turnId: turnId)
     }
 }

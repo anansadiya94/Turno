@@ -197,6 +197,7 @@ class PresenterConfirmation {
     }
     
     func blockButtonTapped() {
+        // TODO: Translate
         self.view?.showPopupView(withTitle: "Block user",
                                  withText: "Are you sure you want to block \(customer?.name ?? "")?",
                                  withButton: LocalizedConstants.cancel_key.localized,
