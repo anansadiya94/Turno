@@ -21,6 +21,7 @@ protocol Networkable {
     func cancelTurn(modelTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void)
     func getAvailableTimes(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void)
     func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void)
+    func bookByBusiness(modelTask: ModelBookByBusinessTask, completion: @escaping (Turn?, Error?) -> Void)
     func getMyBusiness(completion: @escaping (ModelBusiness?, Error?) -> Void)
     func getMyBookings(completion: @escaping (ModelMyBookings?, Error?) -> Void)
     func getMyBlockedList(completion: @escaping ([ModelBlockedUser]?, Error?) -> Void)
@@ -192,6 +193,30 @@ class NetworkManager: Networkable {
     
     func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void) {
         provider.request(.book(modelBookTask: modelTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                let decoder = JSONDecoder()
+                do {
+                    let turn = try decoder.decode(Turn.self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(turn, nil)
+                    // TODO: Can't book code
+//                    completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? "", code: value.statusCode))
+                    default:
+                        break
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func bookByBusiness(modelTask: ModelBookByBusinessTask, completion: @escaping (Turn?, Error?) -> Void) {
+        provider.request(.bookByBusiness(modelBookByBusinessTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)

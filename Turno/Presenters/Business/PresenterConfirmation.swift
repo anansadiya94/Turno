@@ -147,9 +147,7 @@ class PresenterConfirmation {
         }
     }
     
-    // MARK: - Public Interface
-    func confirmButtonTapped() {
-        self.view?.startWaitingView()
+    private func bookByUser() {
         var servicesToBook: [ServiceToBook] = []
         bookedServices?.forEach({ servicesToBook.append(ServiceToBook(identifier: $0.identifier,
                                                                       count: $0.count)) })
@@ -175,6 +173,47 @@ class PresenterConfirmation {
             self.view?.stopWaitingView()
             self.popToViewController()
             self.postBookedturn(bookedTurn: bookedTurn)
+        }
+    }
+    
+    private func bookByBusiness() {
+        var servicesToBook: [ServiceToBook] = []
+        bookedServices?.forEach({ servicesToBook.append(ServiceToBook(identifier: $0.identifier,
+                                                                      count: $0.count)) })
+        let modelBookByBusinessTask = ModelBookByBusinessTask(servicesToBook: servicesToBook,
+                                          dateTime: bookedSlot?.slot?.fromDisplayableHourToFormatted(),
+                                          phoneNumber: customer?.phoneNumber)
+        networkManager.bookByBusiness(modelTask: modelBookByBusinessTask) { bookedTurn, error in
+            if error as? MoyaError != nil {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            if let error = error as? AppError {
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: error.title,
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         completion: nil)
+                return
+            }
+            self.view?.stopWaitingView()
+            self.popToViewController()
+            self.postBookedturn(bookedTurn: bookedTurn)
+        }
+    }
+    
+    // MARK: - Public Interface
+    func confirmButtonTapped() {
+        self.view?.startWaitingView()
+        if delegate as? SelectButtonEntity != nil {
+            bookByUser()
+        }
+        if delegate as? SelectButtonBusiness != nil {
+            bookByBusiness()
         }
     }
     

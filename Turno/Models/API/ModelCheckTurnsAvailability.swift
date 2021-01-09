@@ -56,3 +56,9 @@ struct ModelBookTask: Codable {
     var servicesToBook: [ServiceToBook]?
     var dateTime: String?
 }
+
+struct ModelBookByBusinessTask: Codable {
+    var servicesToBook: [ServiceToBook]?
+    var dateTime: String?
+    var phoneNumber: String?
+}

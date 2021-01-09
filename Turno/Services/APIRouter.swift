@@ -23,6 +23,7 @@ enum APIRouter {
     case cancelTurn(modelCancelTurnTask: ModelCancelTurnTask)
     case getAvailableTimes(modelCheckTurnsAvailabilityTask: ModelCheckTurnsAvailabilityTask)
     case book(modelBookTask: ModelBookTask)
+    case bookByBusiness(modelBookByBusinessTask: ModelBookByBusinessTask)
     case getMyBusiness
     case getMyBookings
     case getMyBlockedList
@@ -47,6 +48,7 @@ extension APIRouter: TargetType {
         case .cancelTurn: return kCancelTurn
         case .getAvailableTimes: return kGetAvailableTimes
         case .book: return kBook
+        case .bookByBusiness: return kBookByBusiness
         case .getMyBusiness: return kGetMyBusiness
         case .getMyBookings: return kGetMyBookings
         case .getMyBlockedList: return kGetMyBlockedList
@@ -58,7 +60,7 @@ extension APIRouter: TargetType {
     var method: Moya.Method {
         switch self {
         case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites,
-             .cancelTurn, .getAvailableTimes, .book, .getMyBusiness, .getMyBookings, .getMyBlockedList,
+             .cancelTurn, .getAvailableTimes, .book, .bookByBusiness, .getMyBusiness, .getMyBookings, .getMyBlockedList,
              .unblockUser, .blockUser:
             return .post
         }
@@ -82,6 +84,8 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelCheckTurnsAvailabilityTask)
         case .book(let modelBookTask):
             return .requestJSONEncodable(modelBookTask)
+        case .bookByBusiness(let modelBookByBusinessTask):
+            return .requestJSONEncodable(modelBookByBusinessTask)
         case .unblockUser(let modelBlockUser), .blockUser(let modelBlockUser):
             return .requestJSONEncodable(modelBlockUser)
         }
@@ -97,8 +101,8 @@ extension APIRouter: TargetType {
         
         switch self {
         case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn,
-             .getAvailableTimes, .book, .getMyBusiness, .getMyBookings, .getMyBlockedList,
-             .unblockUser, .blockUser:
+             .getAvailableTimes, .book, .bookByBusiness, .getMyBusiness, .getMyBookings,
+             .getMyBlockedList, .unblockUser, .blockUser:
             headers["Authorization"] = Preferences.getAuthorization() 
         default:
             break
