@@ -203,10 +203,8 @@ class NetworkManager: Networkable {
                     switch value.statusCode {
                     case 200:
                         completion(turn, nil)
-                    // TODO: Can't book code
-//                    completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? "", code: value.statusCode))
                     default:
-                        break
+                        completion(nil, AppError(title: turn.title ?? "", message: turn.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)
@@ -227,10 +225,8 @@ class NetworkManager: Networkable {
                     switch value.statusCode {
                     case 200:
                         completion(turn, nil)
-                    // TODO: Can't book code
-//                    completion(nil, AppError(title: modelVerify.title ?? "", message: modelVerify.message ?? "", code: value.statusCode))
                     default:
-                        break
+                        completion(nil, AppError(title: turn.title ?? "", message: turn.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)

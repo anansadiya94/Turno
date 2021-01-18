@@ -25,6 +25,7 @@ class PresenterBusinessHome {
     let networkManager = NetworkManager()
     var modelBusiness: ModelBusiness?
     var modelMyBookings: ModelMyBookings?
+    var isFetching: Bool = false
     
     // MARK: - init Methods
     init(view: PresenterBusinessHomeView, delegate: SelectButtonBusiness) {
@@ -36,13 +37,23 @@ class PresenterBusinessHome {
     private func notifyView() {
         guard let modelBusiness = modelBusiness,
               let modelMyBookings = modelMyBookings else {
-            //TODO
+            self.view?.showPopupView(withTitle: LocalizedConstants.generic_error_title_key.localized,
+                                     withText: LocalizedConstants.generic_error_message_key.localized,
+                                     withButton: LocalizedConstants.ok_key.localized,
+                                     button2: nil,
+                                     completion: nil)
             return
         }
         view?.didSetData(modelBusiness: modelBusiness, modelMyBookings: modelMyBookings)
     }
     
     func fetchData() {
+        // Preventing multiple calls
+        guard isFetching == false else {
+            return
+        }
+        self.isFetching = true
+        
         let dispatchGroup = DispatchGroup()
         var fetchError: Error?
         
@@ -70,6 +81,7 @@ class PresenterBusinessHome {
         }
         
         dispatchGroup.notify(queue: .main) {
+            self.isFetching = false
             self.view?.stopWaitingView()
             if fetchError as? MoyaError != nil {
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
@@ -92,7 +104,12 @@ class PresenterBusinessHome {
     }
     
     func fetchMyBookings() {
-        // TODO: Prevent duplicated calls
+        // Preventing multiple calls
+        guard isFetching == false else {
+            return
+        }
+        self.isFetching = true
+        
         networkManager.getMyBookings { (modelMyBookings, error) in
             if let error = error as? AppError {
                 self.view?.showPopupView(withTitle: error.title,

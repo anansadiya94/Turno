@@ -54,7 +54,7 @@
 "no_available_dates_title_key" = "No available dates";
 "no_available_dates_message_key" = "Sorry! We couldn’t find any availabel date. Check for less services or try again later on.";
 "no_blocked_users_title_key" = "No blocked users";
-"no_blocked_users_message_key" = "block users to see them here.";
+"no_blocked_users_message_key" = "Block users to see them here.";
 "user_to_block_title_key" = "User to block";
 "unblock_user_title_key" = "Are you sure you want to unblock this user?";
 "unblock_user_message_key" = "Are you sure you want to unblock this user?";
@@ -62,8 +62,23 @@
 "cancel_turn_title_key" = "Are you sure you want to cancal this turn?";
 "cancel_turn_message_key" = "Are you sure you want to cancal this turn?";
 "no_turns_business_title_key" = "Empty state";
-"no_turns_business_message_key" = "Tap on '+' to add turns.";
+"no_turns_business_message_key" = "Tap on + to add turns.";
 "unblock_key" = "Unblock";
+"block_user_key" = "Block user";
+"account_key" = "Account";
+"app_key" = "App";
+"business_key" = "Business";
+"edit_profile_key" = "Edit profile";
+"business_configuration_key" = "Business configuration";
+"blocked_users_key" = "Blocked users";
+"notifications_key" = "Notifications";
+"about_key" = "About";
+"contact_us_key" = "Contact us";
+"share_key" = "Share";
+"terms_of_use_key" = "Terms of use";
+"change_to_business_key" = "Change to business";
+"" = "Change to user";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Total services time is: %@";
+"block_user_by_name_key" = "Are you sure you want to block %@?";

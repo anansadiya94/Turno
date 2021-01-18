@@ -37,7 +37,11 @@ class PresenterAddAppointment {
     // MARK: - Private methods
     private func notifyView() {
         guard let modelBusiness = modelBusiness else {
-            //TODO
+            self.view?.showPopupView(withTitle: LocalizedConstants.generic_error_title_key.localized,
+                                     withText: LocalizedConstants.generic_error_message_key.localized,
+                                     withButton: LocalizedConstants.ok_key.localized,
+                                     button2: nil,
+                                     completion: nil)
             return
         }
         view?.didSetData(modelBusiness: modelBusiness)

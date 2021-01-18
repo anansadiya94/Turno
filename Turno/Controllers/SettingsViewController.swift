@@ -37,16 +37,16 @@ enum SettingsRows {
     
     var text: String {
         switch self {
-        case .editProfile: return "Edit Profile"
-        case .businessConfiguration: return "Business Configuration"
-        case .blockedUsers: return "Blocked Users"
-        case .notifications: return "Notifications"
-        case .about: return "About"
-        case .contactUs: return "Contact Us"
-        case .share: return "Share"
-        case .termsOfUse: return "Terms Of Use"
-        case .changeToBusiness: return "Change To Business"
-        case .changeToUser: return "Change To User"
+        case .editProfile: return LocalizedConstants.edit_profile_key.localized
+        case .businessConfiguration: return LocalizedConstants.business_configuration_key.localized
+        case .blockedUsers: return LocalizedConstants.blocked_users_key.localized
+        case .notifications: return LocalizedConstants.notifications_key.localized
+        case .about: return LocalizedConstants.about_key.localized
+        case .contactUs: return LocalizedConstants.contact_us_key.localized
+        case .share: return LocalizedConstants.share_key.localized
+        case .termsOfUse: return LocalizedConstants.terms_of_use_key.localized
+        case .changeToBusiness: return LocalizedConstants.change_to_business_key.localized
+        case .changeToUser: return LocalizedConstants.change_to_user_key.localized
         }
     }
 }
@@ -61,7 +61,9 @@ class SettingsViewController: ParentViewController {
     var presenterSettings: PresenterSettings!
     @UseAutoLayout var genericView = GenericView()
     private var settingsRows: [[SettingsRows]] = [[]]
-    let headerTitles = ["Account", "App", "Business"]
+    let headerTitles = [LocalizedConstants.account_key.localized,
+                        LocalizedConstants.app_key.localized,
+                        LocalizedConstants.business_key.localized]
     
     // MARK: - UIViewController
     override func viewDidLoad() {

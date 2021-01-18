@@ -64,8 +64,23 @@
 "cancel_turn_title_key" = "هل أنت متأكد أنك تريد cancal هذا التحول؟";
 "cancel_turn_message_key" = "هل أنت متأكد أنك تريد cancal هذا التحول؟";
 "no_turns_business_title_key" = "الدولة فارغة";
-"no_turns_business_message_key" = "الصنبور على '+' لإضافة المنعطفات.";
+"no_turns_business_message_key" = "الصنبور على + لإضافة المنعطفات.";
 "unblock_key" = "رفع الحظر";
+"block_user_key" = "مستخدم محضور";
+"account_key" = "الحساب";
+"app_key" = "تطبيق";
+"business_key" = "اعمال";
+"edit_profile_key" = "تعديل الملف الشخصي";
+"business_configuration_key" = "التكوين الأعمال";
+"blocked_users_key" = "مستخدمين محجوبين";
+"notifications_key" = "إشعارات";
+"about_key" = "حول";
+"contact_us_key" = "اتصل بنا";
+"share_key" = "شارك";
+"terms_of_use_key" = "تعليمات الاستخدام";
+"change_to_business_key" = "تغيير في الأعمال";
+"" = "تغيير المستخدم";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو:٪ @";
+"block_user_by_name_key" = "هل أنت متأكد أنك تريد كتلة٪ @؟";

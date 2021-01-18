@@ -74,8 +74,23 @@ enum LocalizedConstants: String {
     case    no_turns_business_title_key
     case    no_turns_business_message_key
     case    unblock_key
+    case    block_user_key
+    case    account_key
+    case    app_key
+    case    business_key
+    case    edit_profile_key
+    case    business_configuration_key
+    case    blocked_users_key
+    case    notifications_key
+    case    about_key
+    case    contact_us_key
+    case    share_key
+    case    terms_of_use_key
+    case    change_to_business_key
+    case    change_to_user_key
     
     case    total_services_time_key
+    case    block_user_by_name_key
 }
 
 extension LocalizedConstants {
