@@ -105,7 +105,7 @@ class AddAppointmentViewController: ParentViewController {
     }
 }
 
-//TOOD IMPROVE ME
+// TOOD IMPROVE ME
 extension AddAppointmentViewController {
     func addCancelAndButtonsOnKeyboard(textField: UITextField?) {
         let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
@@ -196,7 +196,7 @@ extension AddAppointmentViewController: PresenterAddAppointmentView {
     }
     
     func showAlert(customer: Customer) {
-        let modelAlertPopUp = ModelAlertPopup(title: "Is this \(customer.name ?? "")'s phone number?", //TOOD: Translate
+        let modelAlertPopUp = ModelAlertPopup(title: "Is this \(customer.name ?? "")'s phone number?", // TOOD: Translate
                                               message: customer.phoneNumber,
                                               action1: LocalizedConstants.edit_key.localized,
                                               action2: LocalizedConstants.yes_key.localized)

@@ -1,17 +1,13 @@
 PODS:
-  - Alamofire (5.2.2)
-  - CalendarKit (0.13.13):
-    - DateToolsSwift
-  - DateToolsSwift (5.0.0)
-  - Kingfisher (5.15.4):
-    - Kingfisher/Core (= 5.15.4)
-  - Kingfisher/Core (5.15.4)
-  - lottie-ios (3.1.8)
+  - Alamofire (5.4.1)
+  - CalendarKit (0.14.8)
+  - Kingfisher (6.2.1)
+  - lottie-ios (3.2.1)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - SwiftLint (0.40.3)
+  - SwiftLint (0.43.0)
 
 DEPENDENCIES:
   - CalendarKit
@@ -24,21 +20,19 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - CalendarKit
-    - DateToolsSwift
     - Kingfisher
     - lottie-ios
     - Moya
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  CalendarKit: 54944443a5cbd633a533b971408b00e879f54a7d
-  DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
-  Kingfisher: 657dc1077e5bbbfff864194c79f29e35b722d062
-  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  CalendarKit: 8553ffed9f2d323c27833b33472978febd07b7b6
+  Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
+  lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
+  SwiftLint: 0c645fdc6feed3e390c1701ab3cc669f88b42752
 
-PODFILE CHECKSUM: 23bc19ca2b76a08beab3381b150dcb2fedebe7fd
+PODFILE CHECKSUM: dbfe8bb9f3bc1679960a1434e7ab3f1288b85ca4
 
 COCOAPODS: 1.10.1

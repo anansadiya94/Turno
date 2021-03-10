@@ -137,7 +137,6 @@
 		9EB14F482485048C0085E885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB14F462485048C0085E885 /* LaunchScreen.storyboard */; };
 		9EB17D6A24850D5A004E5FBD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EB17D6C24850D5A004E5FBD /* Localizable.strings */; };
 		9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB17D7324850EF7004E5FBD /* LocalizableConstants.swift */; };
-		9EB292BF25222D8200BB6437 /* TimeChunk+DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB292BE25222D8200BB6437 /* TimeChunk+DateComponents.swift */; };
 		9EB292C22522384200BB6437 /* PresenterBusinessHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB292C12522384200BB6437 /* PresenterBusinessHome.swift */; };
 		9EB292C525223CD000BB6437 /* AddAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB292C425223CD000BB6437 /* AddAppointmentViewController.swift */; };
 		9EB292C925223CEB00BB6437 /* AddAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB292C825223CEB00BB6437 /* AddAppointmentView.swift */; };
@@ -312,7 +311,6 @@
 		9EB17D6E24850D68004E5FBD /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9EB17D6F24850D6E004E5FBD /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9EB17D7324850EF7004E5FBD /* LocalizableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableConstants.swift; sourceTree = "<group>"; };
-		9EB292BE25222D8200BB6437 /* TimeChunk+DateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeChunk+DateComponents.swift"; sourceTree = "<group>"; };
 		9EB292C12522384200BB6437 /* PresenterBusinessHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterBusinessHome.swift; sourceTree = "<group>"; };
 		9EB292C425223CD000BB6437 /* AddAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentViewController.swift; sourceTree = "<group>"; };
 		9EB292C825223CEB00BB6437 /* AddAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentView.swift; sourceTree = "<group>"; };
@@ -631,7 +629,6 @@
 				9E5AD83124C89B4D00100526 /* UIViewController+CallNumber.swift */,
 				9E5AD83324C89B6C00100526 /* UIViewController+SendEmail.swift */,
 				9EF54EB025029738000DC352 /* UITableView+EmpyMessage.swift */,
-				9EB292BE25222D8200BB6437 /* TimeChunk+DateComponents.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1180,7 +1177,6 @@
 				9E4CACE92494EBE800AA72E0 /* ModelVerify.swift in Sources */,
 				9E25D00D24883D1D00BC8626 /* UICollectionViewFlowLayout+FlipsHorizontallyInOppositeLayoutDirection.swift in Sources */,
 				9E55BD5A248AC8C1004F401B /* UIViewController+SetBackBarButton.swift in Sources */,
-				9EB292BF25222D8200BB6437 /* TimeChunk+DateComponents.swift in Sources */,
 				9E9880E9248BBAA500D78959 /* ActivationView.swift in Sources */,
 				9EAAD3D324A88992008D3EF7 /* PresenterFavorites.swift in Sources */,
 				9EA657CA248813D200F7952A /* AssetsConstants.swift in Sources */,
@@ -1329,7 +1325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1385,7 +1381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

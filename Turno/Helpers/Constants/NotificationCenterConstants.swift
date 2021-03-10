@@ -8,24 +8,24 @@
 
 import Foundation
 
-//ONBOADING:
+// ONBOADING:
 let kNotificaitonButtonOnboardingCellTapped = "buttonOnBoardingCellTapped"
 
-//ALERTS:
+// ALERTS:
 let kNotificaitonAlertButton1Tapped = "alertButton1Tapped"
 let kNotificaitonAlertButton2Tapped = "alertButton2Tapped"
 
-//GenericEntity:
+// GenericEntity:
 let kNotificaitonGenericEntityCellIsFavoriteTapped = "genericEntityCellIsFavoriteTapped"
 let kNotificaitonGenericEntityCellTapped = "genericEntityCellTapped"
 
-//Appointments:
+// Appointments:
 let kNotificaitonCancelTapped = "cancelTapped"
 let kNotificaitonCallNowTapped = "callNowTapped"
 let kNotificaitonAppointmentConfirmed = "appointmentConfirmed"
 
-//Business:
+// Business:
 let kNotificaitonBusinessModifyModel = "modifyModel"
 
-//Blocked users:
+// Blocked users:
 let kNotificaitonUnblockTapped = "unblockTapped"

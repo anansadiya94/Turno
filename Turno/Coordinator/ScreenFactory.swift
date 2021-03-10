@@ -8,7 +8,7 @@
 
 import UIKit
 
-//PROTOCOLS:
+// PROTOCOLS:
 protocol SelectButtonOnboarding: class {
     func didSelectOnboardingButton()
 }
@@ -54,7 +54,7 @@ protocol SelectButtonBusiness: class {
 }
 
 struct ScreenFactory {
-    //ONBOARDING:
+    // ONBOARDING:
     static func makeOnboardingScreen(delegate: SelectButtonOnboarding) -> UIViewController {
         let onBoardingViewController = OnboardingViewController()
         let presenter = PresenterOnboarding(view: onBoardingViewController, delegate: delegate)
@@ -62,7 +62,7 @@ struct ScreenFactory {
         return onBoardingViewController
     }
     
-    //WELCOME:
+    // WELCOME:
     static func makeWelcomeScreen(navigationController: UINavigationController, delegate: SelectButtonWelcome) -> UIViewController {
         let welcomeViewController = WelcomeViewController()
         let presenter = PresenterWelcome(view: welcomeViewController, delegate: delegate)
@@ -85,7 +85,7 @@ struct ScreenFactory {
         return viewController
     }
     
-    //MAIN:
+    // MAIN:
     static func makeUserMainScreen(navigationController: UINavigationController, delegate: SelectButtonEntity) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
             sbName: kUserMainStoryboardName,

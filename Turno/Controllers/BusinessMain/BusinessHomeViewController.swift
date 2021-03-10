@@ -8,7 +8,6 @@
 
 import UIKit
 import CalendarKit
-import DateToolsSwift
 
 class BusinessHomeViewController: DayViewController {
     
@@ -43,11 +42,13 @@ class BusinessHomeViewController: DayViewController {
         for turn in turns {
             if let services = turn.services,
                let beginningTime = turn.dateTimeUTC?.toDate() {
-                let chunk = TimeChunk.dateComponents(minutes: ServiceTimeCalculation.calculateDuration(to: services))
+                let survicesDuration = ServiceTimeCalculation.calculateDuration(to: services)
+                guard let endDate = Calendar.current.date(byAdding: .minute, value: survicesDuration, to: beginningTime) else { break }
+                
                 events.append(createEvent(turn: turn,
                                           data: turn.userName ?? "",
-                                          datePeriod: TimePeriod(beginning: beginningTime,
-                                                                 chunk: chunk)))
+                                          startDate: beginningTime,
+                                          endDate: endDate))
             }
         }
         
@@ -73,13 +74,11 @@ class BusinessHomeViewController: DayViewController {
                                                             style: .plain, target: self, action: #selector(addTapped))
     }
     
-    private func createEvent(turn: Turn?, data: String, datePeriod: TimePeriod) -> Event {
+    private func createEvent(turn: Turn?, data: String, startDate: Date, endDate: Date) -> Event {
         let event = Event()
         event.userInfo = turn
-        
-        let datePeriod = datePeriod
-        event.startDate = datePeriod.beginning!
-        event.endDate = datePeriod.end!
+        event.startDate = startDate
+        event.endDate = endDate
         
         event.text = data
         event.color = .primary

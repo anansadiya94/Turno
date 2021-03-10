@@ -64,7 +64,7 @@ class InstallationViewController: ParentViewController {
     }
 }
 
-//TOOD IMPROVE ME
+// TOOD IMPROVE ME
 extension InstallationViewController {
     func addCancelAndButtonsOnKeyboard(textField: UITextField?) {
         let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
