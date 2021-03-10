@@ -77,7 +77,7 @@
 "share_key" = "Share";
 "terms_of_use_key" = "Terms of use";
 "change_to_business_key" = "Change to business";
-"" = "Change to user";
+"change_to_user_key" = "Change to user";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Total services time is: %@";

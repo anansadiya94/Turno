@@ -79,7 +79,7 @@
 "share_key" = "شارك";
 "terms_of_use_key" = "تعليمات الاستخدام";
 "change_to_business_key" = "تغيير في الأعمال";
-"" = "تغيير المستخدم";
+"change_to_user_key" = "تغيير المستخدم";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو:٪ @";
