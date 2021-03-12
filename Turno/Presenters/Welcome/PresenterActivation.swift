@@ -88,11 +88,11 @@ class PresenterActivation: NSObject {
         }
     }
     
-    func OTPTapped(otp: String) {
+    func OneTimeCodeFinished(with code: String) {
         self.view?.startWaitingView()
         
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber {
-            let modelVerifyTask = ModelVerifyTask(phoneNumber: phoneNumber, verificationCode: otp)
+            let modelVerifyTask = ModelVerifyTask(phoneNumber: phoneNumber, verificationCode: code)
             networkManager.verify(modelTask: modelVerifyTask) { (modelVerify, error) in
                 if error as? MoyaError != nil {
                     self.view?.stopWaitingView()

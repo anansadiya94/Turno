@@ -32,7 +32,7 @@ class ActivationViewController: ParentViewController {
         super.viewDidLoad()
         setActivationView()
         addTargets()
-        configureOTPView()
+        configureOneTimeCodeView()
     }
     
     // MARK: - Private methods
@@ -73,8 +73,12 @@ class ActivationViewController: ParentViewController {
         }
     }
     
-    private func configureOTPView() {
-        activationView?.otpStackView.delegate = self
+    private func configureOneTimeCodeView() {
+        activationView?.oneTimeCodeTextField.becomeFirstResponder()
+        activationView?.oneTimeCodeTextField.didEnterLastDigit = { [weak self] code in
+            self?.view.endEditing(true)
+            self?.presenterActivation.OneTimeCodeFinished(with: code)
+        }
     }
     
     // MARK: - UI interaction methods
@@ -107,7 +111,7 @@ extension ActivationViewController: PresenterActivationView {
     }
     
     func tryAgain() {
-        activationView?.otpStackView.resetOTP()
+        activationView?.oneTimeCodeTextField.reset()
     }
     
     func startWaitingView() {
@@ -120,15 +124,5 @@ extension ActivationViewController: PresenterActivationView {
     
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {
         showPopup(withTitle: title, withText: text, withButton: button, button2: button2, completion: completion)
-    }
-}
-
-// MARK: - ActivationViewController methods
-extension ActivationViewController: OTPDelegate {
-    func didChangeValidity(isValid: Bool) {
-        if isValid, let otp = activationView?.otpStackView.getOTP() {
-            view.endEditing(true)
-            presenterActivation.OTPTapped(otp: otp)
-        }
     }
 }

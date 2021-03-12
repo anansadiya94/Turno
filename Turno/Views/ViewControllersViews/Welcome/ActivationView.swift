@@ -16,12 +16,10 @@ class ActivationView: UIView {
     @UseAutoLayout var subTitleView = UIView()
     @UseAutoLayout var phoneNumberLabel = CustomLabel()
     @UseAutoLayout var wrongNumberButton = CustomButton()
-    @UseAutoLayout var otpLabel = CustomLabel()
-    @UseAutoLayout var otpView = UIView()
+    @UseAutoLayout var oneTimeCodeLabel = CustomLabel()
     @UseAutoLayout var countDownLabel = CustomLabel()
     @UseAutoLayout var resendSMSButton = CustomButton()
-    
-    let otpStackView = OTPStackView()
+    @UseAutoLayout var oneTimeCodeTextField = OneTimeCodeTextField()
     
     // MARK: - Constraints constants
     private var kSuperViewMargin: CGFloat = 16
@@ -45,8 +43,8 @@ class ActivationView: UIView {
         addProgressView()
         addTitleLabel()
         addSubTitleView()
-        addOTPLabel()
-        addOTPView()
+        addOneTimeCodeLabel()
+        addOneTimeCodeView()
         addCountDownLabel()
         addResendSMSButton()
     }
@@ -55,8 +53,8 @@ class ActivationView: UIView {
         self.addSubview(progressView)
         self.addSubview(titleLabel)
         self.addSubview(subTitleView)
-        self.addSubview(otpLabel)
-        self.addSubview(otpView)
+        self.addSubview(oneTimeCodeLabel)
+        self.addSubview(oneTimeCodeTextField)
         self.addSubview(countDownLabel)
         self.addSubview(resendSMSButton)
     }
@@ -101,33 +99,29 @@ class ActivationView: UIView {
         ])
     }
     
-    private func addOTPLabel() {
-        otpLabel.labelTheme = RegularTheme(label: LocalizedConstants.six_digit_code_key.localized,
+    private func addOneTimeCodeLabel() {
+        oneTimeCodeLabel.labelTheme = RegularTheme(label: LocalizedConstants.six_digit_code_key.localized,
                                            fontSize: 20, textColor: .black, textAlignment: .center)
         NSLayoutConstraint.activate([
-            otpLabel.topAnchor.constraint(equalTo: wrongNumberButton.bottomAnchor, constant: kSuperViewMargin*2),
-            otpLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            oneTimeCodeLabel.topAnchor.constraint(equalTo: wrongNumberButton.bottomAnchor, constant: kSuperViewMargin*2),
+            oneTimeCodeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
     
-    private func addOTPView() {
-        otpView.backgroundColor = .clear
+    private func addOneTimeCodeView() {
         NSLayoutConstraint.activate([
-            otpView.heightAnchor.constraint(equalToConstant: 44.0),
-            otpView.topAnchor.constraint(equalTo: otpLabel.bottomAnchor, constant: kSuperViewMargin*2),
-            otpView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            oneTimeCodeTextField.heightAnchor.constraint(equalToConstant: 44.0),
+            oneTimeCodeTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            oneTimeCodeTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
+            oneTimeCodeTextField.topAnchor.constraint(equalTo: oneTimeCodeLabel.bottomAnchor, constant: kSuperViewMargin*2),
+            oneTimeCodeTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
-        otpView.addSubview(otpStackView)
-        otpStackView.translatesAutoresizingMaskIntoConstraints = false
-        otpStackView.heightAnchor.constraint(equalTo: otpView.heightAnchor).isActive = true
-        otpStackView.centerXAnchor.constraint(equalTo: otpView.centerXAnchor).isActive = true
-        otpStackView.centerYAnchor.constraint(equalTo: otpView.centerYAnchor).isActive = true
     }
     
     private func addCountDownLabel() {
         countDownLabel.labelTheme = RegularTheme(label: "", fontSize: 10, textColor: .black, textAlignment: .center)
         NSLayoutConstraint.activate([
-            countDownLabel.topAnchor.constraint(equalTo: otpView.bottomAnchor, constant: kSuperViewMargin),
+            countDownLabel.topAnchor.constraint(equalTo: oneTimeCodeTextField.bottomAnchor, constant: kSuperViewMargin),
             countDownLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
