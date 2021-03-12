@@ -43,7 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
                 print("Permission granted: \(granted)")
-                guard granted else { return }
+                guard granted else {
+                    print(error.debugDescription)
+                    return
+                }
                 DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
                 }

@@ -101,7 +101,7 @@ class OneTimeCodeTextField: UITextField {
     
     @objc private func textDidChange() {
         guard let text = self.text, text.count <= digitLabels.count else { return }
-        
+         
         for i in 0 ..< digitLabels.count {
             let currentLabel = digitLabels[i]
             
@@ -109,7 +109,7 @@ class OneTimeCodeTextField: UITextField {
                 let index = text.index(text.startIndex, offsetBy: i)
                 currentLabel.text = String(text[index])
             } else {
-                currentLabel.text?.removeAll()
+                currentLabel.text = defaultCharacter
             }
         }
         
