@@ -68,8 +68,6 @@
 "account_key" = "Account";
 "app_key" = "App";
 "business_key" = "Business";
-"edit_profile_key" = "Edit profile";
-"business_configuration_key" = "Business configuration";
 "blocked_users_key" = "Blocked users";
 "notifications_key" = "Notifications";
 "about_key" = "About";

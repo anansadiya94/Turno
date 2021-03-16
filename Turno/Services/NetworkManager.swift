@@ -270,7 +270,7 @@ class NetworkManager: Networkable {
                     case 200:
                         completion(modelMyBookings, nil)
                     default:
-                        break
+                        completion(nil, AppError(title: modelMyBookings.title ?? "", message: modelMyBookings.message ?? ""))
                     }
                 } catch let error {
                     completion(nil, error)

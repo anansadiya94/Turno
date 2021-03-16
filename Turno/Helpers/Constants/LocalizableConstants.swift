@@ -78,8 +78,6 @@ enum LocalizedConstants: String {
     case    account_key
     case    app_key
     case    business_key
-    case    edit_profile_key
-    case    business_configuration_key
     case    blocked_users_key
     case    notifications_key
     case    about_key

@@ -1395,7 +1395,7 @@
 				CODE_SIGN_ENTITLEMENTS = Turno/Turno.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 352U6XUMRV;
+				DEVELOPMENT_TEAM = VXYG7MS5HY;
 				INFOPLIST_FILE = Turno/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1417,7 +1417,7 @@
 				CODE_SIGN_ENTITLEMENTS = Turno/Turno.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 352U6XUMRV;
+				DEVELOPMENT_TEAM = VXYG7MS5HY;
 				INFOPLIST_FILE = Turno/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -40,9 +40,39 @@ struct ModelBusiness: Codable {
     var services: [Service]?
     var turns: [Turn]?
     var email: String?
+    let openingHours: [OpeningHour]?
+    
+    var openingHoursDescription: String {
+        let weekdays = [ // TODO: Translate
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+        ]
+        var description = ""
+        
+        guard let openingHours = openingHours else { return "ERROR" }
+        
+        for (index, openingHour) in openingHours.enumerated() {
+            if let day = openingHour.day,
+               let startTime = openingHour.startTime,
+               let startTimeToShow = startTime.toDisplayableDate(type: .hour),
+               let endTime = openingHour.endTime,
+               let endTimeToShow = endTime.toDisplayableDate(type: .hour) {
+                description.append("\(weekdays[day-1]): \(startTimeToShow) - \(endTimeToShow)")
+                if index != openingHours.count - 1 {
+                    description.append("\n")
+                }
+            }
+        }
+        return description
+    }
     
     enum CodingKeys: String, CodingKey {
-        case name, address, longitude, latitude, ownerName, isFavorite, services, turns
+        case name, address, longitude, latitude, ownerName, isFavorite, services, turns, openingHours
         case identifier = "id"
         case image = "imageUri"
         case description = "businessDescription"
@@ -52,7 +82,8 @@ struct ModelBusiness: Codable {
     init(identifier: String? = nil, name: String? = nil, image: String? = nil,
          address: String? = nil, description: String? = nil, longitude: Double? = nil,
          latitude: Double? = nil, ownerName: String? = nil, phone: String? = nil,
-         isFavorite: Bool? = nil, turns: [Turn]? = nil, services: [Service]? = nil) {
+         isFavorite: Bool? = nil, turns: [Turn]? = nil, services: [Service]? = nil,
+         openingHours: [OpeningHour]? = nil) {
         self.identifier = identifier
         self.name = name
         self.image = image
@@ -65,6 +96,7 @@ struct ModelBusiness: Codable {
         self.isFavorite = isFavorite
         self.turns = turns
         self.services = services
+        self.openingHours = openingHours
     }
     
     mutating func isFavoriteTapped() {
@@ -72,6 +104,11 @@ struct ModelBusiness: Codable {
             self.isFavorite = !isFavorite
         }
     }
+}
+
+struct OpeningHour: Codable {
+    let day: Int?
+    let startTime, endTime: String?
 }
 
 struct Turn: Codable, ModelApiError {
@@ -149,8 +186,10 @@ struct ModelCancelTurnTask: Codable {
     }
 }
 
-struct ModelMyBookings: Codable {
+struct ModelMyBookings: Codable, ModelApiError {
     let myBookings: [String: [Turn]]?
+    var title: String?
+    var message: String?
     
     init(myBookings: [String: [Turn]]? = nil) {
         self.myBookings = myBookings

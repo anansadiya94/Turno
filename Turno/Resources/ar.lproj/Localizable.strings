@@ -70,8 +70,6 @@
 "account_key" = "الحساب";
 "app_key" = "تطبيق";
 "business_key" = "اعمال";
-"edit_profile_key" = "تعديل الملف الشخصي";
-"business_configuration_key" = "التكوين الأعمال";
 "blocked_users_key" = "مستخدمين محجوبين";
 "notifications_key" = "إشعارات";
 "about_key" = "حول";

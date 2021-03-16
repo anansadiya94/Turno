@@ -182,7 +182,8 @@ class PresenterConfirmation {
                                                                       count: $0.count)) })
         let modelBookByBusinessTask = ModelBookByBusinessTask(servicesToBook: servicesToBook,
                                           dateTime: bookedSlot?.slot?.fromDisplayableHourToFormatted(),
-                                          phoneNumber: customer?.phoneNumber)
+                                          phoneNumber: customer?.phoneNumber,
+                                          fullName: customer?.name)
         networkManager.bookByBusiness(modelTask: modelBookByBusinessTask) { bookedTurn, error in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()

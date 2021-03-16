@@ -9,8 +9,6 @@
 import UIKit
 
 enum SettingsRows {
-    case editProfile
-    case businessConfiguration
     case blockedUsers
     case notifications
     case about
@@ -22,8 +20,6 @@ enum SettingsRows {
     
     var image: String {
         switch self {
-        case .editProfile: return "pencil"
-        case .businessConfiguration: return "slider.vertical.3"
         case .blockedUsers: return "lock"
         case .notifications: return "bell.fill"
         case .about: return "info"
@@ -37,8 +33,6 @@ enum SettingsRows {
     
     var text: String {
         switch self {
-        case .editProfile: return LocalizedConstants.edit_profile_key.localized
-        case .businessConfiguration: return LocalizedConstants.business_configuration_key.localized
         case .blockedUsers: return LocalizedConstants.blocked_users_key.localized
         case .notifications: return LocalizedConstants.notifications_key.localized
         case .about: return LocalizedConstants.about_key.localized
@@ -95,8 +89,6 @@ class SettingsViewController: ParentViewController {
     
     private func setRows() {
         let accountSettingRows: [SettingsRows] = [
-            .editProfile,
-            .businessConfiguration,
             .blockedUsers
         ]
         let appSettingRows: [SettingsRows] = [

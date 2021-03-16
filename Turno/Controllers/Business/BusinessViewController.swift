@@ -111,7 +111,7 @@ class BusinessViewController: ParentViewController {
             case 2:
                 cell.config(type: .telephone, text: model?.phone ?? "")
             case 3:
-                cell.config(type: .schedule, text: "TODO")
+                cell.config(type: .schedule, text: model?.openingHoursDescription ?? "")
             case 4:
                 cell.config(type: .description, text: model?.description ?? "")
             default:

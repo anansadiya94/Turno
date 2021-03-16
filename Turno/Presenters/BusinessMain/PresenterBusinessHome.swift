@@ -88,7 +88,6 @@ class PresenterBusinessHome {
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
                                          withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                          completion: nil)
-                dispatchGroup.leave()
                 return
             }
             if let error = fetchError as? AppError {
@@ -96,7 +95,6 @@ class PresenterBusinessHome {
                                          withText: error.message,
                                          withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                          completion: nil)
-                dispatchGroup.leave()
                 return
             }
             self.notifyView()
