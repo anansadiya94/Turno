@@ -10,4 +10,7 @@ target 'Turno' do
   pod 'Moya', '~> 14.0'
   pod 'Kingfisher'
   pod 'CalendarKit'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Firestore'
 end

@@ -8,11 +8,15 @@
 
 import UIKit
 import UserNotifications
+import Firebase
+import FirebaseMessaging
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let gcmMessageIDKey = "gcm.Message_ID"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -22,7 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator(window: window!, navigationController: UINavigationController())
         appCoordinator.start()
         
-        registerForPushNotifications()
+        FirebaseApp.configure()
+        
+        let pushManager = PushNotificationManager()
+        pushManager.registerForPushNotifications()
         
         window?.makeKeyAndVisible()
         return true
@@ -37,33 +44,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             AppData.appFont = "OpenSans"
         }
-    }
-    
-    private func registerForPushNotifications() {
-            UNUserNotificationCenter.current().delegate = self
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-                print("Permission granted: \(granted)")
-                guard granted else {
-                    print(error.debugDescription)
-                    return
-                }
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
-            }
-        }
-}
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let tokenParts = deviceToken.map { data -> String in
-            return String(format: "%02.2hhx", data)
-        }
-        let token = tokenParts.joined()
-        print("Device Token: \(token)")
-    }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications with error: \(error)")
     }
 }
