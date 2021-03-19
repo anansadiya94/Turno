@@ -25,7 +25,7 @@ struct ModelBusinessTask: Codable {
     }
 }
 
-struct ModelBusiness: Codable {
+struct ModelBusiness: Codable, ModelApiError {
     
     var identifier: String?
     var name: String?
@@ -41,6 +41,8 @@ struct ModelBusiness: Codable {
     var turns: [Turn]?
     var email: String?
     let openingHours: [OpeningHour]?
+    var title: String?
+    var message: String?
     
     var openingHoursDescription: String {
         let weekdays = [ // TODO: Translate
@@ -72,7 +74,7 @@ struct ModelBusiness: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case name, address, longitude, latitude, ownerName, isFavorite, services, turns, openingHours
+        case name, address, longitude, latitude, ownerName, isFavorite, services, turns, openingHours, title, message
         case identifier = "id"
         case image = "imageUri"
         case description = "businessDescription"
