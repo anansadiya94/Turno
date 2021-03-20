@@ -107,7 +107,7 @@ class BusinessViewController: ParentViewController {
             case 0:
                 cell.config(type: .location, text: model?.address ?? "")
             case 1:
-                cell.config(type: .email, text: "TODO")
+                cell.config(type: .email, text: model?.email ?? "")
             case 2:
                 cell.config(type: .telephone, text: model?.phone ?? "")
             case 3:
