@@ -114,6 +114,10 @@ class PresenterActivation: NSObject {
                 }
                 if let modelVerify = modelVerify {
                     self.setPrefs(modelVerify: modelVerify)
+                    if let userId = modelVerify.businessId {
+                        let pushManager = PushNotificationManager(userId: userId, name: Preferences.getPrefsUser()?.name)
+                        pushManager.registerForPushNotifications()
+                    }
                     self.view?.stopWaitingView()
                     self.delegate?.didOPTTapped(isBusiness: (modelVerify.businessId != nil) ? true : false)
                 }

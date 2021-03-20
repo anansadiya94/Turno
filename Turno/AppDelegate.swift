@@ -28,8 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        let pushManager = PushNotificationManager()
-        pushManager.registerForPushNotifications()
+        if let userId = Preferences.getPrefsUser()?.businessId {
+            let pushManager = PushNotificationManager(userId: userId, name: Preferences.getPrefsUser()?.name)
+            pushManager.registerForPushNotifications()
+        }
         
         window?.makeKeyAndVisible()
         return true

@@ -14,12 +14,15 @@ import UserNotifications
 
 class PushNotificationManager: NSObject {
     
-//    let userID: String
+    let userId: String
+    let name: String?
     let gcmMessageIDKey = "gcm.Message_ID"
-//    init(userID: String) {
-//        self.userID = userID
-//        super.init()
-//    }
+    
+    init(userId: String, name: String?) {
+        self.userId = userId
+        self.name = name
+        super.init()
+    }
     
     func registerForPushNotifications() {
         if #available(iOS 10.0, *) {
@@ -35,12 +38,14 @@ class PushNotificationManager: NSObject {
             UIApplication.shared.registerUserNotificationSettings(settings)
         }
         UIApplication.shared.registerForRemoteNotifications()
+        updateFirestorePushTokenIfNeeded()
     }
     
     func updateFirestorePushTokenIfNeeded() {
         if let token = Messaging.messaging().fcmToken {
-            let usersRef = Firestore.firestore().collection("users_table").document("123456")
+            let usersRef = Firestore.firestore().collection("users").document(userId)
             usersRef.setData(["fcmToken": token], merge: true)
+            usersRef.setData(["name": name ?? "N/A"], merge: true)
         }
     }
     
@@ -64,10 +69,7 @@ class PushNotificationManager: NSObject {
 // MARK: - MessagingDelegate
 extension PushNotificationManager: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        if let token = Messaging.messaging().fcmToken {
-            let usersRef = Firestore.firestore().collection("users").document("123456")
-            usersRef.setData(["fcmToken": token], merge: true)
-        }
+        updateFirestorePushTokenIfNeeded()
     }
 }
 // MARK: - UNUserNotificationCenterDelegate
