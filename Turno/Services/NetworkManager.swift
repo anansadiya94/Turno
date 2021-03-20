@@ -23,7 +23,7 @@ protocol Networkable {
     func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void)
     func bookByBusiness(modelTask: ModelBookByBusinessTask, completion: @escaping (Turn?, Error?) -> Void)
     func getMyBusiness(completion: @escaping (ModelBusiness?, Error?) -> Void)
-    func getMyBookings(completion: @escaping (ModelMyBookings?, Error?) -> Void)
+    func getMyBookings(modelTask: ModelMyBookingTask, completion: @escaping (ModelMyBookings?, Error?) -> Void)
     func getMyBlockedList(completion: @escaping ([ModelBlockedUser]?, Error?) -> Void)
     func unblockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void)
     func blockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void)
@@ -257,8 +257,8 @@ class NetworkManager: Networkable {
         }
     }
     
-    func getMyBookings(completion: @escaping (ModelMyBookings?, Error?) -> Void) {
-        provider.request(.getMyBookings) { result in
+    func getMyBookings(modelTask: ModelMyBookingTask, completion: @escaping (ModelMyBookings?, Error?) -> Void) {
+        provider.request(.getMyBookings(modelMyBookingTask: modelTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)

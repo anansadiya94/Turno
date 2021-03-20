@@ -26,6 +26,7 @@ class PresenterBusinessHome {
     var modelBusiness: ModelBusiness?
     var modelMyBookings: ModelMyBookings?
     var isFetching: Bool = false
+    var lastStatusCheck: Date?
     
     // MARK: - init Methods
     init(view: PresenterBusinessHomeView, delegate: SelectButtonBusiness) {
@@ -71,9 +72,11 @@ class PresenterBusinessHome {
            
         // SECOND CALL
         dispatchGroup.enter()
-        networkManager.getMyBookings { (modelMyBookings, error) in
+        let modelTask = ModelMyBookingTask(lastStatusCheck: "")
+        networkManager.getMyBookings(modelTask: modelTask) { (modelMyBookings, error) in
             if let modelMyBookings = modelMyBookings {
                 self.modelMyBookings = modelMyBookings
+                self.lastStatusCheck = Date()
             } else {
                 fetchError = error
             }
@@ -108,7 +111,8 @@ class PresenterBusinessHome {
         }
         self.isFetching = true
         
-        networkManager.getMyBookings { (modelMyBookings, error) in
+        let modelTask = ModelMyBookingTask(lastStatusCheck: lastStatusCheck?.description)
+        networkManager.getMyBookings(modelTask: modelTask) { (modelMyBookings, error) in
             if let error = error as? AppError {
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -118,6 +122,7 @@ class PresenterBusinessHome {
             }
             if let modelMyBookings = modelMyBookings {
                 self.modelMyBookings = modelMyBookings
+                self.lastStatusCheck = Date()
             }
             self.notifyView()
         }

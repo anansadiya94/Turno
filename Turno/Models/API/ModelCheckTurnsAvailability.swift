@@ -63,3 +63,7 @@ struct ModelBookByBusinessTask: Codable {
     var phoneNumber: String?
     var fullName: String?
 }
+
+struct ModelMyBookingTask: Codable {
+    var lastStatusCheck: String?
+}

@@ -25,7 +25,7 @@ enum APIRouter {
     case book(modelBookTask: ModelBookTask)
     case bookByBusiness(modelBookByBusinessTask: ModelBookByBusinessTask)
     case getMyBusiness
-    case getMyBookings
+    case getMyBookings(modelMyBookingTask: ModelMyBookingTask)
     case getMyBlockedList
     case unblockUser(modelBlockUser: ModelBlockUser)
     case blockUser(modelBlockUser: ModelBlockUser)
@@ -74,7 +74,7 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelVerify)
         case .getBusinesses(let modelBusinessTask):
             return .requestJSONEncodable(modelBusinessTask)
-        case .getFavorites, .getMyBusiness, .getMyBookings, .getMyBlockedList:
+        case .getFavorites, .getMyBusiness, .getMyBlockedList:
             return .requestPlain
         case .addToFavorites(let modelFavoritesTask), .removeToFavorites(let modelFavoritesTask):
             return .requestJSONEncodable(modelFavoritesTask)
@@ -88,6 +88,8 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelBookByBusinessTask)
         case .unblockUser(let modelBlockUser), .blockUser(let modelBlockUser):
             return .requestJSONEncodable(modelBlockUser)
+        case .getMyBookings(let modelMyBookingTask):
+            return .requestJSONEncodable(modelMyBookingTask)
         }
     }
     
@@ -97,7 +99,8 @@ extension APIRouter: TargetType {
     
     var headers: [String: String]? {
         var headers: [String: String] = [:]
-        headers = ["Content-type": "application/json; charset=UTF-8"]
+        headers = ["Content-type": "application/json; charset=UTF-8",
+                   "Accept-Language": Locale.current.languageCode ?? "en"]
         
         switch self {
         case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn,
