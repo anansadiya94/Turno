@@ -74,7 +74,7 @@ struct ModelBusiness: Codable, ModelApiError {
     }
     
     enum CodingKeys: String, CodingKey {
-        case name, address, longitude, latitude, ownerName, isFavorite, services, turns, openingHours, title, message
+        case name, address, longitude, latitude, ownerName, isFavorite, services, turns, email, openingHours, title, message
         case identifier = "id"
         case image = "imageUri"
         case description = "businessDescription"
