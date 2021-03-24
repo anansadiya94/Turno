@@ -104,7 +104,7 @@ class ConfirmationView: UIView {
         headerStacakView.spacing = 0
         
         let dayTitleLabel = CustomLabel()
-        dayTitleLabel.labelTheme = BoldTheme(label: "Day", fontSize: 20,
+        dayTitleLabel.labelTheme = BoldTheme(label: LocalizedConstants.day_key.localized, fontSize: 20,
                                              textColor: .black, textAlignment: .center)
         let dayStackView = UIStackView()
         dayStackView.axis = .vertical
@@ -115,8 +115,8 @@ class ConfirmationView: UIView {
         dayStackView.addArrangedSubview(dayLabel)
         
         let startTimeTitleLabel = CustomLabel()
-        startTimeTitleLabel.labelTheme = BoldTheme(label: "Start time", fontSize: 20,
-                                             textColor: .black, textAlignment: .center)
+        startTimeTitleLabel.labelTheme = BoldTheme(label: LocalizedConstants.start_time_key.localized, fontSize: 20,
+                                                   textColor: .black, textAlignment: .center)
         let startTimeStackView = UIStackView()
         startTimeStackView.axis = .vertical
         startTimeStackView.distribution = .fillEqually
@@ -126,8 +126,8 @@ class ConfirmationView: UIView {
         startTimeStackView.addArrangedSubview(startTimeLabel)
         
         let endTimeTitleLabel = CustomLabel()
-        endTimeTitleLabel.labelTheme = BoldTheme(label: "End time", fontSize: 20,
-                                             textColor: .black, textAlignment: .center)
+        endTimeTitleLabel.labelTheme = BoldTheme(label: LocalizedConstants.end_time_key.localized, fontSize: 20,
+                                                 textColor: .black, textAlignment: .center)
         let endTimeStackView = UIStackView()
         endTimeStackView.axis = .vertical
         endTimeStackView.distribution = .fillEqually

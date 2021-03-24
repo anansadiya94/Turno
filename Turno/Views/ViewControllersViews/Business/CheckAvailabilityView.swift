@@ -46,7 +46,7 @@ class CheckAvailabilityView: UIView {
     
     private func createTotalServicesTimeLabel() {
         addSubview(totalServicesTimeLabel)
-        totalServicesTimeLabel.labelTheme = SemiBoldTheme(label: "", fontSize: 20, textColor: .black, textAlignment: .left)
+        totalServicesTimeLabel.labelTheme = SemiBoldTheme(label: "", fontSize: 20, textColor: .black, textAlignment: .natural)
         
         NSLayoutConstraint.activate([
             totalServicesTimeLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8.0),

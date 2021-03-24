@@ -45,15 +45,11 @@ struct ModelBusiness: Codable, ModelApiError {
     var message: String?
     
     var openingHoursDescription: String {
-        let weekdays = [ // TODO: Translate
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday"
-        ]
+        let prefLanguage = Locale.current.languageCode ?? "en"
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.locale = Locale(identifier: prefLanguage)
+        let weekdays = calendar.weekdaySymbols
+        
         var description = ""
         
         guard let openingHours = openingHours else { return "ERROR" }

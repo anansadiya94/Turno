@@ -78,7 +78,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
         dayLabel.labelTheme = BoldTheme(label: turn.dateTimeUTC?.toDisplayDay() ?? "",
                                          fontSize: 20,
                                          textColor: .black,
-                                         textAlignment: .left)
+                                         textAlignment: .natural)
         
         let date = turn.dateTimeUTC?.toDisplayableDate(type: .date) ?? ""
         let starTime = turn.dateTimeUTC?.toDisplayableDate(type: .hour) ?? ""
@@ -90,7 +90,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
         dateLabel.labelTheme = RegularTheme(label: dateLabelString,
                                             fontSize: 20,
                                             textColor: .black,
-                                            textAlignment: .left)
+                                            textAlignment: .natural)
         
         setServicesLabel(from: turn)
     }

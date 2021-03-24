@@ -6,17 +6,17 @@
 "second_onboarding_subtitle_key" = "احجز دورك بسهوله وببضع نقرات";
 "third_onboarding_title_key" = "إشعارات";
 "third_onboarding_subtitle_key" = "سوف نحرص على تذكيرك بلموعد قبل اوانه";
-"next_key" = "التالى";
+"next_key" = "التالي";
 "done_key" = "انهاء";
 "welcome_to_turno_key" = "Turno ترحب بكم";
 "benefits_text_key" = "نحن هنا لنوفر لك افضل الخدمات وباعلى جوده";
 "agree_to_terms_key" = "باختيارك المتابعة، فإنك توافق على شروطنا وسياساتنا.
 ";
 "continue_key" = "استمرار";
-"privacy_policy_key" = "سياسة الخصوصية";
+"privacy_policy_key" = "سياسة خاصة";
 "installation_key" = "تثبيت";
 "name_key" = "اسم";
-"phone_number_key" = "رقم الهاتف";
+"phone_number_key" = "رقم التليفون";
 "phone_number_question_key" = "هل هذا هو رقم هاتفك؟";
 "edit_key" = "تعديل";
 "yes_key" = "نعم";
@@ -26,8 +26,8 @@
 "six_digit_code_key" = "رمز التحقق";
 "resend_sms_key" = "اعادة الرسال الرسالة";
 "activate_by_call_key" = "تنشيط عن طريق مكالمة";
-"finish_key" = "إنهاء";
-"cancel_key" = "إلغاء";
+"finish_key" = "ينهي";
+"cancel_key" = "يلغي";
 "empty_field_key" = "هذا الحقل لا يمكن أن يكون فارغا
 ";
 "invalid_name_key" = "بين 2 و 30 حرفا";
@@ -36,18 +36,18 @@
 "my_turns_key" = "ادواري";
 "favorites_key" = "المفضلون";
 "settings_key" = "إعدادات";
-"ok_key" = "حسنا";
+"ok_key" = "موافق";
 "generic_error_title_key" = "حصل خطاء ما";
 "generic_error_message_key" = "الرجاء معاودة المحاولة في وقت لاحق.";
 "connection_failed_error_title_key" = "فشل الاتصال";
 "connection_failed_error_message_key" = "قد يكون هناك مشكلة مع اتصال الإنترنت الخاص بك. حاول مرة اخرى.";
 "services_key" = "خدمات";
-"information_key" = "معلومات";
+"information_key" = "معلومة";
 "check_availability_key" = "التحقق من الصلاحية";
 "call_now_key" = "اتصل الان";
 "open_in_key" = "يفتح في";
 "book_now_key" = "احجز الآن!";
-"confirm_key" = "تؤكد";
+"confirm_key" = "يتأكد";
 "confirm_message_key" = "يرجى أن يكون هناك 5 دقائق قبل دورك. إعلام أو إلغاء في حال لم تتمكن من جعلها في الوقت المناسب.";
 "no_favorites_error_title_key" = "لا توجد المفضلة";
 "no_favorites_error_message_key" = "كنت لم أحب أي عمل حتى الآن.";
@@ -67,17 +67,21 @@
 "no_turns_business_message_key" = "الصنبور على + لإضافة المنعطفات.";
 "unblock_key" = "رفع الحظر";
 "block_user_key" = "مستخدم محضور";
-"account_key" = "الحساب";
+"account_key" = "حساب";
 "app_key" = "تطبيق";
 "business_key" = "اعمال";
 "blocked_users_key" = "مستخدمين محجوبين";
 "notifications_key" = "إشعارات";
 "about_key" = "حول";
 "contact_us_key" = "اتصل بنا";
-"share_key" = "شارك";
+"share_key" = "يشارك";
 "terms_of_use_key" = "تعليمات الاستخدام";
 "change_to_business_key" = "تغيير في الأعمال";
 "change_to_user_key" = "تغيير المستخدم";
+"day_key" = "يوم";
+"start_time_key" = "وقت البدء";
+"end_time_key" = "وقت النهاية";
+"minute_key" = "د";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو:٪ @";

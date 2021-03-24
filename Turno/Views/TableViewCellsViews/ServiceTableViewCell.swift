@@ -134,10 +134,10 @@ class ServiceTableViewCell: UITableViewCell {
                                              fontSize: 17,
                                              textColor: .black,
                                              textAlignment: .left)
-        durationLabel.labelTheme = RegularTheme(label: "\(service.durationInMinutes ?? 0)m",
-            fontSize: 17,
-            textColor: .black,
-            textAlignment: .left)
+        durationLabel.labelTheme = RegularTheme(label: "\(service.durationInMinutes ?? 0)\(LocalizedConstants.minute_key.localized)",
+                                                fontSize: 17,
+                                                textColor: .black,
+                                                textAlignment: .natural)
         
         self.count = service.count
         setCountLabel(self.count ?? 0)

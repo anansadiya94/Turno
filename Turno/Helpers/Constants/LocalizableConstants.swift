@@ -86,6 +86,10 @@ enum LocalizedConstants: String {
     case    terms_of_use_key
     case    change_to_business_key
     case    change_to_user_key
+    case    day_key
+    case    start_time_key
+    case    end_time_key
+    case    minute_key
     
     case    total_services_time_key
     case    block_user_by_name_key

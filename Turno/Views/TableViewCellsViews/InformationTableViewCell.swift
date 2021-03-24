@@ -75,6 +75,6 @@ class InformationTableViewCell: UITableViewCell {
     func config(type: InformationTableViewCellType, text: String) {
         informationImageView.image = type.logo
         informationLabel.labelTheme = RegularTheme(label: text, fontSize: 17, textColor: type.textColor,
-                                                   textAlignment: .left, numberOfLines: 0)
+                                                   textAlignment: .natural, numberOfLines: 0)
     }
 }

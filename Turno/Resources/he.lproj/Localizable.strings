@@ -77,6 +77,10 @@
 "terms_of_use_key" = "תנאי שימוש";
 "change_to_business_key" = "שינוי לעסק";
 "change_to_user_key" = "שינוי למשתמש";
+"day_key" = "יְוֹם";
+"start_time_key" = "שעת התחלה";
+"end_time_key" = "זמן סיום";
+"minute_key" = "ד";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "זמן שירותים סהכ הוא:% @";
