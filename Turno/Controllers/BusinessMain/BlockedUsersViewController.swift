@@ -12,7 +12,7 @@ class BlockedUsersViewController: GenericTableView<BlockedUsersListDescriptive> 
     
     // MARK: - Properties
     override var navBarTitle: String {
-        return "Blocked users"
+        return LocalizedConstants.blocked_users_key.localized
     }
     
     var presenterBlockedUsers: PresenterBlockedUsers!
@@ -124,19 +124,19 @@ extension BlockedUsersViewController: PresenterBlockedUsersView {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         // First action
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: LocalizedConstants.cancel_key.localized, style: .default, handler: { [weak self] _ in
             self?.view.subviews.last?.removeFromSuperview()
         }))
         
         var textField = UITextField()
         // Second Action
-        alert.addAction(UIAlertAction(title: "Block", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: LocalizedConstants.block_key.localized, style: .default, handler: { [weak self] _ in
             self?.view.subviews.last?.removeFromSuperview()
             self?.presenterBlockedUsers.blockUser(phoneNumber: textField.text!)
         }))
         
         alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Enter phone number"
+            alertTextField.placeholder = LocalizedConstants.phone_number_key.localized
             alertTextField.keyboardType = .phonePad
             textField = alertTextField
         }

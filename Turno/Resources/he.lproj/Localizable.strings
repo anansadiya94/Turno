@@ -81,7 +81,12 @@
 "start_time_key" = "שעת התחלה";
 "end_time_key" = "זמן סיום";
 "minute_key" = "ד";
+"hour_key" = "ש";
+"client_information_key" = "מידע ללקוח";
+"add_appointment_key" = "מינוי הוספה";
+"block_key" = "לַחסוֹם";
 
 /*  App Translations.xlsx - iOS - Static resources  */
-"total_services_time_key" = "זמן שירותים סהכ הוא:% @";
+"total_services_time_key" = "זמן שירותים סהכ הוא: %@";
 "block_user_by_name_key" = "האם אתה בטוח שברצונך לחסום %@؟";
+"user_by_phone_number_key" = "האם זה מספר הטלפון של %@?";

@@ -52,7 +52,12 @@ class PresenterCheckAvailability {
         let minutesToHoursMinutes = ServiceTimeCalculation.minutesToHoursMinutes(bookedServices: bookedServices)
         guard let modelCheckTurnsAvailability = modelCheckTurnsAvailability else { return }
         view?.didSetData(name: name, modelCheckTurnsAvailability: modelCheckTurnsAvailability,
-                         totalServicesTime: "\(minutesToHoursMinutes.hours)h \(minutesToHoursMinutes.leftMinutes)m")
+                         totalServicesTime:
+                            "\(minutesToHoursMinutes.hours)" +
+                            LocalizedConstants.hour_key.localized +
+                            " " +
+                            "\(minutesToHoursMinutes.leftMinutes)" +
+                            LocalizedConstants.minute_key.localized)
     }
     
     // MARK: - Public Interface

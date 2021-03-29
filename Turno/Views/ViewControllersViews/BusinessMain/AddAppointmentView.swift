@@ -60,7 +60,8 @@ class AddAppointmentView: UIView {
     }
     
     private func addClientInformationLabel() {
-        clientInformationLabel.labelTheme = BoldTheme(label: "Client Information:", fontSize: 18.0, textColor: .black, textAlignment: .left)
+        clientInformationLabel.labelTheme = BoldTheme(label: LocalizedConstants.client_information_key.localized,
+                                                      fontSize: 18.0, textColor: .black, textAlignment: .natural)
         NSLayoutConstraint.activate([
             clientInformationLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: kViewMargin),
             clientInformationLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
@@ -111,7 +112,8 @@ class AddAppointmentView: UIView {
     }
     
     private func addServicesLabel() {
-        servicesLabel.labelTheme = BoldTheme(label: "Services:", fontSize: 18.0, textColor: .black, textAlignment: .left)
+        servicesLabel.labelTheme = BoldTheme(label: LocalizedConstants.services_key.localized,
+                                             fontSize: 18.0, textColor: .black, textAlignment: .natural)
         NSLayoutConstraint.activate([
             servicesLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: kSuperViewMargin),
             servicesLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),

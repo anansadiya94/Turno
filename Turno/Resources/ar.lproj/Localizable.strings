@@ -82,7 +82,12 @@
 "start_time_key" = "وقت البدء";
 "end_time_key" = "وقت النهاية";
 "minute_key" = "د";
+"hour_key" = "س";
+"client_information_key" = "معلومات العميل";
+"add_appointment_key" = "إضافة التعيين";
+"block_key" = "حاجز";
 
 /*  App Translations.xlsx - iOS - Static resources  */
-"total_services_time_key" = "الساعة مجموع الخدمات هو:٪ @";
-"block_user_by_name_key" = "هل أنت متأكد أنك تريد كتلة٪ @؟";
+"total_services_time_key" = "الساعة مجموع الخدمات هو: %@";
+"block_user_by_name_key" = "هل أنت متأكد أنك تريد كتلة %@؟";
+"user_by_phone_number_key" = "هل هذا رقم هاتف %@؟";

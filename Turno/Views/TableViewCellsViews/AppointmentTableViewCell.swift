@@ -113,7 +113,7 @@ class AppointmentTableViewCell: UITableViewCell {
         dayLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toDisplayDay() ?? "",
                                          fontSize: 20,
                                          textColor: .black,
-                                         textAlignment: .left)
+                                         textAlignment: .natural)
         
         let date = model.turn?.dateTimeUTC?.toDisplayableDate(type: .date) ?? ""
         let starTime = model.turn?.dateTimeUTC?.toDisplayableDate(type: .hour) ?? ""
@@ -125,12 +125,12 @@ class AppointmentTableViewCell: UITableViewCell {
         dateLabel.labelTheme = RegularTheme(label: dateLabelString,
                                             fontSize: 20,
                                             textColor: .black,
-                                            textAlignment: .left)
+                                            textAlignment: .natural)
         
-        locationLabel.labelTheme = BoldTheme(label: "TODO",
+        locationLabel.labelTheme = BoldTheme(label: model.address ?? "",
                                              fontSize: 20,
                                              textColor: .black,
-                                             textAlignment: .left)
+                                             textAlignment: .natural)
         setServicesTableView(from: model)
     }
 }

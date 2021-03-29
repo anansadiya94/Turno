@@ -80,7 +80,12 @@
 "start_time_key" = "Start time";
 "end_time_key" = "End time";
 "minute_key" = "m";
+"hour_key" = "h";
+"client_information_key" = "Client information";
+"add_appointment_key" = "Add appointment";
+"block_key" = "Block";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Total services time is: %@";
 "block_user_by_name_key" = "Are you sure you want to block %@?";
+"user_by_phone_number_key" = "Is this %@'s phone number?";

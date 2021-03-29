@@ -90,9 +90,14 @@ enum LocalizedConstants: String {
     case    start_time_key
     case    end_time_key
     case    minute_key
+    case    hour_key
+    case    client_information_key
+    case    add_appointment_key
+    case    block_key
     
     case    total_services_time_key
     case    block_user_by_name_key
+    case    user_by_phone_number_key
 }
 
 extension LocalizedConstants {

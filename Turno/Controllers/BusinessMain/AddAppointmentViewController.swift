@@ -15,7 +15,7 @@ class AddAppointmentViewController: ParentViewController {
     @UseAutoLayout var addAppointmentView = AddAppointmentView()
     
     override var navBarTitle: String {
-        return "Add appointment"
+        return LocalizedConstants.add_appointment_key.localized
     }
     
     var model: ModelBusiness?
@@ -196,7 +196,7 @@ extension AddAppointmentViewController: PresenterAddAppointmentView {
     }
     
     func showAlert(customer: Customer) {
-        let modelAlertPopUp = ModelAlertPopup(title: "Is this \(customer.name ?? "")'s phone number?", // TOOD: Translate
+        let modelAlertPopUp = ModelAlertPopup(title: String(format: LocalizedConstants.user_by_phone_number_key.localized, customer.name ?? ""),
                                               message: customer.phoneNumber,
                                               action1: LocalizedConstants.edit_key.localized,
                                               action2: LocalizedConstants.yes_key.localized)
