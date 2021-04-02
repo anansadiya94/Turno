@@ -29,6 +29,7 @@ enum APIRouter {
     case getMyBlockedList
     case unblockUser(modelBlockUser: ModelBlockUser)
     case blockUser(modelBlockUser: ModelBlockUser)
+    case registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask)
 }
 
 extension APIRouter: TargetType {
@@ -54,6 +55,7 @@ extension APIRouter: TargetType {
         case .getMyBlockedList: return kGetMyBlockedList
         case .unblockUser: return kUnblockUser
         case .blockUser: return kBlockUser
+        case .registerFCMToken: return kRegisterFCMToken
         }
     }
     
@@ -61,7 +63,7 @@ extension APIRouter: TargetType {
         switch self {
         case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites,
              .cancelTurn, .getAvailableTimes, .book, .bookByBusiness, .getMyBusiness, .getMyBookings, .getMyBlockedList,
-             .unblockUser, .blockUser:
+             .unblockUser, .blockUser, .registerFCMToken:
             return .post
         }
     }
@@ -90,6 +92,8 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelBlockUser)
         case .getMyBookings(let modelMyBookingTask):
             return .requestJSONEncodable(modelMyBookingTask)
+        case .registerFCMToken(let modelFcmTokenTask):
+            return .requestJSONEncodable(modelFcmTokenTask)
         }
     }
     
@@ -105,7 +109,7 @@ extension APIRouter: TargetType {
         switch self {
         case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn,
              .getAvailableTimes, .book, .bookByBusiness, .getMyBusiness, .getMyBookings,
-             .getMyBlockedList, .unblockUser, .blockUser:
+             .getMyBlockedList, .unblockUser, .blockUser, .registerFCMToken:
             headers["Authorization"] = Preferences.getAuthorization() 
         default:
             break

@@ -27,6 +27,7 @@ protocol Networkable {
     func getMyBlockedList(completion: @escaping ([ModelBlockedUser]?, Error?) -> Void)
     func unblockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void)
     func blockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void)
+    func registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask, completion: @escaping (Bool?, Error?) -> Void)
 }
 
 class NetworkManager: Networkable {
@@ -319,6 +320,22 @@ class NetworkManager: Networkable {
     
     func blockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void) {
         provider.request(.blockUser(modelBlockUser: modelBlockUser)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                switch value.statusCode {
+                case 200:
+                    completion(true, nil)
+                default:
+                    completion(false, nil)
+                }
+            }
+        }
+    }
+    
+    func registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.registerFCMToken(modelFcmTokenTask: modelFcmTokenTask)) { result in
             switch result {
             case .failure(let error):
                 completion(nil, error)

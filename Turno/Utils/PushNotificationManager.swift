@@ -17,6 +17,7 @@ class PushNotificationManager: NSObject {
     let userId: String
     let name: String?
     let gcmMessageIDKey = "gcm.Message_ID"
+    let networkManager = NetworkManager()
     
     init(userId: String, name: String?) {
         self.userId = userId
@@ -46,6 +47,19 @@ class PushNotificationManager: NSObject {
             let usersRef = Firestore.firestore().collection("users").document(userId)
             usersRef.setData(["fcmToken": token], merge: true)
             usersRef.setData(["name": name ?? "N/A"], merge: true)
+            
+            networkManager.registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask(fcmToken: token)) { (result, error) in
+                if let error = error {
+                    print("Error while registering FCM token with \(error.localizedDescription)")
+                }
+                if let result = result {
+                    if result {
+                        print("FCM token was registered successfully.")
+                    } else {
+                        print("FCM token was not registered successfully.")
+                    }
+                }
+            }
         }
     }
     
