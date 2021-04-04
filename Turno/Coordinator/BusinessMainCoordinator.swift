@@ -12,10 +12,12 @@ class BusinessMainCoordinator: Coordinator {
     
     private let window: UIWindow
     private let navigationController: UINavigationController
+    private let networkManager: NetworkManagerProtocol
     
-    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController()) {
+    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController(), networkManager: NetworkManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
+        self.networkManager = networkManager
     }
     
     func start() {
@@ -40,7 +42,7 @@ extension BusinessMainCoordinator {
     }
     
     func showAddAppointmentScreen(modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) {
-        let screen = ScreenFactory.makeAddAppointmentScreen(modelBusiness: modelBusiness, delegate: delegate)
+        let screen = ScreenFactory.makeAddAppointmentScreen(networkManager: networkManager, modelBusiness: modelBusiness, delegate: delegate)
         pushViewByHomeInnerViewController(screen: screen)
     }
     
@@ -51,17 +53,23 @@ extension BusinessMainCoordinator {
                                                               bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true),
                                                               confirmationViewType: .business,
                                                               customer: Customer(name: turn.userName, phoneNumber: turn.userPhone))
-        let screen = ScreenFactory.makeConfirmationScreen(delegate: self,
+        let screen = ScreenFactory.makeConfirmationScreen(networkManager: networkManager, delegate: self,
                                                           confirmationScreenModel: confirmationScreenModel)
         pushViewByHomeInnerViewController(screen: screen)
     }
     
-    func showCheckAvailabilityScreen(identifier: String?, name: String?, bookedServices: [Service]?,
+    func showCheckAvailabilityScreen(identifier: String?,
+                                     name: String?,
+                                     bookedServices: [Service]?,
                                      modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
                                      customer: Customer?) {
-        let screen = ScreenFactory.makeCheckAvailabilityScreen(delegate: self, identifier: identifier, name: name,
+        let screen = ScreenFactory.makeCheckAvailabilityScreen(networkManager: networkManager,
+                                                               delegate: self,
+                                                               identifier: identifier,
+                                                               name: name,
                                                                bookedServices: bookedServices,
-                                                               modelCheckTurnsAvailability: modelCheckTurnsAvailability, customer: customer)
+                                                               modelCheckTurnsAvailability: modelCheckTurnsAvailability,
+                                                               customer: customer)
         pushViewByHomeInnerViewController(screen: screen)
     }
     
@@ -73,19 +81,22 @@ extension BusinessMainCoordinator {
                                                               bookedSlot: bookedSlot,
                                                               confirmationViewType: .user,
                                                               customer: customer)
-        let screen = ScreenFactory.makeConfirmationScreen(delegate: self,
+        let screen = ScreenFactory.makeConfirmationScreen(networkManager: networkManager,
+                                                          delegate: self,
                                                           confirmationScreenModel: confirmationScreenModel)
         pushViewByHomeInnerViewController(screen: screen)
     }
     
     func showUserMainScreen() {
-        let mainCoordinator = UserMainCoordinator(window: window, navigationController: navigationController)
-        let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        let mainCoordinator = UserMainCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
+        let screen = ScreenFactory.makeUserMainScreen(networkManager: networkManager,
+                                                      navigationController: navigationController,
+                                                      delegate: mainCoordinator)
         window.rootViewController = screen
     }
     
     func showBlockedUsersScreen() {
-        let screen = ScreenFactory.makeBlockedUsersScreen(delegate: self)
+        let screen = ScreenFactory.makeBlockedUsersScreen(networkManager: networkManager, delegate: self)
         pushViewBySettingsInnerViewController(screen: screen)
     }
 }
@@ -103,12 +114,18 @@ extension BusinessMainCoordinator: SelectButtonBusiness {
                                     bookedServices: [Service]?,
                                     modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
                                     customer: Customer?) {
-        showCheckAvailabilityScreen(identifier: identifier, name: name, bookedServices: bookedServices,
-                                    modelCheckTurnsAvailability: modelCheckTurnsAvailability, customer: customer)
+        showCheckAvailabilityScreen(identifier: identifier,
+                                    name: name,
+                                    bookedServices: bookedServices,
+                                    modelCheckTurnsAvailability: modelCheckTurnsAvailability,
+                                    customer: customer)
     }
     
-    func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?,
-                          bookedSlot: EmptySlot?, customer: Customer?) {
+    func didSelectConfirm(identifier: String?,
+                          name: String?,
+                          bookedServices: [Service]?,
+                          bookedSlot: EmptySlot?,
+                          customer: Customer?) {
         showConfirmationScreen(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot, customer: customer)
     }
     

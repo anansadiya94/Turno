@@ -17,11 +17,12 @@ class PushNotificationManager: NSObject {
     let userId: String
     let name: String?
     let gcmMessageIDKey = "gcm.Message_ID"
-    let networkManager = NetworkManager()
+    private var networkManager: NetworkManagerProtocol
     
-    init(userId: String, name: String?) {
+    init(userId: String, name: String?, networkManager: NetworkManagerProtocol) {
         self.userId = userId
         self.name = name
+        self.networkManager = networkManager
         super.init()
     }
     

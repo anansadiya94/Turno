@@ -19,13 +19,14 @@ class PresenterFavorites {
     
     // MARK: - Properties
     private weak var view: PresenterFavoritesView?
+    private var networkManager: NetworkManagerProtocol
     var delegate: SelectButtonEntity!
     var modelList = [ModelBusiness]()
-    let networkManager = NetworkManager()
     
     // MARK: - init Methods
-    init(view: PresenterFavoritesView, delegate: SelectButtonEntity) {
+    init(view: PresenterFavoritesView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity) {
         self.view = view
+        self.networkManager = networkManager
         self.fetchData()
         self.delegate = delegate
     }

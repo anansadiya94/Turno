@@ -19,13 +19,14 @@ protocol PresenterActivationView: PresenterParentView {
 class PresenterActivation: NSObject {
     
     // MARK: - Properties
-    var view: PresenterActivationView!
+    private weak var view: PresenterActivationView!
+    private var networkManager: NetworkManagerProtocol
     private var delegate: SelectButtonWelcome?
     var modelSignUp: ModelSignUp?
-    let networkManager = NetworkManager()
     
     // MARK: - Public Interface
-    init(view: PresenterActivationView, delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) {
+    init(view: PresenterActivationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) {
+        self.networkManager = networkManager
         super.init()
         self.view = view
         self.delegate = delegate
@@ -115,7 +116,9 @@ class PresenterActivation: NSObject {
                 if let modelVerify = modelVerify {
                     self.setPrefs(modelVerify: modelVerify)
                     if let userId = modelVerify.businessId {
-                        let pushManager = PushNotificationManager(userId: userId, name: Preferences.getPrefsUser()?.name)
+                        let pushManager = PushNotificationManager(userId: userId,
+                                                                  name: Preferences.getPrefsUser()?.name,
+                                                                  networkManager: self.networkManager)
                         pushManager.registerForPushNotifications()
                     }
                     self.view?.stopWaitingView()

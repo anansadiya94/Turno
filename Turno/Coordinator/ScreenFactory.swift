@@ -71,22 +71,22 @@ struct ScreenFactory {
         return navigationController
     }
     
-    static func makeInstallationScreen(delegate: SelectButtonWelcome) -> UIViewController {
+    static func makeInstallationScreen(networkManager: NetworkManagerProtocol, delegate: SelectButtonWelcome) -> UIViewController {
         let viewController = InstallationViewController()
-        let presenter = PresenterInstallation(view: viewController, delegate: delegate)
+        let presenter = PresenterInstallation(view: viewController, networkManager: networkManager, delegate: delegate)
         viewController.presenterInstallation = presenter
         return viewController
     }
     
-    static func makeActivationScreen(delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) -> UIViewController {
+    static func makeActivationScreen(networkManager: NetworkManagerProtocol, delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) -> UIViewController {
         let viewController = ActivationViewController()
-        let presenter = PresenterActivation(view: viewController, delegate: delegate, modelSignUp: modelSignUp)
+        let presenter = PresenterActivation(view: viewController, networkManager: networkManager, delegate: delegate, modelSignUp: modelSignUp)
         viewController.presenterActivation = presenter
         return viewController
     }
     
     // MAIN:
-    static func makeUserMainScreen(navigationController: UINavigationController, delegate: SelectButtonEntity) -> UIViewController {
+    static func makeUserMainScreen(networkManager: NetworkManagerProtocol, navigationController: UINavigationController, delegate: SelectButtonEntity) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
             sbName: kUserMainStoryboardName,
             vcID: kUserMainViewControllerID) as? UserMainViewController
@@ -94,26 +94,26 @@ struct ScreenFactory {
         if let mainVC = mainViewController {
             if let viewController = mainVC.viewControllers?[0] as? UINavigationController {
                 if let homeVC = viewController.topViewController as? UserHomeViewController {
-                    let presnter = PresenterUserHome(view: homeVC, delegate: delegate)
-                    homeVC.presenterHome = presnter
+                    let presenter = PresenterUserHome(view: homeVC, networkManager: networkManager, delegate: delegate)
+                    homeVC.presenterHome = presenter
                 }
             }
             if let viewController = mainVC.viewControllers?[1] as? UINavigationController {
                 if let appointmentsVC = viewController.topViewController as? AppointmentsViewController {
-                    let presnter = PresenterAppointments(view: appointmentsVC, delegate: delegate)
-                    appointmentsVC.presenterAppointments = presnter
+                    let presenter = PresenterAppointments(view: appointmentsVC, networkManager: networkManager, delegate: delegate)
+                    appointmentsVC.presenterAppointments = presenter
                 }
             }
             if let viewController = mainVC.viewControllers?[2] as? UINavigationController {
                 if let favoritesVC = viewController.topViewController as? FavoritesViewController {
-                    let presnter = PresenterFavorites(view: favoritesVC, delegate: delegate)
-                    favoritesVC.presenterFavorites = presnter
+                    let presenter = PresenterFavorites(view: favoritesVC, networkManager: networkManager, delegate: delegate)
+                    favoritesVC.presenterFavorites = presenter
                 }
             }
             if let viewController = mainVC.viewControllers?[3] as? UINavigationController {
                 if let settingsVC = viewController.topViewController as? SettingsViewController {
-                    let presnter = PresenterSettings(view: settingsVC, delegate: delegate)
-                    settingsVC.presenterSettings = presnter
+                    let presenter = PresenterSettings(view: settingsVC, delegate: delegate)
+                    settingsVC.presenterSettings = presenter
                 }
             }
             let presenter = PresenterUserMain(view: mainVC)
@@ -123,7 +123,7 @@ struct ScreenFactory {
         return navigationController
     }
     
-    static func makeBusinessMainScreen(navigationController: UINavigationController, delegate: SelectButtonBusiness) -> UIViewController {
+    static func makeBusinessMainScreen(navigationController: UINavigationController, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
             sbName: kBusinessMainStoryboardName,
             vcID: kBusinessMainViewControllerID) as? BusinessMainViewController
@@ -131,14 +131,14 @@ struct ScreenFactory {
         if let mainVC = mainViewController {
             if let viewController = mainVC.viewControllers?[0] as? UINavigationController {
                 if let homeVC = viewController.topViewController as? BusinessHomeViewController {
-                    let presnter = PresenterBusinessHome(view: homeVC, delegate: delegate)
-                    homeVC.presenterHome = presnter
+                    let presenter = PresenterBusinessHome(view: homeVC, networkManager: networkManager, delegate: delegate)
+                    homeVC.presenterHome = presenter
                 }
             }
             if let viewController = mainVC.viewControllers?[1] as? UINavigationController {
                 if let settingsVC = viewController.topViewController as? SettingsViewController {
-                    let presnter = PresenterSettings(view: settingsVC, delegate: delegate)
-                    settingsVC.presenterSettings = presnter
+                    let presenter = PresenterSettings(view: settingsVC, delegate: delegate)
+                    settingsVC.presenterSettings = presenter
                 }
             }
             let presenter = PresenterBusinessMain(view: mainVC)
@@ -148,51 +148,75 @@ struct ScreenFactory {
         return navigationController
     }
     
-    static func makeBusinessScreen(delegate: SelectButtonEntity, model: ModelBusiness) -> UIViewController {
+    static func makeBusinessScreen(networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity, model: ModelBusiness) -> UIViewController {
         let viewController = BusinessViewController()
-        let presenter = PresenterBusiness(view: viewController, delegate: delegate, model: model)
+        let presenter = PresenterBusiness(view: viewController, networkManager: networkManager, delegate: delegate, model: model)
         viewController.presenterBusiness = presenter
         return viewController
     }
     
-    static func makeCheckAvailabilityScreen(delegate: SelectButtonEntity, identifier: String?, name: String?,
+    static func makeCheckAvailabilityScreen(networkManager: NetworkManagerProtocol,
+                                            delegate: SelectButtonEntity,
+                                            identifier: String?,
+                                            name: String?,
                                             bookedServices: [Service]?,
                                             modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) -> UIViewController {
         let viewController = CheckAvailabilityViewController()
-        let presenter = PresenterCheckAvailability(view: viewController, delegate: delegate, identifier: identifier,
-                                                   name: name, bookedServices: bookedServices,
+        let presenter = PresenterCheckAvailability(view: viewController,
+                                                   networkManager: networkManager,
+                                                   delegate: delegate,
+                                                   identifier: identifier,
+                                                   name: name,
+                                                   bookedServices: bookedServices,
                                                    modelCheckTurnsAvailability: modelCheckTurnsAvailability)
         viewController.presenterCheckAvailability = presenter
         return viewController
     }
     
-    static func makeCheckAvailabilityScreen(delegate: SelectButtonBusiness, identifier: String?, name: String?,
+    static func makeCheckAvailabilityScreen(networkManager: NetworkManagerProtocol,
+                                            delegate: SelectButtonBusiness,
+                                            identifier: String?,
+                                            name: String?,
                                             bookedServices: [Service]?,
                                             modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
                                             customer: Customer?) -> UIViewController {
         let viewController = CheckAvailabilityViewController()
-        let presenter = PresenterCheckAvailability(view: viewController, delegate: delegate, identifier: identifier,
-                                                   name: name, bookedServices: bookedServices,
-                                                   modelCheckTurnsAvailability: modelCheckTurnsAvailability, customer: customer)
+        let presenter = PresenterCheckAvailability(view: viewController,
+                                                   networkManager: networkManager,
+                                                   delegate: delegate,
+                                                   identifier: identifier,
+                                                   name: name,
+                                                   bookedServices: bookedServices,
+                                                   modelCheckTurnsAvailability: modelCheckTurnsAvailability,
+                                                   customer: customer)
         viewController.presenterCheckAvailability = presenter
         return viewController
     }
     
-    static func makeConfirmationScreen(delegate: SelectButtonEntity, identifier: String?, name: String?,
-                                       bookedServices: [Service]?, bookedSlot: EmptySlot?,
+    static func makeConfirmationScreen(networkManager: NetworkManagerProtocol,
+                                       delegate: SelectButtonEntity,
+                                       identifier: String?,
+                                       name: String?,
+                                       bookedServices: [Service]?,
+                                       bookedSlot: EmptySlot?,
                                        confirmationViewType: ConfirmationViewType?) -> UIViewController {
         let viewController = ConfirmationViewController()
-        let presenter = PresenterConfirmation(view: viewController, delegate: delegate,
-                                              identifier: identifier, name: name,
-                                              bookedServices: bookedServices, bookedSlot: bookedSlot,
+        let presenter = PresenterConfirmation(view: viewController,
+                                              networkManager: networkManager,
+                                              delegate: delegate,
+                                              identifier: identifier,
+                                              name: name,
+                                              bookedServices: bookedServices,
+                                              bookedSlot: bookedSlot,
                                               confirmationViewType: confirmationViewType)
         viewController.presenterConfirmation = presenter
         return viewController
     }
     
-    static func makeConfirmationScreen(delegate: SelectButtonBusiness, confirmationScreenModel: ConfirmationScreenModel) -> UIViewController {
+    static func makeConfirmationScreen(networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness, confirmationScreenModel: ConfirmationScreenModel) -> UIViewController {
         let viewController = ConfirmationViewController()
         let presenter = PresenterConfirmation(view: viewController,
+                                              networkManager: networkManager,
                                               delegate: delegate,
                                               identifier: confirmationScreenModel.identifier,
                                               name: confirmationScreenModel.name,
@@ -204,18 +228,19 @@ struct ScreenFactory {
         return viewController
     }
     
-    static func makeAddAppointmentScreen(modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) -> UIViewController {
+    static func makeAddAppointmentScreen(networkManager: NetworkManagerProtocol, modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) -> UIViewController {
         let viewController = AddAppointmentViewController()
         let presenter = PresenterAddAppointment(view: viewController,
+                                                networkManager: networkManager,
                                                 modelBusiness: modelBusiness,
                                                 delegate: delegate)
         viewController.presenterAddAppointment = presenter
         return viewController
     }
     
-    static func makeBlockedUsersScreen(delegate: SelectButtonBusiness) -> UIViewController {
+    static func makeBlockedUsersScreen(networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness) -> UIViewController {
         let viewController = BlockedUsersViewController()
-        let presenter = PresenterBlockedUsers(view: viewController, delegate: delegate)
+        let presenter = PresenterBlockedUsers(view: viewController, networkManager: networkManager, delegate: delegate)
         viewController.presenterBlockedUsers = presenter
         return viewController
     }

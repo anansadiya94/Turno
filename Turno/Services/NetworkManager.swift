@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-protocol Networkable {
+protocol NetworkManagerProtocol {
     var provider: MoyaProvider<APIRouter> { get }
     
     func signUp(modelTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void)
@@ -30,7 +30,7 @@ protocol Networkable {
     func registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask, completion: @escaping (Bool?, Error?) -> Void)
 }
 
-class NetworkManager: Networkable {
+class NetworkManager: NetworkManagerProtocol {
     
     let provider = MoyaProvider<APIRouter>()
     

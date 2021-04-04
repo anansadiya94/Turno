@@ -21,16 +21,17 @@ class PresenterBusinessHome {
     
     // MARK: - Properties
     private weak var view: PresenterBusinessHomeView?
+    private var networkManager: NetworkManagerProtocol
     var delegate: SelectButtonBusiness!
-    let networkManager = NetworkManager()
     var modelBusiness: ModelBusiness?
     var modelMyBookings: ModelMyBookings?
     var isFetching: Bool = false
     var lastStatusCheck: Date?
     
     // MARK: - init Methods
-    init(view: PresenterBusinessHomeView, delegate: SelectButtonBusiness) {
+    init(view: PresenterBusinessHomeView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness) {
         self.view = view
+        self.networkManager = networkManager
         self.delegate = delegate
         self.fetchData()
     }

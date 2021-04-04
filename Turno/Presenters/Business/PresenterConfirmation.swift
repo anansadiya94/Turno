@@ -21,18 +21,20 @@ class PresenterConfirmation {
     
     // MARK: - Properties
     private weak var view: PresenterConfirmationView?
+    private var networkManager: NetworkManagerProtocol
     var delegate: Any?
     var identifier: String?
     var name: String?
     var bookedServices: [Service]?
     var bookedSlot: EmptySlot?
     var confirmationViewType: ConfirmationViewType?
-    let networkManager = NetworkManager()
     var customer: Customer?
     
     // MARK: - init Methods
-    init(view: PresenterConfirmationView, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, confirmationViewType: ConfirmationViewType?) {
+    init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity,
+         identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, confirmationViewType: ConfirmationViewType?) {
         self.view = view
+        self.networkManager = networkManager
         self.delegate = delegate
         self.identifier = identifier
         self.name = name
@@ -42,8 +44,11 @@ class PresenterConfirmation {
         self.notifyView()
     }
     
-    init(view: PresenterConfirmationView, delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, confirmationViewType: ConfirmationViewType?, customer: Customer?) {
+    init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness,
+         identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
+         confirmationViewType: ConfirmationViewType?, customer: Customer?) {
         self.view = view
+        self.networkManager = networkManager
         self.delegate = delegate
         self.identifier = identifier
         self.name = name

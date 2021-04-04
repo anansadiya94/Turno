@@ -22,12 +22,13 @@ class PresenterBusiness {
     
     // MARK: - Properties
     private weak var view: PresenterBusinessView?
+    private var networkManager: NetworkManagerProtocol
     var delegate: SelectButtonEntity!
     var model: ModelBusiness?
-    let networkManager = NetworkManager()
     
     // MARK: - init Methods
-    init(view: PresenterBusinessView, delegate: SelectButtonEntity, model: ModelBusiness) {
+    init(view: PresenterBusinessView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity, model: ModelBusiness) {
+        self.networkManager = networkManager
         self.view = view
         self.delegate = delegate
         self.model = model

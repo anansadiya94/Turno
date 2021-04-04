@@ -21,14 +21,15 @@ class PresenterAddAppointment {
     
     // MARK: - Properties
     private weak var view: PresenterAddAppointmentView?
+    private var networkManager: NetworkManagerProtocol
     var delegate: SelectButtonBusiness!
     var modelBusiness: ModelBusiness?
-    let networkManager = NetworkManager()
     var customer: Customer?
     
     // MARK: - init Methods
-    init(view: PresenterAddAppointmentView, modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) {
+    init(view: PresenterAddAppointmentView, networkManager: NetworkManagerProtocol, modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) {
         self.view = view
+        self.networkManager = networkManager
         self.delegate = delegate
         self.modelBusiness = modelBusiness
         self.notifyView()

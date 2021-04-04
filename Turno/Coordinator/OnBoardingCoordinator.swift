@@ -12,10 +12,12 @@ class OnBoardingCoordinator: Coordinator {
     
     private let window: UIWindow
     private let navigationController: UINavigationController
+    private let networkManager: NetworkManagerProtocol
     
-    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController()) {
+    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController(), networkManager: NetworkManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
+        self.networkManager = networkManager
     }
     
     func start() {
@@ -50,20 +52,24 @@ extension OnBoardingCoordinator {
     }
     
     func showWelcomeScreen() {
-        let welcomeCoordinator = WelcomeCoordinator(window: window, navigationController: navigationController)
+        let welcomeCoordinator = WelcomeCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
         let screen = ScreenFactory.makeWelcomeScreen(navigationController: navigationController, delegate: welcomeCoordinator)
         window.rootViewController = screen
     }
     
     func showMainScreen() {
-        let mainCoordinator = UserMainCoordinator(window: window, navigationController: navigationController)
-        let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        let mainCoordinator = UserMainCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
+        let screen = ScreenFactory.makeUserMainScreen(networkManager: networkManager,
+                                                      navigationController: navigationController,
+                                                      delegate: mainCoordinator)
         window.rootViewController = screen
     }
     
     func showBusinessMainScreen() {
-        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController)
-        let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
+        let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
+                                                          networkManager: networkManager,
+                                                          delegate: mainCoordinator)
         window.rootViewController = screen
     }
 }

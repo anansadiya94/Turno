@@ -17,10 +17,12 @@ class AppCoordinator: Coordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
     var starterCoordinator: Coordinator?
+    private let networkManager: NetworkManagerProtocol
     
-    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController()) {
+    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController(), networkManager: NetworkManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
+        self.networkManager = networkManager
         setupWindow()
         setupStarterCoordinator()
     }
@@ -31,7 +33,7 @@ class AppCoordinator: Coordinator {
     }
     
     func setupStarterCoordinator() {
-        starterCoordinator = OnBoardingCoordinator(window: window, navigationController: navigationController)
+        starterCoordinator = OnBoardingCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
     }
     
     func start() {

@@ -20,13 +20,14 @@ class PresenterBlockedUsers {
     
     // MARK: - Properties
     private weak var view: PresenterBlockedUsersView?
+    private var networkManager: NetworkManagerProtocol
     var delegate: SelectButtonBusiness!
     var modelList = [ModelBlockedUser]()
-    let networkManager = NetworkManager()
     
     // MARK: - init Methods
-    init(view: PresenterBlockedUsersView, delegate: SelectButtonBusiness) {
+    init(view: PresenterBlockedUsersView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness) {
         self.view = view
+        self.networkManager = networkManager
         self.delegate = delegate
         self.fetchData()
     }

@@ -17,17 +17,18 @@ class PresenterCheckAvailability {
     
     // MARK: - Properties
     private weak var view: PresenterCheckAvailabilityView?
+    private var networkManager: NetworkManagerProtocol
     var delegate: Any?
     var identifier: String?
     var name: String?
     var bookedServices: [Service]?
-    let networkManager = NetworkManager()
     var modelCheckTurnsAvailability: ModelCheckTurnsAvailability?
     var customer: Customer?
     
     // MARK: - init Methods
-    init(view: PresenterCheckAvailabilityView, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
+    init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
         self.view = view
+        self.networkManager = networkManager
         self.delegate = delegate
         self.identifier = identifier
         self.name = name
@@ -36,8 +37,9 @@ class PresenterCheckAvailability {
         self.notifyView()
     }
     
-    init(view: PresenterCheckAvailabilityView, delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?, customer: Customer?) {
+    init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?, customer: Customer?) {
         self.view = view
+        self.networkManager = networkManager
         self.delegate = delegate
         self.identifier = identifier
         self.name = name

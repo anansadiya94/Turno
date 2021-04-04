@@ -17,19 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.Message_ID"
+    private let networkManager: NetworkManagerProtocol = NetworkManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         setAppFont()
         let appCoordinator: AppCoordinator!
-        appCoordinator = AppCoordinator(window: window!, navigationController: UINavigationController())
+        appCoordinator = AppCoordinator(window: window!, navigationController: UINavigationController(), networkManager: networkManager)
         appCoordinator.start()
         
         FirebaseApp.configure()
         
         if let userId = Preferences.getPrefsUser()?.businessId {
-            let pushManager = PushNotificationManager(userId: userId, name: Preferences.getPrefsUser()?.name)
+            let pushManager = PushNotificationManager(userId: userId, name: Preferences.getPrefsUser()?.name, networkManager: networkManager)
             pushManager.registerForPushNotifications()
         }
         

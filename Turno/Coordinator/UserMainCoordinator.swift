@@ -12,10 +12,12 @@ class UserMainCoordinator: Coordinator {
     
     private let window: UIWindow
     private let navigationController: UINavigationController
+    private let networkManager: NetworkManagerProtocol
     
-    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController()) {
+    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController(), networkManager: NetworkManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
+        self.networkManager = networkManager
     }
     
     func start() {
@@ -32,21 +34,26 @@ extension UserMainCoordinator {
     }
     
     func showBusinessScreen(model: ModelBusiness) {
-        let screen = ScreenFactory.makeBusinessScreen(delegate: self, model: model)
+        let screen = ScreenFactory.makeBusinessScreen(networkManager: networkManager, delegate: self, model: model)
         pushViewByExploreInnerViewController(screen: screen)
     }
     
-    func makeCheckAvailabilityScreen(identifier: String?, name: String?, bookedServices: [Service]?,
+    func makeCheckAvailabilityScreen(identifier: String?,
+                                     name: String?,
+                                     bookedServices: [Service]?,
                                      modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
-        let screen = ScreenFactory.makeCheckAvailabilityScreen(delegate: self, identifier: identifier, name: name,
+        let screen = ScreenFactory.makeCheckAvailabilityScreen(networkManager: networkManager,
+                                                               delegate: self,
+                                                               identifier: identifier,
+                                                               name: name,
                                                                bookedServices: bookedServices,
                                                                modelCheckTurnsAvailability: modelCheckTurnsAvailability)
         pushViewByExploreInnerViewController(screen: screen)
     }
     
-    func showConfirmationScreen(identifier: String?, name: String?, bookedServices: [Service]?,
-                                bookedSlot: EmptySlot?) {
-        let screen = ScreenFactory.makeConfirmationScreen(delegate: self,
+    func showConfirmationScreen(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
+        let screen = ScreenFactory.makeConfirmationScreen(networkManager: networkManager,
+                                                          delegate: self,
                                                           identifier: identifier,
                                                           name: name,
                                                           bookedServices: bookedServices,
@@ -56,8 +63,10 @@ extension UserMainCoordinator {
     }
     
     func showBusinessMainScreen() {
-        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController)
-        let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController, delegate: mainCoordinator)
+        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
+        let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
+                                                          networkManager: networkManager,
+                                                          delegate: mainCoordinator)
         window.rootViewController = screen
     }
 }
@@ -67,9 +76,13 @@ extension UserMainCoordinator: SelectButtonEntity {
         showBusinessScreen(model: model)
     }
     
-    func didSelectCheckAvailability(identifier: String?, name: String?, bookedServices: [Service]?,
+    func didSelectCheckAvailability(identifier: String?,
+                                    name: String?,
+                                    bookedServices: [Service]?,
                                     modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
-        makeCheckAvailabilityScreen(identifier: identifier, name: name, bookedServices: bookedServices,
+        makeCheckAvailabilityScreen(identifier: identifier,
+                                    name: name,
+                                    bookedServices: bookedServices,
                                     modelCheckTurnsAvailability: modelCheckTurnsAvailability)
     }
     
