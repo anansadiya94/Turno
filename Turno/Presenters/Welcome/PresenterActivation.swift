@@ -48,6 +48,7 @@ class PresenterActivation: NSObject {
         user?.businessId = modelVerify.businessId
         Preferences.setPrefsUser(user: user)
         Preferences.setPrefsAppState(value: .loggedIn)
+        AppData.isBusiness = Preferences.isBusiness()
     }
     
     // MARK: - UI interaction methods
