@@ -20,8 +20,7 @@ class WelcomeCoordinator: Coordinator {
         self.networkManager = networkManager
     }
     
-    func start() {
-    }
+    func start() {}
 }
 
 extension WelcomeCoordinator {

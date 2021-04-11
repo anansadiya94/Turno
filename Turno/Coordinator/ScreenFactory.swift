@@ -19,7 +19,7 @@ protocol SelectButtonWelcome: class {
     func didOPTTapped(isBusiness: Bool)
 }
 
-protocol SelectButtonEntity: class {
+protocol SelectButtonEntity: SelectGenericSettings {
     func didSelectEntity(model: ModelBusiness)
     func didSelectCheckAvailability(identifier: String?, name: String?,
                                     bookedServices: [Service]?,
@@ -32,6 +32,10 @@ protocol SelectButtonFavorites: class {
     func didSelectEntity(id: String)
 }
 
+protocol SelectGenericSettings: class {
+    func didSelectSettingsType(webViewType: WebViewType)
+}
+
 struct ConfirmationScreenModel {
     let identifier: String?
     let name: String?
@@ -41,7 +45,7 @@ struct ConfirmationScreenModel {
     let customer: Customer?
 }
 
-protocol SelectButtonBusiness: class {
+protocol SelectButtonBusiness: SelectGenericSettings {
     func addAppointmentTapped(modelBusiness: ModelBusiness?)
     func showAppointmentTapped(turn: Turn)
     func didSelectCheckAvailability(identifier: String?, name: String?,
@@ -242,6 +246,12 @@ struct ScreenFactory {
         let viewController = BlockedUsersViewController()
         let presenter = PresenterBlockedUsers(view: viewController, networkManager: networkManager, delegate: delegate)
         viewController.presenterBlockedUsers = presenter
+        return viewController
+    }
+    
+    static func makeWebViewScreen(webViewType: WebViewType) -> UIViewController {
+        let viewController = WebViewController()
+        viewController.webViewType = webViewType
         return viewController
     }
 }

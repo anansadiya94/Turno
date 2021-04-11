@@ -171,6 +171,7 @@
 		B4AD2AA673D0E8FDDD1649AA /* Pods_Turno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60536D8BBF639461D5CB90FC /* Pods_Turno.framework */; };
 		E172B9CE25FB445A005E32D9 /* OneTimeCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */; };
 		E17B63802616F4D300AE0574 /* ModelFcmToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17B637F2616F4D300AE0574 /* ModelFcmToken.swift */; };
+		E188223C26236408003E9B33 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E188223B26236408003E9B33 /* WebViewController.swift */; };
 		E1D6A8BE2603DF6B00691CBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D6A8BD2603DF6B00691CBD /* GoogleService-Info.plist */; };
 		E1D6A9552603F64300691CBD /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6A9542603F64300691CBD /* PushNotificationManager.swift */; };
 /* End PBXBuildFile section */
@@ -347,6 +348,7 @@
 		C163364AA1CFF3575881BBA7 /* Pods-Turno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.debug.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.debug.xcconfig"; sourceTree = "<group>"; };
 		E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeTextField.swift; sourceTree = "<group>"; };
 		E17B637F2616F4D300AE0574 /* ModelFcmToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFcmToken.swift; sourceTree = "<group>"; };
+		E188223B26236408003E9B33 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E1D6A8BD2603DF6B00691CBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1D6A9542603F64300691CBD /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -553,6 +555,7 @@
 				9E764471248E919600CDAF89 /* ParentViewController.swift */,
 				9E764473248E91F800CDAF89 /* LoadingViewController.swift */,
 				9E9B87F0248D362A009B1448 /* SettingsViewController.swift */,
+				E188223B26236408003E9B33 /* WebViewController.swift */,
 				9E4DE1A724C3355400EC1FF2 /* Business */,
 				9EB2929F25222A8B00BB6437 /* BusinessMain */,
 				9E9B87D4248D3443009B1448 /* UserMain */,
@@ -1210,6 +1213,7 @@
 				9E9B87EF248D3623009B1448 /* FavoritesViewController.swift in Sources */,
 				9E5AD83024C89A1500100526 /* UIViewController+MapOptions.swift in Sources */,
 				9E9880E7248BB9E500D78959 /* User.swift in Sources */,
+				E188223C26236408003E9B33 /* WebViewController.swift in Sources */,
 				9E6958B924DC5883007129B2 /* CheckAvailabilityView.swift in Sources */,
 				9E0B75A02489837E00B25313 /* Fonts.swift in Sources */,
 				9EB43D7A24A3A87400B93C34 /* GenericListDescriptive.swift in Sources */,

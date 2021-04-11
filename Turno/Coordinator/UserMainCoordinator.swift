@@ -20,22 +20,30 @@ class UserMainCoordinator: Coordinator {
         self.networkManager = networkManager
     }
     
-    func start() {
-    }
+    func start() {}
 }
 
 extension UserMainCoordinator {
-    func pushViewByExploreInnerViewController(screen: UIViewController) {
+    func pushViewByHomeInnerViewController(screen: UIViewController) {
         if let mainVC = navigationController.viewControllers[0] as? UserMainViewController {
-            if let exploreVC = mainVC.viewControllers?[0] as? UINavigationController {
-                exploreVC.pushViewController(screen, animated: true)
+            mainVC.selectedIndex = 0
+            if let homeVC = mainVC.viewControllers?[0] as? UINavigationController {
+                homeVC.pushViewController(screen, animated: true)
+            }
+        }
+    }
+    
+    func pushViewBySettingsInnerViewController(screen: UIViewController) {
+        if let mainVC = navigationController.viewControllers[0] as? UserMainViewController {
+            if let settingsVC = mainVC.viewControllers?[3] as? UINavigationController {
+                settingsVC.pushViewController(screen, animated: true)
             }
         }
     }
     
     func showBusinessScreen(model: ModelBusiness) {
         let screen = ScreenFactory.makeBusinessScreen(networkManager: networkManager, delegate: self, model: model)
-        pushViewByExploreInnerViewController(screen: screen)
+        pushViewByHomeInnerViewController(screen: screen)
     }
     
     func makeCheckAvailabilityScreen(identifier: String?,
@@ -48,7 +56,7 @@ extension UserMainCoordinator {
                                                                name: name,
                                                                bookedServices: bookedServices,
                                                                modelCheckTurnsAvailability: modelCheckTurnsAvailability)
-        pushViewByExploreInnerViewController(screen: screen)
+        pushViewByHomeInnerViewController(screen: screen)
     }
     
     func showConfirmationScreen(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
@@ -59,7 +67,7 @@ extension UserMainCoordinator {
                                                           bookedServices: bookedServices,
                                                           bookedSlot: bookedSlot,
                                                           confirmationViewType: .user)
-        pushViewByExploreInnerViewController(screen: screen)
+        pushViewByHomeInnerViewController(screen: screen)
     }
     
     func showBusinessMainScreen() {
@@ -68,6 +76,11 @@ extension UserMainCoordinator {
                                                           networkManager: networkManager,
                                                           delegate: mainCoordinator)
         window.rootViewController = screen
+    }
+    
+    func showWebViewController(for type: WebViewType) {
+        let screen = ScreenFactory.makeWebViewScreen(webViewType: type)
+        pushViewBySettingsInnerViewController(screen: screen)
     }
 }
 
@@ -92,5 +105,9 @@ extension UserMainCoordinator: SelectButtonEntity {
     
     func didSelectChangeToBusiness() {
         showBusinessMainScreen()
+    }
+    
+    func didSelectSettingsType(webViewType: WebViewType) {
+        showWebViewController(for: webViewType)
     }
 }

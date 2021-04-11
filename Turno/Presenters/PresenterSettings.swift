@@ -59,4 +59,13 @@ class PresenterSettings: NSObject {
             delegate.didSelectBlockedUsers()
         }
     }
+    
+    func openWebView(for webViewType: WebViewType) {
+        if let delegate = delegate as? SelectButtonBusiness {
+            delegate.didSelectSettingsType(webViewType: webViewType)
+        }
+        if let delegate = delegate as? SelectButtonEntity {
+            delegate.didSelectSettingsType(webViewType: webViewType)
+        }
+    }
 }

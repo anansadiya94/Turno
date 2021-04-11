@@ -157,8 +157,12 @@ extension SettingsViewController: UITableViewDelegate {
             presenterSettings.notifications()
         case .blockedUsers:
             presenterSettings.blockedUsers()
-        default:
-            break
+        case .about:
+            presenterSettings.openWebView(for: .about)
+        case .contactUs:
+            presenterSettings.openWebView(for: .contactUs)
+        case .termsOfUse:
+            presenterSettings.openWebView(for: .termsOfUse)
         }
     }
 }

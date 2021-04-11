@@ -20,8 +20,7 @@ class BusinessMainCoordinator: Coordinator {
         self.networkManager = networkManager
     }
     
-    func start() {
-    }
+    func start() {}
 }
 
 extension BusinessMainCoordinator {
@@ -48,7 +47,7 @@ extension BusinessMainCoordinator {
     
     func showAppointmentScreen(turn: Turn) {
         let confirmationScreenModel = ConfirmationScreenModel(identifier: turn.identifier,
-                                                              name: "TODO",
+                                                              name: turn.userName,
                                                               bookedServices: turn.services,
                                                               bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true),
                                                               confirmationViewType: .business,
@@ -99,6 +98,11 @@ extension BusinessMainCoordinator {
         let screen = ScreenFactory.makeBlockedUsersScreen(networkManager: networkManager, delegate: self)
         pushViewBySettingsInnerViewController(screen: screen)
     }
+    
+    func showWebViewController(for type: WebViewType) {
+        let screen = ScreenFactory.makeWebViewScreen(webViewType: type)
+        pushViewBySettingsInnerViewController(screen: screen)
+    }
 }
 
 extension BusinessMainCoordinator: SelectButtonBusiness {
@@ -135,5 +139,9 @@ extension BusinessMainCoordinator: SelectButtonBusiness {
     
     func didSelectBlockedUsers() {
         showBlockedUsersScreen()
+    }
+    
+    func didSelectSettingsType(webViewType: WebViewType) {
+        showWebViewController(for: webViewType)
     }
 }
