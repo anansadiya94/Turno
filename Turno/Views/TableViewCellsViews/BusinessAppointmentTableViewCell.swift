@@ -62,7 +62,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
     
     private func setServicesLabel(from turn: Turn) {
         services = turn.services
-        servicesTableViewHeight.constant = CGFloat(turn.services?.count ?? 0) * 40.0
+        servicesTableViewHeight.constant = CGFloat(turn.services?.count ?? 0) * 50.0
         servicesTableView.reloadData()
     }
     
@@ -76,7 +76,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
         self.identifier = turn.identifier
         
         dayLabel.labelTheme = BoldTheme(label: turn.dateTimeUTC?.toDisplayDay() ?? "",
-                                         fontSize: 20,
+                                         fontSize: 18,
                                          textColor: .black,
                                          textAlignment: .natural)
         
@@ -88,7 +88,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
         
         let dateLabelString = date + ", " + starTime + "-" + endTime
         dateLabel.labelTheme = RegularTheme(label: dateLabelString,
-                                            fontSize: 20,
+                                            fontSize: 18,
                                             textColor: .black,
                                             textAlignment: .natural)
         

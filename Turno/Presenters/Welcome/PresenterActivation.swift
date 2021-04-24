@@ -49,6 +49,13 @@ class PresenterActivation: NSObject {
         Preferences.setPrefsUser(user: user)
         Preferences.setPrefsAppState(value: .loggedIn)
         AppData.isBusiness = Preferences.isBusiness()
+        
+        // Set auth
+        if let userId = user?.userId, let secret = user?.secret {
+            let authorization = userId + ":" + secret
+            let authorizationBase64 = Data(authorization.utf8).base64EncodedString()
+            AppData.authorization = "Basic " + authorizationBase64
+        }
     }
     
     // MARK: - UI interaction methods

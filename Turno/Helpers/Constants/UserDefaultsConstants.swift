@@ -11,3 +11,4 @@ import Foundation
 let kOnBoardingCompleted = "onBoardingCompleted"
 let KAppFont = "appFont"
 let kIsBusiness = "isBusiness"
+let kAuthorization = "authorization"

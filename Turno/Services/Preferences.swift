@@ -55,15 +55,6 @@ class Preferences {
         UserDefaults.standard.removeObject(forKey: kPrefsUser)
     }
     
-    static func getAuthorization() -> String {
-        if let userId = Preferences.getPrefsUser()?.userId, let secret = Preferences.getPrefsUser()?.secret {
-            let authorization = userId + ":" + secret
-            let authorizationBase64 = Data(authorization.utf8).base64EncodedString()
-            return "Basic " + authorizationBase64
-        }
-        return ""
-    }
-    
     static func isBusiness() -> Bool {
         if Preferences.getPrefsUser()?.businessId != nil {
             return true

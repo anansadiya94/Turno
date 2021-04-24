@@ -110,7 +110,7 @@ extension APIRouter: TargetType {
         case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn,
              .getAvailableTimes, .book, .bookByBusiness, .getMyBusiness, .getMyBookings,
              .getMyBlockedList, .unblockUser, .blockUser, .registerFCMToken:
-            headers["Authorization"] = Preferences.getAuthorization() 
+            headers["Authorization"] = AppData.authorization
         default:
             break
         }

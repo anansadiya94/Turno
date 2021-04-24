@@ -80,7 +80,7 @@ class AppointmentTableViewCell: UITableViewCell {
     
     private func setServicesTableView(from model: ModelAppointment) {
         services = model.turn?.services
-        servicesTableViewHeight.constant = CGFloat(model.turn?.services?.count ?? 0) * 40.0
+        servicesTableViewHeight.constant = CGFloat(model.turn?.services?.count ?? 0) * 50.0
         servicesTableView.reloadData()
     }
     
@@ -111,7 +111,7 @@ class AppointmentTableViewCell: UITableViewCell {
                                           textColor: .white,
                                           textAlignment: .center)
         dayLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toDisplayDay() ?? "",
-                                         fontSize: 20,
+                                         fontSize: 18,
                                          textColor: .black,
                                          textAlignment: .natural)
         
@@ -123,12 +123,12 @@ class AppointmentTableViewCell: UITableViewCell {
         
         let dateLabelString = date + ", " + starTime + "-" + endTime
         dateLabel.labelTheme = RegularTheme(label: dateLabelString,
-                                            fontSize: 20,
+                                            fontSize: 18,
                                             textColor: .black,
                                             textAlignment: .natural)
         
         locationLabel.labelTheme = BoldTheme(label: model.address ?? "",
-                                             fontSize: 20,
+                                             fontSize: 18,
                                              textColor: .black,
                                              textAlignment: .natural)
         setServicesTableView(from: model)

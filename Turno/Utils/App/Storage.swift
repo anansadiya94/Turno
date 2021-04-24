@@ -42,3 +42,8 @@ extension AppData {
     @Storage(key: kIsBusiness, defaultValue: false)
     static var isBusiness: Bool
 }
+
+extension AppData {
+    @Storage(key: kAuthorization, defaultValue: "")
+    static var authorization: String
+}
