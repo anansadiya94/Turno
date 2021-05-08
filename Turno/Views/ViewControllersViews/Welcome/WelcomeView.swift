@@ -97,6 +97,8 @@ class WelcomeView: UIView {
     }
     
     private func addLogoImageView() {
+        logoImageView.layer.cornerRadius = 10.0
+        logoImageView.layer.masksToBounds = true
         logoImageView.image = UIImage(named: kLogo)
         NSLayoutConstraint.activate([
             logoImageView.heightAnchor.constraint(equalToConstant: 100),
@@ -107,7 +109,7 @@ class WelcomeView: UIView {
     }
     
     private func addFooterView() {        
-        footerLabel.labelTheme = RegularTheme(label: "@2020 Turno", fontSize: 15,
+        footerLabel.labelTheme = RegularTheme(label: "@2021 Turno", fontSize: 15,
                                               textColor: .black, textAlignment: .center)
         privacyPolicyButton.buttonTheme = BaseTheme(label: LocalizedConstants.privacy_policy_key.localized, underLine: true)
         

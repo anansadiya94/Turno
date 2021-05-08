@@ -27,8 +27,9 @@ class PresenterWelcome: NSObject {
     }
     
     func privacyPolicyButtonTapped() {
-        if let privacyPolicyUrl = UIApplication.privacyPolicyUrl {
-            self.view.openUrl(privacyPolicyUrl)
-        }
+//        if let privacyPolicyUrl = UIApplication.privacyPolicyUrl {
+//            self.view.openUrl(privacyPolicyUrl)
+//        }
+        delegate?.didPrivacyPolicyTapped()
     }
 }

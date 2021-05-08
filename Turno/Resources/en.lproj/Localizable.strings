@@ -84,6 +84,7 @@
 "client_information_key" = "Client information";
 "add_appointment_key" = "Add appointment";
 "block_key" = "Block";
+"close_key" = "Close";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Total services time is: %@";

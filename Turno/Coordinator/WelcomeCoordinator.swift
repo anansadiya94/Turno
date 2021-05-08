@@ -50,6 +50,24 @@ extension WelcomeCoordinator {
                                                           delegate: mainCoordinator)
         window.rootViewController = screen
     }
+    
+    func showPrivacyPolicy() {
+        let screen = ScreenFactory.makeWebViewScreen(webViewType: .termsOfUse)
+        
+        // Push view controller with a present animation.
+        screen.navigationItem.leftBarButtonItem = UIBarButtonItem(title: LocalizedConstants.close_key.localized,
+                                                                  style: .plain, target: screen,
+                                                                  action: #selector(WebViewController.closeView))
+        screen.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: screen, action: nil)
+        
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+        navigationController.view.layer.add(transition, forKey: nil)
+        navigationController.pushViewController(screen, animated: false)
+    }
 }
 
 extension WelcomeCoordinator: SelectButtonWelcome {
@@ -67,5 +85,9 @@ extension WelcomeCoordinator: SelectButtonWelcome {
         } else {
             showMainScreen()
         }
+    }
+    
+    func didPrivacyPolicyTapped() {
+        showPrivacyPolicy()
     }
 }

@@ -86,6 +86,7 @@
 "client_information_key" = "معلومات العميل";
 "add_appointment_key" = "إضافة التعيين";
 "block_key" = "حاجز";
+"close_key" = "يغلق";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو: %@";

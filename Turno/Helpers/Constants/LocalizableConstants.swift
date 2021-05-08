@@ -94,6 +94,7 @@ enum LocalizedConstants: String {
     case    client_information_key
     case    add_appointment_key
     case    block_key
+    case    close_key
     
     case    total_services_time_key
     case    block_user_by_name_key
