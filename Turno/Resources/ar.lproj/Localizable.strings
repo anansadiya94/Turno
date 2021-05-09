@@ -87,6 +87,7 @@
 "add_appointment_key" = "إضافة التعيين";
 "block_key" = "حاجز";
 "close_key" = "يغلق";
+"home_error_message_key" = "تحقق من اتصال الإنترنت الخاص بك وسحب لتحديث!";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو: %@";

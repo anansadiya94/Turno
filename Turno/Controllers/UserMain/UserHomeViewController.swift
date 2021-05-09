@@ -93,6 +93,14 @@ extension UserHomeViewController: PresenterUserHomeView {
         refreshControl.endRefreshing()
     }
     
+    func showEmptyMessage(title: String, message: String) {
+        self.genericView.tableView.emptyMessage(title: title, message: message)
+    }
+    
+    func removeEmptyMessage() {
+        self.genericView.tableView.removeEmptyMessage()
+    }
+    
     func startWaitingView() {
         startWaiting()
     }

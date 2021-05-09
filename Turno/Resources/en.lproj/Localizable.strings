@@ -85,6 +85,7 @@
 "add_appointment_key" = "Add appointment";
 "block_key" = "Block";
 "close_key" = "Close";
+"home_error_message_key" = "Check your internet connection and pull to refresh!";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Total services time is: %@";

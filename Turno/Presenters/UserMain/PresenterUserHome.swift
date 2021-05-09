@@ -11,6 +11,8 @@ import Moya
 
 protocol PresenterUserHomeView: PresenterParentView {
     func didSetData(model: GenericListDescriptive)
+    func showEmptyMessage(title: String, message: String)
+    func removeEmptyMessage()
 }
 
 class PresenterUserHome {
@@ -38,22 +40,27 @@ class PresenterUserHome {
     // MARK: - Public Interface
     func fetchData() {
         self.view?.startWaitingView()
+        self.view?.removeEmptyMessage()
         let modelBusinessTask = ModelBusinessTask(query: "")
         networkManager.getBusinesses(modelTask: modelBusinessTask) { (modelList, error) in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                         completion: nil)
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil) { _, _ in
+                    self.view?.showEmptyMessage(title: LocalizedConstants.generic_error_title_key.localized,
+                                                message: LocalizedConstants.home_error_message.localized)
+                }
                 return
             }
             if let error = error as? AppError {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
-                                         completion: nil)
+                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil) { _, _ in
+                    self.view?.showEmptyMessage(title: LocalizedConstants.generic_error_title_key.localized,
+                                                message: LocalizedConstants.home_error_message.localized)
+                }
                 return
             }
             if let modelList = modelList {
