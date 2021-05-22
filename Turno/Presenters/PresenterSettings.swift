@@ -17,30 +17,31 @@ class PresenterSettings: NSObject {
     
     // MARK: - Properties
     private weak var view: PresenterSettingsView?
-    var delegate: Any?
+    private weak var userDelegate: SelectButtonEntity?
+    private weak var businessDelegate: SelectButtonBusiness?
     
     // MARK: - init Methods
     init(view: PresenterSettingsView, delegate: SelectButtonEntity) {
         self.view = view
-        self.delegate = delegate
+        self.userDelegate = delegate
     }
     
     init(view: PresenterSettingsView, delegate: SelectButtonBusiness) {
         self.view = view
-        self.delegate = delegate
+        self.businessDelegate = delegate
     }
     
     func changeToUser() {
-        if let delegate = delegate as? SelectButtonBusiness {
+        if let businessDelegate = businessDelegate {
             AppData.isBusiness = false
-            delegate.didSelectChangeToUser()
+            businessDelegate.didSelectChangeToUser()
         }
     }
     
     func changeToBusiness() {
-        if let delegate = delegate as? SelectButtonEntity {
+        if let userDelegate = userDelegate {
             AppData.isBusiness = true
-            delegate.didSelectChangeToBusiness()
+            userDelegate.didSelectChangeToBusiness()
         }
     }
     
@@ -55,17 +56,17 @@ class PresenterSettings: NSObject {
     }
     
     func blockedUsers() {
-        if let delegate = delegate as? SelectButtonBusiness {
-            delegate.didSelectBlockedUsers()
+        if let businessDelegate = businessDelegate {
+            businessDelegate.didSelectBlockedUsers()
         }
     }
     
     func openWebView(for webViewType: WebViewType) {
-        if let delegate = delegate as? SelectButtonBusiness {
-            delegate.didSelectSettingsType(webViewType: webViewType)
+        if let userDelegate = userDelegate {
+            userDelegate.didSelectSettingsType(webViewType: webViewType)
         }
-        if let delegate = delegate as? SelectButtonEntity {
-            delegate.didSelectSettingsType(webViewType: webViewType)
+        if let businessDelegate = businessDelegate {
+            businessDelegate.didSelectSettingsType(webViewType: webViewType)
         }
     }
 }

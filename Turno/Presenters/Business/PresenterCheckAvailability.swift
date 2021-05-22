@@ -18,7 +18,8 @@ class PresenterCheckAvailability {
     // MARK: - Properties
     private weak var view: PresenterCheckAvailabilityView?
     private var networkManager: NetworkManagerProtocol
-    var delegate: Any?
+    private weak var userDelegate: SelectButtonEntity?
+    private weak var businessDelegate: SelectButtonBusiness?
     var identifier: String?
     var name: String?
     var bookedServices: [Service]?
@@ -29,7 +30,7 @@ class PresenterCheckAvailability {
     init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
         self.view = view
         self.networkManager = networkManager
-        self.delegate = delegate
+        self.userDelegate = delegate
         self.identifier = identifier
         self.name = name
         self.bookedServices = bookedServices
@@ -40,7 +41,7 @@ class PresenterCheckAvailability {
     init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?, customer: Customer?) {
         self.view = view
         self.networkManager = networkManager
-        self.delegate = delegate
+        self.businessDelegate = delegate
         self.identifier = identifier
         self.name = name
         self.bookedServices = bookedServices
@@ -64,11 +65,17 @@ class PresenterCheckAvailability {
     
     // MARK: - Public Interface
     func bookNowButtonTapped(bookedSlot: EmptySlot?) {
-        if let delegate = delegate as? SelectButtonEntity {
-            delegate.didSelectConfirm(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot)
+        if let userDelegate = userDelegate {
+            userDelegate.didSelectConfirm(identifier: identifier,
+                                          name: name, bookedServices: bookedServices,
+                                          bookedSlot: bookedSlot)
         }
-        if let delegate = delegate as? SelectButtonBusiness {
-            delegate.didSelectConfirm(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot, customer: customer)
+        if let businessDelegate = businessDelegate {
+            businessDelegate.didSelectConfirm(identifier: identifier,
+                                              name: name,
+                                              bookedServices: bookedServices,
+                                              bookedSlot: bookedSlot,
+                                              customer: customer)
         }
     }
 }

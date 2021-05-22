@@ -22,7 +22,8 @@ class PresenterConfirmation {
     // MARK: - Properties
     private weak var view: PresenterConfirmationView?
     private var networkManager: NetworkManagerProtocol
-    var delegate: Any?
+    private weak var userDelegate: SelectButtonEntity?
+    private weak var businessDelegate: SelectButtonBusiness?
     var identifier: String?
     var name: String?
     var bookedServices: [Service]?
@@ -35,7 +36,7 @@ class PresenterConfirmation {
          identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, confirmationViewType: ConfirmationViewType?) {
         self.view = view
         self.networkManager = networkManager
-        self.delegate = delegate
+        self.userDelegate = delegate
         self.identifier = identifier
         self.name = name
         self.bookedServices = bookedServices
@@ -49,7 +50,7 @@ class PresenterConfirmation {
          confirmationViewType: ConfirmationViewType?, customer: Customer?) {
         self.view = view
         self.networkManager = networkManager
-        self.delegate = delegate
+        self.businessDelegate = delegate
         self.identifier = identifier
         self.name = name
         self.bookedServices = bookedServices
@@ -66,23 +67,23 @@ class PresenterConfirmation {
     }
     
     private func popToViewController() {
-        if delegate as? SelectButtonEntity != nil {
+        if userDelegate != nil {
             self.view?.popToBusinessViewController(animated: true)
         }
-        if delegate as? SelectButtonBusiness != nil {
+        if businessDelegate != nil {
             self.view?.popToBusinessHomeViewController(animated: true)
         }
     }
     
     private func postBookedturn(bookedTurn: Turn?) {
-        if delegate as? SelectButtonEntity != nil {
+        if userDelegate != nil {
             if let bookedTurn = bookedTurn {
                 let bookedTurnDict: [String: Turn] = ["bookedTurn": bookedTurn]
                 NotificationCenter.default.post(name: Appointments.appointmentConfirmed, object: nil,
                 userInfo: bookedTurnDict)
             }
         }
-        if delegate as? SelectButtonBusiness != nil {
+        if businessDelegate != nil {
             if var bookedTurn = bookedTurn {
                 bookedTurn.userName = customer?.name
                 bookedTurn.userPhone = customer?.phoneNumber
@@ -215,10 +216,10 @@ class PresenterConfirmation {
     // MARK: - Public Interface
     func confirmButtonTapped() {
         self.view?.startWaitingView()
-        if delegate as? SelectButtonEntity != nil {
+        if userDelegate != nil {
             bookByUser()
         }
-        if delegate as? SelectButtonBusiness != nil {
+        if businessDelegate != nil {
             bookByBusiness()
         }
     }

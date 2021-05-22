@@ -20,7 +20,7 @@ class PresenterUserHome {
     // MARK: - Properties
     private weak var view: PresenterUserHomeView?
     private var networkManager: NetworkManagerProtocol
-    var delegate: SelectButtonEntity!
+    private weak var delegate: SelectButtonEntity?
     var modelList = [ModelBusiness]()
     
     // MARK: - init Methods
@@ -72,7 +72,7 @@ class PresenterUserHome {
     }
     
     func cellTapped(model: ModelBusiness) {
-        delegate.didSelectEntity(model: model)
+        delegate?.didSelectEntity(model: model)
     }
     
     func isFavoriteTapped(entityIdentifier: String) {

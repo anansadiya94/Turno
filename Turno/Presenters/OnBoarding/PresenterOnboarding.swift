@@ -18,7 +18,7 @@ class PresenterOnboarding: NSObject {
     
     // MARK: - Properties
     private weak var view: PresenterOnboardingView?
-    private var delegate: SelectButtonOnboarding?
+    private weak var delegate: SelectButtonOnboarding?
     var modelOnboardingList = [ModelOnboarding]()
     
     // MARK: - init Methods

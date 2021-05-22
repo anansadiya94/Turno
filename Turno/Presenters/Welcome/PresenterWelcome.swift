@@ -12,7 +12,7 @@ class PresenterWelcome: NSObject {
     
     // MARK: - Properties
     var view: WelcomeViewController!
-    private var delegate: SelectButtonWelcome?
+    private weak var delegate: SelectButtonWelcome?
     
     // MARK: - Public Interface
     init(view: WelcomeViewController, delegate: SelectButtonWelcome) {

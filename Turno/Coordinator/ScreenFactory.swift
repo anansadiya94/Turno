@@ -49,7 +49,8 @@ struct ConfirmationScreenModel {
 protocol SelectButtonBusiness: SelectGenericSettings {
     func addAppointmentTapped(modelBusiness: ModelBusiness?)
     func showAppointmentTapped(turn: Turn)
-    func didSelectCheckAvailability(identifier: String?, name: String?,
+    func didSelectCheckAvailability(identifier: String?,
+                                    name: String?,
                                     bookedServices: [Service]?,
                                     modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
                                     customer: Customer?)
@@ -68,7 +69,8 @@ struct ScreenFactory {
     }
     
     // WELCOME:
-    static func makeWelcomeScreen(navigationController: UINavigationController, delegate: SelectButtonWelcome) -> UIViewController {
+    static func makeWelcomeScreen(navigationController: UINavigationController,
+                                  delegate: SelectButtonWelcome) -> UIViewController {
         let welcomeViewController = WelcomeViewController()
         let presenter = PresenterWelcome(view: welcomeViewController, delegate: delegate)
         welcomeViewController.presenterWelcome = presenter
@@ -76,14 +78,17 @@ struct ScreenFactory {
         return navigationController
     }
     
-    static func makeInstallationScreen(networkManager: NetworkManagerProtocol, delegate: SelectButtonWelcome) -> UIViewController {
+    static func makeInstallationScreen(networkManager: NetworkManagerProtocol,
+                                       delegate: SelectButtonWelcome) -> UIViewController {
         let viewController = InstallationViewController()
         let presenter = PresenterInstallation(view: viewController, networkManager: networkManager, delegate: delegate)
         viewController.presenterInstallation = presenter
         return viewController
     }
     
-    static func makeActivationScreen(networkManager: NetworkManagerProtocol, delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) -> UIViewController {
+    static func makeActivationScreen(networkManager: NetworkManagerProtocol,
+                                     delegate: SelectButtonWelcome,
+                                     modelSignUp: ModelSignUp) -> UIViewController {
         let viewController = ActivationViewController()
         let presenter = PresenterActivation(view: viewController, networkManager: networkManager, delegate: delegate, modelSignUp: modelSignUp)
         viewController.presenterActivation = presenter
@@ -91,7 +96,9 @@ struct ScreenFactory {
     }
     
     // MAIN:
-    static func makeUserMainScreen(networkManager: NetworkManagerProtocol, navigationController: UINavigationController, delegate: SelectButtonEntity) -> UIViewController {
+    static func makeUserMainScreen(networkManager: NetworkManagerProtocol,
+                                   navigationController: UINavigationController,
+                                   delegate: SelectButtonEntity) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
             sbName: kUserMainStoryboardName,
             vcID: kUserMainViewControllerID) as? UserMainViewController
@@ -128,7 +135,9 @@ struct ScreenFactory {
         return navigationController
     }
     
-    static func makeBusinessMainScreen(navigationController: UINavigationController, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness) -> UIViewController {
+    static func makeBusinessMainScreen(navigationController: UINavigationController,
+                                       networkManager: NetworkManagerProtocol,
+                                       delegate: SelectButtonBusiness) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
             sbName: kBusinessMainStoryboardName,
             vcID: kBusinessMainViewControllerID) as? BusinessMainViewController
@@ -153,7 +162,9 @@ struct ScreenFactory {
         return navigationController
     }
     
-    static func makeBusinessScreen(networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity, model: ModelBusiness) -> UIViewController {
+    static func makeBusinessScreen(networkManager: NetworkManagerProtocol,
+                                   delegate: SelectButtonEntity,
+                                   model: ModelBusiness) -> UIViewController {
         let viewController = BusinessViewController()
         let presenter = PresenterBusiness(view: viewController, networkManager: networkManager, delegate: delegate, model: model)
         viewController.presenterBusiness = presenter

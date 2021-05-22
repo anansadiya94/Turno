@@ -21,7 +21,7 @@ class PresenterBlockedUsers {
     // MARK: - Properties
     private weak var view: PresenterBlockedUsersView?
     private var networkManager: NetworkManagerProtocol
-    var delegate: SelectButtonBusiness!
+    private weak var delegate: SelectButtonBusiness?
     var modelList = [ModelBlockedUser]()
     
     // MARK: - init Methods

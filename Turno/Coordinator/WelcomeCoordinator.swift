@@ -13,11 +13,23 @@ class WelcomeCoordinator: Coordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
+    private var userMainCoordinator: UserMainCoordinator
+    private var businessMainCoordinator: BusinessMainCoordinator
     
-    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController(), networkManager: NetworkManagerProtocol) {
+    init(window: UIWindow = UIWindow(),
+         navigationController: UINavigationController = UINavigationController(),
+         networkManager: NetworkManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager
+        
+        // Coordinators configurations
+        userMainCoordinator = UserMainCoordinator(window: window,
+                                                  navigationController: navigationController,
+                                                  networkManager: networkManager)
+        businessMainCoordinator = BusinessMainCoordinator(window: window,
+                                                          navigationController: navigationController,
+                                                          networkManager: networkManager)
     }
     
     func start() {}
@@ -26,28 +38,29 @@ class WelcomeCoordinator: Coordinator {
 extension WelcomeCoordinator {
     
     func showInstallationScreen(delegate: SelectButtonWelcome) {
-        let screen = ScreenFactory.makeInstallationScreen(networkManager: networkManager, delegate: delegate)
+        let screen = ScreenFactory.makeInstallationScreen(networkManager: networkManager,
+                                                          delegate: delegate)
         navigationController.pushViewController(screen, animated: true)
     }
     
     func showActivationScreen(delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) {
-        let screen = ScreenFactory.makeActivationScreen(networkManager: networkManager, delegate: delegate, modelSignUp: modelSignUp)
+        let screen = ScreenFactory.makeActivationScreen(networkManager: networkManager,
+                                                        delegate: delegate,
+                                                        modelSignUp: modelSignUp)
         navigationController.pushViewController(screen, animated: true)
     }
     
     func showMainScreen() {
-        let mainCoordinator = UserMainCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
         let screen = ScreenFactory.makeUserMainScreen(networkManager: networkManager,
                                                       navigationController: navigationController,
-                                                      delegate: mainCoordinator)
+                                                      delegate: userMainCoordinator)
         window.rootViewController = screen
     }
     
     func showBusinessMainScreen() {
-        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
         let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
                                                           networkManager: networkManager,
-                                                          delegate: mainCoordinator)
+                                                          delegate: businessMainCoordinator)
         window.rootViewController = screen
     }
     

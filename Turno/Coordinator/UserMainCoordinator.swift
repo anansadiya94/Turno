@@ -14,7 +14,9 @@ class UserMainCoordinator: Coordinator {
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
     
-    init(window: UIWindow = UIWindow(), navigationController: UINavigationController = UINavigationController(), networkManager: NetworkManagerProtocol) {
+    init(window: UIWindow = UIWindow(),
+         navigationController: UINavigationController = UINavigationController(),
+         networkManager: NetworkManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager

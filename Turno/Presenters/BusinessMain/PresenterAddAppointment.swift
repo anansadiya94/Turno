@@ -22,7 +22,7 @@ class PresenterAddAppointment {
     // MARK: - Properties
     private weak var view: PresenterAddAppointmentView?
     private var networkManager: NetworkManagerProtocol
-    var delegate: SelectButtonBusiness!
+    private weak var delegate: SelectButtonBusiness?
     var modelBusiness: ModelBusiness?
     var customer: Customer?
     
@@ -127,7 +127,7 @@ class PresenterAddAppointment {
                 let isAvailableDatesEmpty = modelCheckTurnsAvailability.availableDates?.isEmpty,
                 !isAvailableDatesEmpty {
                 self.view?.stopWaitingView()
-                self.delegate.didSelectCheckAvailability(identifier: identifier, name: self.modelBusiness?.name,
+                self.delegate?.didSelectCheckAvailability(identifier: identifier, name: self.modelBusiness?.name,
                                                          bookedServices: bookedServices,
                                                          modelCheckTurnsAvailability: modelCheckTurnsAvailability,
                                                          customer: self.customer)

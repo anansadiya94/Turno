@@ -23,7 +23,7 @@ class PresenterBusiness {
     // MARK: - Properties
     private weak var view: PresenterBusinessView?
     private var networkManager: NetworkManagerProtocol
-    var delegate: SelectButtonEntity!
+    private weak var delegate: SelectButtonEntity?
     var model: ModelBusiness?
     
     // MARK: - init Methods
@@ -101,7 +101,7 @@ class PresenterBusiness {
                 let isAvailableDatesEmpty = modelCheckTurnsAvailability.availableDates?.isEmpty,
                 !isAvailableDatesEmpty {
                 self.view?.stopWaitingView()
-                self.delegate.didSelectCheckAvailability(identifier: identifier, name: self.model?.name,
+                self.delegate?.didSelectCheckAvailability(identifier: identifier, name: self.model?.name,
                                                          bookedServices: bookedServices,
                                                          modelCheckTurnsAvailability: modelCheckTurnsAvailability)
             } else {

@@ -22,7 +22,7 @@ class PresenterBusinessHome {
     // MARK: - Properties
     private weak var view: PresenterBusinessHomeView?
     private var networkManager: NetworkManagerProtocol
-    var delegate: SelectButtonBusiness!
+    private weak var delegate: SelectButtonBusiness?
     var modelBusiness: ModelBusiness?
     var modelMyBookings: ModelMyBookings?
     var isFetching: Bool = false
@@ -130,11 +130,11 @@ class PresenterBusinessHome {
     }
     
     func addAppointmentTapped() {
-        delegate.addAppointmentTapped(modelBusiness: modelBusiness)
+        delegate?.addAppointmentTapped(modelBusiness: modelBusiness)
     }
     
     func showAppointmentTapped(turn: Turn) {
-        delegate.showAppointmentTapped(turn: turn)
+        delegate?.showAppointmentTapped(turn: turn)
     }
     
     func appointmentConfirmed(bookedTurn: Turn) {

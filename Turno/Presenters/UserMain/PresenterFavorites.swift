@@ -20,7 +20,7 @@ class PresenterFavorites {
     // MARK: - Properties
     private weak var view: PresenterFavoritesView?
     private var networkManager: NetworkManagerProtocol
-    var delegate: SelectButtonEntity!
+    private weak var delegate: SelectButtonEntity?
     var modelList = [ModelBusiness]()
     
     // MARK: - init Methods

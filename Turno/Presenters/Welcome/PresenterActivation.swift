@@ -21,7 +21,7 @@ class PresenterActivation: NSObject {
     // MARK: - Properties
     private weak var view: PresenterActivationView!
     private var networkManager: NetworkManagerProtocol
-    private var delegate: SelectButtonWelcome?
+    private weak var delegate: SelectButtonWelcome?
     var modelSignUp: ModelSignUp?
     
     // MARK: - Public Interface

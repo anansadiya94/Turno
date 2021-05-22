@@ -19,7 +19,7 @@ class PresenterInstallation {
     // MARK: - Properties
     private weak var view: PresenterInstallationView!
     private var networkManager: NetworkManagerProtocol
-    private var delegate: SelectButtonWelcome?
+    private weak var delegate: SelectButtonWelcome?
     
     // MARK: - Public Interface
     init(view: PresenterInstallationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonWelcome) {

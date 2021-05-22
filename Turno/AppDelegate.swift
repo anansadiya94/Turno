@@ -17,13 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private let networkManager: NetworkManagerProtocol = NetworkManager()
     
+    private var appCoordinator: AppCoordinator?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         setAppFont()
-        let appCoordinator: AppCoordinator!
         appCoordinator = AppCoordinator(window: window!, navigationController: UINavigationController(), networkManager: networkManager)
-        appCoordinator.start()
+        appCoordinator?.start()
         
         FirebaseApp.configure()
         
