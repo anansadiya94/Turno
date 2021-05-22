@@ -114,6 +114,7 @@ class PresenterBusinessHome {
         
         let modelTask = ModelMyBookingTask(lastStatusCheck: lastStatusCheck?.description)
         networkManager.getMyBookings(modelTask: modelTask) { (modelMyBookings, error) in
+            self.isFetching = false
             if let error = error as? AppError {
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -131,6 +132,10 @@ class PresenterBusinessHome {
     
     func addAppointmentTapped() {
         delegate?.addAppointmentTapped(modelBusiness: modelBusiness)
+    }
+    
+    func refreshTapped() {
+        fetchMyBookings()
     }
     
     func showAppointmentTapped(turn: Turn) {

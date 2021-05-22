@@ -9,23 +9,27 @@
 import Foundation
 
 // ONBOADING:
-let kNotificaitonButtonOnboardingCellTapped = "buttonOnBoardingCellTapped"
+let kNotificationButtonOnboardingCellTapped = "buttonOnBoardingCellTapped"
 
 // ALERTS:
-let kNotificaitonAlertButton1Tapped = "alertButton1Tapped"
-let kNotificaitonAlertButton2Tapped = "alertButton2Tapped"
+let kNotificationAlertButton1Tapped = "alertButton1Tapped"
+let kNotificationAlertButton2Tapped = "alertButton2Tapped"
 
 // GenericEntity:
-let kNotificaitonGenericEntityCellIsFavoriteTapped = "genericEntityCellIsFavoriteTapped"
-let kNotificaitonGenericEntityCellTapped = "genericEntityCellTapped"
+let kNotificationGenericEntityCellIsFavoriteTapped = "genericEntityCellIsFavoriteTapped"
+let kNotificationGenericEntityCellTapped = "genericEntityCellTapped"
 
 // Appointments:
-let kNotificaitonCancelTapped = "cancelTapped"
-let kNotificaitonCallNowTapped = "callNowTapped"
-let kNotificaitonAppointmentConfirmed = "appointmentConfirmed"
+let kNotificationCancelTapped = "cancelTapped"
+let kNotificationCallNowTapped = "callNowTapped"
+let kNotificationAppointmentConfirmed = "appointmentConfirmed"
 
 // Business:
-let kNotificaitonBusinessModifyModel = "modifyModel"
+let kNotificationBusinessModifyModel = "modifyModel"
 
 // Blocked users:
-let kNotificaitonUnblockTapped = "unblockTapped"
+let kNotificationUnblockTapped = "unblockTapped"
+
+// Settings:
+let kNotificationChangeToUserTapped = "changeToUserTapped"
+let kNotificationChangeToBusinessTapped = "changeToBusinessTapped"

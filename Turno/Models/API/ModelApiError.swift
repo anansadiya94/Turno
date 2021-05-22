@@ -12,3 +12,8 @@ protocol ModelApiError {
     var title: String? { get }
     var message: String? { get }
 }
+
+struct ApiError: Codable, ModelApiError {
+    var title: String?
+    var message: String?
+}

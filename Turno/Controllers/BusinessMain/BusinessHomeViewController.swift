@@ -27,9 +27,9 @@ class BusinessHomeViewController: DayViewController {
         dayView.autoScrollToFirstEvent = true
         addObserver()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+ 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         presenterHome.fetchMyBookings()
     }
     
@@ -42,8 +42,8 @@ class BusinessHomeViewController: DayViewController {
         for turn in turns {
             if let services = turn.services,
                let beginningTime = turn.dateTimeUTC?.toDate() {
-                let survicesDuration = ServiceTimeCalculation.calculateDuration(to: services)
-                guard let endDate = Calendar.current.date(byAdding: .minute, value: survicesDuration, to: beginningTime) else { break }
+                let servicesDuration = ServiceTimeCalculation.calculateDuration(to: services)
+                guard let endDate = Calendar.current.date(byAdding: .minute, value: servicesDuration, to: beginningTime) else { break }
                 
                 events.append(createEvent(turn: turn,
                                           data: turn.userName ?? "",
@@ -72,6 +72,9 @@ class BusinessHomeViewController: DayViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
                                                             style: .plain, target: self, action: #selector(addTapped))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"),
+                                                            style: .plain, target: self, action: #selector(refreshTapped))
     }
     
     private func createEvent(turn: Turn?, data: String, startDate: Date, endDate: Date) -> Event {
@@ -101,6 +104,10 @@ class BusinessHomeViewController: DayViewController {
     // MARK: - UI interaction methods
     @objc func addTapped() {
         presenterHome.addAppointmentTapped()
+    }
+    
+    @objc func refreshTapped() {
+        presenterHome.refreshTapped()
     }
     
     @objc func appointmentConfirmedAction(_ notification: NSNotification) {

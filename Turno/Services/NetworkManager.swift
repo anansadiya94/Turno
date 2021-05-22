@@ -164,7 +164,13 @@ class NetworkManager: NetworkManagerProtocol {
                 case 200:
                     completion(true, nil)
                 default:
-                    break
+                    let decoder = JSONDecoder()
+                    do {
+                        let apiError = try decoder.decode(ApiError.self, from: value.data)
+                        completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
+                    } catch let error {
+                        completion(nil, error)
+                    }
                 }
             }
         }
@@ -312,7 +318,13 @@ class NetworkManager: NetworkManagerProtocol {
                 case 200:
                     completion(true, nil)
                 default:
-                    completion(false, nil)
+                    let decoder = JSONDecoder()
+                    do {
+                        let apiError = try decoder.decode(ApiError.self, from: value.data)
+                        completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
+                    } catch let error {
+                        completion(nil, error)
+                    }
                 }
             }
         }
@@ -328,7 +340,13 @@ class NetworkManager: NetworkManagerProtocol {
                 case 200:
                     completion(true, nil)
                 default:
-                    completion(false, nil)
+                    let decoder = JSONDecoder()
+                    do {
+                        let apiError = try decoder.decode(ApiError.self, from: value.data)
+                        completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
+                    } catch let error {
+                        completion(nil, error)
+                    }
                 }
             }
         }

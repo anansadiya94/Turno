@@ -73,11 +73,7 @@ extension UserMainCoordinator {
     }
     
     func showBusinessMainScreen() {
-        let mainCoordinator = BusinessMainCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
-        let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
-                                                          networkManager: networkManager,
-                                                          delegate: mainCoordinator)
-        window.rootViewController = screen
+        NotificationCenter.default.post(name: Settings.changeToBusiness, object: nil, userInfo: nil)
     }
     
     func showWebViewController(for type: WebViewType) {

@@ -89,11 +89,7 @@ extension BusinessMainCoordinator {
     }
     
     func showUserMainScreen() {
-        let mainCoordinator = UserMainCoordinator(window: window, navigationController: navigationController, networkManager: networkManager)
-        let screen = ScreenFactory.makeUserMainScreen(networkManager: networkManager,
-                                                      navigationController: navigationController,
-                                                      delegate: mainCoordinator)
-        window.rootViewController = screen
+        NotificationCenter.default.post(name: Settings.changeToUser, object: nil, userInfo: nil)
     }
     
     func showBlockedUsersScreen() {

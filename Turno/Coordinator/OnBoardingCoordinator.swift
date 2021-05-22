@@ -34,6 +34,8 @@ class OnBoardingCoordinator: Coordinator {
         businessMainCoordinator = BusinessMainCoordinator(window: window,
                                                           navigationController: navigationController,
                                                           networkManager: networkManager)
+        
+        addObservers()
     }
     
     func start() {
@@ -71,14 +73,14 @@ extension OnBoardingCoordinator {
         window.rootViewController = screen
     }
     
-    func showMainScreen() {
+    @objc func showMainScreen() {
         let screen = ScreenFactory.makeUserMainScreen(networkManager: networkManager,
                                                       navigationController: navigationController,
                                                       delegate: userMainCoordinator)
         window.rootViewController = screen
     }
     
-    func showBusinessMainScreen() {
+    @objc func showBusinessMainScreen() {
         let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
                                                           networkManager: networkManager,
                                                           delegate: businessMainCoordinator)
@@ -89,5 +91,14 @@ extension OnBoardingCoordinator {
 extension OnBoardingCoordinator: SelectButtonOnboarding {
     func didSelectOnboardingButton() {
         showWelcomeScreen()
+    }
+}
+
+private extension OnBoardingCoordinator {
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showMainScreen),
+                                               name: Settings.changeToUser, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showBusinessMainScreen),
+                                               name: Settings.changeToBusiness, object: nil)
     }
 }
