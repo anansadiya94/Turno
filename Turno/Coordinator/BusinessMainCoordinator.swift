@@ -48,8 +48,9 @@ extension BusinessMainCoordinator {
     }
     
     func showAppointmentScreen(turn: Turn) {
-        let confirmationScreenModel = ConfirmationScreenModel(identifier: turn.identifier,
+        let confirmationScreenModel = ConfirmationScreenModel(userId: turn.userId,
                                                               name: turn.userName,
+                                                              turnId: turn.identifier,
                                                               bookedServices: turn.services,
                                                               bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true),
                                                               confirmationViewType: .business,
@@ -74,10 +75,11 @@ extension BusinessMainCoordinator {
         pushViewByHomeInnerViewController(screen: screen)
     }
     
-    func showConfirmationScreen(identifier: String?, name: String?, bookedServices: [Service]?,
-                                bookedSlot: EmptySlot?, customer: Customer?) {
-        let confirmationScreenModel = ConfirmationScreenModel(identifier: identifier,
+    func showConfirmationScreen(userId: String?, name: String?, turnId: String?,
+                                bookedServices: [Service]?, bookedSlot: EmptySlot?, customer: Customer?) {
+        let confirmationScreenModel = ConfirmationScreenModel(userId: userId,
                                                               name: name,
+                                                              turnId: turnId,
                                                               bookedServices: bookedServices,
                                                               bookedSlot: bookedSlot,
                                                               confirmationViewType: .user,
@@ -128,7 +130,12 @@ extension BusinessMainCoordinator: SelectButtonBusiness {
                           bookedServices: [Service]?,
                           bookedSlot: EmptySlot?,
                           customer: Customer?) {
-        showConfirmationScreen(identifier: identifier, name: name, bookedServices: bookedServices, bookedSlot: bookedSlot, customer: customer)
+        showConfirmationScreen(userId: identifier,
+                               name: name,
+                               turnId: nil,
+                               bookedServices: bookedServices,
+                               bookedSlot: bookedSlot,
+                               customer: customer)
     }
     
     func didSelectChangeToUser() {

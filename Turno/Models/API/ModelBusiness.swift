@@ -114,12 +114,13 @@ struct Turn: Codable, ModelApiError {
     var dateTimeUTC: String?
     var userName: String?
     var userPhone: String?
+    var userId: String?
     var services: [Service]?
     var title: String?
     var message: String?
     
     enum CodingKeys: String, CodingKey {
-        case dateTimeUTC, userName, userPhone, services, title, message
+        case dateTimeUTC, userName, userPhone, userId, services, title, message
         case identifier = "turnId"
     }
 }

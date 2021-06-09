@@ -38,8 +38,9 @@ protocol SelectGenericSettings: class {
 }
 
 struct ConfirmationScreenModel {
-    let identifier: String?
+    let userId: String?
     let name: String?
+    let turnId: String?
     let bookedServices: [Service]?
     let bookedSlot: EmptySlot?
     let confirmationViewType: ConfirmationViewType?
@@ -220,7 +221,7 @@ struct ScreenFactory {
         let presenter = PresenterConfirmation(view: viewController,
                                               networkManager: networkManager,
                                               delegate: delegate,
-                                              identifier: identifier,
+                                              userId: identifier,
                                               name: name,
                                               bookedServices: bookedServices,
                                               bookedSlot: bookedSlot,
@@ -234,8 +235,9 @@ struct ScreenFactory {
         let presenter = PresenterConfirmation(view: viewController,
                                               networkManager: networkManager,
                                               delegate: delegate,
-                                              identifier: confirmationScreenModel.identifier,
+                                              userId: confirmationScreenModel.userId,
                                               name: confirmationScreenModel.name,
+                                              turnId: confirmationScreenModel.turnId,
                                               bookedServices: confirmationScreenModel.bookedServices,
                                               bookedSlot: confirmationScreenModel.bookedSlot,
                                               confirmationViewType: confirmationScreenModel.confirmationViewType,

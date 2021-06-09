@@ -24,8 +24,9 @@ class PresenterConfirmation {
     private var networkManager: NetworkManagerProtocol
     private weak var userDelegate: SelectButtonEntity?
     private weak var businessDelegate: SelectButtonBusiness?
-    var identifier: String?
+    var userId: String?
     var name: String?
+    var turnId: String?
     var bookedServices: [Service]?
     var bookedSlot: EmptySlot?
     var confirmationViewType: ConfirmationViewType?
@@ -33,11 +34,11 @@ class PresenterConfirmation {
     
     // MARK: - init Methods
     init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity,
-         identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, confirmationViewType: ConfirmationViewType?) {
+         userId: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, confirmationViewType: ConfirmationViewType?) {
         self.view = view
         self.networkManager = networkManager
         self.userDelegate = delegate
-        self.identifier = identifier
+        self.userId = userId
         self.name = name
         self.bookedServices = bookedServices
         self.bookedSlot = bookedSlot
@@ -46,13 +47,14 @@ class PresenterConfirmation {
     }
     
     init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness,
-         identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
+         userId: String?, name: String?, turnId: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
          confirmationViewType: ConfirmationViewType?, customer: Customer?) {
         self.view = view
         self.networkManager = networkManager
         self.businessDelegate = delegate
-        self.identifier = identifier
+        self.userId = userId
         self.name = name
+        self.turnId = turnId
         self.bookedServices = bookedServices
         self.bookedSlot = bookedSlot
         self.confirmationViewType = confirmationViewType
@@ -96,7 +98,7 @@ class PresenterConfirmation {
     
     private func blockUserConfirmed() {
         self.view?.startWaitingView()
-        let modelBlockUser = ModelBlockUser(userId: identifier)
+        let modelBlockUser = ModelBlockUser(userId: userId)
         networkManager.blockUser(modelBlockUser: modelBlockUser) { _, error in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
@@ -231,7 +233,7 @@ class PresenterConfirmation {
                                  button2: LocalizedConstants.yes_key.localized,
                                  completion: { (_, yes) in
                                     if yes == true {
-                                        self.cancelTurnConfirmed(turnId: self.identifier)
+                                        self.cancelTurnConfirmed(turnId: self.turnId)
                                     }
         })
     }

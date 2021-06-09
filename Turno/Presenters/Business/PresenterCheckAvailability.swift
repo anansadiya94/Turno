@@ -67,7 +67,8 @@ class PresenterCheckAvailability {
     func bookNowButtonTapped(bookedSlot: EmptySlot?) {
         if let userDelegate = userDelegate {
             userDelegate.didSelectConfirm(identifier: identifier,
-                                          name: name, bookedServices: bookedServices,
+                                          name: name,
+                                          bookedServices: bookedServices,
                                           bookedSlot: bookedSlot)
         }
         if let businessDelegate = businessDelegate {
