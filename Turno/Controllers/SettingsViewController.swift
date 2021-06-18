@@ -55,8 +55,7 @@ class SettingsViewController: ParentViewController {
     var presenterSettings: PresenterSettings!
     @UseAutoLayout var genericView = GenericView()
     private var settingsRows: [[SettingsRows]] = [[]]
-    let headerTitles = [LocalizedConstants.account_key.localized,
-                        LocalizedConstants.app_key.localized,
+    let headerTitles = [LocalizedConstants.app_key.localized,
                         LocalizedConstants.business_key.localized]
     
     // MARK: - UIViewController
@@ -88,9 +87,6 @@ class SettingsViewController: ParentViewController {
     }
     
     private func setRows() {
-        let accountSettingRows: [SettingsRows] = [
-            .blockedUsers
-        ]
         let appSettingRows: [SettingsRows] = [
             .notifications,
             .about,
@@ -101,18 +97,17 @@ class SettingsViewController: ParentViewController {
         var businessSettingRows: [SettingsRows] = []
         if Preferences.isBusiness() {
             if AppData.isBusiness {
-                businessSettingRows = [.changeToUser]
+                businessSettingRows = [.changeToUser, .blockedUsers]
             } else {
                 businessSettingRows = [.changeToBusiness]
             }
             
         }
         if businessSettingRows.isEmpty {
-            settingsRows = [accountSettingRows, appSettingRows]
+            settingsRows = [appSettingRows]
         } else {
-            settingsRows = [accountSettingRows, appSettingRows, businessSettingRows]
+            settingsRows = [appSettingRows, businessSettingRows]
         }
-        
     }
 }
 

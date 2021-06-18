@@ -10,7 +10,7 @@ import Foundation
 import WebKit
 
 enum WebViewType: String {
-    case about = "https://tan320200607105243.azurewebsites.net/html/" // TODO: Change this link
+    case about = "https://tan320200607105243.azurewebsites.net/html/about.html"
     case contactUs = "https://tan320200607105243.azurewebsites.net/html/contactus.html"
     case termsOfUse = "https://tan320200607105243.azurewebsites.net/html/termsofuse.html"
     case privacyAndPolicy = "https://tan320200607105243.azurewebsites.net/html/privacyandpolicy.html"
