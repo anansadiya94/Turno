@@ -86,7 +86,7 @@ class ConfirmationView: UIView {
     func createConfirmMessageLabel() {
         confirmMessageLabel.isHidden = true
         addSubview(confirmMessageLabel)
-        confirmMessageLabel.labelTheme = Lightheme(label: LocalizedConstants.confirm_message_key.localized,
+        confirmMessageLabel.labelTheme = LightTheme(label: LocalizedConstants.confirm_message_key.localized,
                                                    fontSize: 18, textColor: .black, textAlignment: .center,
                                                    numberOfLines: 3, adjustsFontSizeToFitWidth: true)
         

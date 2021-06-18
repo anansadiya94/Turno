@@ -9,16 +9,18 @@
 import Foundation
 import WebKit
 
-enum WebViewType: String { // TOOD: Change the urls
-    case about = "https://www.hackingwithswift.com/read/4/2/creating-a-simple-browser-with-wkwebview"
-    case contactUs = "https://www.hackingwithswift.com/read/4/3/choosing-a-website-uialertcontroller-action-sheets"
-    case termsOfUse = "https://www.hackingwithswift.com/read/4/4/monitoring-page-loads-uitoolbar-and-uiprogressview"
+enum WebViewType: String {
+    case about = "https://tan320200607105243.azurewebsites.net/html/" // TODO: Change this link
+    case contactUs = "https://tan320200607105243.azurewebsites.net/html/contactus.html"
+    case termsOfUse = "https://tan320200607105243.azurewebsites.net/html/termsofuse.html"
+    case privacyAndPolicy = "https://tan320200607105243.azurewebsites.net/html/privacyandpolicy.html"
     
     var title: String {
         switch self {
         case .about: return LocalizedConstants.about_key.localized
         case .contactUs: return LocalizedConstants.contact_us_key.localized
         case .termsOfUse: return LocalizedConstants.terms_of_use_key.localized
+        case .privacyAndPolicy: return LocalizedConstants.privacy_policy_key.localized
         }
     }
 }

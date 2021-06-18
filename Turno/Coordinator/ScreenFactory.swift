@@ -9,11 +9,11 @@
 import UIKit
 
 // PROTOCOLS:
-protocol SelectButtonOnboarding: class {
+protocol SelectButtonOnboarding: AnyObject {
     func didSelectOnboardingButton()
 }
 
-protocol SelectButtonWelcome: class {
+protocol SelectButtonWelcome: AnyObject {
     func didSelectWelcomeContinueButton()
     func didSelectAlertYesButton(modelSignUp: ModelSignUp)
     func didOPTTapped(isBusiness: Bool)
@@ -29,11 +29,11 @@ protocol SelectButtonEntity: SelectGenericSettings {
     func didSelectChangeToBusiness()
 }
 
-protocol SelectButtonFavorites: class {
+protocol SelectButtonFavorites: AnyObject {
     func didSelectEntity(id: String)
 }
 
-protocol SelectGenericSettings: class {
+protocol SelectGenericSettings: AnyObject {
     func didSelectSettingsType(webViewType: WebViewType)
 }
 

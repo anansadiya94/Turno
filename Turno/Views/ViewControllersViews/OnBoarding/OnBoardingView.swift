@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CustomPageControlDataSource: class {
+protocol CustomPageControlDataSource: AnyObject {
     func numberOfPages() -> Int
 }
 

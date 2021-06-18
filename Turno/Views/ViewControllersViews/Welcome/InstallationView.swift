@@ -63,7 +63,7 @@ class InstallationView: UIView {
     
     private func addNameTextFieldLabel() {
         nameTextFieldLabel.isHidden = true
-        nameTextFieldLabel.labelTheme = Lightheme(label: "", fontSize: 10, textColor: .red, textAlignment: .left)
+        nameTextFieldLabel.labelTheme = LightTheme(label: "", fontSize: 10, textColor: .red, textAlignment: .left)
         NSLayoutConstraint.activate([
             nameTextFieldLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor),
             nameTextFieldLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
@@ -84,7 +84,7 @@ class InstallationView: UIView {
     
     private func addPhoneNumberTextFieldLabel() {
         phoneNumberTextFieldLabel.isHidden = true
-        phoneNumberTextFieldLabel.labelTheme = Lightheme(label: "", fontSize: 10, textColor: .red, textAlignment: .left)
+        phoneNumberTextFieldLabel.labelTheme = LightTheme(label: "", fontSize: 10, textColor: .red, textAlignment: .left)
         NSLayoutConstraint.activate([
             phoneNumberTextFieldLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor),
             phoneNumberTextFieldLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),

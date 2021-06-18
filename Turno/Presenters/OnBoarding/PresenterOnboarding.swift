@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PresenterOnboardingView: class {
+protocol PresenterOnboardingView: AnyObject {
     func setPages(num: Int)
     func didSetData()
     func nextCell()

@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 
-protocol PresenterBusinessHomeView: class {
+protocol PresenterBusinessHomeView: AnyObject {
     func didSetData(modelBusiness: ModelBusiness, modelMyBookings: ModelMyBookings)
     func startWaitingView()
     func stopWaitingView()

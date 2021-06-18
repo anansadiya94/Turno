@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol BusinessAppointmentTableViewCellDelegate: class {
+protocol BusinessAppointmentTableViewCellDelegate: AnyObject {
     func cancelButtonTapped(turnId: String?)
 }
 

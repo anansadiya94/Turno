@@ -72,7 +72,7 @@ struct RegularTheme: CustomLabelTheme {
     }
 }
 
-struct Lightheme: CustomLabelTheme {
+struct LightTheme: CustomLabelTheme {
     var textAlignment: NSTextAlignment
     var label: String
     var font: UIFont

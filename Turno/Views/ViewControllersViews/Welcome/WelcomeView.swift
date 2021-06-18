@@ -13,7 +13,7 @@ class WelcomeView: UIView {
     // MARK: - Properties
     @UseAutoLayout var logoImageView = UIImageView()
     @UseAutoLayout var welcomeLabel = CustomLabel()
-    @UseAutoLayout var benefintsLabel = CustomLabel()
+    @UseAutoLayout var benefitsLabel = CustomLabel()
     @UseAutoLayout var continueLabel = CustomLabel()
     @UseAutoLayout var continueButton = RoundedCustomButtonWithMargin()
     @UseAutoLayout var footerView = UIView()
@@ -40,7 +40,7 @@ class WelcomeView: UIView {
         addSubviews()
         addContinueLabel()
         addContinueButton()
-        addBenefintsLabel()
+        addBenefitsLabel()
         addWelcomeLabel()
         addLogoImageView()
         addFooterView()
@@ -49,7 +49,7 @@ class WelcomeView: UIView {
     private func addSubviews() {
         self.addSubview(logoImageView)
         self.addSubview(welcomeLabel)
-        self.addSubview(benefintsLabel)
+        self.addSubview(benefitsLabel)
         self.addSubview(continueLabel)
         self.addSubview(continueButton)
         self.addSubview(footerView)
@@ -74,14 +74,14 @@ class WelcomeView: UIView {
         ])
     }
     
-    private func addBenefintsLabel() {
-        benefintsLabel.labelTheme = Lightheme(label: LocalizedConstants.benefits_text_key.localized,
+    private func addBenefitsLabel() {
+        benefitsLabel.labelTheme = LightTheme(label: LocalizedConstants.benefits_text_key.localized,
                                               fontSize: 15, textColor: .black, textAlignment: .center)
         NSLayoutConstraint.activate([
-            benefintsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            benefintsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
-            benefintsLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
-            benefintsLabel.bottomAnchor.constraint(equalTo: continueLabel.topAnchor, constant: -kSuperViewMargin*2)
+            benefitsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            benefitsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
+            benefitsLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
+            benefitsLabel.bottomAnchor.constraint(equalTo: continueLabel.topAnchor, constant: -kSuperViewMargin*2)
         ])
     }
     
@@ -92,7 +92,7 @@ class WelcomeView: UIView {
             welcomeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             welcomeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kSuperViewMargin),
             welcomeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kSuperViewMargin),
-            welcomeLabel.bottomAnchor.constraint(equalTo: benefintsLabel.topAnchor, constant: -kSuperViewMargin)
+            welcomeLabel.bottomAnchor.constraint(equalTo: benefitsLabel.topAnchor, constant: -kSuperViewMargin)
         ])
     }
     
