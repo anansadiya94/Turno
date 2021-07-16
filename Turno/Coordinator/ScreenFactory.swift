@@ -190,6 +190,7 @@ struct ScreenFactory {
         return viewController
     }
     
+    // swiftlint:disable:next function_parameter_count
     static func makeCheckAvailabilityScreen(networkManager: NetworkManagerProtocol,
                                             delegate: SelectButtonBusiness,
                                             identifier: String?,
@@ -210,6 +211,7 @@ struct ScreenFactory {
         return viewController
     }
     
+    // swiftlint:disable:next function_parameter_count
     static func makeConfirmationScreen(networkManager: NetworkManagerProtocol,
                                        delegate: SelectButtonEntity,
                                        identifier: String?,
