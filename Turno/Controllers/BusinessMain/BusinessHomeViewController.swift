@@ -48,7 +48,7 @@ class BusinessHomeViewController: DayViewController {
                 events.append(createEvent(turn: turn,
                                           data: turn.userName ?? "",
                                           startDate: beginningTime,
-                                          endDate: endDate))
+                                          endDate: endDate.addingTimeInterval(-1)))
             }
         }
         
