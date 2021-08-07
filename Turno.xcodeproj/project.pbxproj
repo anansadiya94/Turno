@@ -172,6 +172,7 @@
 		E172B9CE25FB445A005E32D9 /* OneTimeCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */; };
 		E17B63802616F4D300AE0574 /* ModelFcmToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17B637F2616F4D300AE0574 /* ModelFcmToken.swift */; };
 		E188223C26236408003E9B33 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E188223B26236408003E9B33 /* WebViewController.swift */; };
+		E1AA46D026BD5D940019D348 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA46CF26BD5D940019D348 /* Date+Utils.swift */; };
 		E1D6A8BE2603DF6B00691CBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D6A8BD2603DF6B00691CBD /* GoogleService-Info.plist */; };
 		E1D6A9552603F64300691CBD /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6A9542603F64300691CBD /* PushNotificationManager.swift */; };
 /* End PBXBuildFile section */
@@ -349,6 +350,7 @@
 		E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeTextField.swift; sourceTree = "<group>"; };
 		E17B637F2616F4D300AE0574 /* ModelFcmToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFcmToken.swift; sourceTree = "<group>"; };
 		E188223B26236408003E9B33 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		E1AA46CF26BD5D940019D348 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		E1D6A8BD2603DF6B00691CBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1D6A9542603F64300691CBD /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -663,6 +665,7 @@
 				9EED2F8124A3D35100598586 /* UIView+RoundCorners.swift */,
 				9E418CF624A8FAF900232082 /* UIView+AddShadow.swift */,
 				9E4DE1B224C3457700EC1FF2 /* UIImageView+Utils.swift */,
+				E1AA46CF26BD5D940019D348 /* Date+Utils.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -1201,6 +1204,7 @@
 				9EA657C8248813B700F7952A /* ModelOnboarding.swift in Sources */,
 				9EA657DD2488159400F7952A /* UIColor+Color.swift in Sources */,
 				9EB292CD25223D8A00BB6437 /* PresenterAddAppointment.swift in Sources */,
+				E1AA46D026BD5D940019D348 /* Date+Utils.swift in Sources */,
 				9EC192FB259CF38100A0DBC9 /* ModelMyBlockedList.swift in Sources */,
 				9E5AD83224C89B4D00100526 /* UIViewController+CallNumber.swift in Sources */,
 				9EA6582524881ACD00F7952A /* OnBoardingCoordinator.swift in Sources */,
@@ -1410,7 +1414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Turno/Turno.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = VXYG7MS5HY;
 				INFOPLIST_FILE = Turno/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1432,7 +1436,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Turno/Turno.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = VXYG7MS5HY;
 				INFOPLIST_FILE = Turno/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

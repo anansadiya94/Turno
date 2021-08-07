@@ -32,17 +32,42 @@ protocol NetworkManagerProtocol {
 
 class NetworkManager: NetworkManagerProtocol {
     
+    private enum DateError: String, Error {
+        case invalidDate
+    }
+    
     let provider = MoyaProvider<APIRouter>()
+    private let decoder = JSONDecoder()
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+    
+    init() {
+        decoder.dateDecodingStrategy = .custom({ (decoder) -> Date in
+            let container = try decoder.singleValueContainer()
+            let dateStr = try container.decode(String.self)
+            
+            if let date = self.dateFormatter.date(from: dateStr) {
+                return date
+            }
+            throw DateError.invalidDate
+        })
+    }
     
     func signUp(modelTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void) {
-        provider.request(.signUp(modelSignUpTask: modelTask)) { result in
+        provider.request(.signUp(modelSignUpTask: modelTask)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let modelSignUp = try decoder.decode(ModelSignUp.self, from: value.data)
+                    let modelSignUp = try self.decoder.decode(ModelSignUp.self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(modelSignUp, nil)
@@ -57,14 +82,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func verify(modelTask: ModelVerifyTask, completion: @escaping (ModelVerify?, Error?) -> Void) {
-        provider.request(.verify(modelVerifyTask: modelTask)) { result in
+        provider.request(.verify(modelVerifyTask: modelTask)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let modelVerify = try decoder.decode(ModelVerify.self, from: value.data)
+                    let modelVerify = try self.decoder.decode(ModelVerify.self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(modelVerify, nil)
@@ -79,14 +104,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func getBusinesses(modelTask: ModelBusinessTask, completion: @escaping ([ModelBusiness]?, Error?) -> Void) {
-        provider.request(.getBusinesses(modelBusinessTask: modelTask)) { result in
+        provider.request(.getBusinesses(modelBusinessTask: modelTask)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let modelList = try decoder.decode([ModelBusiness].self, from: value.data)
+                    let modelList = try self.decoder.decode([ModelBusiness].self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(modelList, nil)
@@ -101,14 +126,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func getFavorites(completion: @escaping ([ModelBusiness]?, Error?) -> Void) {
-        provider.request(.getFavorites) { result in
+        provider.request(.getFavorites) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let modelList = try decoder.decode([ModelBusiness].self, from: value.data)
+                    let modelList = try self.decoder.decode([ModelBusiness].self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(modelList, nil)
@@ -155,7 +180,8 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func cancelTurn(modelTask: ModelCancelTurnTask, completion: @escaping (Bool?, Error?) -> Void) {
-        provider.request(.cancelTurn(modelCancelTurnTask: modelTask)) { result in
+        provider.request(.cancelTurn(modelCancelTurnTask: modelTask)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -164,9 +190,8 @@ class NetworkManager: NetworkManagerProtocol {
                 case 200:
                     completion(true, nil)
                 default:
-                    let decoder = JSONDecoder()
                     do {
-                        let apiError = try decoder.decode(ApiError.self, from: value.data)
+                        let apiError = try self.decoder.decode(ApiError.self, from: value.data)
                         completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
                     } catch let error {
                         completion(nil, error)
@@ -177,14 +202,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func getAvailableTimes(modelTask: ModelCheckTurnsAvailabilityTask, completion: @escaping (ModelCheckTurnsAvailability?, Error?) -> Void) {
-        provider.request(.getAvailableTimes(modelCheckTurnsAvailabilityTask: modelTask)) { result in
+        provider.request(.getAvailableTimes(modelCheckTurnsAvailabilityTask: modelTask)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let modelList = try decoder.decode(ModelCheckTurnsAvailability.self, from: value.data)
+                    let modelList = try self.decoder.decode(ModelCheckTurnsAvailability.self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(modelList, nil)
@@ -199,14 +224,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func book(modelTask: ModelBookTask, completion: @escaping (Turn?, Error?) -> Void) {
-        provider.request(.book(modelBookTask: modelTask)) { result in
+        provider.request(.book(modelBookTask: modelTask)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let turn = try decoder.decode(Turn.self, from: value.data)
+                    let turn = try self.decoder.decode(Turn.self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(turn, nil)
@@ -221,14 +246,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func bookByBusiness(modelTask: ModelBookByBusinessTask, completion: @escaping (Turn?, Error?) -> Void) {
-        provider.request(.bookByBusiness(modelBookByBusinessTask: modelTask)) { result in
+        provider.request(.bookByBusiness(modelBookByBusinessTask: modelTask)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let turn = try decoder.decode(Turn.self, from: value.data)
+                    let turn = try self.decoder.decode(Turn.self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(turn, nil)
@@ -243,14 +268,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func getMyBusiness(completion: @escaping (ModelBusiness?, Error?) -> Void) {
-        provider.request(.getMyBusiness) { result in
+        provider.request(.getMyBusiness) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let modelBusiness = try decoder.decode(ModelBusiness.self, from: value.data)
+                    let modelBusiness = try self.decoder.decode(ModelBusiness.self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(modelBusiness, nil)
@@ -265,14 +290,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func getMyBookings(modelTask: ModelMyBookingTask, completion: @escaping (ModelMyBookings?, Error?) -> Void) {
-        provider.request(.getMyBookings(modelMyBookingTask: modelTask)) { result in
+        provider.request(.getMyBookings(modelMyBookingTask: modelTask)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let modelMyBookings = try decoder.decode(ModelMyBookings.self, from: value.data)
+                    let modelMyBookings = try self.decoder.decode(ModelMyBookings.self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(modelMyBookings, nil)
@@ -287,14 +312,14 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func getMyBlockedList(completion: @escaping ([ModelBlockedUser]?, Error?) -> Void) {
-        provider.request(.getMyBlockedList) { result in
+        provider.request(.getMyBlockedList) { [weak self]result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
             case .success(let value):
-                let decoder = JSONDecoder()
                 do {
-                    let modelList = try decoder.decode([ModelBlockedUser].self, from: value.data)
+                    let modelList = try self.decoder.decode([ModelBlockedUser].self, from: value.data)
                     switch value.statusCode {
                     case 200:
                         completion(modelList, nil)
@@ -309,7 +334,8 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func unblockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void) {
-        provider.request(.unblockUser(modelBlockUser: modelBlockUser)) { result in
+        provider.request(.unblockUser(modelBlockUser: modelBlockUser)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -318,9 +344,8 @@ class NetworkManager: NetworkManagerProtocol {
                 case 200:
                     completion(true, nil)
                 default:
-                    let decoder = JSONDecoder()
                     do {
-                        let apiError = try decoder.decode(ApiError.self, from: value.data)
+                        let apiError = try self.decoder.decode(ApiError.self, from: value.data)
                         completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
                     } catch let error {
                         completion(nil, error)
@@ -331,7 +356,8 @@ class NetworkManager: NetworkManagerProtocol {
     }
     
     func blockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void) {
-        provider.request(.blockUser(modelBlockUser: modelBlockUser)) { result in
+        provider.request(.blockUser(modelBlockUser: modelBlockUser)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completion(nil, error)
@@ -340,9 +366,8 @@ class NetworkManager: NetworkManagerProtocol {
                 case 200:
                     completion(true, nil)
                 default:
-                    let decoder = JSONDecoder()
                     do {
-                        let apiError = try decoder.decode(ApiError.self, from: value.data)
+                        let apiError = try self.decoder.decode(ApiError.self, from: value.data)
                         completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
                     } catch let error {
                         completion(nil, error)

@@ -110,15 +110,15 @@ class AppointmentTableViewCell: UITableViewCell {
                                           fontSize: 30,
                                           textColor: .white,
                                           textAlignment: .center)
-        dayLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toDisplayDay() ?? "",
+        dayLabel.labelTheme = BoldTheme(label: model.turn?.dateTimeUTC?.toString().toDisplayDay() ?? "",
                                          fontSize: 18,
                                          textColor: .black,
                                          textAlignment: .natural)
         
-        let date = model.turn?.dateTimeUTC?.toDisplayableDate(type: .date) ?? ""
-        let starTime = model.turn?.dateTimeUTC?.toDisplayableDate(type: .hour) ?? ""
+        let date = model.turn?.dateTimeUTC?.toString().toDisplayableDate(type: .date) ?? ""
+        let starTime = model.turn?.dateTimeUTC?.toString().toDisplayableDate(type: .hour) ?? ""
         let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: model.turn?.services)
-        let endTimeDate = model.turn?.dateTimeUTC?.calculateEndDate(adding: bookedServicesDuration)
+        let endTimeDate = model.turn?.dateTimeUTC?.toString().calculateEndDate(adding: bookedServicesDuration)
         let endTime = endTimeDate?.toDisplayableDate(type: .hour) ?? ""
         
         let dateLabelString = date + ", " + starTime + "-" + endTime

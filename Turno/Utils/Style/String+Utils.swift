@@ -57,16 +57,6 @@ extension String {
         return nil
     }
     
-    func fromDisplayableHourToFormatted() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        guard let date = dateFormatter.date(from: self) else {
-            return self
-        }
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return dateFormatter.string(from: date)
-    }
-    
     func toDisplayDay() -> String? {
         if let date = self.toDate() {
             let dateFormatter = DateFormatter()

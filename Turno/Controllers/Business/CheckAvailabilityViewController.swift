@@ -52,7 +52,7 @@ class CheckAvailabilityViewController: ParentViewController {
         checkAvailabilityView.bookNowButton.addTarget(self, action: #selector(bookNowButtonTapped), for: .touchUpInside)
     }
     
-    private func mapEmptySlots(from availableDates: [String: [String]], forKey key: String) {
+    private func mapEmptySlots(from availableDates: [String: [Date]], forKey key: String) {
         emptySlots = []
         if let emptySlots = availableDates[key] {
             emptySlots.forEach({ self.emptySlots.append(EmptySlot(slot: $0, selected: false)) })

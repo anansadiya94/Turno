@@ -75,15 +75,15 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
     func config(turn: Turn) {
         self.identifier = turn.identifier
         
-        dayLabel.labelTheme = BoldTheme(label: turn.dateTimeUTC?.toDisplayDay() ?? "",
+        dayLabel.labelTheme = BoldTheme(label: turn.dateTimeUTC?.toString().toDisplayDay() ?? "",
                                          fontSize: 18,
                                          textColor: .black,
                                          textAlignment: .natural)
         
-        let date = turn.dateTimeUTC?.toDisplayableDate(type: .date) ?? ""
-        let starTime = turn.dateTimeUTC?.toDisplayableDate(type: .hour) ?? ""
+        let date = turn.dateTimeUTC?.toString().toDisplayableDate(type: .date) ?? ""
+        let starTime = turn.dateTimeUTC?.toString().toDisplayableDate(type: .hour) ?? ""
         let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: turn.services)
-        let endTimeDate = turn.dateTimeUTC?.calculateEndDate(adding: bookedServicesDuration)
+        let endTimeDate = turn.dateTimeUTC?.toString().calculateEndDate(adding: bookedServicesDuration)
         let endTime = endTimeDate?.toDisplayableDate(type: .hour) ?? ""
         
         let dateLabelString = date + ", " + starTime + "-" + endTime

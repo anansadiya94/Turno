@@ -81,10 +81,10 @@ extension ConfirmationViewController: PresenterConfirmationView {
     func didSetData(name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
                     confirmationViewType: ConfirmationViewType?) {
         self.bookedServices = bookedServices
-        let day = bookedSlot?.slot?.toDisplayableDate(type: .date)
-        let startTime = bookedSlot?.slot?.toDisplayableDate(type: .hour)
+        let day = bookedSlot?.slot?.toString().toDisplayableDate(type: .date)
+        let startTime = bookedSlot?.slot?.toString().toDisplayableDate(type: .hour)
         let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: bookedServices)
-        let endTimeDate = bookedSlot?.slot?.calculateEndDate(adding: bookedServicesDuration)
+        let endTimeDate = bookedSlot?.slot?.toString().calculateEndDate(adding: bookedServicesDuration)
         let endTime = endTimeDate?.toDisplayableDate(type: .hour)
         DispatchQueue.main.async {
             self.navigationItem.title = name

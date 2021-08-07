@@ -41,7 +41,7 @@ class BusinessHomeViewController: DayViewController {
         
         for turn in turns {
             if let services = turn.services,
-               let beginningTime = turn.dateTimeUTC?.toDate() {
+               let beginningTime = turn.dateTimeUTC {
                 let servicesDuration = ServiceTimeCalculation.calculateDuration(to: services)
                 guard let endDate = Calendar.current.date(byAdding: .minute, value: servicesDuration, to: beginningTime) else { break }
                 

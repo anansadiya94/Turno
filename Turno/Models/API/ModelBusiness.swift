@@ -57,9 +57,9 @@ struct ModelBusiness: Codable, ModelApiError {
         for (index, openingHour) in openingHours.enumerated() {
             if let day = openingHour.day,
                let startTime = openingHour.startTime,
-               let startTimeToShow = startTime.toDisplayableDate(type: .hour),
+               let startTimeToShow = startTime.toString().toDisplayableDate(type: .hour),
                let endTime = openingHour.endTime,
-               let endTimeToShow = endTime.toDisplayableDate(type: .hour) {
+               let endTimeToShow = endTime.toString().toDisplayableDate(type: .hour) {
                 description.append("\(weekdays[day-1]): \(startTimeToShow) - \(endTimeToShow)")
                 if index != openingHours.count - 1 {
                     description.append("\n")
@@ -106,12 +106,12 @@ struct ModelBusiness: Codable, ModelApiError {
 
 struct OpeningHour: Codable {
     let day: Int?
-    let startTime, endTime: String?
+    let startTime, endTime: Date?
 }
 
 struct Turn: Codable, ModelApiError {
     var identifier: String?
-    var dateTimeUTC: String?
+    var dateTimeUTC: Date?
     var userName: String?
     var userPhone: String?
     var userId: String?

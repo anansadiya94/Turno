@@ -82,7 +82,7 @@ class PresenterConfirmation {
             if let bookedTurn = bookedTurn {
                 let bookedTurnDict: [String: Turn] = ["bookedTurn": bookedTurn]
                 NotificationCenter.default.post(name: Appointments.appointmentConfirmed, object: nil,
-                userInfo: bookedTurnDict)
+                                                userInfo: bookedTurnDict)
             }
         }
         if businessDelegate != nil {
@@ -91,7 +91,7 @@ class PresenterConfirmation {
                 bookedTurn.userPhone = customer?.phoneNumber
                 let bookedTurnDict: [String: Turn] = ["bookedTurn": bookedTurn]
                 NotificationCenter.default.post(name: Appointments.appointmentConfirmed, object: nil,
-                userInfo: bookedTurnDict)
+                                                userInfo: bookedTurnDict)
             }
         }
     }
@@ -160,7 +160,7 @@ class PresenterConfirmation {
         bookedServices?.forEach({ servicesToBook.append(ServiceToBook(identifier: $0.identifier,
                                                                       count: $0.count)) })
         let modelBookTask = ModelBookTask(servicesToBook: servicesToBook,
-                                          dateTime: bookedSlot?.slot?.fromDisplayableHourToFormatted())
+                                          dateTime: bookedSlot?.slot?.toGlobalTimeString())
         networkManager.book(modelTask: modelBookTask) { bookedTurn, error in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
@@ -189,9 +189,9 @@ class PresenterConfirmation {
         bookedServices?.forEach({ servicesToBook.append(ServiceToBook(identifier: $0.identifier,
                                                                       count: $0.count)) })
         let modelBookByBusinessTask = ModelBookByBusinessTask(servicesToBook: servicesToBook,
-                                          dateTime: bookedSlot?.slot?.fromDisplayableHourToFormatted(),
-                                          phoneNumber: customer?.phoneNumber,
-                                          fullName: customer?.name)
+                                                              dateTime: bookedSlot?.slot?.toGlobalTimeString(),
+                                                              phoneNumber: customer?.phoneNumber,
+                                                              fullName: customer?.name)
         networkManager.bookByBusiness(modelTask: modelBookByBusinessTask) { bookedTurn, error in
             if error as? MoyaError != nil {
                 self.view?.stopWaitingView()
@@ -235,7 +235,7 @@ class PresenterConfirmation {
                                     if yes == true {
                                         self.cancelTurnConfirmed(turnId: self.turnId)
                                     }
-        })
+                                 })
     }
     
     func callNowButtonTapped() {

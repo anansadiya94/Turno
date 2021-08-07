@@ -23,20 +23,20 @@ struct ServiceToBook: Codable {
 }
 
 struct ModelCheckTurnsAvailability: Codable, ModelApiError {
-    let availableDates: [String: [String]]?
+    let availableDates: [String: [Date]]?
     var title: String?
     var message: String?
     
-    init(availableDates: [String: [String]]? = nil) {
+    init(availableDates: [String: [Date]]? = nil) {
         self.availableDates = availableDates
     }
 }
 
 class EmptySlot {
-    var slot: String?
+    var slot: Date?
     var selected: Bool = false
     
-    init(slot: String? = nil, selected: Bool = false) {
+    init(slot: Date? = nil, selected: Bool = false) {
         self.slot = slot
         self.selected = selected
     }
