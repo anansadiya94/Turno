@@ -37,6 +37,11 @@ class PresenterUserHome {
         self.view?.didSetData(model: genericListDescriptive)
     }
     
+    private func showGenericEmptyMessage() {
+        view?.showEmptyMessage(title: LocalizedConstants.generic_error_title_key.localized,
+                               message: LocalizedConstants.home_error_message_key.localized)
+    }
+    
     // MARK: - Public Interface
     func fetchData() {
         self.view?.startWaitingView()
@@ -50,6 +55,9 @@ class PresenterUserHome {
                                          withButton: LocalizedConstants.ok_key.localized.localized, button2: nil) { _, _ in
                     self.view?.showEmptyMessage(title: LocalizedConstants.generic_error_title_key.localized,
                                                 message: LocalizedConstants.home_error_message.localized)
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil) { _, _ in
+                    self.showGenericEmptyMessage()
                 }
                 return
             }
@@ -60,6 +68,9 @@ class PresenterUserHome {
                                          withButton: LocalizedConstants.ok_key.localized.localized, button2: nil) { _, _ in
                     self.view?.showEmptyMessage(title: LocalizedConstants.generic_error_title_key.localized,
                                                 message: LocalizedConstants.home_error_message.localized)
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil) { _, _ in
+                    self.showGenericEmptyMessage()
                 }
                 return
             }

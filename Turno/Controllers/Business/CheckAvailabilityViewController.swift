@@ -75,6 +75,7 @@ extension CheckAvailabilityViewController: PresenterCheckAvailabilityView {
                 self.modelAvailableTurnDay.append(ModelAvailableTurnDay(date: $0.key,
                                                                         selected: false))
             })
+            modelAvailableTurnDay.sort { $0.date ?? "" < $1.date ?? "" }
             modelAvailableTurnDay[0].selected = true
             if let firstKey = modelAvailableTurnDay[0].date {
                 mapEmptySlots(from: availableDates, forKey: firstKey)

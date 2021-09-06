@@ -89,16 +89,22 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
 extension UserHomeViewController: PresenterUserHomeView {
     func didSetData(model: GenericListDescriptive) {
         self.source = model
-        genericView.tableView.reloadData()
-        refreshControl.endRefreshing()
+        DispatchQueue.main.async {
+            self.genericView.tableView.reloadData()
+        }
+        
     }
     
     func showEmptyMessage(title: String, message: String) {
-        self.genericView.tableView.emptyMessage(title: title, message: message)
+        DispatchQueue.main.async {
+            self.genericView.tableView.emptyMessage(title: title, message: message)
+        }
     }
     
     func removeEmptyMessage() {
-        self.genericView.tableView.removeEmptyMessage()
+        DispatchQueue.main.async {
+            self.genericView.tableView.removeEmptyMessage()
+        }
     }
     
     func startWaitingView() {
@@ -107,6 +113,10 @@ extension UserHomeViewController: PresenterUserHomeView {
     
     func stopWaitingView() {
         stopWaiting()
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+            self.genericView.tableView.setContentOffset(.zero, animated: true)
+        }
     }
     
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?) {

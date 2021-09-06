@@ -116,10 +116,14 @@ class NetworkManager: NetworkManagerProtocol {
                     case 200:
                         completion(modelList, nil)
                     default:
-                        break
+                        completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                                 message: LocalizedConstants.generic_error_message_key.localized))
                     }
                 } catch let error {
-                    completion(nil, error)
+                    // LOG ERROR!
+                    print(error)
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -138,10 +142,15 @@ class NetworkManager: NetworkManagerProtocol {
                     case 200:
                         completion(modelList, nil)
                     default:
-                        break
+                        // LOG ERROR!
+                        completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                                 message: LocalizedConstants.generic_error_message_key.localized))
                     }
                 } catch let error {
-                    completion(nil, error)
+                    // LOG ERROR!
+                    print(error)
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -157,7 +166,9 @@ class NetworkManager: NetworkManagerProtocol {
                 case 200:
                     completion(true, nil)
                 default:
-                    break
+                    // LOG ERROR!
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -173,7 +184,8 @@ class NetworkManager: NetworkManagerProtocol {
                 case 200:
                     completion(true, nil)
                 default:
-                    break
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -194,7 +206,10 @@ class NetworkManager: NetworkManagerProtocol {
                         let apiError = try self.decoder.decode(ApiError.self, from: value.data)
                         completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
                     } catch let error {
-                        completion(nil, error)
+                        // LOG ERROR!
+                        print(error)
+                        completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                                 message: LocalizedConstants.generic_error_message_key.localized))
                     }
                 }
             }
@@ -217,7 +232,10 @@ class NetworkManager: NetworkManagerProtocol {
                         completion(nil, AppError(title: modelList.title ?? "", message: modelList.message ?? ""))
                     }
                 } catch let error {
-                    completion(nil, error)
+                    // LOG ERROR!
+                    print(error)
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -239,7 +257,10 @@ class NetworkManager: NetworkManagerProtocol {
                         completion(nil, AppError(title: turn.title ?? "", message: turn.message ?? ""))
                     }
                 } catch let error {
-                    completion(nil, error)
+                    // LOG ERROR!
+                    print(error)
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -261,7 +282,10 @@ class NetworkManager: NetworkManagerProtocol {
                         completion(nil, AppError(title: turn.title ?? "", message: turn.message ?? ""))
                     }
                 } catch let error {
-                    completion(nil, error)
+                    // LOG ERROR!
+                    print(error)
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -283,7 +307,10 @@ class NetworkManager: NetworkManagerProtocol {
                         completion(nil, AppError(title: modelBusiness.title ?? "", message: modelBusiness.message ?? ""))
                     }
                 } catch let error {
-                    completion(nil, error)
+                    // LOG ERROR!
+                    print(error)
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -305,7 +332,10 @@ class NetworkManager: NetworkManagerProtocol {
                         completion(nil, AppError(title: modelMyBookings.title ?? "", message: modelMyBookings.message ?? ""))
                     }
                 } catch let error {
-                    completion(nil, error)
+                    // LOG ERROR!
+                    print(error)
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -324,10 +354,15 @@ class NetworkManager: NetworkManagerProtocol {
                     case 200:
                         completion(modelList, nil)
                     default:
-                        break
+                        // LOG ERROR!
+                        completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                                 message: LocalizedConstants.generic_error_message_key.localized))
                     }
                 } catch let error {
-                    completion(nil, error)
+                    // LOG ERROR!
+                    print(error)
+                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                             message: LocalizedConstants.generic_error_message_key.localized))
                 }
             }
         }
@@ -348,7 +383,10 @@ class NetworkManager: NetworkManagerProtocol {
                         let apiError = try self.decoder.decode(ApiError.self, from: value.data)
                         completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
                     } catch let error {
-                        completion(nil, error)
+                        // LOG ERROR!
+                        print(error)
+                        completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                                 message: LocalizedConstants.generic_error_message_key.localized))
                     }
                 }
             }
@@ -370,7 +408,10 @@ class NetworkManager: NetworkManagerProtocol {
                         let apiError = try self.decoder.decode(ApiError.self, from: value.data)
                         completion(false, AppError(title: apiError.title ?? "", message: apiError.message ?? ""))
                     } catch let error {
-                        completion(nil, error)
+                        // LOG ERROR!
+                        print(error)
+                        completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
+                                                 message: LocalizedConstants.generic_error_message_key.localized))
                     }
                 }
             }
