@@ -12,4 +12,6 @@ target 'Turno' do
   pod 'CalendarKit'
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Crashlytics'
+  pod 'Mixpanel-swift'
 end
