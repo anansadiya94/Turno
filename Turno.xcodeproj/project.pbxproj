@@ -172,6 +172,7 @@
 		E172B9CE25FB445A005E32D9 /* OneTimeCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */; };
 		E17B63802616F4D300AE0574 /* ModelFcmToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17B637F2616F4D300AE0574 /* ModelFcmToken.swift */; };
 		E188223C26236408003E9B33 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E188223B26236408003E9B33 /* WebViewController.swift */; };
+		E1A8BBB326C17C4C00E0CEF1 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8BBB226C17C4C00E0CEF1 /* AnalyticsManager.swift */; };
 		E1AA46D026BD5D940019D348 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA46CF26BD5D940019D348 /* Date+Utils.swift */; };
 		E1D6A8BE2603DF6B00691CBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D6A8BD2603DF6B00691CBD /* GoogleService-Info.plist */; };
 		E1D6A9552603F64300691CBD /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6A9542603F64300691CBD /* PushNotificationManager.swift */; };
@@ -350,6 +351,7 @@
 		E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeTextField.swift; sourceTree = "<group>"; };
 		E17B637F2616F4D300AE0574 /* ModelFcmToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFcmToken.swift; sourceTree = "<group>"; };
 		E188223B26236408003E9B33 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		E1A8BBB226C17C4C00E0CEF1 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		E1AA46CF26BD5D940019D348 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		E1D6A8BD2603DF6B00691CBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1D6A9542603F64300691CBD /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				9E4CACDF2494CF9400AA72E0 /* APIRouter.swift */,
 				9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */,
 				9E0E26E22527A1F50062CFC3 /* ServiceTimeCalculation.swift */,
+				E1A8BBB226C17C4C00E0CEF1 /* AnalyticsManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				9EB14F352485048B0085E885 /* Frameworks */,
 				9EB14F362485048B0085E885 /* Resources */,
 				3D657F8C5B2022B9E2C1BC45 /* [CP] Embed Pods Frameworks */,
+				E167970A26D1082E008CDFD7 /* Run FirebaseCrashlytics */,
 			);
 			buildRules = (
 			);
@@ -1122,6 +1126,26 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		E167970A26D1082E008CDFD7 /* Run FirebaseCrashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run FirebaseCrashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/FirebaseCrashlytics/run\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1177,6 +1201,7 @@
 				E17B63802616F4D300AE0574 /* ModelFcmToken.swift in Sources */,
 				9EED9B1B24F2D4B900B207FA /* ConfirmationView.swift in Sources */,
 				9EA657E32488161C00F7952A /* PresenterOnboarding.swift in Sources */,
+				E1A8BBB326C17C4C00E0CEF1 /* AnalyticsManager.swift in Sources */,
 				9EA657D52488152700F7952A /* OnBoardingView.swift in Sources */,
 				9EE3EF4824B4D23C0049EC0A /* AppointmentTableViewCell.swift in Sources */,
 				9E4DE1AF24C33AB000EC1FF2 /* UserMainCoordinator.swift in Sources */,
@@ -1415,6 +1440,7 @@
 				CODE_SIGN_ENTITLEMENTS = Turno/Turno.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VXYG7MS5HY;
 				INFOPLIST_FILE = Turno/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
