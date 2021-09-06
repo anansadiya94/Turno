@@ -52,9 +52,6 @@ class PresenterUserHome {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil) { _, _ in
-                    self.view?.showEmptyMessage(title: LocalizedConstants.generic_error_title_key.localized,
-                                                message: LocalizedConstants.home_error_message.localized)
                                          withButton: LocalizedConstants.ok_key.localized.localized,
                                          button2: nil) { _, _ in
                     self.showGenericEmptyMessage()
@@ -65,9 +62,6 @@ class PresenterUserHome {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil) { _, _ in
-                    self.view?.showEmptyMessage(title: LocalizedConstants.generic_error_title_key.localized,
-                                                message: LocalizedConstants.home_error_message.localized)
                                          withButton: LocalizedConstants.ok_key.localized.localized,
                                          button2: nil) { _, _ in
                     self.showGenericEmptyMessage()
