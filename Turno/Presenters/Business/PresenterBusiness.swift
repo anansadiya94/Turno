@@ -21,15 +21,21 @@ protocol PresenterBusinessView: PresenterParentView {
 class PresenterBusiness {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterBusinessView?
-    private var networkManager: NetworkManagerProtocol
     private weak var delegate: SelectButtonEntity?
     var model: ModelBusiness?
     
     // MARK: - init Methods
-    init(view: PresenterBusinessView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity, model: ModelBusiness) {
-        self.networkManager = networkManager
+    init(view: PresenterBusinessView,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonEntity,
+         model: ModelBusiness) {
         self.view = view
+        self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.delegate = delegate
         self.model = model
         self.notifyView(model: model)

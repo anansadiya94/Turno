@@ -20,8 +20,9 @@ protocol PresenterConfirmationView: PresenterParentView {
 class PresenterConfirmation {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterConfirmationView?
-    private var networkManager: NetworkManagerProtocol
     private weak var userDelegate: SelectButtonEntity?
     private weak var businessDelegate: SelectButtonBusiness?
     var userId: String?
@@ -33,10 +34,10 @@ class PresenterConfirmation {
     var customer: Customer?
     
     // MARK: - init Methods
-    init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity,
-         userId: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, confirmationViewType: ConfirmationViewType?) {
+    init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, analyticsManager: AnalyticsManagerProtocol, delegate: SelectButtonEntity, userId: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, confirmationViewType: ConfirmationViewType?) {
         self.view = view
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.userDelegate = delegate
         self.userId = userId
         self.name = name
@@ -46,11 +47,11 @@ class PresenterConfirmation {
         self.notifyView()
     }
     
-    init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness,
-         userId: String?, name: String?, turnId: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
+    init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, analyticsManager: AnalyticsManagerProtocol, delegate: SelectButtonBusiness, userId: String?, name: String?, turnId: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
          confirmationViewType: ConfirmationViewType?, customer: Customer?) {
         self.view = view
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.businessDelegate = delegate
         self.userId = userId
         self.name = name

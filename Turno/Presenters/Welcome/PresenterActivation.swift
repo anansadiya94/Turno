@@ -19,14 +19,20 @@ protocol PresenterActivationView: PresenterParentView {
 class PresenterActivation: NSObject {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterActivationView!
-    private var networkManager: NetworkManagerProtocol
     private weak var delegate: SelectButtonWelcome?
     var modelSignUp: ModelSignUp?
     
     // MARK: - Public Interface
-    init(view: PresenterActivationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) {
+    init(view: PresenterActivationView,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonWelcome,
+         modelSignUp: ModelSignUp) {
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         super.init()
         self.view = view
         self.delegate = delegate
@@ -123,6 +129,7 @@ class PresenterActivation: NSObject {
                 }
                 if let modelVerify = modelVerify {
                     self.setPrefs(modelVerify: modelVerify)
+                    self.trackSignedInUser()
                     if let userId = modelVerify.businessId {
                         let pushManager = PushNotificationManager(userId: userId,
                                                                   name: Preferences.getPrefsUser()?.name,
@@ -134,5 +141,19 @@ class PresenterActivation: NSObject {
                 }
             }
         }
+    }
+}
+
+private extension PresenterActivation {
+    func trackSignedInUser() {
+        guard let userId = Preferences.getPrefsUser()?.userId else {
+            // track error!
+            return
+        }
+        analyticsManager.identify(distinctId: userId)
+        analyticsManager.peopleSet(properties: ["$name": Preferences.getPrefsUser()?.name,
+                                                         "Phone Number": Preferences.getPrefsUser()?.phoneNumber,
+                                                         "Business Id": Preferences.getPrefsUser()?.businessId])
+        analyticsManager.track(eventKey: .registeredSuccessfully, withProperties: nil)
     }
 }

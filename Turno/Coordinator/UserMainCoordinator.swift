@@ -13,13 +13,16 @@ class UserMainCoordinator: Coordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     
     init(window: UIWindow = UIWindow(),
          navigationController: UINavigationController = UINavigationController(),
-         networkManager: NetworkManagerProtocol) {
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
     }
     
     func start() {}
@@ -44,7 +47,10 @@ extension UserMainCoordinator {
     }
     
     func showBusinessScreen(model: ModelBusiness) {
-        let screen = ScreenFactory.makeBusinessScreen(networkManager: networkManager, delegate: self, model: model)
+        let screen = ScreenFactory.makeBusinessScreen(networkManager: networkManager,
+                                                      analyticsManager: analyticsManager,
+                                                      delegate: self,
+                                                      model: model)
         pushViewByHomeInnerViewController(screen: screen)
     }
     
@@ -53,6 +59,7 @@ extension UserMainCoordinator {
                                      bookedServices: [Service]?,
                                      modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
         let screen = ScreenFactory.makeCheckAvailabilityScreen(networkManager: networkManager,
+                                                               analyticsManager: analyticsManager,
                                                                delegate: self,
                                                                identifier: identifier,
                                                                name: name,
@@ -63,6 +70,7 @@ extension UserMainCoordinator {
     
     func showConfirmationScreen(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?) {
         let screen = ScreenFactory.makeConfirmationScreen(networkManager: networkManager,
+                                                          analyticsManager: analyticsManager,
                                                           delegate: self,
                                                           identifier: identifier,
                                                           name: name,

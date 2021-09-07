@@ -18,17 +18,22 @@ protocol PresenterUserHomeView: PresenterParentView {
 class PresenterUserHome {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterUserHomeView?
-    private var networkManager: NetworkManagerProtocol
     private weak var delegate: SelectButtonEntity?
     var modelList = [ModelBusiness]()
     
     // MARK: - init Methods
-    init(view: PresenterUserHomeView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity) {
+    init(view: PresenterUserHomeView,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonEntity) {
         self.view = view
         self.networkManager = networkManager
-        self.fetchData()
+        self.analyticsManager = analyticsManager
         self.delegate = delegate
+        self.fetchData()
     }
     
     // MARK: - Private methods
@@ -91,7 +96,8 @@ class PresenterUserHome {
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                                  withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                                 withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                                 withButton: LocalizedConstants.ok_key.localized.localized,
+                                                 button2: nil,
                                                  completion: nil)
                         return
                     }
@@ -99,7 +105,8 @@ class PresenterUserHome {
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: error.title,
                                                  withText: error.message,
-                                                 withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                                 withButton: LocalizedConstants.ok_key.localized.localized,
+                                                 button2: nil,
                                                  completion: nil)
                         return
                     }

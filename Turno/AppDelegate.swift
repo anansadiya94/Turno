@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     private let networkManager: NetworkManagerProtocol = NetworkManager()
+    private let analyticsManager: AnalyticsManagerProtocol = AnalyticsManager()
     
     private var appCoordinator: AppCoordinator?
     
@@ -23,7 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         setAppFont()
-        appCoordinator = AppCoordinator(window: window!, navigationController: UINavigationController(), networkManager: networkManager)
+        appCoordinator = AppCoordinator(window: window!,
+                                        navigationController: UINavigationController(),
+                                        networkManager: networkManager,
+                                        analyticsManager: analyticsManager)
         appCoordinator?.start()
         
         FirebaseApp.configure()

@@ -13,27 +13,33 @@ class OnBoardingCoordinator: Coordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
-    private var welcomeCoordinator: WelcomeCoordinator
-    private var userMainCoordinator: UserMainCoordinator
-    private var businessMainCoordinator: BusinessMainCoordinator
+    private let analyticsManager: AnalyticsManagerProtocol
+    private let welcomeCoordinator: WelcomeCoordinator
+    private let userMainCoordinator: UserMainCoordinator
+    private let businessMainCoordinator: BusinessMainCoordinator
     
     init(window: UIWindow = UIWindow(),
          navigationController: UINavigationController = UINavigationController(),
-         networkManager: NetworkManagerProtocol) {
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         
         // Coordinators configurations
         welcomeCoordinator = WelcomeCoordinator(window: window,
                                                 navigationController: navigationController,
-                                                networkManager: networkManager)
+                                                networkManager: networkManager,
+                                                analyticsManager: analyticsManager)
         userMainCoordinator = UserMainCoordinator(window: window,
                                                   navigationController: navigationController,
-                                                  networkManager: networkManager)
+                                                  networkManager: networkManager,
+                                                  analyticsManager: analyticsManager)
         businessMainCoordinator = BusinessMainCoordinator(window: window,
                                                           navigationController: navigationController,
-                                                          networkManager: networkManager)
+                                                          networkManager: networkManager,
+                                                          analyticsManager: analyticsManager)
         
         addObservers()
     }
@@ -74,8 +80,9 @@ extension OnBoardingCoordinator {
     }
     
     @objc func showMainScreen() {
-        let screen = ScreenFactory.makeUserMainScreen(networkManager: networkManager,
-                                                      navigationController: navigationController,
+        let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController,
+                                                      networkManager: networkManager,
+                                                      analyticsManager: analyticsManager,
                                                       delegate: userMainCoordinator)
         window.rootViewController = screen
     }
@@ -83,6 +90,7 @@ extension OnBoardingCoordinator {
     @objc func showBusinessMainScreen() {
         let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
                                                           networkManager: networkManager,
+                                                          analyticsManager: analyticsManager,
                                                           delegate: businessMainCoordinator)
         window.rootViewController = screen
     }

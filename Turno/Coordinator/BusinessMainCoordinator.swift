@@ -13,13 +13,16 @@ class BusinessMainCoordinator: Coordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     
     init(window: UIWindow = UIWindow(),
          navigationController: UINavigationController = UINavigationController(),
-         networkManager: NetworkManagerProtocol) {
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
     }
     
     func start() {}
@@ -43,7 +46,10 @@ extension BusinessMainCoordinator {
     }
     
     func showAddAppointmentScreen(modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) {
-        let screen = ScreenFactory.makeAddAppointmentScreen(networkManager: networkManager, modelBusiness: modelBusiness, delegate: delegate)
+        let screen = ScreenFactory.makeAddAppointmentScreen(networkManager: networkManager,
+                                                            analyticsManager: analyticsManager,
+                                                            delegate: delegate,
+                                                            modelBusiness: modelBusiness)
         pushViewByHomeInnerViewController(screen: screen)
     }
     
@@ -55,7 +61,9 @@ extension BusinessMainCoordinator {
                                                               bookedSlot: EmptySlot(slot: turn.dateTimeUTC, selected: true),
                                                               confirmationViewType: .business,
                                                               customer: Customer(name: turn.userName, phoneNumber: turn.userPhone))
-        let screen = ScreenFactory.makeConfirmationScreen(networkManager: networkManager, delegate: self,
+        let screen = ScreenFactory.makeConfirmationScreen(networkManager: networkManager,
+                                                          analyticsManager: analyticsManager,
+                                                          delegate: self,
                                                           confirmationScreenModel: confirmationScreenModel)
         pushViewByHomeInnerViewController(screen: screen)
     }
@@ -66,6 +74,7 @@ extension BusinessMainCoordinator {
                                      modelCheckTurnsAvailability: ModelCheckTurnsAvailability?,
                                      customer: Customer?) {
         let screen = ScreenFactory.makeCheckAvailabilityScreen(networkManager: networkManager,
+                                                               analyticsManager: analyticsManager,
                                                                delegate: self,
                                                                identifier: identifier,
                                                                name: name,
@@ -85,6 +94,7 @@ extension BusinessMainCoordinator {
                                                               confirmationViewType: .user,
                                                               customer: customer)
         let screen = ScreenFactory.makeConfirmationScreen(networkManager: networkManager,
+                                                          analyticsManager: analyticsManager,
                                                           delegate: self,
                                                           confirmationScreenModel: confirmationScreenModel)
         pushViewByHomeInnerViewController(screen: screen)
@@ -95,7 +105,9 @@ extension BusinessMainCoordinator {
     }
     
     func showBlockedUsersScreen() {
-        let screen = ScreenFactory.makeBlockedUsersScreen(networkManager: networkManager, delegate: self)
+        let screen = ScreenFactory.makeBlockedUsersScreen(networkManager: networkManager,
+                                                          analyticsManager: analyticsManager,
+                                                          delegate: self)
         pushViewBySettingsInnerViewController(screen: screen)
     }
     

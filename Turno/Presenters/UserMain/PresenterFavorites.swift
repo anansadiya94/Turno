@@ -18,17 +18,22 @@ protocol PresenterFavoritesView: PresenterParentView {
 class PresenterFavorites {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterFavoritesView?
-    private var networkManager: NetworkManagerProtocol
     private weak var delegate: SelectButtonEntity?
     var modelList = [ModelBusiness]()
     
     // MARK: - init Methods
-    init(view: PresenterFavoritesView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity) {
+    init(view: PresenterFavoritesView,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonEntity) {
         self.view = view
         self.networkManager = networkManager
-        self.fetchData()
+        self.analyticsManager = analyticsManager
         self.delegate = delegate
+        self.fetchData()
     }
     
     // MARK: - Private methods

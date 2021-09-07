@@ -13,23 +13,28 @@ class WelcomeCoordinator: Coordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
-    private var userMainCoordinator: UserMainCoordinator
-    private var businessMainCoordinator: BusinessMainCoordinator
+    private let analyticsManager: AnalyticsManagerProtocol
+    private let userMainCoordinator: UserMainCoordinator
+    private let businessMainCoordinator: BusinessMainCoordinator
     
     init(window: UIWindow = UIWindow(),
          navigationController: UINavigationController = UINavigationController(),
-         networkManager: NetworkManagerProtocol) {
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         
         // Coordinators configurations
         userMainCoordinator = UserMainCoordinator(window: window,
                                                   navigationController: navigationController,
-                                                  networkManager: networkManager)
+                                                  networkManager: networkManager,
+                                                  analyticsManager: analyticsManager)
         businessMainCoordinator = BusinessMainCoordinator(window: window,
                                                           navigationController: navigationController,
-                                                          networkManager: networkManager)
+                                                          networkManager: networkManager,
+                                                          analyticsManager: analyticsManager)
     }
     
     func start() {}
@@ -39,20 +44,23 @@ extension WelcomeCoordinator {
     
     func showInstallationScreen(delegate: SelectButtonWelcome) {
         let screen = ScreenFactory.makeInstallationScreen(networkManager: networkManager,
+                                                          analyticsManager: analyticsManager,
                                                           delegate: delegate)
         navigationController.pushViewController(screen, animated: true)
     }
     
     func showActivationScreen(delegate: SelectButtonWelcome, modelSignUp: ModelSignUp) {
         let screen = ScreenFactory.makeActivationScreen(networkManager: networkManager,
+                                                        analyticsManager: analyticsManager,
                                                         delegate: delegate,
                                                         modelSignUp: modelSignUp)
         navigationController.pushViewController(screen, animated: true)
     }
     
     func showMainScreen() {
-        let screen = ScreenFactory.makeUserMainScreen(networkManager: networkManager,
-                                                      navigationController: navigationController,
+        let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController,
+                                                      networkManager: networkManager,
+                                                      analyticsManager: analyticsManager,
                                                       delegate: userMainCoordinator)
         window.rootViewController = screen
     }
@@ -60,6 +68,7 @@ extension WelcomeCoordinator {
     func showBusinessMainScreen() {
         let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
                                                           networkManager: networkManager,
+                                                          analyticsManager: analyticsManager,
                                                           delegate: businessMainCoordinator)
         window.rootViewController = screen
     }

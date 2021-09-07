@@ -17,14 +17,19 @@ protocol PresenterInstallationView: PresenterParentView {
 class PresenterInstallation {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterInstallationView!
-    private var networkManager: NetworkManagerProtocol
     private weak var delegate: SelectButtonWelcome?
     
     // MARK: - Public Interface
-    init(view: PresenterInstallationView, networkManager: NetworkManagerProtocol, delegate: SelectButtonWelcome) {
+    init(view: PresenterInstallationView,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonWelcome) {
         self.view = view
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.delegate = delegate
     }
     

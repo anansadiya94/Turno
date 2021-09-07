@@ -20,8 +20,9 @@ protocol PresenterBusinessHomeView: AnyObject {
 class PresenterBusinessHome {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterBusinessHomeView?
-    private var networkManager: NetworkManagerProtocol
     private weak var delegate: SelectButtonBusiness?
     var modelBusiness: ModelBusiness?
     var modelMyBookings: ModelMyBookings?
@@ -29,9 +30,13 @@ class PresenterBusinessHome {
     var lastStatusCheck: Date?
     
     // MARK: - init Methods
-    init(view: PresenterBusinessHomeView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness) {
+    init(view: PresenterBusinessHomeView,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonBusiness) {
         self.view = view
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.delegate = delegate
         self.fetchData()
     }

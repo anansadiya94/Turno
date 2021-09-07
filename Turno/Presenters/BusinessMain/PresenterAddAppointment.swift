@@ -20,16 +20,22 @@ protocol PresenterAddAppointmentView: PresenterParentView {
 class PresenterAddAppointment {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterAddAppointmentView?
-    private var networkManager: NetworkManagerProtocol
     private weak var delegate: SelectButtonBusiness?
     var modelBusiness: ModelBusiness?
     var customer: Customer?
     
     // MARK: - init Methods
-    init(view: PresenterAddAppointmentView, networkManager: NetworkManagerProtocol, modelBusiness: ModelBusiness?, delegate: SelectButtonBusiness) {
+    init(view: PresenterAddAppointmentView,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonBusiness,
+         modelBusiness: ModelBusiness?) {
         self.view = view
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.delegate = delegate
         self.modelBusiness = modelBusiness
         self.notifyView()

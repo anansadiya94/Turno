@@ -16,8 +16,9 @@ protocol PresenterCheckAvailabilityView: PresenterParentView {
 class PresenterCheckAvailability {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterCheckAvailabilityView?
-    private var networkManager: NetworkManagerProtocol
     private weak var userDelegate: SelectButtonEntity?
     private weak var businessDelegate: SelectButtonBusiness?
     var identifier: String?
@@ -27,9 +28,10 @@ class PresenterCheckAvailability {
     var customer: Customer?
     
     // MARK: - init Methods
-    init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
+    init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, analyticsManager: AnalyticsManagerProtocol, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
         self.view = view
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.userDelegate = delegate
         self.identifier = identifier
         self.name = name
@@ -38,9 +40,10 @@ class PresenterCheckAvailability {
         self.notifyView()
     }
     
-    init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?, customer: Customer?) {
+    init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, analyticsManager: AnalyticsManagerProtocol, delegate: SelectButtonBusiness, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?, customer: Customer?) {
         self.view = view
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.businessDelegate = delegate
         self.identifier = identifier
         self.name = name

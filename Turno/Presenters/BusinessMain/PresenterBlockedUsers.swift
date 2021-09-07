@@ -19,15 +19,20 @@ protocol PresenterBlockedUsersView: PresenterParentView {
 class PresenterBlockedUsers {
     
     // MARK: - Properties
+    private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterBlockedUsersView?
-    private var networkManager: NetworkManagerProtocol
     private weak var delegate: SelectButtonBusiness?
     var modelList = [ModelBlockedUser]()
     
     // MARK: - init Methods
-    init(view: PresenterBlockedUsersView, networkManager: NetworkManagerProtocol, delegate: SelectButtonBusiness) {
+    init(view: PresenterBlockedUsersView,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonBusiness) {
         self.view = view
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         self.delegate = delegate
         self.fetchData()
     }
