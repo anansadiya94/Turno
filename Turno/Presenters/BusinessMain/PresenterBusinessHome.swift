@@ -46,7 +46,7 @@ class PresenterBusinessHome {
         self.delegate = delegate
         self.fetchData()
     }
-
+    
     private func notifyView() {
         guard let modelBusiness = modelBusiness,
               let modelMyBookings = modelMyBookings else {
@@ -81,7 +81,7 @@ class PresenterBusinessHome {
             }
             dispatchGroup.leave()
         }
-           
+        
         // SECOND CALL
         dispatchGroup.enter()
         let modelTask = ModelMyBookingTask(lastStatusCheck: "")
@@ -99,16 +99,22 @@ class PresenterBusinessHome {
             self.isFetching = false
             self.view?.stopWaitingView()
             if fetchError as? MoyaError != nil {
+                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
             if let error = fetchError as? AppError {
+                self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
@@ -124,12 +130,27 @@ class PresenterBusinessHome {
         self.isFetching = true
         
         let modelTask = ModelMyBookingTask(lastStatusCheck: lastStatusCheck?.description)
-        networkManager.getMyBookings(modelTask: modelTask) { (modelMyBookings, error) in
+        networkManager.getMyBookings(modelTask: modelTask) { [weak self] modelMyBookings, error in
+            guard let self = self else { return }
             self.isFetching = false
+            if error as? MoyaError != nil {
+                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
+                                         completion: nil)
+                return
+            }
             if let error = error as? AppError {
+                self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }

@@ -24,6 +24,12 @@ class PresenterUserHome {
     private weak var delegate: SelectButtonEntity?
     var modelList = [ModelBusiness]()
     
+    private struct Constants {
+        static let screenName = "Home User Screen"
+        static let heartAnalyticValue = "Heart"
+        static let refreshAnalyticValue = "Refresh"
+    }
+    
     // MARK: - init Methods
     init(view: PresenterUserHomeView,
          networkManager: NetworkManagerProtocol,
@@ -39,7 +45,7 @@ class PresenterUserHome {
     // MARK: - Private methods
     private func notifyView() {
         let genericListDescriptive = GenericListDescriptive(modelList: self.modelList)
-        self.view?.didSetData(model: genericListDescriptive)
+        view?.didSetData(model: genericListDescriptive)
     }
     
     private func showGenericEmptyMessage() {
@@ -49,11 +55,13 @@ class PresenterUserHome {
     
     // MARK: - Public Interface
     func fetchData() {
-        self.view?.startWaitingView()
-        self.view?.removeEmptyMessage()
+        view?.startWaitingView()
+        view?.removeEmptyMessage()
         let modelBusinessTask = ModelBusinessTask(query: "")
-        networkManager.getBusinesses(modelTask: modelBusinessTask) { (modelList, error) in
+        networkManager.getBusinesses(modelTask: modelBusinessTask) { [weak self] modelList, error in
+            guard let self = self else { return }
             if error as? MoyaError != nil {
+                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
@@ -82,17 +90,30 @@ class PresenterUserHome {
     }
     
     func cellTapped(model: ModelBusiness) {
+        analyticsManager.track(eventKey: .businessTapped, withProperties: [
+            .businessName: model.identifier ?? "",
+            .businessName: model.name ?? "",
+            .screenName: Constants.screenName
+        ])
         delegate?.didSelectEntity(model: model)
     }
     
     func isFavoriteTapped(entityIdentifier: String) {
         if let index = modelList.firstIndex(where: { $0.identifier == entityIdentifier }),
-            let identifier = modelList[index].identifier,
-            let isFavorite = modelList[index].isFavorite {
+           let identifier = modelList[index].identifier,
+           let isFavorite = modelList[index].isFavorite {
+            analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+                .buttonText: Constants.heartAnalyticValue,
+                .businessName: identifier,
+                .isFavorite: isFavorite ? "false" : "true",
+                .screenName: Constants.screenName
+            ])
             let modelFavoritesTask = ModelFavoritesTask(businessId: identifier)
             if isFavorite {
-                networkManager.removeFromFavorites(modelTask: modelFavoritesTask) { _, error in
+                networkManager.removeFromFavorites(modelTask: modelFavoritesTask) { [weak self] _, error in
+                    guard let self = self else { return }
                     if error as? MoyaError != nil {
+                        self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                                  withText: LocalizedConstants.connection_failed_error_message_key.localized,
@@ -102,6 +123,9 @@ class PresenterUserHome {
                         return
                     }
                     if let error = error as? AppError {
+                        self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                         alertMessage: error.message,
+                                                         screenName: Constants.screenName)
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: error.title,
                                                  withText: error.message,
@@ -113,20 +137,27 @@ class PresenterUserHome {
                 }
                 modelList[index].isFavoriteTapped()
             } else {
-                networkManager.addToFavorites(modelTask: modelFavoritesTask) { _, error in
+                networkManager.addToFavorites(modelTask: modelFavoritesTask) { [weak self] _, error in
+                    guard let self = self else { return }
                     if error as? MoyaError != nil {
+                        self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                                  withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                                 withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                                 withButton: LocalizedConstants.ok_key.localized.localized,
+                                                 button2: nil,
                                                  completion: nil)
                         return
                     }
                     if let error = error as? AppError {
+                        self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                         alertMessage: error.message,
+                                                         screenName: Constants.screenName)
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: error.title,
                                                  withText: error.message,
-                                                 withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                                 withButton: LocalizedConstants.ok_key.localized.localized,
+                                                 button2: nil,
                                                  completion: nil)
                         return
                     }

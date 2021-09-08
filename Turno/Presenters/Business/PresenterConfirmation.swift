@@ -128,7 +128,7 @@ class PresenterConfirmation {
                 return
             }
             if let error = error as? AppError {
-                self.analyticsManager.trackErrorAlert(alertTitle: error.title,
+                self.analyticsManager.trackAlert(alertTitle: error.title,
                                                       alertMessage: error.message,
                                                       screenName: Constants.screenName)
                 self.view?.stopWaitingView()
@@ -168,7 +168,7 @@ class PresenterConfirmation {
                 return
             }
             if let error = error as? AppError {
-                self.analyticsManager.trackErrorAlert(alertTitle: error.title,
+                self.analyticsManager.trackAlert(alertTitle: error.title,
                                                       alertMessage: error.message,
                                                       screenName: Constants.screenName)
                 self.view?.stopWaitingView()
@@ -203,7 +203,7 @@ class PresenterConfirmation {
                 return
             }
             if let error = error as? AppError {
-                self.analyticsManager.trackErrorAlert(alertTitle: error.title,
+                self.analyticsManager.trackAlert(alertTitle: error.title,
                                                       alertMessage: error.message,
                                                       screenName: Constants.screenName)
                 self.view?.stopWaitingView()
@@ -241,7 +241,7 @@ class PresenterConfirmation {
                 return
             }
             if let error = error as? AppError {
-                self.analyticsManager.trackErrorAlert(alertTitle: error.title,
+                self.analyticsManager.trackAlert(alertTitle: error.title,
                                                       alertMessage: error.message,
                                                       screenName: Constants.screenName)
                 self.view?.stopWaitingView()

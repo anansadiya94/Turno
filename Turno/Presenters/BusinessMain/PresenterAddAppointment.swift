@@ -132,7 +132,7 @@ class PresenterAddAppointment {
                 return
             }
             if let error = error as? AppError {
-                self.analyticsManager.trackErrorAlert(alertTitle: error.title,
+                self.analyticsManager.trackAlert(alertTitle: error.title,
                                                       alertMessage: error.message,
                                                       screenName: Constants.screenName)
                 self.view?.stopWaitingView()
@@ -154,7 +154,7 @@ class PresenterAddAppointment {
                                                           modelCheckTurnsAvailability: modelCheckTurnsAvailability,
                                                           customer: self.customer)
             } else {
-                self.analyticsManager.trackErrorAlert(alertTitle: Constants.noAvailableDatesTitleAnalyticValue,
+                self.analyticsManager.trackAlert(alertTitle: Constants.noAvailableDatesTitleAnalyticValue,
                                                       alertMessage: Constants.noAvailableDatesMessageAnalyticValue,
                                                       screenName: Constants.screenName)
                 self.view?.stopWaitingView()

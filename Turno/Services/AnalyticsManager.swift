@@ -85,7 +85,7 @@ struct CommonAnalyticsValues {
 
 protocol AnalyticsManagerProtocol {
     func track(eventKey: AnalyticsKeys, withProperties properties: [AnalyticsEventPropertyKeys: String]?)
-    func trackErrorAlert(alertTitle: String?, alertMessage: String?, screenName: String)
+    func trackAlert(alertTitle: String?, alertMessage: String?, screenName: String)
     func trackConnectionFailedAlert(screenName: String)
     func identify(distinctId: String)
     func peopleSet(properties: [AnalyticsPeoplePropertyKeys: MixpanelType])
@@ -103,7 +103,7 @@ class AnalyticsManager: AnalyticsManagerProtocol {
         Mixpanel.mainInstance().track(event: eventKey.rawValue, properties: reducedProperties)
     }
     
-    func trackErrorAlert(alertTitle: String?, alertMessage: String?, screenName: String) {
+    func trackAlert(alertTitle: String?, alertMessage: String?, screenName: String) {
         track(eventKey: .alertDisplayed, withProperties: [
             .alertTitle: alertTitle ?? "",
             .alertMessage: alertMessage ?? "",

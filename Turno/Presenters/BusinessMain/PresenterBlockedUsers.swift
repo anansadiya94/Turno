@@ -37,6 +37,15 @@ class PresenterBlockedUsers {
         self.fetchData()
     }
     
+    private struct Constants {
+        static let screenName = "Blocked Users Screen"
+        static let plusAnalyticValue = "Plus"
+        static let unblockAnalyticValue = "Unblock"
+        static let blockAnalyticValue = "Block"
+        static let noAnalyticValue = LocalizedConstants.no_key.enLocalized
+        static let yesAnalyticValue = LocalizedConstants.yes_key.enLocalized
+    }
+    
     // MARK: - Private methods
     private func notifyView() {
         let blockedUsersListDescriptive = BlockedUsersListDescriptive(modelList: modelList)
@@ -46,21 +55,27 @@ class PresenterBlockedUsers {
     private func unblockConfirmed(userId: String?) {
         if let userId = userId {
             let modelBlockUser = ModelBlockUser(userId: userId)
-            networkManager.unblockUser(modelBlockUser: modelBlockUser
-            ) { _, error in
+            networkManager.unblockUser(modelBlockUser: modelBlockUser) { [weak self] _, error in
+                guard let self = self else { return }
                 if error as? MoyaError != nil {
+                    self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                              withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             withButton: LocalizedConstants.ok_key.localized.localized,
+                                             button2: nil,
                                              completion: nil)
                     return
                 }
                 if let error = error as? AppError {
+                    self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                          alertMessage: error.message,
+                                                          screenName: Constants.screenName)
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: error.title,
                                              withText: error.message,
-                                             withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                             withButton: LocalizedConstants.ok_key.localized.localized,
+                                             button2: nil,
                                              completion: nil)
                     return
                 }
@@ -73,20 +88,27 @@ class PresenterBlockedUsers {
     func fetchData() {
         self.view?.startWaitingView()
         self.view?.removeEmptyMessage()
-        networkManager.getMyBlockedList { (modelList, error) in
+        networkManager.getMyBlockedList { [weak self] modelList, error in
+            guard let self = self else { return }
             if error as? MoyaError != nil {
+                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
             if let error = error as? AppError {
+                self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                      alertMessage: error.message,
+                                                      screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
@@ -103,39 +125,69 @@ class PresenterBlockedUsers {
     }
     
     func addTapped() {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.plusAnalyticValue,
+            .screenName: Constants.screenName
+        ])
         self.view?.addTapped(title: LocalizedConstants.user_to_block_title_key.localized, message: "")
     }
     
     func unblockTapped(userId: String?) {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.unblockAnalyticValue,
+            .screenName: Constants.screenName
+        ])
         self.view?.showPopupView(withTitle: LocalizedConstants.unblock_user_title_key.localized,
                                  withText: LocalizedConstants.unblock_user_message_key.localized,
                                  withButton: LocalizedConstants.no_key.localized,
                                  button2: LocalizedConstants.yes_key.localized,
-                                 completion: { (_, yes) in
-                                    if yes == true {
-                                        self.unblockConfirmed(userId: userId)
+                                 completion: { [weak self] no, yes in
+                                    if no == true {
+                                        self?.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                                            .actionText: Constants.noAnalyticValue,
+                                            .screenName: Constants.screenName
+                                        ])
                                     }
-        })
+                                    if yes == true {
+                                        self?.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                                            .actionText: Constants.yesAnalyticValue,
+                                            .screenName: Constants.screenName
+                                        ])
+                                        self?.unblockConfirmed(userId: userId)
+                                    }
+                                 })
     }
     
     func blockUser(phoneNumber: String) {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.blockAnalyticValue,
+            .screenName: Constants.screenName,
+            .phoneNumber: phoneNumber
+        ])
         self.view?.startWaitingView()
         self.view?.removeEmptyMessage()
         let modelBlockUser = ModelBlockUser(phoneNumber: phoneNumber)
-        networkManager.blockUser(modelBlockUser: modelBlockUser) { _, error in
+        networkManager.blockUser(modelBlockUser: modelBlockUser) { [weak self] _, error in
+            guard let self = self else { return }
             if error as? MoyaError != nil {
+                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
             if let error = error as? AppError {
+                self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                      alertMessage: error.message,
+                                                      screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
