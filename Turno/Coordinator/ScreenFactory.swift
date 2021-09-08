@@ -156,7 +156,7 @@ struct ScreenFactory {
                     settingsVC.presenterSettings = presenter
                 }
             }
-            let presenter = PresenterUserMain(view: mainVC)
+            let presenter = PresenterUserMain(view: mainVC, analyticsManager: analyticsManager)
             mainVC.presenterMain = presenter
             navigationController.viewControllers = [mainVC]
         }
@@ -189,7 +189,7 @@ struct ScreenFactory {
                     settingsVC.presenterSettings = presenter
                 }
             }
-            let presenter = PresenterBusinessMain(view: mainVC)
+            let presenter = PresenterBusinessMain(view: mainVC, analyticsManager: analyticsManager)
             mainVC.presenterMain = presenter
             navigationController.viewControllers = [mainVC]
         }

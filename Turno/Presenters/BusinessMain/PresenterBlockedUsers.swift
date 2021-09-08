@@ -142,18 +142,19 @@ class PresenterBlockedUsers {
                                  withButton: LocalizedConstants.no_key.localized,
                                  button2: LocalizedConstants.yes_key.localized,
                                  completion: { [weak self] no, yes in
+                                    guard let self = self else { return }
                                     if no == true {
-                                        self?.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                                        self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
                                             .actionText: Constants.noAnalyticValue,
                                             .screenName: Constants.screenName
                                         ])
                                     }
                                     if yes == true {
-                                        self?.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                                        self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
                                             .actionText: Constants.yesAnalyticValue,
                                             .screenName: Constants.screenName
                                         ])
-                                        self?.unblockConfirmed(userId: userId)
+                                        self.unblockConfirmed(userId: userId)
                                     }
                                  })
     }

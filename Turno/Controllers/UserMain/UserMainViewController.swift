@@ -17,11 +17,23 @@ class UserMainViewController: UITabBarController {
     private var favoritesTabBarItem = UITabBarItem()
     private var settingsTabBarItem = UITabBarItem()
     
+    let tabBarDictionary: [Int: TabBarModel] = [0: TabBarModel(name: "Home", imageName: "house"),
+                                                1: TabBarModel(name: "Appointments", imageName: "calendar"),
+                                                2: TabBarModel(name: "Favorites", imageName: "heart"),
+                                                3: TabBarModel(name: "Settings", imageName: "gear")]
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         configureUI()        
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if let currentTag = selectedViewController?.tabBarItem.tag {
+            presenterMain.tabBarDidSelect(currentTabName: tabBarDictionary[currentTag]?.name ?? "",
+                                          tappedTabName: tabBarDictionary[item.tag]?.name ?? "")
+        }
     }
     
     // MARK: - Private functions
@@ -31,10 +43,25 @@ class UserMainViewController: UITabBarController {
     }
     
     private func setTabBarItems() {
-        homeTabBarItem.image = UIImage(systemName: "house")
-        appointmentsTabBarItem.image = UIImage(systemName: "calendar")
-        favoritesTabBarItem.image = UIImage(systemName: "heart")
-        settingsTabBarItem.image = UIImage(systemName: "gear")
+        homeTabBarItem.tag = 0
+        if let imageName = tabBarDictionary[0]?.imageName {
+            homeTabBarItem.image = UIImage(systemName: imageName)
+        }
+        
+        appointmentsTabBarItem.tag = 1
+        if let imageName = tabBarDictionary[1]?.imageName {
+            appointmentsTabBarItem.image = UIImage(systemName: imageName)
+        }
+        
+        favoritesTabBarItem.tag = 2
+        if let imageName = tabBarDictionary[2]?.imageName {
+            favoritesTabBarItem.image = UIImage(systemName: imageName)
+        }
+        
+        settingsTabBarItem.tag = 3
+        if let imageName = tabBarDictionary[3]?.imageName {
+            settingsTabBarItem.image = UIImage(systemName: imageName)
+        }
     }
     
     private func setTabBar() {

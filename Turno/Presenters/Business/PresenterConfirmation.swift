@@ -129,8 +129,8 @@ class PresenterConfirmation {
             }
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
-                                                      alertMessage: error.message,
-                                                      screenName: Constants.screenName)
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -169,8 +169,8 @@ class PresenterConfirmation {
             }
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
-                                                      alertMessage: error.message,
-                                                      screenName: Constants.screenName)
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -204,8 +204,8 @@ class PresenterConfirmation {
             }
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
-                                                      alertMessage: error.message,
-                                                      screenName: Constants.screenName)
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -242,8 +242,8 @@ class PresenterConfirmation {
             }
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
-                                                      alertMessage: error.message,
-                                                      screenName: Constants.screenName)
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -271,7 +271,7 @@ class PresenterConfirmation {
     }
     
     func cancelButtonTapped() {
-        trackButtonTapped(buttonText: Constants.cancelTurnAnalyticValue)
+        trackCancelTurnButtonTapped(turnId: turnId)
         view?.showPopupView(withTitle: LocalizedConstants.cancel_turn_title_key.localized,
                             withText: LocalizedConstants.cancel_turn_message_key.localized,
                             withButton: LocalizedConstants.no_key.localized,
@@ -311,7 +311,7 @@ class PresenterConfirmation {
                                 guard let self = self else { return }
                                 if cancel == true {
                                     self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
-                                        .actionText: Constants.cancelTurnAnalyticValue,
+                                        .actionText: Constants.cancelAnalyticValue,
                                         .screenName: Constants.screenName
                                     ])
                                 }
@@ -330,6 +330,14 @@ private extension PresenterConfirmation {
         analyticsManager.track(eventKey: .buttonTapped, withProperties: [
             .buttonText: buttonText,
             .screenName: Constants.screenName
+        ])
+    }
+    
+    func trackCancelTurnButtonTapped(turnId: String?) {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.cancelTurnAnalyticValue,
+            .screenName: Constants.screenName,
+            .turnIdentifier: turnId ?? ""
         ])
     }
 }

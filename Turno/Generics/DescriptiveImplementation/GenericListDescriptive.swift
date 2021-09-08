@@ -19,9 +19,7 @@ struct GenericListDescriptive: DescriptiveProtocol {
         for model in modelList {
             descriptorsTemp.append(CellDescriptor(configure: { (cell: GenericEntityTableViewCell) in
                 cell.config(model: model)
-            }, didSelect: { (cell: GenericEntityTableViewCell) in
-                cell.didSelect(model: model)
-            }))
+            }, didSelect: { _ in }))
         }
         descriptors = descriptorsTemp
         sectionDescriptor = [SectionDescriptor(descriptorsList: descriptors)]

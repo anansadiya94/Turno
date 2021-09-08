@@ -11,11 +11,21 @@ import Foundation
 class PresenterBusinessMain: NSObject {
     
     // MARK: - Properties
+    let analyticsManager: AnalyticsManagerProtocol
     var view: BusinessMainViewController!
     
     // MARK: - Public Interface
-    init(view: BusinessMainViewController) {
+    init(view: BusinessMainViewController,
+         analyticsManager: AnalyticsManagerProtocol) {
+        self.analyticsManager = analyticsManager
         super.init()
         self.view = view
+    }
+    
+    func tabBarDidSelect(currentTabName: String, tappedTabName: String) {
+        analyticsManager.track(eventKey: .bottomNavigationTabTap, withProperties: [
+            .currentTabName: currentTabName,
+            .tappedTabName: tappedTabName
+        ])
     }
 }

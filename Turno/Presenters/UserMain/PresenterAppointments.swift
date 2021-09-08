@@ -25,6 +25,14 @@ class PresenterAppointments {
     private weak var delegate: SelectButtonEntity?
     var modelList = [ModelBusiness]()
     
+    private struct Constants {
+        static let screenName = "My Turns Screen"
+        static let callNowAnalyticValue = LocalizedConstants.call_now_key.enLocalized
+        static let cancelAnalyticValue = LocalizedConstants.cancel_key.enLocalized
+        static let noAnalyticValue = LocalizedConstants.no_key.enLocalized
+        static let yesAnalyticValue = LocalizedConstants.yes_key.enLocalized
+    }
+    
     // MARK: - init Methods
     init(view: PresenterAppointmentsView,
          networkManager: NetworkManagerProtocol,
@@ -124,18 +132,39 @@ class PresenterAppointments {
     }
     
     func cancelTapped(turnId: String) {
-        self.view?.showPopupView(withTitle: LocalizedConstants.cancel_turn_title_key.localized,
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.cancelAnalyticValue,
+            .screenName: Constants.screenName,
+            .turnIdentifier: turnId
+        ])
+        view?.showPopupView(withTitle: LocalizedConstants.cancel_turn_title_key.localized,
                                  withText: LocalizedConstants.cancel_turn_message_key.localized,
                                  withButton: LocalizedConstants.no_key.localized,
                                  button2: LocalizedConstants.yes_key.localized,
-                                 completion: { (_, yes) in
+                                 completion: { [weak self] no, yes in
+                                    guard let self = self else { return }
+                                    if no == true {
+                                        self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                                            .actionText: Constants.noAnalyticValue,
+                                            .screenName: Constants.screenName
+                                        ])
+                                    }
                                     if yes == true {
+                                        self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                                            .actionText: Constants.yesAnalyticValue,
+                                            .screenName: Constants.screenName
+                                        ])
                                         self.cancelTurnConfirmed(turnId: turnId)
                                     }
         })
     }
     
     func callNowTapped(phone: String) {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.callNowAnalyticValue,
+            .screenName: Constants.screenName,
+            .phoneNumber: phone
+        ])
         self.view?.call(phone)
     }
 }

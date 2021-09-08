@@ -46,6 +46,13 @@ class FavoritesViewController: GenericTableView<GenericListDescriptive> {
         return 216
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
+        if let model = source?.modelList[indexPath.row] {
+            presenterFavorites.cellTapped(model: model)
+        }
+    }
+    
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
         presenterFavorites.fetchData()
     }

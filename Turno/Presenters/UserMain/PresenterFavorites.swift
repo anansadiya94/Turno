@@ -36,6 +36,11 @@ class PresenterFavorites {
         self.fetchData()
     }
     
+    private struct Constants {
+        static let screenName = "Favorites Screen"
+        static let heartAnalyticValue = "Heart"
+    }
+    
     // MARK: - Private methods
     private func notifyView() {
         let genericListDescriptive = GenericListDescriptive(modelList: self.modelList)
@@ -46,20 +51,27 @@ class PresenterFavorites {
     func fetchData() {
         self.view?.startWaitingView()
         self.view?.removeEmptyMessage()
-        networkManager.getFavorites { (modelList, error) in
+        networkManager.getFavorites { [weak self] modelList, error in
+            guard let self = self else { return }
             if error as? MoyaError != nil {
+                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
             if let error = error as? AppError {
+                self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
@@ -75,14 +87,31 @@ class PresenterFavorites {
         }
     }
     
+    func cellTapped(model: ModelBusiness) {
+        analyticsManager.track(eventKey: .businessTapped, withProperties: [
+            .businessIdentifier: model.identifier ?? "",
+            .businessName: model.name ?? "",
+            .screenName: Constants.screenName
+        ])
+        delegate?.didSelectEntity(model: model)
+    }
+    
     func isFavoriteTapped(entityIdentifier: String) {
         if let model = modelList.filter({$0.identifier == entityIdentifier}).first,
-            let identifier = model.identifier,
-            let isFavorite = model.isFavorite {
+           let identifier = model.identifier,
+           let isFavorite = model.isFavorite {
+            analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+                .buttonText: Constants.heartAnalyticValue,
+                .businessName: identifier,
+                .isFavorite: isFavorite ? "false" : "true",
+                .screenName: Constants.screenName
+            ])
             let modelFavoritesTask = ModelFavoritesTask(businessId: identifier)
             if isFavorite {
-                networkManager.removeFromFavorites(modelTask: modelFavoritesTask) { _, error in
+                networkManager.removeFromFavorites(modelTask: modelFavoritesTask) { [weak self] _, error in
+                    guard let self = self else { return }
                     if error as? MoyaError != nil {
+                        self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                                  withText: LocalizedConstants.connection_failed_error_message_key.localized,
@@ -91,6 +120,9 @@ class PresenterFavorites {
                         return
                     }
                     if let error = error as? AppError {
+                        self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                         alertMessage: error.message,
+                                                         screenName: Constants.screenName)
                         self.view?.stopWaitingView()
                         self.view?.showPopupView(withTitle: error.title,
                                                  withText: error.message,

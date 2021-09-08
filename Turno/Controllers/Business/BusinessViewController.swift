@@ -105,15 +105,15 @@ class BusinessViewController: ParentViewController {
                                                                  for: indexPath) as? InformationTableViewCell {
             switch indexPath.row {
             case 0:
-                cell.config(type: .location, text: model?.address ?? "")
+                cell.config(type: .location, text: model?.address ?? "N/A")
             case 1:
-                cell.config(type: .email, text: model?.email ?? "")
+                cell.config(type: .email, text: model?.email ?? "N/A")
             case 2:
-                cell.config(type: .telephone, text: model?.phone ?? "")
+                cell.config(type: .telephone, text: model?.phone ?? "N/A")
             case 3:
-                cell.config(type: .schedule, text: model?.openingHoursDescription ?? "")
+                cell.config(type: .schedule, text: model?.openingHoursDescription ?? "N/A")
             case 4:
-                cell.config(type: .description, text: model?.description ?? "")
+                cell.config(type: .description, text: model?.description ?? "N/A")
             default:
                 break
             }

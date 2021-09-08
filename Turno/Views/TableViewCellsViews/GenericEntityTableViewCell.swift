@@ -57,12 +57,6 @@ class GenericEntityTableViewCell: UITableViewCell {
         favoriteButton.isLiked = model.isFavorite ?? false
     }
     
-    func didSelect(model: ModelBusiness) {
-        let model: [String: ModelBusiness] = ["model": model]
-        NotificationCenter.default.post(name: GenericEntity.cellTapped, object: nil,
-                                        userInfo: model)
-    }
-    
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         guard let button = sender as? HeartButton else { return }
         button.flipLikedState()

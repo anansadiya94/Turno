@@ -133,8 +133,8 @@ class PresenterAddAppointment {
             }
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
-                                                      alertMessage: error.message,
-                                                      screenName: Constants.screenName)
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -155,8 +155,8 @@ class PresenterAddAppointment {
                                                           customer: self.customer)
             } else {
                 self.analyticsManager.trackAlert(alertTitle: Constants.noAvailableDatesTitleAnalyticValue,
-                                                      alertMessage: Constants.noAvailableDatesMessageAnalyticValue,
-                                                      screenName: Constants.screenName)
+                                                 alertMessage: Constants.noAvailableDatesMessageAnalyticValue,
+                                                 screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.no_available_dates_title_key.localized,
                                          withText: LocalizedConstants.no_available_dates_message_key.localized,

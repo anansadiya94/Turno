@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct TabBarModel {
+    let name: String
+    let imageName: String
+}
+
 class BusinessMainViewController: UITabBarController {
     
     // MARK: - Properties
@@ -15,11 +20,21 @@ class BusinessMainViewController: UITabBarController {
     private var homeTabBarItem = UITabBarItem()
     private var settingsTabBarItem = UITabBarItem()
     
+    let tabBarDictionary: [Int: TabBarModel] = [0: TabBarModel(name: "Home", imageName: "house"),
+                                                1: TabBarModel(name: "Settings", imageName: "gear")]
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         configureUI()
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if let currentTag = selectedViewController?.tabBarItem.tag {
+            presenterMain.tabBarDidSelect(currentTabName: tabBarDictionary[currentTag]?.name ?? "",
+                                          tappedTabName: tabBarDictionary[item.tag]?.name ?? "")
+        }
     }
     
     // MARK: - Private functions
@@ -29,8 +44,15 @@ class BusinessMainViewController: UITabBarController {
     }
     
     private func setTabBarItems() {
-        homeTabBarItem.image = UIImage(systemName: "house")
-        settingsTabBarItem.image = UIImage(systemName: "gear")
+        homeTabBarItem.tag = 0
+        if let imageName = tabBarDictionary[0]?.imageName {
+            homeTabBarItem.image = UIImage(systemName: imageName)
+        }
+        
+        settingsTabBarItem.tag = 1
+        if let imageName = tabBarDictionary[1]?.imageName {
+            settingsTabBarItem.image = UIImage(systemName: imageName)
+        }
     }
     
     private func setTabBar() {

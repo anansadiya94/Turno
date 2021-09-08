@@ -91,7 +91,7 @@ class PresenterUserHome {
     
     func cellTapped(model: ModelBusiness) {
         analyticsManager.track(eventKey: .businessTapped, withProperties: [
-            .businessName: model.identifier ?? "",
+            .businessIdentifier: model.identifier ?? "",
             .businessName: model.name ?? "",
             .screenName: Constants.screenName
         ])
