@@ -25,6 +25,12 @@ class PresenterActivation: NSObject {
     private weak var delegate: SelectButtonWelcome?
     var modelSignUp: ModelSignUp?
     
+    private struct Constants {
+        static let screenName = "Activation Screen"
+        static let wrongNumberAnalyticValue = LocalizedConstants.wrong_number_key.enLocalized
+        static let resendSMSAnalyticValue = LocalizedConstants.resend_sms_key.enLocalized
+    }
+    
     // MARK: - Public Interface
     init(view: PresenterActivationView,
          networkManager: NetworkManagerProtocol,
@@ -42,7 +48,7 @@ class PresenterActivation: NSObject {
     
     private func didSetData() {
         if let modelSignUp = modelSignUp,
-            let remainingTimeInSeconds = modelSignUp.remainingTimeInSeconds {
+           let remainingTimeInSeconds = modelSignUp.remainingTimeInSeconds {
             view?.didSetData(remainingTimeInSeconds: remainingTimeInSeconds)
         }
     }
@@ -66,17 +72,27 @@ class PresenterActivation: NSObject {
     
     // MARK: - UI interaction methods
     func wrongNumberButtonTapped() {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.wrongNumberAnalyticValue,
+            .screenName: Constants.screenName
+        ])
         view?.popViewController()
     }
     
     func resendSMSButtonTapped() {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.resendSMSAnalyticValue,
+            .screenName: Constants.screenName
+        ])
         self.view?.startWaitingView()
         self.view.stopTimer()
         
         if let phoneNumber = Preferences.getPrefsUser()?.phoneNumber, let fullName = Preferences.getPrefsUser()?.name {
             let modelSignUpTask = ModelSignUpTask(phoneNumber: phoneNumber, fullName: fullName)
-            networkManager.signUp(modelTask: modelSignUpTask) { (modelSignUp, error) in
+            networkManager.signUp(modelTask: modelSignUpTask) { [weak self] modelSignUp, error in
+                guard let self = self else { return }
                 if error as? MoyaError != nil {
+                    self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                              withText: LocalizedConstants.connection_failed_error_message_key.localized,
@@ -85,6 +101,9 @@ class PresenterActivation: NSObject {
                     return
                 }
                 if let error = error as? AppError {
+                    self.analyticsManager.trackErrorAlert(alertTitle: error.title,
+                                                          alertMessage: error.message,
+                                                          screenName: Constants.screenName)
                     self.view?.stopWaitingView()
                     self.view?.showPopupView(withTitle: error.title,
                                              withText: error.message,
@@ -124,7 +143,7 @@ class PresenterActivation: NSObject {
                                              withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
                                              completion: { (_, _) in
                                                 self.view?.tryAgain()
-                    })
+                                             })
                     return
                 }
                 if let modelVerify = modelVerify {
@@ -133,7 +152,8 @@ class PresenterActivation: NSObject {
                     if let userId = modelVerify.businessId {
                         let pushManager = PushNotificationManager(userId: userId,
                                                                   name: Preferences.getPrefsUser()?.name,
-                                                                  networkManager: self.networkManager)
+                                                                  networkManager: self.networkManager,
+                                                                  analyticsManager: self.analyticsManager)
                         pushManager.registerForPushNotifications()
                     }
                     self.view?.stopWaitingView()
@@ -151,9 +171,11 @@ private extension PresenterActivation {
             return
         }
         analyticsManager.identify(distinctId: userId)
-        analyticsManager.peopleSet(properties: ["$name": Preferences.getPrefsUser()?.name,
-                                                         "Phone Number": Preferences.getPrefsUser()?.phoneNumber,
-                                                         "Business Id": Preferences.getPrefsUser()?.businessId])
+        analyticsManager.peopleSet(properties: [
+            AnalyticsPeoplePropertyKeys.name: Preferences.getPrefsUser()?.name,
+            AnalyticsPeoplePropertyKeys.phoneNumber: Preferences.getPrefsUser()?.phoneNumber,
+            AnalyticsPeoplePropertyKeys.businessId: Preferences.getPrefsUser()?.businessId
+        ])
         analyticsManager.track(eventKey: .registeredSuccessfully, withProperties: nil)
     }
 }

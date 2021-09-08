@@ -59,7 +59,7 @@ class ConfirmationView: UIView {
     func createCancelButton() {
         cancelButton.isHidden = true
         addSubview(cancelButton)
-        cancelButton.buttonTheme = RoundedBaseTheme(label: "Cancel turn",
+        cancelButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.cancel_turn_key.localized,
                                                     backgroundColor: UIColor.red.withAlphaComponent(0.5))
         
         NSLayoutConstraint.activate([

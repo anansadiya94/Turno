@@ -8,28 +8,42 @@
 
 import UIKit
 
-class PresenterWelcome: NSObject {
+class PresenterWelcome {
     
     // MARK: - Properties
     var view: WelcomeViewController!
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var delegate: SelectButtonWelcome?
     
+    private struct Constants {
+        static let screenName = "Welcome Screen"
+        static let continueAnalyticValue = LocalizedConstants.continue_key.enLocalized
+        static let privacyPolicyAnalyticValue = LocalizedConstants.privacy_policy_key.enLocalized
+    }
+    
     // MARK: - Public Interface
-    init(view: WelcomeViewController, delegate: SelectButtonWelcome) {
-        super.init()
+    init(view: WelcomeViewController,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonWelcome) {
         self.view = view
+        self.analyticsManager = analyticsManager
         self.delegate = delegate
     }
     
     // MARK: - UI interaction methods
     func continueButtonTapped() {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.continueAnalyticValue,
+            .screenName: Constants.screenName
+        ])
         delegate?.didSelectWelcomeContinueButton()
     }
     
     func privacyPolicyButtonTapped() {
-//        if let privacyPolicyUrl = UIApplication.privacyPolicyUrl {
-//            self.view.openUrl(privacyPolicyUrl)
-//        }
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.privacyPolicyAnalyticValue,
+            .screenName: Constants.screenName
+        ])
         delegate?.didPrivacyPolicyTapped()
     }
 }

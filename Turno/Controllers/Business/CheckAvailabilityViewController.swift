@@ -135,6 +135,7 @@ extension CheckAvailabilityViewController: UICollectionViewDataSource {
 extension CheckAvailabilityViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == checkAvailabilityView.daysCollectionView {
+            presenterCheckAvailability.dayTapped(modelAvailableTurnDay[indexPath.row].date?.toDisplayableDate(type: .date) ?? "")
             modelAvailableTurnDay.filter({ $0.selected == true }).first?.selected = false
             modelAvailableTurnDay[indexPath.row].selected = true
             emptySlots.forEach({ $0.selected = false })
@@ -146,6 +147,7 @@ extension CheckAvailabilityViewController: UICollectionViewDelegate {
             checkAvailabilityView.daysCollectionView?.reloadData()
             checkAvailabilityView.hoursCollectionView?.reloadData()
         } else if collectionView == checkAvailabilityView.hoursCollectionView {
+            presenterCheckAvailability.hourTapped(emptySlots[indexPath.row].slot?.toString().toDisplayableDate(type: .hour) ?? "")
             emptySlots.filter({ $0.selected == true }).first?.selected = false
             emptySlots[indexPath.row].selected = true
             checkAvailabilityView.setBookNowButton(to: true)

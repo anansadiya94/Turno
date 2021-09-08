@@ -62,18 +62,24 @@ protocol SelectButtonBusiness: SelectGenericSettings {
 
 struct ScreenFactory {
     // ONBOARDING:
-    static func makeOnboardingScreen(delegate: SelectButtonOnboarding) -> UIViewController {
+    static func makeOnboardingScreen(analyticsManager: AnalyticsManagerProtocol,
+                                     delegate: SelectButtonOnboarding) -> UIViewController {
         let onBoardingViewController = OnboardingViewController()
-        let presenter = PresenterOnboarding(view: onBoardingViewController, delegate: delegate)
+        let presenter = PresenterOnboarding(view: onBoardingViewController,
+                                            analyticsManager: analyticsManager,
+                                            delegate: delegate)
         onBoardingViewController.presenterOnboarding = presenter
         return onBoardingViewController
     }
     
     // WELCOME:
     static func makeWelcomeScreen(navigationController: UINavigationController,
+                                  analyticsManager: AnalyticsManagerProtocol,
                                   delegate: SelectButtonWelcome) -> UIViewController {
         let welcomeViewController = WelcomeViewController()
-        let presenter = PresenterWelcome(view: welcomeViewController, delegate: delegate)
+        let presenter = PresenterWelcome(view: welcomeViewController,
+                                         analyticsManager: analyticsManager,
+                                         delegate: delegate)
         welcomeViewController.presenterWelcome = presenter
         navigationController.viewControllers = [welcomeViewController]
         return navigationController
@@ -144,7 +150,9 @@ struct ScreenFactory {
             }
             if let viewController = mainVC.viewControllers?[3] as? UINavigationController {
                 if let settingsVC = viewController.topViewController as? SettingsViewController {
-                    let presenter = PresenterSettings(view: settingsVC, delegate: delegate)
+                    let presenter = PresenterSettings(view: settingsVC,
+                                                      analyticsManager: analyticsManager,
+                                                      delegate: delegate)
                     settingsVC.presenterSettings = presenter
                 }
             }
@@ -175,7 +183,9 @@ struct ScreenFactory {
             }
             if let viewController = mainVC.viewControllers?[1] as? UINavigationController {
                 if let settingsVC = viewController.topViewController as? SettingsViewController {
-                    let presenter = PresenterSettings(view: settingsVC, delegate: delegate)
+                    let presenter = PresenterSettings(view: settingsVC,
+                                                      analyticsManager: analyticsManager,
+                                                      delegate: delegate)
                     settingsVC.presenterSettings = presenter
                 }
             }

@@ -17,36 +17,51 @@ class PushNotificationManager: NSObject {
     let name: String?
     let gcmMessageIDKey = "gcm.Message_ID"
     private let networkManager: NetworkManagerProtocol
+    private let analyticsManager: AnalyticsManagerProtocol
     
-    init(userId: String, name: String?, networkManager: NetworkManagerProtocol) {
+    init(userId: String, name: String?,
+         networkManager: NetworkManagerProtocol,
+         analyticsManager: AnalyticsManagerProtocol) {
         self.userId = userId
         self.name = name
         self.networkManager = networkManager
+        self.analyticsManager = analyticsManager
         super.init()
+        trackNotificationSettingsAuthorizationStatus()
+    }
+    
+    func trackNotificationSettingsAuthorizationStatus() {
+        let current = UNUserNotificationCenter.current()
+        current.getNotificationSettings(completionHandler: { [weak self] settings in
+            switch settings.authorizationStatus {
+            case .authorized:
+                self?.analyticsManager.peopleSet(properties: [AnalyticsPeoplePropertyKeys.pushNotificationOptIn: "true"])
+            default:
+                self?.analyticsManager.peopleSet(properties: [AnalyticsPeoplePropertyKeys.pushNotificationOptIn: "false"])
+            }
+        })
     }
     
     func registerForPushNotifications() {
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = self
-            Messaging.messaging().delegate = self
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(settings)
-        }
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {[weak self] _, _ in
+            self?.trackNotificationSettingsAuthorizationStatus()
+        })
         UIApplication.shared.registerForRemoteNotifications()
         updateFirestorePushTokenIfNeeded()
     }
     
     func updateFirestorePushTokenIfNeeded() {
         if let token = Messaging.messaging().fcmToken {
-            networkManager.registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask(fcmToken: token)) { (result, error) in
+            networkManager.registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask(fcmToken: token)) { [weak self] result, error in
                 if let error = error {
                     print("Error while registering FCM token with \(error.localizedDescription)")
                 }
                 if let result = result {
                     if result {
+                        self?.analyticsManager.peopleSet(properties: [AnalyticsPeoplePropertyKeys.firebaseToken: Messaging.messaging().fcmToken])
                         print("FCM token was registered successfully.")
                     } else {
                         print("FCM token was not registered successfully.")

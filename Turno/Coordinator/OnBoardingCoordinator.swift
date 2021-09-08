@@ -69,12 +69,14 @@ extension OnBoardingCoordinator {
     
     func showOnboardingScreen() {
         Preferences.setPrefsAppState(value: .unregistered)
-        let screen = ScreenFactory.makeOnboardingScreen(delegate: self)
+        let screen = ScreenFactory.makeOnboardingScreen(analyticsManager: analyticsManager,
+                                                        delegate: self)
         window.rootViewController = screen
     }
     
     func showWelcomeScreen() {
         let screen = ScreenFactory.makeWelcomeScreen(navigationController: navigationController,
+                                                     analyticsManager: analyticsManager,
                                                      delegate: welcomeCoordinator)
         window.rootViewController = screen
     }

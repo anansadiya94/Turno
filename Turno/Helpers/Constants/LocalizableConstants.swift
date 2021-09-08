@@ -96,6 +96,7 @@ enum LocalizedConstants: String {
     case    block_key
     case    close_key
     case    home_error_message_key
+    case    cancel_turn_key
     
     case    total_services_time_key
     case    block_user_by_name_key
@@ -105,5 +106,11 @@ enum LocalizedConstants: String {
 extension LocalizedConstants {
     var localized: String {
         return NSLocalizedString(self.rawValue, comment: "")
+    }
+    
+    var enLocalized: String {
+        guard let bundlePath = Bundle.main.path(forResource: "en", ofType: "lproj"),
+              let bundle = Bundle(path: bundlePath) else { return "" }
+        return NSLocalizedString(self.rawValue, bundle: bundle, value: " ", comment: "")
     }
 }

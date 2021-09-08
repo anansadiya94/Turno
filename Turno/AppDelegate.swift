@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import UserNotifications
 import Firebase
-import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,12 +31,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         if let userId = Preferences.getPrefsUser()?.businessId {
-            let pushManager = PushNotificationManager(userId: userId, name: Preferences.getPrefsUser()?.name, networkManager: networkManager)
+            let pushManager = PushNotificationManager(userId: userId,
+                                                      name: Preferences.getPrefsUser()?.name,
+                                                      networkManager: networkManager,
+                                                      analyticsManager: analyticsManager)
             pushManager.registerForPushNotifications()
         }
         
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        analyticsManager.track(eventKey: .appMovedToBackground, withProperties: nil)
     }
     
     private func setAppFont() {

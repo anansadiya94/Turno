@@ -87,6 +87,7 @@
 "block_key" = "לַחסוֹם";
 "close_key" = "סגור";
 "home_error_message_key" = "בדקו את חיבור האינטרנט שלך משוך לרענון!";
+"cancel_turn_key" = "ביטול הפעל";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "זמן שירותים סהכ הוא: %@";

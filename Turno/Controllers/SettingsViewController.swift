@@ -141,6 +141,7 @@ extension SettingsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate methods
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenterSettings.trackSettingsRow(settingsRows[indexPath.section][indexPath.row].text)
         switch settingsRows[indexPath.section][indexPath.row] {
         case .changeToUser:
             presenterSettings.changeToUser()

@@ -27,6 +27,11 @@ class PresenterCheckAvailability {
     var modelCheckTurnsAvailability: ModelCheckTurnsAvailability?
     var customer: Customer?
     
+    private struct Constants {
+        static let screenName = "Check Availability Screen"
+        static let bookNowAnalyticValue = LocalizedConstants.book_now_key.enLocalized
+    }
+    
     // MARK: - init Methods
     init(view: PresenterCheckAvailabilityView, networkManager: NetworkManagerProtocol, analyticsManager: AnalyticsManagerProtocol, delegate: SelectButtonEntity, identifier: String?, name: String?, bookedServices: [Service]?, modelCheckTurnsAvailability: ModelCheckTurnsAvailability?) {
         self.view = view
@@ -68,6 +73,11 @@ class PresenterCheckAvailability {
     
     // MARK: - Public Interface
     func bookNowButtonTapped(bookedSlot: EmptySlot?) {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.bookNowAnalyticValue,
+            .screenName: Constants.screenName,
+            .selectedDate: bookedSlot?.slot?.toString() ?? ""
+        ])
         if let userDelegate = userDelegate {
             userDelegate.didSelectConfirm(identifier: identifier,
                                           name: name,
@@ -81,5 +91,19 @@ class PresenterCheckAvailability {
                                               bookedSlot: bookedSlot,
                                               customer: customer)
         }
+    }
+    
+    func dayTapped(_ day: String) {
+        analyticsManager.track(eventKey: .dayTapped, withProperties: [
+            .buttonText: Constants.bookNowAnalyticValue,
+            .screenName: Constants.screenName
+        ])
+    }
+    
+    func hourTapped(_ hour: String) {
+        analyticsManager.track(eventKey: .hourTapped, withProperties: [
+            .buttonText: Constants.bookNowAnalyticValue,
+            .screenName: Constants.screenName
+        ])
     }
 }

@@ -16,19 +16,37 @@ protocol PresenterSettingsView: PresenterParentView {
 class PresenterSettings: NSObject {
     
     // MARK: - Properties
+    private let analyticsManager: AnalyticsManagerProtocol
     private weak var view: PresenterSettingsView?
     private weak var userDelegate: SelectButtonEntity?
     private weak var businessDelegate: SelectButtonBusiness?
     
+    private struct Constants {
+        static let screenName = "Settings Screen"
+    }
+    
     // MARK: - init Methods
-    init(view: PresenterSettingsView, delegate: SelectButtonEntity) {
+    init(view: PresenterSettingsView,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonEntity) {
         self.view = view
+        self.analyticsManager = analyticsManager
         self.userDelegate = delegate
     }
     
-    init(view: PresenterSettingsView, delegate: SelectButtonBusiness) {
+    init(view: PresenterSettingsView,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonBusiness) {
         self.view = view
+        self.analyticsManager = analyticsManager
         self.businessDelegate = delegate
+    }
+    
+    func trackSettingsRow(_ row: String) {
+        analyticsManager.track(eventKey: .settingsTapped, withProperties: [
+            .settingsRow: row,
+            .screenName: Constants.screenName
+        ])
     }
     
     func changeToUser() {

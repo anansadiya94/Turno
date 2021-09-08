@@ -27,6 +27,13 @@ class PresenterAddAppointment {
     var modelBusiness: ModelBusiness?
     var customer: Customer?
     
+    private struct Constants {
+        static let screenName = "Add Appointment Screen"
+        static let checkAvailabilityAnalyticValue = LocalizedConstants.check_availability_key.enLocalized
+        static let noAvailableDatesTitleAnalyticValue = LocalizedConstants.no_available_dates_title_key.enLocalized
+        static let noAvailableDatesMessageAnalyticValue = LocalizedConstants.no_available_dates_message_key.enLocalized
+    }
+    
     // MARK: - init Methods
     init(view: PresenterAddAppointmentView,
          networkManager: NetworkManagerProtocol,
@@ -112,38 +119,64 @@ class PresenterAddAppointment {
         bookedServices?.forEach({ servicesToBook.append(ServiceToBook(identifier: $0.identifier,
                                                                       count: $0.count)) })
         let modelCheckTurnsAvailabilityTask = ModelCheckTurnsAvailabilityTask(servicesToBook: servicesToBook)
-        networkManager.getAvailableTimes(modelTask: modelCheckTurnsAvailabilityTask) { (modelCheckTurnsAvailability, error) in
+        networkManager.getAvailableTimes(modelTask: modelCheckTurnsAvailabilityTask) { [weak self] modelCheckTurnsAvailability, error in
+            guard let self = self else { return }
             if error as? MoyaError != nil {
+                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
             if let error = error as? AppError {
+                self.analyticsManager.trackErrorAlert(alertTitle: error.title,
+                                                      alertMessage: error.message,
+                                                      screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
             if let modelCheckTurnsAvailability = modelCheckTurnsAvailability,
-                let isAvailableDatesEmpty = modelCheckTurnsAvailability.availableDates?.isEmpty,
-                !isAvailableDatesEmpty {
+               let isAvailableDatesEmpty = modelCheckTurnsAvailability.availableDates?.isEmpty,
+               !isAvailableDatesEmpty {
+                self.trackAddAppointment(customer: self.customer, bookedServices: bookedServices)
                 self.view?.stopWaitingView()
-                self.delegate?.didSelectCheckAvailability(identifier: identifier, name: self.modelBusiness?.name,
-                                                         bookedServices: bookedServices,
-                                                         modelCheckTurnsAvailability: modelCheckTurnsAvailability,
-                                                         customer: self.customer)
+                self.delegate?.didSelectCheckAvailability(identifier: identifier,
+                                                          name: self.modelBusiness?.name,
+                                                          bookedServices: bookedServices,
+                                                          modelCheckTurnsAvailability: modelCheckTurnsAvailability,
+                                                          customer: self.customer)
             } else {
+                self.analyticsManager.trackErrorAlert(alertTitle: Constants.noAvailableDatesTitleAnalyticValue,
+                                                      alertMessage: Constants.noAvailableDatesMessageAnalyticValue,
+                                                      screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.no_available_dates_title_key.localized,
                                          withText: LocalizedConstants.no_available_dates_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil,
                                          completion: nil)
             }
         }
+    }
+}
+
+private extension PresenterAddAppointment {
+    func trackAddAppointment(customer: Customer?, bookedServices: [Service]?) {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.checkAvailabilityAnalyticValue,
+            .screenName: Constants.screenName,
+            .name: customer?.name ?? "",
+            .phoneNumber: customer?.phoneNumber ?? "",
+            .totalOfServices: String(bookedServices?.count ?? 0),
+            .totalOfServicesTime: String(ServiceTimeCalculation.calculateDuration(to: bookedServices))
+        ])
     }
 }

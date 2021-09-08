@@ -11,7 +11,7 @@ import Mixpanel
 
 enum AnalyticsKeys: String {
     // Common
-    case appMovedToBackground  = "App Moved to Background"
+    case appMovedToBackground = "App Moved to Background"
     case buttonTapped = "Button Tapped"
     case errorDisplayed = "Error Displayed"
     case registeredSuccessfully = "Registered Successfully"
@@ -56,8 +56,7 @@ enum AnalyticsEventPropertyKeys: String {
     case turnIdentifier = "Turn Identifier"
     case totalOfServices = "Total Of Services"
     case totalOfServicesTime = "Total Of Services Time"
-    case selectedDay = "Selected Day"
-    case selectedHour = "Selected Hour"
+    case selectedDate = "Selected Date"
     case startTime = "Start Time"
     case endTime = "End Time"
     case settingsRow = "Settings Row"
@@ -71,27 +70,63 @@ enum AnalyticsEventPropertyKeys: String {
     case totalBusinesses = "Total Businesses"
 }
 
+enum AnalyticsPeoplePropertyKeys: String {
+    case pushNotificationOptIn = "Push Notification Opt-In"
+    case firebaseToken = "Firebase token"
+    case name = "$name"
+    case phoneNumber = "Phone Number"
+    case businessId = "Business Id"
+}
+
+struct CommonAnalyticsValues {
+    static let connectionFailedTitle = LocalizedConstants.connection_failed_error_title_key.enLocalized
+    static let connectionFailedMessage = LocalizedConstants.connection_failed_error_message_key.enLocalized
+}
+
 protocol AnalyticsManagerProtocol {
-    func track(eventKey: AnalyticsKeys, withProperties properties: [String: String]?)
+    func track(eventKey: AnalyticsKeys, withProperties properties: [AnalyticsEventPropertyKeys: String]?)
+    func trackErrorAlert(alertTitle: String?, alertMessage: String?, screenName: String)
+    func trackConnectionFailedAlert(screenName: String)
     func identify(distinctId: String)
-    func peopleSet(properties: Properties)
+    func peopleSet(properties: [AnalyticsPeoplePropertyKeys: MixpanelType])
 }
 
 class AnalyticsManager: AnalyticsManagerProtocol {
-    
     init() {
         Mixpanel.initialize(token: "74984b10074f7d370086f5a157e539d9")
     }
     
-    func track(eventKey: AnalyticsKeys, withProperties properties: [String: String]?) {
-        Mixpanel.mainInstance().track(event: eventKey.rawValue, properties: properties)
+    func track(eventKey: AnalyticsKeys, withProperties properties: [AnalyticsEventPropertyKeys: String]?) {
+        let reducedProperties = properties?.reduce(into: [:]) { result, dictionary in
+            result[dictionary.key.rawValue] = dictionary.value
+        }
+        Mixpanel.mainInstance().track(event: eventKey.rawValue, properties: reducedProperties)
+    }
+    
+    func trackErrorAlert(alertTitle: String?, alertMessage: String?, screenName: String) {
+        track(eventKey: .alertDisplayed, withProperties: [
+            .alertTitle: alertTitle ?? "",
+            .alertMessage: alertMessage ?? "",
+            .screenName: screenName
+        ])
+    }
+    
+    func trackConnectionFailedAlert(screenName: String) {
+        track(eventKey: .alertDisplayed, withProperties: [
+            .alertTitle: LocalizedConstants.connection_failed_error_title_key.enLocalized,
+            .alertMessage: LocalizedConstants.connection_failed_error_message_key.enLocalized,
+            .screenName: screenName
+        ])
     }
     
     func identify(distinctId: String) {
         Mixpanel.mainInstance().identify(distinctId: distinctId)
     }
     
-    func peopleSet(properties: Properties) {
-        Mixpanel.mainInstance().people.set(properties: properties)
+    func peopleSet(properties: [AnalyticsPeoplePropertyKeys: MixpanelType]) {
+        let reducedProperties = properties.reduce(into: [:]) { result, dictionary in
+            result[dictionary.key.rawValue] = dictionary.value
+        }
+        Mixpanel.mainInstance().people.set(properties: reducedProperties)
     }
 }

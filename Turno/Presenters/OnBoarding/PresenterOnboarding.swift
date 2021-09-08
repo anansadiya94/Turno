@@ -19,17 +19,24 @@ class PresenterOnboarding: NSObject {
     // MARK: - Properties
     private weak var view: PresenterOnboardingView?
     private weak var delegate: SelectButtonOnboarding?
+    private let analyticsManager: AnalyticsManagerProtocol
     var modelOnboardingList = [ModelOnboarding]()
     
     // MARK: - init Methods
-    init(view: PresenterOnboardingView, onBoardingList: [ModelOnboarding]) {
+    init(view: PresenterOnboardingView,
+         analyticsManager: AnalyticsManagerProtocol,
+         onBoardingList: [ModelOnboarding]) {
+        self.analyticsManager = analyticsManager
         super.init()
         self.view = view
         self.modelOnboardingList = onBoardingList
         self.notifyView()
     }
     
-    init(view: PresenterOnboardingView, delegate: SelectButtonOnboarding) {
+    init(view: PresenterOnboardingView,
+         analyticsManager: AnalyticsManagerProtocol,
+         delegate: SelectButtonOnboarding) {
+        self.analyticsManager = analyticsManager
         super.init()
         self.view = view
         self.delegate = delegate
@@ -57,6 +64,7 @@ class PresenterOnboarding: NSObject {
     func buttonCellTappedAction(amILast: Bool) {
         if amILast {
             AppData.onBoardingCompleted = true
+            analyticsManager.track(eventKey: .onboardingScreenSeen, withProperties: nil)
             delegate?.didSelectOnboardingButton()
         } else {
             self.view?.nextCell()

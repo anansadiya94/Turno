@@ -22,6 +22,11 @@ class PresenterInstallation {
     private weak var view: PresenterInstallationView!
     private weak var delegate: SelectButtonWelcome?
     
+    private struct Constants {
+        static let screenName = "Install Screen"
+        static let continueAnalyticValue = LocalizedConstants.continue_key.enLocalized
+    }
+    
     // MARK: - Public Interface
     init(view: PresenterInstallationView,
          networkManager: NetworkManagerProtocol,
@@ -73,6 +78,12 @@ class PresenterInstallation {
     
     // MARK: - UI interaction methods
     func continueButtonTapped(name: String?, phoneNumber: String?) {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.continueAnalyticValue,
+            .screenName: Constants.screenName,
+            .name: name ?? "",
+            .phoneNumber: phoneNumber ?? ""
+        ])
         if isValid(name: name, phoneNumber: phoneNumber) {
             let user = User(name: name, phoneNumber: phoneNumber)
             Preferences.setPrefsUser(user: user)

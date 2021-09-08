@@ -29,6 +29,12 @@ class PresenterBusinessHome {
     var isFetching: Bool = false
     var lastStatusCheck: Date?
     
+    private struct Constants {
+        static let screenName = "Home Business Screen"
+        static let plusAnalyticValue = "Plus"
+        static let refreshAnalyticValue = "Refresh"
+    }
+    
     // MARK: - init Methods
     init(view: PresenterBusinessHomeView,
          networkManager: NetworkManagerProtocol,
@@ -136,14 +142,26 @@ class PresenterBusinessHome {
     }
     
     func addAppointmentTapped() {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.plusAnalyticValue,
+            .screenName: Constants.screenName
+        ])
         delegate?.addAppointmentTapped(modelBusiness: modelBusiness)
     }
     
     func refreshTapped() {
+        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
+            .buttonText: Constants.refreshAnalyticValue,
+            .screenName: Constants.screenName
+        ])
         fetchMyBookings()
     }
     
     func showAppointmentTapped(turn: Turn) {
+        analyticsManager.track(eventKey: .turnTapped, withProperties: [
+            .turnIdentifier: turn.identifier ?? "",
+            .screenName: Constants.screenName
+        ])
         delegate?.showAppointmentTapped(turn: turn)
     }
     
