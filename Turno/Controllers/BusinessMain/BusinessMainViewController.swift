@@ -20,8 +20,10 @@ class BusinessMainViewController: UITabBarController {
     private var homeTabBarItem = UITabBarItem()
     private var settingsTabBarItem = UITabBarItem()
     
-    let tabBarDictionary: [Int: TabBarModel] = [0: TabBarModel(name: "Home", imageName: "house"),
-                                                1: TabBarModel(name: "Settings", imageName: "gear")]
+    let tabBarDictionary: [Int: TabBarModel] = [0: TabBarModel(name: LocalizedConstants.home_key.enLocalized,
+                                                               imageName: "house"),
+                                                1: TabBarModel(name: LocalizedConstants.settings_key.enLocalized,
+                                                               imageName: "gear")]
     
     // MARK: - UIViewController
     override func viewDidLoad() {

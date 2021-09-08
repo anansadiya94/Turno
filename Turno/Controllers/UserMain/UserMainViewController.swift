@@ -17,10 +17,14 @@ class UserMainViewController: UITabBarController {
     private var favoritesTabBarItem = UITabBarItem()
     private var settingsTabBarItem = UITabBarItem()
     
-    let tabBarDictionary: [Int: TabBarModel] = [0: TabBarModel(name: "Home", imageName: "house"),
-                                                1: TabBarModel(name: "Appointments", imageName: "calendar"),
-                                                2: TabBarModel(name: "Favorites", imageName: "heart"),
-                                                3: TabBarModel(name: "Settings", imageName: "gear")]
+    let tabBarDictionary: [Int: TabBarModel] = [0: TabBarModel(name: LocalizedConstants.home_key.enLocalized,
+                                                               imageName: "house"),
+                                                1: TabBarModel(name: LocalizedConstants.my_turns_key.enLocalized,
+                                                               imageName: "calendar"),
+                                                2: TabBarModel(name: LocalizedConstants.favorites_key.enLocalized,
+                                                               imageName: "heart"),
+                                                3: TabBarModel(name: LocalizedConstants.settings_key.enLocalized,
+                                                               imageName: "gear")]
     
     // MARK: - UIViewController
     override func viewDidLoad() {
