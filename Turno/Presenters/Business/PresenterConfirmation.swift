@@ -56,6 +56,7 @@ class PresenterConfirmation {
         self.bookedSlot = bookedSlot
         self.confirmationViewType = confirmationViewType
         self.notifyView()
+        self.trackScreen()
     }
     
     init(view: PresenterConfirmationView, networkManager: NetworkManagerProtocol, analyticsManager: AnalyticsManagerProtocol, delegate: SelectButtonBusiness, userId: String?, name: String?, turnId: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?,
@@ -72,6 +73,7 @@ class PresenterConfirmation {
         self.confirmationViewType = confirmationViewType
         self.customer = customer
         self.notifyView()
+        self.trackScreen()
     }
     
     // MARK: - Private methods
@@ -259,6 +261,21 @@ class PresenterConfirmation {
     }
     
     // MARK: - Public Interface
+    func trackScreen() {
+        let selectedDate = bookedSlot?.slot?.toString().toDisplayableDate(type: .date)
+        let startTime = bookedSlot?.slot?.toString().toDisplayableDate(type: .hour)
+        let bookedServicesDuration = ServiceTimeCalculation.calculateDuration(to: bookedServices)
+        let endTimeDate = bookedSlot?.slot?.toString().calculateEndDate(adding: bookedServicesDuration)
+        let endTime = endTimeDate?.toDisplayableDate(type: .hour)
+        
+        analyticsManager.track(eventKey: .confirmationScreenSeen, withProperties: [
+            .turnIdentifier: turnId ?? "",
+            .selectedDate: selectedDate ?? "",
+            .startTime: startTime ?? "",
+            .endTime: endTime ?? ""
+        ])
+    }
+    
     func confirmButtonTapped() {
         trackButtonTapped(buttonText: Constants.confirmAnalyticValue)
         view?.startWaitingView()

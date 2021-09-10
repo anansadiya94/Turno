@@ -54,6 +54,10 @@ class PresenterUserHome {
     }
     
     // MARK: - Public Interface
+    func trackScreen() {
+        analyticsManager.track(eventKey: .homeUserScreenSeen, withProperties: nil)
+    }
+    
     func fetchData() {
         view?.startWaitingView()
         view?.removeEmptyMessage()

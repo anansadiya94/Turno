@@ -72,6 +72,10 @@ class PresenterCheckAvailability {
     }
     
     // MARK: - Public Interface
+    func trackScreen() {
+        analyticsManager.track(eventKey: .checkAvailabilityScreenSeen, withProperties: nil)
+    }
+    
     func bookNowButtonTapped(bookedSlot: EmptySlot?) {
         analyticsManager.track(eventKey: .buttonTapped, withProperties: [
             .buttonText: Constants.bookNowAnalyticValue,

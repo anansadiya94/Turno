@@ -60,6 +60,10 @@ class PresenterBusinessHome {
         view?.didSetData(modelBusiness: modelBusiness, modelMyBookings: modelMyBookings)
     }
     
+    func trackScreen() {
+        analyticsManager.track(eventKey: .homeBusinessScreenSeen, withProperties: nil)
+    }
+    
     func fetchData() {
         // Preventing multiple calls
         guard isFetching == false else {
@@ -162,6 +166,7 @@ class PresenterBusinessHome {
         }
     }
     
+    // MARK: - UI interaction methods
     func addAppointmentTapped() {
         analyticsManager.track(eventKey: .buttonTapped, withProperties: [
             .buttonText: Constants.plusAnalyticValue,

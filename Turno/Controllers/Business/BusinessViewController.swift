@@ -14,6 +14,9 @@ class BusinessViewController: ParentViewController {
     var presenterBusiness: PresenterBusiness!
     @UseAutoLayout var businessView = BusinessView()
     
+    private var previousSegmentedIndex: Int = -1
+    private var currentSegmentedIndex: Int = 0
+    
     var model: ModelBusiness?
     var services: [Service]?
     var turns: [Turn]?
@@ -26,6 +29,11 @@ class BusinessViewController: ParentViewController {
         addSwipeGestureRecognizer()
         addTargets()
         addObservers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenterBusiness.trackScreen()
     }
     
     // MARK: - Private methods
@@ -89,7 +97,7 @@ class BusinessViewController: ParentViewController {
         return UITableViewCell()
     }
     
-    private func appoitmentCell(_ indexPath: IndexPath) -> UITableViewCell {
+    private func appointmentCell(_ indexPath: IndexPath) -> UITableViewCell {
         if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kBusinessAppoitmentCellID,
                                                                  for: indexPath) as? BusinessAppointmentTableViewCell,
             let turn = turns?[indexPath.row] {
@@ -159,6 +167,10 @@ class BusinessViewController: ParentViewController {
     }
     
     @objc private func handleSegmentControl() {
+        previousSegmentedIndex = currentSegmentedIndex
+        currentSegmentedIndex = businessView.segmentedControl.selectedSegmentIndex
+        presenterBusiness.trackTopNavigationTabTap(previousTabName: businessView.getTabName(at: previousSegmentedIndex),
+                                                   currentTabName: businessView.getTabName(at: currentSegmentedIndex))
         businessView.setView()
         businessView.tableView.reloadData()
     }
@@ -246,7 +258,7 @@ extension BusinessViewController: UITableViewDataSource {
         case 0:
             return serviceCell(indexPath)
         case 1:
-            return appoitmentCell(indexPath)
+            return appointmentCell(indexPath)
         case 2:
             return informationCell(indexPath)
         default:

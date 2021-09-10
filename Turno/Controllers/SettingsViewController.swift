@@ -67,6 +67,11 @@ class SettingsViewController: ParentViewController {
         setRows()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenterSettings.trackScreen()
+    }
+    
     // MARK: - Private methods
     private func setGenericView() {
         self.view.addSubview(genericView)

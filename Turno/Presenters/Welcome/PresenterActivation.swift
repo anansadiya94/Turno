@@ -70,6 +70,10 @@ class PresenterActivation: NSObject {
         }
     }
     
+    func trackScreen() {
+        analyticsManager.track(eventKey: .activationScreenSeen, withProperties: nil)
+    }
+    
     // MARK: - UI interaction methods
     func wrongNumberButtonTapped() {
         analyticsManager.track(eventKey: .buttonTapped, withProperties: [

@@ -58,7 +58,7 @@ class PresenterAppointments {
                                                                     phone: model.phone))})
             }
         }
-        
+        trackScreen(totalTurns: newListModel.count)
         let appointmentsListDescriptive = AppointmentsListDescriptive(modelList: newListModel)
         self.view?.didSetData(model: appointmentsListDescriptive)
     }
@@ -98,6 +98,12 @@ class PresenterAppointments {
     }
     
     // MARK: - Public Interface
+    func trackScreen(totalTurns: Int) {
+        analyticsManager.track(eventKey: .myTurnsScreenSeen, withProperties: [
+            .totalTurns: String(describing: totalTurns)
+        ])
+    }
+    
     func fetchData() {
         self.view?.startWaitingView()
         self.view?.removeEmptyMessage()

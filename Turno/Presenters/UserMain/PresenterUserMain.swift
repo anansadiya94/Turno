@@ -22,10 +22,10 @@ class PresenterUserMain: NSObject {
         self.view = view
     }
     
-    func tabBarDidSelect(currentTabName: String, tappedTabName: String) {
+    func tabBarDidSelect(previousTabName: String, currentTabName: String) {
         analyticsManager.track(eventKey: .bottomNavigationTabTap, withProperties: [
-            .currentTabName: currentTabName,
-            .tappedTabName: tappedTabName
+            .previousTabName: previousTabName,
+            .currentTabName: currentTabName
         ])
     }
 }

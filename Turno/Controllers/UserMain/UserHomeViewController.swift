@@ -31,6 +31,11 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
         presenterHome.fetchData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenterHome.trackScreen()
+    }
+    
     // MARK: - GenericTableView methods
     init() {
         super.init(nibName: nil, bundle: nil)

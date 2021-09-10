@@ -36,7 +36,7 @@ class ConfirmationViewController: ParentViewController {
     }
     
     private func addTarget() {
-        confirmationView.confitmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+        confirmationView.confirmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         confirmationView.cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         confirmationView.callNow.addTarget(self, action: #selector(callNowButtonTapped), for: .touchUpInside)
     }

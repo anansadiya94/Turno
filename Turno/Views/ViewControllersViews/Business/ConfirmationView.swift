@@ -22,7 +22,7 @@ class ConfirmationView: UIView {
     @UseAutoLayout var endTimeLabel = CustomLabel()
     @UseAutoLayout var tableView =  UITableView()
     @UseAutoLayout var confirmMessageLabel = CustomLabel()
-    @UseAutoLayout var confitmButton = RoundedCustomButton()
+    @UseAutoLayout var confirmButton = RoundedCustomButton()
     @UseAutoLayout var callNow = RoundedCustomButton()
     @UseAutoLayout var cancelButton = RoundedCustomButton()
     
@@ -71,15 +71,15 @@ class ConfirmationView: UIView {
     }
     
     func createConfirmNowButton() {
-        confitmButton.isHidden = true
-        addSubview(confitmButton)
-        confitmButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.confirm_key.localized)
+        confirmButton.isHidden = true
+        addSubview(confirmButton)
+        confirmButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.confirm_key.localized)
         
         NSLayoutConstraint.activate([
-            confitmButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
-            confitmButton.heightAnchor.constraint(equalToConstant: 44.0),
-            confitmButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
-            confitmButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
+            confirmButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
+            confirmButton.heightAnchor.constraint(equalToConstant: 44.0),
+            confirmButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 32.0),
+            confirmButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -32.0)
         ])
     }
     
@@ -91,7 +91,7 @@ class ConfirmationView: UIView {
                                                    numberOfLines: 3, adjustsFontSizeToFitWidth: true)
         
         NSLayoutConstraint.activate([
-            confirmMessageLabel.bottomAnchor.constraint(equalTo: confitmButton.topAnchor, constant: -16.0),
+            confirmMessageLabel.bottomAnchor.constraint(equalTo: confirmButton.topAnchor, constant: -16.0),
             confirmMessageLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16.0),
             confirmMessageLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -16.0)
         ])
@@ -179,7 +179,7 @@ class ConfirmationView: UIView {
         switch viewType {
         case .user:
             confirmMessageLabel.isHidden = false
-            confitmButton.isHidden = false
+            confirmButton.isHidden = false
         case .business:
             cancelButton.isHidden = false
             callNow.isHidden = false

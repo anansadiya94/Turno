@@ -42,6 +42,11 @@ class PresenterSettings: NSObject {
         self.businessDelegate = delegate
     }
     
+    // MARK: - Public Interface
+    func trackScreen() {
+        analyticsManager.track(eventKey: .settingsScreenSeen, withProperties: nil)
+    }
+    
     func trackSettingsRow(_ row: String) {
         analyticsManager.track(eventKey: .settingsTapped, withProperties: [
             .settingsRow: row,
@@ -49,6 +54,7 @@ class PresenterSettings: NSObject {
         ])
     }
     
+    // MARK: - UI interaction methods
     func changeToUser() {
         if let businessDelegate = businessDelegate {
             AppData.isBusiness = false

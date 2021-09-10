@@ -33,6 +33,11 @@ class BusinessHomeViewController: DayViewController {
         presenterHome.fetchMyBookings()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenterHome.trackScreen()
+    }
+    
     // MARK: - DayViewController methods
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         guard let turns = turns else { return [] }

@@ -43,11 +43,18 @@ class PresenterFavorites {
     
     // MARK: - Private methods
     private func notifyView() {
-        let genericListDescriptive = GenericListDescriptive(modelList: self.modelList)
+        trackScreen(totalBusinesses: modelList.count)
+        let genericListDescriptive = GenericListDescriptive(modelList: modelList)
         self.view?.didSetData(model: genericListDescriptive)
     }
     
     // MARK: - Public Interface
+    func trackScreen(totalBusinesses: Int) {
+        analyticsManager.track(eventKey: .favoritesScreenSeen, withProperties: [
+            .totalBusinesses: String(describing: totalBusinesses)
+        ])
+    }
+    
     func fetchData() {
         self.view?.startWaitingView()
         self.view?.removeEmptyMessage()

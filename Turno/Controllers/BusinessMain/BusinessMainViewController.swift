@@ -34,8 +34,8 @@ class BusinessMainViewController: UITabBarController {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if let currentTag = selectedViewController?.tabBarItem.tag {
-            presenterMain.tabBarDidSelect(currentTabName: tabBarDictionary[currentTag]?.name ?? "",
-                                          tappedTabName: tabBarDictionary[item.tag]?.name ?? "")
+            presenterMain.tabBarDidSelect(previousTabName: tabBarDictionary[currentTag]?.name ?? "",
+                                          currentTabName: tabBarDictionary[item.tag]?.name ?? "")
         }
     }
     

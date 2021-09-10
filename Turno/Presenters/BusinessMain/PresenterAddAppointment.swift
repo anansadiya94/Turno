@@ -109,6 +109,10 @@ class PresenterAddAppointment {
     }
     
     // MARK: - Public Interface
+    func trackScreen() {
+        analyticsManager.track(eventKey: .addAppointmentScreenSeen, withProperties: nil)
+    }
+    
     func modifyModel(identifier: String, count: Int) {
         view?.modifyModel(identifier: identifier, count: count)
     }

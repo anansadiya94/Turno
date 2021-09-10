@@ -21,13 +21,18 @@ class PresenterWelcome {
         static let privacyPolicyAnalyticValue = LocalizedConstants.privacy_policy_key.enLocalized
     }
     
-    // MARK: - Public Interface
+    // MARK: - init Methods
     init(view: WelcomeViewController,
          analyticsManager: AnalyticsManagerProtocol,
          delegate: SelectButtonWelcome) {
         self.view = view
         self.analyticsManager = analyticsManager
         self.delegate = delegate
+    }
+    
+    // MARK: - Public Interface
+    func trackScreen() {
+        analyticsManager.track(eventKey: .welcomeScreenSeen, withProperties: nil)
     }
     
     // MARK: - UI interaction methods

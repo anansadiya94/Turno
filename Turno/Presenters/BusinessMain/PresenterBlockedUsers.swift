@@ -48,6 +48,7 @@ class PresenterBlockedUsers {
     
     // MARK: - Private methods
     private func notifyView() {
+        trackScreen(totalOfBlockedUsers: modelList.count)
         let blockedUsersListDescriptive = BlockedUsersListDescriptive(modelList: modelList)
         self.view?.didSetData(model: blockedUsersListDescriptive)
     }
@@ -85,6 +86,12 @@ class PresenterBlockedUsers {
     }
     
     // MARK: - Public Interface
+    func trackScreen(totalOfBlockedUsers: Int) {
+        analyticsManager.track(eventKey: .blockerUsersScreenSeen, withProperties: [
+            .totalOfBlockedUsers: String(describing: totalOfBlockedUsers)
+        ])
+    }
+    
     func fetchData() {
         self.view?.startWaitingView()
         self.view?.removeEmptyMessage()

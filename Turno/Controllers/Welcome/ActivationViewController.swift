@@ -35,6 +35,11 @@ class ActivationViewController: ParentViewController {
         configureOneTimeCodeView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenterActivation.trackScreen()
+    }
+    
     // MARK: - Private methods
     private func setActivationView() {
         activationView = ActivationView(frame: view.frame)

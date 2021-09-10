@@ -76,6 +76,10 @@ class PresenterInstallation {
         }
     }
     
+    func trackScreen() {
+        analyticsManager.track(eventKey: .installScreenSeen, withProperties: nil)
+    }
+    
     // MARK: - UI interaction methods
     func continueButtonTapped(name: String?, phoneNumber: String?) {
         analyticsManager.track(eventKey: .buttonTapped, withProperties: [

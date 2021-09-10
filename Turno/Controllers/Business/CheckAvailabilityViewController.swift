@@ -26,6 +26,11 @@ class CheckAvailabilityViewController: ParentViewController {
         addTarget()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenterCheckAvailability.trackScreen()
+    }
+    
     // MARK: - Private methods
     private func setCheckAvailabilityViewConstraints() {
         self.view.addSubview(checkAvailabilityView)
@@ -160,9 +165,9 @@ extension CheckAvailabilityViewController: UICollectionViewDelegate {
 extension CheckAvailabilityViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == checkAvailabilityView.daysCollectionView {
-            return  CGSize(width: 120, height: 100)
+            return  CGSize(width: 150, height: 100)
         } else if collectionView == checkAvailabilityView.hoursCollectionView {
-            return CGSize(width: (view.frame.width - 16) / 3, height: 50)
+            return CGSize(width: (view.frame.width - 16) / 4, height: 50)
         }
         return CGSize()
     }

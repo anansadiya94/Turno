@@ -36,6 +36,7 @@ class AddAppointmentViewController: ParentViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         addAppointmentView.nameTextField.becomeFirstResponder()
+        presenterAddAppointment.trackScreen()
     }
     
     // MARK: - Private methods

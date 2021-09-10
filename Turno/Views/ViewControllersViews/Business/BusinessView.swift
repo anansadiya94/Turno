@@ -107,4 +107,13 @@ class BusinessView: UIView {
     func setImage(image: String?) {
         imageView.setThumbnailImageView(from: image)
     }
+    
+    func getTabName(at index: Int) -> String {
+        switch index {
+        case 0: return LocalizedConstants.services_key.enLocalized
+        case 1: return LocalizedConstants.my_turns_key.enLocalized
+        case 2: return LocalizedConstants.information_key.enLocalized
+        default: return ""
+        }
+    }
 }

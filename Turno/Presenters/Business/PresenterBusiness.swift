@@ -96,10 +96,22 @@ class PresenterBusiness {
     }
     
     // MARK: - Public Interface
+    func trackScreen() {
+        analyticsManager.track(eventKey: .businessScreenSeen, withProperties: nil)
+    }
+    
+    func trackTopNavigationTabTap(previousTabName: String, currentTabName: String) {
+        analyticsManager.track(eventKey: .topNavigationTabTap, withProperties: [
+            .previousTabName: previousTabName,
+            .currentTabName: currentTabName
+        ])
+    }
+    
     func modifyModel(identifier: String, count: Int) {
         view?.modifyModel(identifier: identifier, count: count)
     }
     
+    // MARK: - UI interaction methods
     func checkAvailabilityButtonTapped(identifier: String?, bookedServices: [Service]?) {
         trackCheckAvailabilityButtonTapped(businessIdentifier: model?.identifier, bookedServices: bookedServices)
         view?.startWaitingView()

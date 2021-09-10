@@ -31,6 +31,7 @@ class InstallationViewController: ParentViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         installationView?.nameTextField.becomeFirstResponder()
+        presenterInstallation.trackScreen()
     }
     
     // MARK: - Private methods    
