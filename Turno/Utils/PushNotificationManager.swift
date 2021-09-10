@@ -12,18 +12,12 @@ import FirebaseMessaging
 import UserNotifications
 
 class PushNotificationManager: NSObject {
-    
-    let userId: String
-    let name: String?
     let gcmMessageIDKey = "gcm.Message_ID"
     private let networkManager: NetworkManagerProtocol
     private let analyticsManager: AnalyticsManagerProtocol
     
-    init(userId: String, name: String?,
-         networkManager: NetworkManagerProtocol,
+    init(networkManager: NetworkManagerProtocol,
          analyticsManager: AnalyticsManagerProtocol) {
-        self.userId = userId
-        self.name = name
         self.networkManager = networkManager
         self.analyticsManager = analyticsManager
         super.init()

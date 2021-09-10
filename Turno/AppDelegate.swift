@@ -30,10 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        if let userId = Preferences.getPrefsUser()?.businessId {
-            let pushManager = PushNotificationManager(userId: userId,
-                                                      name: Preferences.getPrefsUser()?.name,
-                                                      networkManager: networkManager,
+        if let _ = Preferences.getPrefsUser()?.userId {
+            let pushManager = PushNotificationManager(networkManager: networkManager,
                                                       analyticsManager: analyticsManager)
             pushManager.registerForPushNotifications()
         }
