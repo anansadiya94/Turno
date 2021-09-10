@@ -60,18 +60,10 @@ class ServiceTableViewCell: UITableViewCell {
                 default:
                     break
                 }
-            case .booked:
+            case .booked, .present:
                 durationLabel.isHidden = true
-                plusButton.isEnabled = false
-                plusButton.setImage(nil, for: .normal)
-                minusButton.isEnabled = false
-                minusButton.setImage(nil, for: .normal)
-            case .present:
-                durationLabel.isHidden = true
-                plusButton.isEnabled = false
-                plusButton.setImage(nil, for: .normal)
-                minusButton.isEnabled = false
-                minusButton.setImage(nil, for: .normal)
+                plusButton.isHidden = true
+                minusButton.isHidden = true
             }
         }
     }

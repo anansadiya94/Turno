@@ -15,8 +15,7 @@ extension UIImageView {
             let resource = ImageResource(downloadURL: url)
             KingfisherManager.shared.retrieveImage(with: resource) { [weak self] (result: Result<RetrieveImageResult, KingfisherError>) in
                 switch result {
-                case .failure(let error):
-                    debugPrint(error.localizedDescription)
+                case .failure(_):
                     DispatchQueue.main.async {
                         self?.image = UIImage(named: kDefaultImage)
                     }

@@ -31,11 +31,6 @@ class AppointmentsViewController: GenericTableView<AppointmentsListDescriptive> 
         presenterAppointments.fetchData()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        super.tableView(tableView, didSelectRowAt: indexPath)
-        print("TAPPED")
-    }
-    
     // MARK: - GenericTableView methods
     init() {
         super.init(nibName: nil, bundle: nil)

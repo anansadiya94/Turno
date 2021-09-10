@@ -16,11 +16,11 @@ enum ConfirmationViewType {
 class ConfirmationView: UIView {
     
     // MARK: - Properties
-    @UseAutoLayout var headerStacakView = UIStackView()
+    @UseAutoLayout var headerStackView = UIStackView()
     @UseAutoLayout var dayLabel = CustomLabel()
     @UseAutoLayout var startTimeLabel = CustomLabel()
     @UseAutoLayout var endTimeLabel = CustomLabel()
-    @UseAutoLayout var tableView =  UITableView()
+    @UseAutoLayout var tableView = UITableView()
     @UseAutoLayout var confirmMessageLabel = CustomLabel()
     @UseAutoLayout var confirmButton = RoundedCustomButton()
     @UseAutoLayout var callNow = RoundedCustomButton()
@@ -98,10 +98,10 @@ class ConfirmationView: UIView {
     }
     
     func createHeaderStackView() {
-        headerStacakView.axis = .horizontal
-        headerStacakView.distribution = .fillEqually
-        headerStacakView.alignment = .fill
-        headerStacakView.spacing = 0
+        headerStackView.axis = .horizontal
+        headerStackView.distribution = .fillEqually
+        headerStackView.alignment = .fill
+        headerStackView.spacing = 0
         
         let dayTitleLabel = CustomLabel()
         dayTitleLabel.labelTheme = BoldTheme(label: LocalizedConstants.day_key.localized, fontSize: 20,
@@ -136,16 +136,16 @@ class ConfirmationView: UIView {
         endTimeStackView.addArrangedSubview(endTimeTitleLabel)
         endTimeStackView.addArrangedSubview(endTimeLabel)
         
-        headerStacakView.addArrangedSubview(dayStackView)
-        headerStacakView.addArrangedSubview(startTimeStackView)
-        headerStacakView.addArrangedSubview(endTimeStackView)
+        headerStackView.addArrangedSubview(dayStackView)
+        headerStackView.addArrangedSubview(startTimeStackView)
+        headerStackView.addArrangedSubview(endTimeStackView)
         
-        self.addSubview(headerStacakView)
+        self.addSubview(headerStackView)
         
-        headerStacakView.translatesAutoresizingMaskIntoConstraints = false
-        headerStacakView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
-        headerStacakView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        headerStacakView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        headerStackView.translatesAutoresizingMaskIntoConstraints = false
+        headerStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
+        headerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        headerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
     }
     
     private func createTableView() {
@@ -157,10 +157,10 @@ class ConfirmationView: UIView {
         tableView.tableFooterView = UIView()
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: headerStacakView.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: confirmMessageLabel.topAnchor),
-            tableView.leftAnchor.constraint(equalTo: leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: rightAnchor)
+            tableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+            tableView.rightAnchor.constraint(equalTo: rightAnchor, constant: -16)
         ])
     }
     

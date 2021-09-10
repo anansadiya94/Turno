@@ -64,7 +64,6 @@ class BusinessHomeViewController: DayViewController {
         guard let descriptor = eventView.descriptor as? Event else {
             return
         }
-        print("Event has been selected: \(descriptor) \(String(describing: descriptor.userInfo))")
         if let turn = descriptor.userInfo as? Turn {
             presenterHome.showAppointmentTapped(turn: turn)
         }
