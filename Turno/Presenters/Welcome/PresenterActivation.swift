@@ -153,10 +153,8 @@ class PresenterActivation: NSObject {
                 if let modelVerify = modelVerify {
                     self.setPrefs(modelVerify: modelVerify)
                     self.trackSignedInUser()
-                    if let userId = modelVerify.businessId {
-                        let pushManager = PushNotificationManager(userId: userId,
-                                                                  name: Preferences.getPrefsUser()?.name,
-                                                                  networkManager: self.networkManager,
+                    if Preferences.getPrefsUser()?.userId != nil {
+                        let pushManager = PushNotificationManager(networkManager: self.networkManager,
                                                                   analyticsManager: self.analyticsManager)
                         pushManager.registerForPushNotifications()
                     }
