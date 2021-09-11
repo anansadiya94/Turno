@@ -74,7 +74,10 @@ class InformationTableViewCell: UITableViewCell {
     // MARK: - Public Interface
     func config(type: InformationTableViewCellType, text: String) {
         informationImageView.image = type.logo
-        informationLabel.labelTheme = RegularTheme(label: text, fontSize: 17, textColor: type.textColor,
-                                                   textAlignment: .natural, numberOfLines: 0)
+        informationLabel.labelTheme = RegularTheme(label: text,
+                                                   fontSize: 17,
+                                                   textColor: type.textColor,
+                                                   textAlignment: .natural,
+                                                   numberOfLines: 0)
     }
 }

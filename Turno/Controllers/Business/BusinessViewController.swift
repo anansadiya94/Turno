@@ -53,7 +53,7 @@ class BusinessViewController: ParentViewController {
         businessView.tableView.register(UINib(nibName: kServiceTableViewCellNib, bundle: nil),
                                         forCellReuseIdentifier: kServiceCellID)
         businessView.tableView.register(UINib(nibName: kBusinessAppointmentTableViewCellNib, bundle: nil),
-                                        forCellReuseIdentifier: kBusinessAppoitmentCellID)
+                                        forCellReuseIdentifier: kBusinessAppointmentCellID)
         businessView.tableView.register(UINib(nibName: kInformationTableViewCellNib, bundle: nil),
                                         forCellReuseIdentifier: kInformationCellID)
     }
@@ -98,7 +98,7 @@ class BusinessViewController: ParentViewController {
     }
     
     private func appointmentCell(_ indexPath: IndexPath) -> UITableViewCell {
-        if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kBusinessAppoitmentCellID,
+        if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kBusinessAppointmentCellID,
                                                                  for: indexPath) as? BusinessAppointmentTableViewCell,
             let turn = turns?[indexPath.row] {
             cell.config(turn: turn)

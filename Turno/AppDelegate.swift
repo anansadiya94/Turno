@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         setAppFont()
+        trackDeviceLanguage()
         appCoordinator = AppCoordinator(window: window!,
                                         navigationController: UINavigationController(),
                                         networkManager: networkManager,
@@ -53,5 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             AppData.appFont = "OpenSans"
         }
+    }
+    
+    private func trackDeviceLanguage() {
+        analyticsManager.peopleSet(properties: [
+            AnalyticsPeoplePropertyKeys.deviceLanguage: Locale.current.languageCode?.capitalized
+        ])
     }
 }

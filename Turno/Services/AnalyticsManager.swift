@@ -76,6 +76,7 @@ enum AnalyticsPeoplePropertyKeys: String {
     case name = "$name"
     case phoneNumber = "Phone Number"
     case businessId = "Business Id"
+    case deviceLanguage = "Device Language"
 }
 
 struct CommonAnalyticsValues {

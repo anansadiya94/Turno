@@ -52,7 +52,7 @@ struct ModelBusiness: Codable, ModelApiError {
         
         var description = ""
         
-        guard let openingHours = openingHours else { return "ERROR" }
+        guard let openingHours = openingHours else { return "N/A" }
         
         for (index, openingHour) in openingHours.enumerated() {
             if let day = openingHour.day,

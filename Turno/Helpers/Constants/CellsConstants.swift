@@ -10,7 +10,7 @@ import Foundation
 
 let kOnboardingCellID = "onboardingCell"
 let kServiceCellID = "serviceCell"
-let kBusinessAppoitmentCellID = "businessAppoitmentCell"
+let kBusinessAppointmentCellID = "businessAppointmentCell"
 let kInformationCellID = "informationCell"
 let kAvailableTurnDayCellID = "availableTurnDay"
 let kAvailableTurnHourCellID = "availableTurnHour"
