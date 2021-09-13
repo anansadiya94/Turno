@@ -23,7 +23,7 @@ struct RemoteConfigManager {
         static let shortVersionBundleKey = "CFBundleShortVersionString"
     }
     
-    static func configure(expirationDuration: TimeInterval = 3600.0) {
+    static func configure(expirationDuration: TimeInterval = 0.0) {
         remoteConfig.fetch(withExpirationDuration: expirationDuration) { _, error in
             if let error = error {
                 print(error)
