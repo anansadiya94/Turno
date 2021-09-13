@@ -88,6 +88,9 @@
 "close_key" = "סגור";
 "home_error_message_key" = "בדקו את חיבור האינטרנט שלך משוך לרענון!";
 "cancel_turn_key" = "ביטול הפעל";
+"force_update_title_key" = "גרסה חדשה זמינה";
+"force_update_message_key" = "יש גרסה חדשה יותר זמין להורדה! אנא עדכן את האפליקציה על-ידי ביקור ב- Apple Store.";
+"force_update_action_key" = "עדכון";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "זמן שירותים סהכ הוא: %@";

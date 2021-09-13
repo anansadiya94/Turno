@@ -97,6 +97,9 @@ enum LocalizedConstants: String {
     case    close_key
     case    home_error_message_key
     case    cancel_turn_key
+    case    force_update_title_key
+    case    force_update_message_key
+    case    force_update_action_key
     
     case    total_services_time_key
     case    block_user_by_name_key

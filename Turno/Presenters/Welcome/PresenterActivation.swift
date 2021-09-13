@@ -176,6 +176,7 @@ private extension PresenterActivation {
         analyticsManager.peopleSet(properties: [
             AnalyticsPeoplePropertyKeys.name: Preferences.getPrefsUser()?.name,
             AnalyticsPeoplePropertyKeys.phoneNumber: Preferences.getPrefsUser()?.phoneNumber,
+            AnalyticsPeoplePropertyKeys.userId: Preferences.getPrefsUser()?.userId,
             AnalyticsPeoplePropertyKeys.businessId: Preferences.getPrefsUser()?.businessId
         ])
         analyticsManager.track(eventKey: .registeredSuccessfully, withProperties: nil)

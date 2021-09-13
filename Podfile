@@ -13,5 +13,6 @@ target 'Turno' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
   pod 'Firebase/Crashlytics'
+  pod 'Firebase/RemoteConfig'
   pod 'Mixpanel-swift'
 end

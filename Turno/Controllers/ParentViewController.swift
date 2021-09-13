@@ -12,6 +12,7 @@ protocol PresenterParentView: AnyObject {
     func startWaitingView()
     func stopWaitingView()
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?)
+    func showForceUpdatePopup()
 }
 
 class ParentViewController: UIViewController {
@@ -66,7 +67,7 @@ class ParentViewController: UIViewController {
     /// - parameter button2: String containing the second button title (if needed).
     /// - parameter completion: Callback.
     func showPopup(withTitle title: String?, withText text: String?, withButton button: String?, button2: String? = nil, completion: ((Bool?, Bool?) -> Void)?) {
-        if !isShownPopup, presentedViewController == nil, UIApplication.shared.applicationState == .active {
+        if !isShownPopup, presentedViewController == nil {
             isShownPopup = true
             
             // Obscure background
@@ -99,5 +100,19 @@ class ParentViewController: UIViewController {
         } else {
             debugPrint("There is still a popup ...")
         }
+    }
+    
+    func showForceUpdatePopup() {
+        stopWaiting()
+        DispatchQueue.main.async {
+            self.showPopup(withTitle: LocalizedConstants.force_update_title_key.localized,
+                           withText: LocalizedConstants.force_update_message_key.localized,
+                           withButton: LocalizedConstants.force_update_action_key.localized) { _, _ in
+                if let url = URL(string: "itms-apps://apple.com/app/id1535076357") {
+                    UIApplication.shared.open(url)
+                }
+            }
+        }
+        
     }
 }

@@ -75,6 +75,7 @@ enum AnalyticsPeoplePropertyKeys: String {
     case firebaseToken = "Firebase token"
     case name = "$name"
     case phoneNumber = "Phone Number"
+    case userId = "User Id"
     case businessId = "Business Id"
     case deviceLanguage = "Device Language"
 }

@@ -89,6 +89,9 @@
 "close_key" = "يغلق";
 "home_error_message_key" = "تحقق من اتصال الإنترنت الخاص بك وسحب لتحديث!";
 "cancel_turn_key" = "إلغاء التحول";
+"force_update_title_key" = "النسخة الجديدة المتاحة";
+"force_update_message_key" = "هناك إصدار أحدث متوفر للتحميل! يرجى تحديث التطبيق من خلال زيارة متجر Apple.";
+"force_update_action_key" = "تحديث";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "الساعة مجموع الخدمات هو: %@";

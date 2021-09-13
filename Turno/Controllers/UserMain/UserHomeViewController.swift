@@ -21,6 +21,7 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        shouldForceUpdate()
         self.view.addSubview(genericView)
         setGenericViewConstraints()
         addObserver()
@@ -63,6 +64,12 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
     }
     
     // MARK: - Private methods
+    private func shouldForceUpdate() {
+        if RemoteConfigManager.shouldForceUpdate() {
+            showForceUpdatePopup()
+        }
+    }
+    
     private func setGenericViewConstraints() {
         NSLayoutConstraint.activate([
             genericView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8.0),
@@ -75,6 +82,8 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
     private func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(isFavoriteTappedAction(_:)),
                                                name: GenericEntity.isFavoriteTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground(_:)),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     // MARK: - UI interaction methods
@@ -84,6 +93,10 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
                 presenterHome.isFavoriteTapped(entityIdentifier: identifier)
             }
         }
+    }
+    
+    @objc func applicationWillEnterForeground(_ notification: NSNotification) {
+        shouldForceUpdate()
     }
 }
 

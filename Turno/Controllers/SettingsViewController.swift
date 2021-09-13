@@ -182,7 +182,7 @@ extension SettingsViewController: PresenterSettingsView {
     }
     
     func share() {
-        if let appUrl = URL(string: "https://apps.apple.com/es/app/affinity-publisher/id881418622?l=en&mt=12") {
+        if let appUrl = URL(string: "https://tan320200607105243.azurewebsites.net/html/share.html") {
             let activityViewController = UIActivityViewController(activityItems: [appUrl], applicationActivities: nil)
             present(activityViewController, animated: true)
         }

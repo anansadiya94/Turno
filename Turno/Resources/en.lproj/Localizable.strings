@@ -87,6 +87,9 @@
 "close_key" = "Close";
 "home_error_message_key" = "Check your internet connection and pull to refresh!";
 "cancel_turn_key" = "Cancel Turn";
+"force_update_title_key" = "New Version Available";
+"force_update_message_key" = "There is a newer version available for download! Please update the app by visiting the Apple Store.";
+"force_update_action_key" = "Update";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "Total services time is: %@";
