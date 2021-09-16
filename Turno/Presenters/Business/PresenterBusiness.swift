@@ -86,11 +86,49 @@ class PresenterBusiness {
                                          completion: nil)
                 return
             }
-            self.view?.stopWaitingView()
-            let filteredTurns = self.model?.turns?.filter({$0.identifier != turnId})
-            self.model?.turns = filteredTurns
-            if let model = self.model {
-                self.notifyView(model: model)
+            self.fetchBusiness()
+//            self.view?.stopWaitingView()
+//            let filteredTurns = self.model?.turns?.filter({$0.identifier != turnId})
+//            self.model?.turns = filteredTurns
+//            if let model = self.model {
+//                self.notifyView(model: model)
+//            }
+        }
+    }
+    
+    private func fetchBusiness() {
+        let modelBusinessTask = ModelBusinessTask(query: "")
+        networkManager.getBusinesses(modelTask: modelBusinessTask) { [weak self] modelList, error in
+            guard let self = self else { return }
+            if error as? MoyaError != nil {
+                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
+                                         withText: LocalizedConstants.connection_failed_error_message_key.localized,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil) { _, _ in
+                }
+                return
+            }
+            if let error = error as? AppError {
+                self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
+                self.view?.stopWaitingView()
+                self.view?.showPopupView(withTitle: error.title,
+                                         withText: error.message,
+                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         button2: nil) { _, _ in
+                }
+                return
+            }
+            if let modelList = modelList {
+                self.view?.stopWaitingView()
+                let businessModel = modelList.first(where: { $0.identifier == self.model?.identifier ?? "" })
+                if let businessModel = businessModel {
+                    self.model = businessModel
+                    self.notifyView(model: businessModel)
+                }
             }
         }
     }

@@ -13,6 +13,7 @@ protocol PresenterParentView: AnyObject {
     func stopWaitingView()
     func showPopupView(withTitle title: String?, withText text: String?, withButton button: String?, button2: String?, completion: ((Bool?, Bool?) -> Void)?)
     func showForceUpdatePopup()
+    func showToast(message: String)
 }
 
 class ParentViewController: UIViewController {
@@ -113,6 +114,28 @@ class ParentViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func showToast(message: String) {
+        let toastLabel = CustomLabel()
+        toastLabel.labelTheme = RegularTheme(label: "   \(message)   ", fontSize: 12.0, textColor: .white, textAlignment: .center)
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        toastLabel.backgroundColor = UIColor.primary
         
+        guard let optionalWindow = UIApplication.shared.delegate?.window, let window = optionalWindow else { return }
+        window.addSubview(toastLabel)
+        toastLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            toastLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            toastLabel.heightAnchor.constraint(equalToConstant: 40),
+            toastLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90.0)
+        ])
+        
+        UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {_ in
+            toastLabel.removeFromSuperview()
+        })
     }
 }

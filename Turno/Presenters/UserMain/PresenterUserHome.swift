@@ -76,6 +76,9 @@ class PresenterUserHome {
                 return
             }
             if let error = error as? AppError {
+                self.analyticsManager.trackAlert(alertTitle: error.title,
+                                                 alertMessage: error.message,
+                                                 screenName: Constants.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,

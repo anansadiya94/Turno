@@ -71,7 +71,6 @@ enum LocalizedConstants: String {
     case    no_key
     case    cancel_turn_title_key
     case    cancel_turn_message_key
-    case    no_turns_business_title_key
     case    no_turns_business_message_key
     case    unblock_key
     case    block_user_key
