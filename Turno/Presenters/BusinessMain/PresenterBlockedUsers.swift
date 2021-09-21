@@ -41,7 +41,6 @@ class PresenterBlockedUsers {
         static let screenName = "Blocked Users Screen"
         static let plusAnalyticValue = "Plus"
         static let unblockAnalyticValue = "Unblock"
-        static let blockAnalyticValue = "Block"
         static let noAnalyticValue = LocalizedConstants.no_key.enLocalized
         static let yesAnalyticValue = LocalizedConstants.yes_key.enLocalized
     }
@@ -167,11 +166,6 @@ class PresenterBlockedUsers {
     }
     
     func blockUser(phoneNumber: String) {
-        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
-            .buttonText: Constants.blockAnalyticValue,
-            .screenName: Constants.screenName,
-            .phoneNumber: phoneNumber
-        ])
         self.view?.startWaitingView()
         self.view?.removeEmptyMessage()
         let modelBlockUser = ModelBlockUser(phoneNumber: phoneNumber)

@@ -33,7 +33,7 @@ enum AnalyticsKeys: String {
     case activationScreenSeen = "Activation Seen"
     case homeBusinessScreenSeen = "Home Business Seen"
     case homeUserScreenSeen = "Home User Seen"
-    case addAppointmentScreenSeen = "Add Appointment Seen"
+    case addTurnScreenSeen = "Add Turn Seen"
     case checkAvailabilityScreenSeen = "Check Availability Seen"
     case confirmationScreenSeen = "Confirmation Seen"
     case settingsScreenSeen = "Settings Seen"

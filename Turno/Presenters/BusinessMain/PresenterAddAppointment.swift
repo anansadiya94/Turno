@@ -28,7 +28,7 @@ class PresenterAddAppointment {
     var customer: Customer?
     
     private struct Constants {
-        static let screenName = "Add Appointment Screen"
+        static let screenName = "Add Turn Screen"
         static let checkAvailabilityAnalyticValue = LocalizedConstants.check_availability_key.enLocalized
         static let noAvailableDatesTitleAnalyticValue = LocalizedConstants.no_available_dates_title_key.enLocalized
         static let noAvailableDatesMessageAnalyticValue = LocalizedConstants.no_available_dates_message_key.enLocalized
@@ -110,7 +110,7 @@ class PresenterAddAppointment {
     
     // MARK: - Public Interface
     func trackScreen() {
-        analyticsManager.track(eventKey: .addAppointmentScreenSeen, withProperties: nil)
+        analyticsManager.track(eventKey: .addTurnScreenSeen, withProperties: nil)
     }
     
     func modifyModel(identifier: String, count: Int) {
