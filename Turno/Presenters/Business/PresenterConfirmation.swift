@@ -33,8 +33,27 @@ class PresenterConfirmation {
     var confirmationViewType: ConfirmationViewType?
     var customer: Customer?
     
+    var screenName: String {
+        if userDelegate != nil {
+            return "Turn Info Screen"
+        }
+        if businessDelegate != nil {
+            return "Confirmation Screen"
+        }
+        return ""
+    }
+    
+    var screenSeenKey: AnalyticsKeys {
+        if userDelegate != nil {
+            return .turnInfoScreenSeen
+        }
+        if businessDelegate != nil {
+            return .confirmationScreenSeen
+        }
+        return .unknown
+    }
+    
     private struct Constants {
-        static let screenName = "Confirmation Screen"
         static let confirmAnalyticValue = LocalizedConstants.confirm_key.enLocalized
         static let cancelTurnAnalyticValue = LocalizedConstants.cancel_turn_key.enLocalized
         static let callNowAnalyticValue = LocalizedConstants.call_now_key.enLocalized
@@ -120,7 +139,7 @@ class PresenterConfirmation {
         networkManager.blockUser(modelBlockUser: modelBlockUser) { [weak self] _, error in
             guard let self = self else { return }
             if error as? MoyaError != nil {
-                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
+                self.analyticsManager.trackConnectionFailedAlert(screenName: self.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
@@ -132,7 +151,7 @@ class PresenterConfirmation {
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
                                                  alertMessage: error.message,
-                                                 screenName: Constants.screenName)
+                                                 screenName: self.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -160,7 +179,7 @@ class PresenterConfirmation {
         networkManager.cancelTurn(modelTask: modelCancelTurnTask) { [weak self] _, error in
             guard let self = self else { return }
             if error as? MoyaError != nil {
-                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
+                self.analyticsManager.trackConnectionFailedAlert(screenName: self.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
@@ -172,7 +191,7 @@ class PresenterConfirmation {
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
                                                  alertMessage: error.message,
-                                                 screenName: Constants.screenName)
+                                                 screenName: self.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -195,7 +214,7 @@ class PresenterConfirmation {
         networkManager.book(modelTask: modelBookTask) { [weak self] bookedTurn, error in
             guard let self = self else { return }
             if error as? MoyaError != nil {
-                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
+                self.analyticsManager.trackConnectionFailedAlert(screenName: self.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
@@ -207,7 +226,7 @@ class PresenterConfirmation {
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
                                                  alertMessage: error.message,
-                                                 screenName: Constants.screenName)
+                                                 screenName: self.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -233,7 +252,7 @@ class PresenterConfirmation {
         networkManager.bookByBusiness(modelTask: modelBookByBusinessTask) { [weak self] bookedTurn, error in
             guard let self = self else { return }
             if error as? MoyaError != nil {
-                self.analyticsManager.trackConnectionFailedAlert(screenName: Constants.screenName)
+                self.analyticsManager.trackConnectionFailedAlert(screenName: self.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
@@ -245,7 +264,7 @@ class PresenterConfirmation {
             if let error = error as? AppError {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
                                                  alertMessage: error.message,
-                                                 screenName: Constants.screenName)
+                                                 screenName: self.screenName)
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
@@ -268,7 +287,7 @@ class PresenterConfirmation {
         let endTimeDate = bookedSlot?.slot?.toString().calculateEndDate(adding: bookedServicesDuration)
         let endTime = endTimeDate?.toDisplayableDate(type: .hour)
         
-        analyticsManager.track(eventKey: .confirmationScreenSeen, withProperties: [
+        analyticsManager.track(eventKey: self.screenSeenKey, withProperties: [
             .turnIdentifier: turnId ?? "",
             .selectedDate: selectedDate ?? "",
             .startTime: startTime ?? "",
@@ -288,7 +307,7 @@ class PresenterConfirmation {
     }
     
     func cancelButtonTapped() {
-        trackCancelTurnButtonTapped(turnId: turnId)
+        trackButtonTapped(buttonText: Constants.cancelTurnAnalyticValue)
         view?.showPopupView(withTitle: LocalizedConstants.cancel_turn_title_key.localized,
                             withText: LocalizedConstants.cancel_turn_message_key.localized,
                             withButton: LocalizedConstants.no_key.localized,
@@ -298,13 +317,13 @@ class PresenterConfirmation {
                                 if no == true {
                                     self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
                                         .actionText: Constants.noAnalyticValue,
-                                        .screenName: Constants.screenName
+                                        .screenName: self.screenName
                                     ])
                                 }
                                 if yes == true {
                                     self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
                                         .actionText: Constants.yesAnalyticValue,
-                                        .screenName: Constants.screenName
+                                        .screenName: self.screenName
                                     ])
                                     self.cancelTurnConfirmed(turnId: self.turnId)
                                 }
@@ -329,13 +348,13 @@ class PresenterConfirmation {
                                 if cancel == true {
                                     self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
                                         .actionText: Constants.cancelAnalyticValue,
-                                        .screenName: Constants.screenName
+                                        .screenName: self.screenName
                                     ])
                                 }
                                 if yes != nil && yes == true {
                                     self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
                                         .actionText: Constants.yesAnalyticValue,
-                                        .screenName: Constants.screenName
+                                        .screenName: self.screenName
                                     ])
                                     self.blockUserConfirmed()
                                 }})
@@ -346,15 +365,7 @@ private extension PresenterConfirmation {
     func trackButtonTapped(buttonText: String) {
         analyticsManager.track(eventKey: .buttonTapped, withProperties: [
             .buttonText: buttonText,
-            .screenName: Constants.screenName
-        ])
-    }
-    
-    func trackCancelTurnButtonTapped(turnId: String?) {
-        analyticsManager.track(eventKey: .buttonTapped, withProperties: [
-            .buttonText: Constants.cancelTurnAnalyticValue,
-            .screenName: Constants.screenName,
-            .turnIdentifier: turnId ?? ""
+            .screenName: self.screenName
         ])
     }
 }

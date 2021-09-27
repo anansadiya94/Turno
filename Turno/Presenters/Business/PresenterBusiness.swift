@@ -34,7 +34,7 @@ class PresenterBusiness {
     var model: ModelBusiness?
     
     private struct Constants {
-        static let screenName = "Business Screen"
+        static let screenName = "Pick Services Screen"
         static let checkAvailabilityAnalyticValue = LocalizedConstants.check_availability_key.enLocalized
         static let cancelTurnAnalyticValue = LocalizedConstants.cancel_turn_key.enLocalized
         static let noAnalyticValue = LocalizedConstants.no_key.enLocalized

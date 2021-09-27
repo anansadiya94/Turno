@@ -34,13 +34,16 @@ enum AnalyticsKeys: String {
     case homeBusinessScreenSeen = "Home Business Seen"
     case homeUserScreenSeen = "Home User Seen"
     case addTurnScreenSeen = "Add Turn Seen"
-    case checkAvailabilityScreenSeen = "Check Availability Seen"
+    case checkAvailabilityScreenSeen = "Pick Time Seen"
     case confirmationScreenSeen = "Confirmation Seen"
+    case turnInfoScreenSeen = "Turn Info Seen"
     case settingsScreenSeen = "Settings Seen"
     case blockerUsersScreenSeen = "Blocked Users Seen"
-    case businessScreenSeen = "Business Seen"
+    case businessScreenSeen = "Pick Services Seen"
     case myTurnsScreenSeen = "My Turns Seen"
     case favoritesScreenSeen = "Favorites Seen"
+    
+    case unknown = "N/A"
 }
 
 enum AnalyticsEventPropertyKeys: String {
@@ -54,8 +57,8 @@ enum AnalyticsEventPropertyKeys: String {
     case previousTabName = "Previous Tab Name"
     case currentTabName = "Current Tab Name"
     case turnIdentifier = "Turn Identifier"
-    case totalOfServices = "Total Of Services"
-    case totalOfServicesTime = "Total Of Services Time"
+    case totalOfServices = "Total Number Of Services"
+    case totalOfServicesTime = "Total Services Time"
     case selectedDate = "Selected Date"
     case startTime = "Start Time"
     case endTime = "End Time"

@@ -28,7 +28,7 @@ class PresenterCheckAvailability {
     var customer: Customer?
     
     private struct Constants {
-        static let screenName = "Check Availability Screen"
+        static let screenName = "Pick Time Screen"
         static let bookNowAnalyticValue = LocalizedConstants.book_now_key.enLocalized
     }
     
