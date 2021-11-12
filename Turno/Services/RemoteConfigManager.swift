@@ -41,10 +41,6 @@ struct RemoteConfigManager {
               let currentVersion = Bundle.main.infoDictionary?[Constants.shortVersionBundleKey] as? String else {
             return false
         }
-        if currentVersion.compare(forceUpdateVersion, options: .numeric) == .orderedAscending {
-            return true
-        } else {
-            return false
-        }
+        return currentVersion.compare(forceUpdateVersion, options: .numeric) == .orderedAscending
     }
 }

@@ -122,8 +122,10 @@ class NetworkManager: NetworkManagerProtocol {
                 } catch let error {
                     // LOG ERROR!
                     print(error)
-                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
-                                             message: LocalizedConstants.generic_error_message_key.localized))
+                    let modelMessage = try? self.decoder.decode(ApiError.self, from: value.data)
+                    let title = modelMessage?.title ?? LocalizedConstants.generic_error_title_key.localized
+                    let message = modelMessage?.message ?? LocalizedConstants.generic_error_message_key.localized
+                    completion(nil, AppError(title: title, message: message))
                 }
             }
         }
@@ -149,8 +151,10 @@ class NetworkManager: NetworkManagerProtocol {
                 } catch let error {
                     // LOG ERROR!
                     print(error)
-                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
-                                             message: LocalizedConstants.generic_error_message_key.localized))
+                    let modelMessage = try? self.decoder.decode(ApiError.self, from: value.data)
+                    let title = modelMessage?.title ?? LocalizedConstants.generic_error_title_key.localized
+                    let message = modelMessage?.message ?? LocalizedConstants.generic_error_message_key.localized
+                    completion(nil, AppError(title: title, message: message))
                 }
             }
         }
@@ -361,8 +365,10 @@ class NetworkManager: NetworkManagerProtocol {
                 } catch let error {
                     // LOG ERROR!
                     print(error)
-                    completion(nil, AppError(title: LocalizedConstants.generic_error_title_key.localized,
-                                             message: LocalizedConstants.generic_error_message_key.localized))
+                    let modelMessage = try? self.decoder.decode(ApiError.self, from: value.data)
+                    let title = modelMessage?.title ?? LocalizedConstants.generic_error_title_key.localized
+                    let message = modelMessage?.message ?? LocalizedConstants.generic_error_message_key.localized
+                    completion(nil, AppError(title: title, message: message))
                 }
             }
         }

@@ -87,12 +87,6 @@ class PresenterBusiness {
                 return
             }
             self.fetchBusiness()
-//            self.view?.stopWaitingView()
-//            let filteredTurns = self.model?.turns?.filter({$0.identifier != turnId})
-//            self.model?.turns = filteredTurns
-//            if let model = self.model {
-//                self.notifyView(model: model)
-//            }
         }
     }
     
