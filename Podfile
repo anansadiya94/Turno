@@ -9,7 +9,7 @@ target 'Turno' do
   pod 'lottie-ios'
   pod 'Moya', '~> 14.0'
   pod 'Kingfisher'
-  pod 'CalendarKit'
+  pod 'CalendarKit', '1.0.12'
   pod 'Firebase/Messaging'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/RemoteConfig'

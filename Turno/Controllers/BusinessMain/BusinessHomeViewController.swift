@@ -25,10 +25,15 @@ class BusinessHomeViewController: DayViewController {
         shouldForceUpdate()
         setNavigationBar()
         edgesForExtendedLayout = UIRectEdge.bottom
+        var calendarStyle = CalendarStyle()
+        var timelineStyle = TimelineStyle()
+        timelineStyle.verticalDiff = 80
+        calendarStyle.timeline = timelineStyle
+        updateStyle(calendarStyle)
         dayView.autoScrollToFirstEvent = true
         addObserver()
     }
- 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         presenterHome.fetchMyBookings()
@@ -85,7 +90,7 @@ class BusinessHomeViewController: DayViewController {
                                                             style: .plain, target: self, action: #selector(addTapped))
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"),
-                                                            style: .plain, target: self, action: #selector(refreshTapped))
+                                                           style: .plain, target: self, action: #selector(refreshTapped))
     }
     
     private func createEvent(turn: Turn?, data: String, startDate: Date, endDate: Date) -> Event {
@@ -183,7 +188,7 @@ extension BusinessHomeViewController {
             self.waitingView?.start()
         }
     }
-
+    
     func stopWaiting() {
         DispatchQueue.main.async {
             self.waitingView?.stop()
@@ -238,7 +243,7 @@ extension BusinessHomeViewController {
             }
         }
     }
-
+    
     func showToast(message: String) {
         let toastLabel = CustomLabel()
         toastLabel.labelTheme = RegularTheme(label: "   \(message)   ", fontSize: 12.0, textColor: .white, textAlignment: .center)
