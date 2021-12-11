@@ -22,6 +22,7 @@ class PresenterBusinessHome {
     // MARK: - Properties
     private let networkManager: NetworkManagerProtocol
     private let analyticsManager: AnalyticsManagerProtocol
+    private let forceUpdateManager: ForceUpdateManagerProtocol
     private weak var view: PresenterBusinessHomeView?
     private weak var delegate: SelectButtonBusiness?
     var modelBusiness: ModelBusiness?
@@ -39,10 +40,12 @@ class PresenterBusinessHome {
     init(view: PresenterBusinessHomeView,
          networkManager: NetworkManagerProtocol,
          analyticsManager: AnalyticsManagerProtocol,
+         forceUpdateManager: ForceUpdateManagerProtocol,
          delegate: SelectButtonBusiness) {
         self.view = view
         self.networkManager = networkManager
         self.analyticsManager = analyticsManager
+        self.forceUpdateManager = forceUpdateManager
         self.delegate = delegate
         self.fetchData()
     }
@@ -193,5 +196,9 @@ class PresenterBusinessHome {
     
     func appointmentConfirmed(bookedTurn: Turn) {
         view?.appointmentConfirmed(bookedTurn: bookedTurn)
+    }
+    
+    func shouldForceUpdate(completion: @escaping (Bool) -> Void) {
+        forceUpdateManager.shouldForceUpdate(completion: completion)
     }
 }

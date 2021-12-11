@@ -104,10 +104,10 @@ extension InstallationViewController: PresenterInstallationView {
         switch type {
         case .valid:
             installationView?.setTextFieldLabel(textFieldLabel: installationView?.phoneNumberTextFieldLabel, isHidden: true)
-        case .empty_field_key:
+        case .emptyFieldKey:
             isValid = false
             message = LocalizedConstants.empty_field_key.localized
-        case .invalid_name_key:
+        case .invalidNameKey:
             isValid = false
             message = LocalizedConstants.invalid_name_key.localized
         default:
@@ -123,10 +123,10 @@ extension InstallationViewController: PresenterInstallationView {
         switch type {
         case .valid:
             installationView?.setTextFieldLabel(textFieldLabel: installationView?.phoneNumberTextFieldLabel, isHidden: true)
-        case .empty_field_key:
+        case .emptyFieldKey:
             isValid = false
             message = LocalizedConstants.empty_field_key.localized
-        case .invalid_phoneNumber_key:
+        case .invalidPhoneNumberKey:
             isValid = false
             message = LocalizedConstants.invalid_phoneNumber_key.localized
         default:

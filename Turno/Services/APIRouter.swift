@@ -30,6 +30,7 @@ enum APIRouter {
     case unblockUser(modelBlockUser: ModelBlockUser)
     case blockUser(modelBlockUser: ModelBlockUser)
     case registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask)
+    case shouldForceUpdate(modelForceUpdateTask: ModelForceUpdateTask)
 }
 
 extension APIRouter: TargetType {
@@ -56,6 +57,7 @@ extension APIRouter: TargetType {
         case .unblockUser: return kUnblockUser
         case .blockUser: return kBlockUser
         case .registerFCMToken: return kRegisterFCMToken
+        case .shouldForceUpdate: return kShouldForceUpdate
         }
     }
     
@@ -63,7 +65,7 @@ extension APIRouter: TargetType {
         switch self {
         case .signUp, .verify, .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites,
              .cancelTurn, .getAvailableTimes, .book, .bookByBusiness, .getMyBusiness, .getMyBookings, .getMyBlockedList,
-             .unblockUser, .blockUser, .registerFCMToken:
+             .unblockUser, .blockUser, .registerFCMToken, .shouldForceUpdate:
             return .post
         }
     }
@@ -94,6 +96,8 @@ extension APIRouter: TargetType {
             return .requestJSONEncodable(modelMyBookingTask)
         case .registerFCMToken(let modelFcmTokenTask):
             return .requestJSONEncodable(modelFcmTokenTask)
+        case .shouldForceUpdate(let modelForceUpdateTask):
+            return .requestJSONEncodable(modelForceUpdateTask)
         }
     }
     
@@ -109,7 +113,7 @@ extension APIRouter: TargetType {
         switch self {
         case .getBusinesses, .getFavorites, .addToFavorites, .removeToFavorites, .cancelTurn,
              .getAvailableTimes, .book, .bookByBusiness, .getMyBusiness, .getMyBookings,
-             .getMyBlockedList, .unblockUser, .blockUser, .registerFCMToken:
+             .getMyBlockedList, .unblockUser, .blockUser, .registerFCMToken, .shouldForceUpdate:
             headers["Authorization"] = AppData.authorization
         default:
             break

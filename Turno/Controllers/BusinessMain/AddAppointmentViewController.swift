@@ -164,10 +164,10 @@ extension AddAppointmentViewController: PresenterAddAppointmentView {
         switch type {
         case .valid:
             addAppointmentView.setTextFieldLabel(textFieldLabel: addAppointmentView.phoneNumberTextFieldLabel, isHidden: true)
-        case .empty_field_key:
+        case .emptyFieldKey:
             isValid = false
             message = LocalizedConstants.empty_field_key.localized
-        case .invalid_name_key:
+        case .invalidNameKey:
             isValid = false
             message = LocalizedConstants.invalid_name_key.localized
         default:
@@ -183,10 +183,10 @@ extension AddAppointmentViewController: PresenterAddAppointmentView {
         switch type {
         case .valid:
             addAppointmentView.setTextFieldLabel(textFieldLabel: addAppointmentView.phoneNumberTextFieldLabel, isHidden: true)
-        case .empty_field_key:
+        case .emptyFieldKey:
             isValid = false
             message = LocalizedConstants.empty_field_key.localized
-        case .invalid_phoneNumber_key:
+        case .invalidPhoneNumberKey:
             isValid = false
             message = LocalizedConstants.invalid_phoneNumber_key.localized
         default:

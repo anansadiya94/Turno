@@ -13,6 +13,7 @@ class WelcomeCoordinator: Coordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
+    private let forceUpdateManager: ForceUpdateManagerProtocol
     private let analyticsManager: AnalyticsManagerProtocol
     private let userMainCoordinator: UserMainCoordinator
     private let businessMainCoordinator: BusinessMainCoordinator
@@ -20,21 +21,25 @@ class WelcomeCoordinator: Coordinator {
     init(window: UIWindow = UIWindow(),
          navigationController: UINavigationController = UINavigationController(),
          networkManager: NetworkManagerProtocol,
-         analyticsManager: AnalyticsManagerProtocol) {
+         analyticsManager: AnalyticsManagerProtocol,
+         forceUpdateManager: ForceUpdateManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager
         self.analyticsManager = analyticsManager
+        self.forceUpdateManager = forceUpdateManager
         
         // Coordinators configurations
         userMainCoordinator = UserMainCoordinator(window: window,
                                                   navigationController: navigationController,
                                                   networkManager: networkManager,
-                                                  analyticsManager: analyticsManager)
+                                                  analyticsManager: analyticsManager,
+                                                  forceUpdateManager: forceUpdateManager)
         businessMainCoordinator = BusinessMainCoordinator(window: window,
                                                           navigationController: navigationController,
                                                           networkManager: networkManager,
-                                                          analyticsManager: analyticsManager)
+                                                          analyticsManager: analyticsManager,
+                                                          forceUpdateManager: forceUpdateManager)
     }
     
     func start() {}
@@ -61,6 +66,7 @@ extension WelcomeCoordinator {
         let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController,
                                                       networkManager: networkManager,
                                                       analyticsManager: analyticsManager,
+                                                      forceUpdateManager: forceUpdateManager,
                                                       delegate: userMainCoordinator)
         window.rootViewController = screen
     }
@@ -69,6 +75,7 @@ extension WelcomeCoordinator {
         let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
                                                           networkManager: networkManager,
                                                           analyticsManager: analyticsManager,
+                                                          forceUpdateManager: forceUpdateManager,
                                                           delegate: businessMainCoordinator)
         window.rootViewController = screen
     }

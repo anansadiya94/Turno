@@ -14,6 +14,7 @@ class OnBoardingCoordinator: Coordinator {
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
     private let analyticsManager: AnalyticsManagerProtocol
+    private let forceUpdateManager: ForceUpdateManagerProtocol
     private let welcomeCoordinator: WelcomeCoordinator
     private let userMainCoordinator: UserMainCoordinator
     private let businessMainCoordinator: BusinessMainCoordinator
@@ -21,25 +22,30 @@ class OnBoardingCoordinator: Coordinator {
     init(window: UIWindow = UIWindow(),
          navigationController: UINavigationController = UINavigationController(),
          networkManager: NetworkManagerProtocol,
-         analyticsManager: AnalyticsManagerProtocol) {
+         analyticsManager: AnalyticsManagerProtocol,
+         forceUpdateManager: ForceUpdateManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager
         self.analyticsManager = analyticsManager
+        self.forceUpdateManager = forceUpdateManager
         
         // Coordinators configurations
         welcomeCoordinator = WelcomeCoordinator(window: window,
                                                 navigationController: navigationController,
                                                 networkManager: networkManager,
-                                                analyticsManager: analyticsManager)
+                                                analyticsManager: analyticsManager,
+                                                forceUpdateManager: forceUpdateManager)
         userMainCoordinator = UserMainCoordinator(window: window,
                                                   navigationController: navigationController,
                                                   networkManager: networkManager,
-                                                  analyticsManager: analyticsManager)
+                                                  analyticsManager: analyticsManager,
+                                                  forceUpdateManager: forceUpdateManager)
         businessMainCoordinator = BusinessMainCoordinator(window: window,
                                                           navigationController: navigationController,
                                                           networkManager: networkManager,
-                                                          analyticsManager: analyticsManager)
+                                                          analyticsManager: analyticsManager,
+                                                          forceUpdateManager: forceUpdateManager)
         
         addObservers()
     }
@@ -85,6 +91,7 @@ extension OnBoardingCoordinator {
         let screen = ScreenFactory.makeUserMainScreen(navigationController: navigationController,
                                                       networkManager: networkManager,
                                                       analyticsManager: analyticsManager,
+                                                      forceUpdateManager: forceUpdateManager,
                                                       delegate: userMainCoordinator)
         window.rootViewController = screen
     }
@@ -93,6 +100,7 @@ extension OnBoardingCoordinator {
         let screen = ScreenFactory.makeBusinessMainScreen(navigationController: navigationController,
                                                           networkManager: networkManager,
                                                           analyticsManager: analyticsManager,
+                                                          forceUpdateManager: forceUpdateManager,
                                                           delegate: businessMainCoordinator)
         window.rootViewController = screen
     }

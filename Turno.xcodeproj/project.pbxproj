@@ -177,6 +177,8 @@
 		E1AA46D026BD5D940019D348 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA46CF26BD5D940019D348 /* Date+Utils.swift */; };
 		E1D6A8BE2603DF6B00691CBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D6A8BD2603DF6B00691CBD /* GoogleService-Info.plist */; };
 		E1D6A9552603F64300691CBD /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6A9542603F64300691CBD /* PushNotificationManager.swift */; };
+		E1FEE23D2764ACF500A8B5CB /* ModelForceUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEE23C2764ACF500A8B5CB /* ModelForceUpdateTask.swift */; };
+		E1FEE23F2764AE2C00A8B5CB /* ForceUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEE23E2764AE2C00A8B5CB /* ForceUpdateManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -357,6 +359,8 @@
 		E1AA46CF26BD5D940019D348 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		E1D6A8BD2603DF6B00691CBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1D6A9542603F64300691CBD /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		E1FEE23C2764ACF500A8B5CB /* ModelForceUpdateTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForceUpdateTask.swift; sourceTree = "<group>"; };
+		E1FEE23E2764AE2C00A8B5CB /* ForceUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +434,7 @@
 				9E5DC46B259BC11300F84DC7 /* ModelApiError.swift */,
 				9EC192FA259CF38100A0DBC9 /* ModelMyBlockedList.swift */,
 				E17B637F2616F4D300AE0574 /* ModelFcmToken.swift */,
+				E1FEE23C2764ACF500A8B5CB /* ModelForceUpdateTask.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -539,6 +544,8 @@
 				9E0E26E22527A1F50062CFC3 /* ServiceTimeCalculation.swift */,
 				E1A8BBB226C17C4C00E0CEF1 /* AnalyticsManager.swift */,
 				E10AC4CD26EF93E0002CC3B8 /* RemoteConfigManager.swift */,
+				E1FEE23E2764AE2C00A8B5CB /* ForceUpdateManager.swift */,
+				E1D6A9542603F64300691CBD /* PushNotificationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -644,7 +651,6 @@
 				9E5AD83324C89B6C00100526 /* UIViewController+SendEmail.swift */,
 				9EF54EB025029738000DC352 /* UITableView+EmpyMessage.swift */,
 				E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */,
-				E1D6A9542603F64300691CBD /* PushNotificationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1211,6 +1217,7 @@
 				9E4DE1AF24C33AB000EC1FF2 /* UserMainCoordinator.swift in Sources */,
 				9E4DE1AB24C3357800EC1FF2 /* BusinessViewController.swift in Sources */,
 				9E0E26E32527A1F50062CFC3 /* ServiceTimeCalculation.swift in Sources */,
+				E1FEE23F2764AE2C00A8B5CB /* ForceUpdateManager.swift in Sources */,
 				9EF54EB125029738000DC352 /* UITableView+EmpyMessage.swift in Sources */,
 				9E9B87F1248D362A009B1448 /* SettingsViewController.swift in Sources */,
 				9EA6582024881A0200F7952A /* UICollectionViewExtension.swift in Sources */,
@@ -1248,6 +1255,7 @@
 				9E9880E7248BB9E500D78959 /* User.swift in Sources */,
 				E188223C26236408003E9B33 /* WebViewController.swift in Sources */,
 				9E6958B924DC5883007129B2 /* CheckAvailabilityView.swift in Sources */,
+				E1FEE23D2764ACF500A8B5CB /* ModelForceUpdateTask.swift in Sources */,
 				9E0B75A02489837E00B25313 /* Fonts.swift in Sources */,
 				9EB43D7A24A3A87400B93C34 /* GenericListDescriptive.swift in Sources */,
 				9E6D16BB248A1EC100C40687 /* RoundedCustomButtonWithMargin.swift in Sources */,
@@ -1353,7 +1361,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

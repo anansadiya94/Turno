@@ -14,15 +14,18 @@ class BusinessMainCoordinator: Coordinator {
     private let navigationController: UINavigationController
     private let networkManager: NetworkManagerProtocol
     private let analyticsManager: AnalyticsManagerProtocol
+    private let forceUpdateManager: ForceUpdateManagerProtocol
     
     init(window: UIWindow = UIWindow(),
          navigationController: UINavigationController = UINavigationController(),
          networkManager: NetworkManagerProtocol,
-         analyticsManager: AnalyticsManagerProtocol) {
+         analyticsManager: AnalyticsManagerProtocol,
+         forceUpdateManager: ForceUpdateManagerProtocol) {
         self.window = window
         self.navigationController = navigationController
         self.networkManager = networkManager
         self.analyticsManager = analyticsManager
+        self.forceUpdateManager = forceUpdateManager
     }
     
     func start() {}

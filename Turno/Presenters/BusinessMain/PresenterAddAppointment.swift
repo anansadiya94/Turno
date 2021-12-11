@@ -67,7 +67,7 @@ class PresenterAddAppointment {
         case .valid:
             view?.showNameTextFieldLabel(type: textFieldErrorType)
             return true
-        case .empty_field_key, .invalid_name_key:
+        case .emptyFieldKey, .invalidNameKey:
             view?.showNameTextFieldLabel(type: textFieldErrorType)
         default:
             break
@@ -81,7 +81,7 @@ class PresenterAddAppointment {
         case .valid:
             view?.showPhoneNumberTextFieldLabel(type: textFieldErrorType)
             return true
-        case .empty_field_key, .invalid_phoneNumber_key:
+        case .emptyFieldKey, .invalidPhoneNumberKey:
             view?.showPhoneNumberTextFieldLabel(type: textFieldErrorType)
         default:
             break

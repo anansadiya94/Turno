@@ -28,15 +28,16 @@ protocol NetworkManagerProtocol {
     func unblockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void)
     func blockUser(modelBlockUser: ModelBlockUser, completion: @escaping (Bool?, Error?) -> Void)
     func registerFCMToken(modelFcmTokenTask: ModelFcmTokenTask, completion: @escaping (Bool?, Error?) -> Void)
+    func shouldForceUpdate(modelForceUpdateTask: ModelForceUpdateTask, completion: @escaping (Bool?, Error?) -> Void)
 }
 
-class NetworkManager: NetworkManagerProtocol {
-    
+class NetworkManager {
     private enum DateError: String, Error {
         case invalidDate
     }
     
     let provider = MoyaProvider<APIRouter>()
+    
     private let decoder = JSONDecoder()
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -58,7 +59,9 @@ class NetworkManager: NetworkManagerProtocol {
             throw DateError.invalidDate
         })
     }
-    
+}
+
+extension NetworkManager: NetworkManagerProtocol {
     func signUp(modelTask: ModelSignUpTask, completion: @escaping (ModelSignUp?, Error?) -> Void) {
         provider.request(.signUp(modelSignUpTask: modelTask)) { [weak self] result in
             guard let self = self else { return }
@@ -435,6 +438,27 @@ class NetworkManager: NetworkManagerProtocol {
                     completion(true, nil)
                 default:
                     completion(false, nil)
+                }
+            }
+        }
+    }
+    
+    func shouldForceUpdate(modelForceUpdateTask: ModelForceUpdateTask, completion: @escaping (Bool?, Error?) -> Void) {
+        provider.request(.shouldForceUpdate(modelForceUpdateTask: modelForceUpdateTask)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, error)
+            case .success(let value):
+                do {
+                    let modelForceUpdate = try self.decoder.decode(ModelForceUpdate.self, from: value.data)
+                    switch value.statusCode {
+                    case 200:
+                        completion(modelForceUpdate.shouldForceUpdate, nil)
+                    default:
+                        completion(false, nil)
+                    }
+                } catch let error {
+                    completion(nil, error)
                 }
             }
         }

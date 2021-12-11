@@ -15,22 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private let networkManager: NetworkManagerProtocol = NetworkManager()
     private let analyticsManager: AnalyticsManagerProtocol = AnalyticsManager()
+    private let forceUpdateManager: ForceUpdateManager = ForceUpdateManager()
     
     private var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        
+        forceUpdateManager.networkManager = networkManager
         setAppFont()
         trackDeviceLanguage()
         appCoordinator = AppCoordinator(window: window!,
                                         navigationController: UINavigationController(),
                                         networkManager: networkManager,
-                                        analyticsManager: analyticsManager)
+                                        analyticsManager: analyticsManager,
+                                        forceUpdateManager: forceUpdateManager)
         appCoordinator?.start()
         
         FirebaseApp.configure()
-        RemoteConfigManager.configure()
         
         if Preferences.getPrefsUser()?.userId != nil {
             let pushManager = PushNotificationManager(networkManager: networkManager,

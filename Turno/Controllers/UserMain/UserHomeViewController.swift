@@ -65,8 +65,11 @@ class UserHomeViewController: GenericTableView<GenericListDescriptive> {
     
     // MARK: - Private methods
     private func shouldForceUpdate() {
-        if RemoteConfigManager.shouldForceUpdate() {
-            showForceUpdatePopup()
+        presenterHome.shouldForceUpdate { [weak self] shouldForceUpdate in
+            guard let self = self else { return }
+            if shouldForceUpdate {
+                self.showForceUpdatePopup()
+            }
         }
     }
     

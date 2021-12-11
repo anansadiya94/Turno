@@ -20,6 +20,7 @@ class PresenterUserHome {
     // MARK: - Properties
     private let networkManager: NetworkManagerProtocol
     private let analyticsManager: AnalyticsManagerProtocol
+    private let forceUpdateManager: ForceUpdateManagerProtocol
     private weak var view: PresenterUserHomeView?
     private weak var delegate: SelectButtonEntity?
     var modelList = [ModelBusiness]()
@@ -34,10 +35,12 @@ class PresenterUserHome {
     init(view: PresenterUserHomeView,
          networkManager: NetworkManagerProtocol,
          analyticsManager: AnalyticsManagerProtocol,
+         forceUpdateManager: ForceUpdateManagerProtocol,
          delegate: SelectButtonEntity) {
         self.view = view
         self.networkManager = networkManager
         self.analyticsManager = analyticsManager
+        self.forceUpdateManager = forceUpdateManager
         self.delegate = delegate
         self.fetchData()
     }
@@ -172,5 +175,9 @@ class PresenterUserHome {
                 modelList[index].isFavoriteTapped()
             }
         }
+    }
+    
+    func shouldForceUpdate(completion: @escaping (Bool) -> Void) {
+        forceUpdateManager.shouldForceUpdate(completion: completion)
     }
 }

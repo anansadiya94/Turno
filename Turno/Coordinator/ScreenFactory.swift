@@ -115,6 +115,7 @@ struct ScreenFactory {
     static func makeUserMainScreen(navigationController: UINavigationController,
                                    networkManager: NetworkManagerProtocol,
                                    analyticsManager: AnalyticsManagerProtocol,
+                                   forceUpdateManager: ForceUpdateManagerProtocol,
                                    delegate: SelectButtonEntity) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
             sbName: kUserMainStoryboardName,
@@ -126,6 +127,7 @@ struct ScreenFactory {
                     let presenter = PresenterUserHome(view: homeVC,
                                                       networkManager: networkManager,
                                                       analyticsManager: analyticsManager,
+                                                      forceUpdateManager: forceUpdateManager,
                                                       delegate: delegate)
                     homeVC.presenterHome = presenter
                 }
@@ -166,6 +168,7 @@ struct ScreenFactory {
     static func makeBusinessMainScreen(navigationController: UINavigationController,
                                        networkManager: NetworkManagerProtocol,
                                        analyticsManager: AnalyticsManagerProtocol,
+                                       forceUpdateManager: ForceUpdateManagerProtocol,
                                        delegate: SelectButtonBusiness) -> UIViewController {
         let mainViewController = ServiceViewController.instantiateViewControllerWithStoryBoard(
             sbName: kBusinessMainStoryboardName,
@@ -177,6 +180,7 @@ struct ScreenFactory {
                     let presenter = PresenterBusinessHome(view: homeVC,
                                                           networkManager: networkManager,
                                                           analyticsManager: analyticsManager,
+                                                          forceUpdateManager: forceUpdateManager,
                                                           delegate: delegate)
                     homeVC.presenterHome = presenter
                 }
