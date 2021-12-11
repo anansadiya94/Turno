@@ -27,7 +27,7 @@ class BusinessHomeViewController: DayViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         var calendarStyle = CalendarStyle()
         var timelineStyle = TimelineStyle()
-        timelineStyle.verticalDiff = 80
+        timelineStyle.verticalDiff = 130
         calendarStyle.timeline = timelineStyle
         updateStyle(calendarStyle)
         dayView.autoScrollToFirstEvent = true
