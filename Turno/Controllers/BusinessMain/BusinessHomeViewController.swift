@@ -27,7 +27,7 @@ class BusinessHomeViewController: DayViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         var calendarStyle = CalendarStyle()
         var timelineStyle = TimelineStyle()
-        timelineStyle.verticalDiff = 130
+        timelineStyle.verticalDiff = 150
         calendarStyle.timeline = timelineStyle
         updateStyle(calendarStyle)
         dayView.autoScrollToFirstEvent = true
@@ -56,8 +56,17 @@ class BusinessHomeViewController: DayViewController {
                 let servicesDuration = ServiceTimeCalculation.calculateDuration(to: services)
                 guard let endDate = Calendar.current.date(byAdding: .minute, value: servicesDuration, to: beginningTime) else { break }
                 
+                var data = turn.userName ?? ""
+                let startDateHour = beginningTime.toString().toDisplayableDate(type: .hour)
+                let endDateHour = endDate.toString().toDisplayableDate(type: .hour)
+                if let startDateHour = startDateHour,
+                   let endDateHour = endDateHour,
+                   let userName = turn.userName {
+                    data = "\(startDateHour):\(endDateHour) - \(userName)"
+                }
+                
                 events.append(createEvent(turn: turn,
-                                          data: turn.userName ?? "",
+                                          data: data,
                                           startDate: beginningTime,
                                           endDate: endDate.addingTimeInterval(-1)))
             }
@@ -102,18 +111,17 @@ class BusinessHomeViewController: DayViewController {
         event.startDate = startDate
         event.endDate = endDate
         event.color = .primary
+        event.text = data
         
-        var text = data
-        let startDateHour = startDate.toString().toDisplayableDate(type: .hour)
-        let endDateHour = endDate.toString().toDisplayableDate(type: .hour)
-        if let startDateHour = startDateHour,
-           let endDateHour = endDateHour {
-            text = "\(startDateHour):\(endDateHour) - \(data)"
+        let duration = ServiceTimeCalculation.calculateDuration(to: turn?.services)
+        switch duration {
+        case ...10:
+            event.font = Fonts.Regular10
+        case 11..<31:
+            event.font = Fonts.Regular15
+        default:
+            event.font = Fonts.Regular20
         }
-        event.text = text
-        
-        // TODO: Change font size depends on how long the turn is
-        event.font = Fonts.Regular10
         
         return event
     }

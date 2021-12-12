@@ -14,7 +14,9 @@ struct Fonts {
     static let Bold20 = UIFont(name: ServiceAppFont.boldFont, size: 20) ?? .boldSystemFont(ofSize: 20)
     static let Bold40 = UIFont(name: ServiceAppFont.boldFont, size: 40) ?? .boldSystemFont(ofSize: 40)
     static let SemiBold20 = UIFont(name: ServiceAppFont.semiBoldFont, size: 20) ?? .boldSystemFont(ofSize: 20)
+    static let Regular10 = UIFont(name: ServiceAppFont.regularFont, size: 10) ?? .systemFont(ofSize: 10)
     static let Regular12 = UIFont(name: ServiceAppFont.regularFont, size: 12) ?? .systemFont(ofSize: 12)
     static let Regular15 = UIFont(name: ServiceAppFont.regularFont, size: 15) ?? .systemFont(ofSize: 15)
+    static let Regular20 = UIFont(name: ServiceAppFont.regularFont, size: 20) ?? .systemFont(ofSize: 20)
     static let Light20 = UIFont(name: ServiceAppFont.lightFont, size: 20) ?? .systemFont(ofSize: 20)
 }
