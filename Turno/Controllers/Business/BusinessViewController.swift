@@ -56,6 +56,8 @@ class BusinessViewController: ParentViewController {
                                         forCellReuseIdentifier: kBusinessAppointmentCellID)
         businessView.tableView.register(UINib(nibName: kInformationTableViewCellNib, bundle: nil),
                                         forCellReuseIdentifier: kInformationCellID)
+        businessView.tableView.register(UINib(nibName: kNoTurnsFoundTableViewCellNib, bundle: nil),
+                                        forCellReuseIdentifier: kNoTurnsFoundCellID)
     }
     
     private func addSwipeGestureRecognizer() {
@@ -98,12 +100,21 @@ class BusinessViewController: ParentViewController {
     }
     
     private func appointmentCell(_ indexPath: IndexPath) -> UITableViewCell {
-        if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kBusinessAppointmentCellID,
-                                                                 for: indexPath) as? BusinessAppointmentTableViewCell,
-            let turn = turns?[indexPath.row] {
-            cell.config(turn: turn)
-            cell.delegate = self
-            return cell
+        if let turns = turns {
+            if turns.count == .zero {
+                // Empty cell message
+                if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kNoTurnsFoundCellID,
+                                                                             for: indexPath) as? NoTurnsFoundTableViewCell {
+                    return cell
+                }
+            } else {
+                if let cell = businessView.tableView.dequeueReusableCell(withIdentifier: kBusinessAppointmentCellID,
+                                                                         for: indexPath) as? BusinessAppointmentTableViewCell {
+                    cell.config(turn: turns[indexPath.row])
+                    cell.delegate = self
+                    return cell
+                }
+            }
         }
         return UITableViewCell()
     }
@@ -245,7 +256,9 @@ extension BusinessViewController: UITableViewDataSource {
         case 0:
             return services?.count ?? 0
         case 1:
-            return turns?.count ?? 0
+            // Return 1 to show empty cell message
+            guard let count = turns?.count else { return 1 }
+            return count == .zero ? 1 : count
         case 2:
             return 5
         default:
