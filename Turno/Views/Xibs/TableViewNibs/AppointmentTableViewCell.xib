@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,32 +59,29 @@
                                                 <constraint firstAttribute="width" constant="24" id="zSc-IX-MAQ"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MF7-I7-ReO">
-                                            <rect key="frame" x="48" y="4.5" width="346" height="41"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXG-ct-gYb" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uq-3W-gnf" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="20.5" width="346" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uq-3W-gnf" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
+                                            <rect key="frame" x="93.5" y="15" width="41.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXG-ct-gYb" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
+                                            <rect key="frame" x="48" y="15" width="41.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="MF7-I7-ReO" firstAttribute="leading" secondItem="beM-i0-VVN" secondAttribute="trailing" constant="16" id="0aZ-SJ-Vpf"/>
+                                        <constraint firstItem="2uq-3W-gnf" firstAttribute="centerY" secondItem="jXG-ct-gYb" secondAttribute="centerY" id="Psg-nL-Sn9"/>
+                                        <constraint firstItem="jXG-ct-gYb" firstAttribute="leading" secondItem="beM-i0-VVN" secondAttribute="trailing" constant="16" id="SBv-zf-WzX"/>
                                         <constraint firstAttribute="height" constant="50" id="ToN-yr-Hy8"/>
-                                        <constraint firstAttribute="trailing" secondItem="MF7-I7-ReO" secondAttribute="trailing" constant="8" id="X4a-kW-tue"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2uq-3W-gnf" secondAttribute="trailing" constant="8" id="VyC-Sd-ZxJ"/>
                                         <constraint firstItem="beM-i0-VVN" firstAttribute="leading" secondItem="xyR-gz-rHn" secondAttribute="leading" constant="8" id="Zfz-FE-oJM"/>
+                                        <constraint firstItem="2uq-3W-gnf" firstAttribute="leading" secondItem="jXG-ct-gYb" secondAttribute="trailing" constant="4" id="cQB-kQ-3Cf"/>
+                                        <constraint firstItem="jXG-ct-gYb" firstAttribute="centerY" secondItem="beM-i0-VVN" secondAttribute="centerY" id="oGO-G9-BrD"/>
                                         <constraint firstItem="beM-i0-VVN" firstAttribute="centerY" secondItem="xyR-gz-rHn" secondAttribute="centerY" id="r4A-WR-OPc"/>
-                                        <constraint firstItem="MF7-I7-ReO" firstAttribute="centerY" secondItem="beM-i0-VVN" secondAttribute="centerY" id="xuf-Lo-T9A"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9h-MS-mgt">

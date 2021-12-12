@@ -69,7 +69,7 @@ class AppointmentTableViewCell: UITableViewCell {
         servicesImageView.tintColor = .black
         buttonsView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
         cancelButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.cancel_key.localized,
-                                                    backgroundColor: UIColor.red.withAlphaComponent(0.5))
+                                                    backgroundColor: UIColor.red.withAlphaComponent(0.3))
         callNowButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.call_now_key.localized, backgroundColor: .white,
                                                      borderColor: UIColor.primary.cgColor, titleColor: .primary)
     }

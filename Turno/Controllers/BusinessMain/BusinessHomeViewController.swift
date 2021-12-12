@@ -101,9 +101,19 @@ class BusinessHomeViewController: DayViewController {
         event.userInfo = turn
         event.startDate = startDate
         event.endDate = endDate
-        
-        event.text = data
         event.color = .primary
+        
+        var text = data
+        let startDateHour = startDate.toString().toDisplayableDate(type: .hour)
+        let endDateHour = endDate.toString().toDisplayableDate(type: .hour)
+        if let startDateHour = startDateHour,
+           let endDateHour = endDateHour {
+            text = "\(startDateHour):\(endDateHour) - \(data)"
+        }
+        event.text = text
+        
+        // TODO: Change font size depends on how long the turn is
+        event.font = Fonts.Regular10
         
         return event
     }
@@ -263,7 +273,7 @@ extension BusinessHomeViewController {
             toastLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90.0)
         ])
         
-        UIView.animate(withDuration: 6.0, delay: 0.2, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 2.0, delay: 0.2, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }, completion: {_ in
             toastLabel.removeFromSuperview()

@@ -57,7 +57,7 @@ class BusinessAppointmentTableViewCell: UITableViewCell {
         dateImageView.tintColor = .black
         servicesImageView.tintColor = .black
         cancelButton.buttonTheme = RoundedBaseTheme(label: LocalizedConstants.cancel_key.localized,
-                                                    backgroundColor: UIColor.red.withAlphaComponent(0.5))
+                                                    backgroundColor: UIColor.red.withAlphaComponent(0.3))
     }
     
     private func setServicesLabel(from turn: Turn) {

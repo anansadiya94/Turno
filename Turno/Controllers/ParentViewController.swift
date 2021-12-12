@@ -132,7 +132,7 @@ class ParentViewController: UIViewController {
             toastLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90.0)
         ])
         
-        UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 2.0, delay: 0.2, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }, completion: {_ in
             toastLabel.removeFromSuperview()

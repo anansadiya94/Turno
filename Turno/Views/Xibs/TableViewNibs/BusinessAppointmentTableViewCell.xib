@@ -30,32 +30,29 @@
                                             <constraint firstAttribute="width" constant="24" id="N7x-we-DOV"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2nB-s8-nTk">
-                                        <rect key="frame" x="40" y="4.5" width="326" height="41"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPV-h3-wW4" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="326" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUH-Ca-TgN" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="20.5" width="326" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUH-Ca-TgN" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
+                                        <rect key="frame" x="93.5" y="15" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPV-h3-wW4" customClass="CustomLabel" customModule="Turno" customModuleProvider="target">
+                                        <rect key="frame" x="48" y="15" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="2nB-s8-nTk" firstAttribute="leading" secondItem="92I-GD-2El" secondAttribute="trailing" constant="8" id="WI7-Gk-GgV"/>
-                                    <constraint firstItem="2nB-s8-nTk" firstAttribute="centerY" secondItem="92I-GD-2El" secondAttribute="centerY" id="Wdg-SY-D6t"/>
                                     <constraint firstItem="92I-GD-2El" firstAttribute="centerY" secondItem="dwp-TN-9rw" secondAttribute="centerY" id="XJK-vE-i2p"/>
+                                    <constraint firstItem="OUH-Ca-TgN" firstAttribute="leading" secondItem="kPV-h3-wW4" secondAttribute="trailing" constant="4" id="ZiH-jc-zTu"/>
                                     <constraint firstAttribute="height" constant="50" id="cRy-Yo-ZQv"/>
-                                    <constraint firstAttribute="trailing" secondItem="2nB-s8-nTk" secondAttribute="trailing" constant="16" id="lQY-jH-TnG"/>
+                                    <constraint firstItem="kPV-h3-wW4" firstAttribute="centerY" secondItem="92I-GD-2El" secondAttribute="centerY" id="hfa-H9-KLX"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OUH-Ca-TgN" secondAttribute="trailing" constant="8" id="hjO-11-etG"/>
                                     <constraint firstItem="92I-GD-2El" firstAttribute="leading" secondItem="dwp-TN-9rw" secondAttribute="leading" constant="8" id="meJ-bJ-qE1"/>
+                                    <constraint firstItem="kPV-h3-wW4" firstAttribute="leading" secondItem="92I-GD-2El" secondAttribute="trailing" constant="16" id="thq-dh-x36"/>
+                                    <constraint firstItem="OUH-Ca-TgN" firstAttribute="centerY" secondItem="kPV-h3-wW4" secondAttribute="centerY" id="yzt-le-TcO"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6si-K7-cSg">
