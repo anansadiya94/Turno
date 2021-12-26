@@ -341,7 +341,7 @@ class PresenterConfirmation {
         trackButtonTapped(buttonText: Constants.blockUserAnalyticValue)
         view?.showPopupView(withTitle: LocalizedConstants.block_user_key.localized,
                             withText: String(format: LocalizedConstants.block_user_by_name_key.localized, customer?.name ?? ""),
-                            withButton: LocalizedConstants.cancel_key.localized,
+                            withButton: LocalizedConstants.no_key.localized,
                             button2: LocalizedConstants.yes_key.localized,
                             completion: { [weak self] cancel, yes in
                                 guard let self = self else { return }
