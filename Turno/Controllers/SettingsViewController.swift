@@ -15,6 +15,7 @@ enum SettingsRows {
     case contactUs
     case share
     case termsOfUse
+    case signOut
     case changeToBusiness
     case changeToUser
     
@@ -26,6 +27,7 @@ enum SettingsRows {
         case .contactUs: return "lock"
         case .share: return "square.and.arrow.up"
         case .termsOfUse: return "lock"
+        case .signOut: return "arrow.right.square"
         case .changeToBusiness: return "building.2"
         case .changeToUser: return "person"
         }
@@ -39,6 +41,7 @@ enum SettingsRows {
         case .contactUs: return LocalizedConstants.contact_us_key.localized
         case .share: return LocalizedConstants.share_key.localized
         case .termsOfUse: return LocalizedConstants.terms_of_use_key.localized
+        case .signOut: return LocalizedConstants.sign_out_key.localized
         case .changeToBusiness: return LocalizedConstants.change_to_business_key.localized
         case .changeToUser: return LocalizedConstants.change_to_user_key.localized
         }
@@ -97,7 +100,8 @@ class SettingsViewController: ParentViewController {
             .about,
             .contactUs,
             .share,
-            .termsOfUse
+            .termsOfUse,
+            .signOut
         ]
         var businessSettingRows: [SettingsRows] = []
         if Preferences.isBusiness() {
@@ -164,6 +168,8 @@ extension SettingsViewController: UITableViewDelegate {
             presenterSettings.openWebView(for: .contactUs)
         case .termsOfUse:
             presenterSettings.openWebView(for: .termsOfUse)
+        case .signOut:
+            presenterSettings.signOut()
         }
     }
 }

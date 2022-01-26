@@ -32,4 +32,6 @@ let kNotificationUnblockTapped = "unblockTapped"
 
 // Settings:
 let kNotificationChangeToUserTapped = "changeToUserTapped"
+let kNotificationSignOutUserTapped = "signOutUserTapped"
 let kNotificationChangeToBusinessTapped = "changeToBusinessTapped"
+let kNotificationSignOutBusinessTapped = "signOutBusinessTapped"

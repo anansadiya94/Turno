@@ -118,6 +118,10 @@ extension BusinessMainCoordinator {
         let screen = ScreenFactory.makeWebViewScreen(webViewType: type)
         pushViewBySettingsInnerViewController(screen: screen)
     }
+    
+    func showWelcomeScreen() {
+        NotificationCenter.default.post(name: Settings.signOutBusiness, object: nil, userInfo: nil)
+    }
 }
 
 extension BusinessMainCoordinator: SelectButtonBusiness {
@@ -163,5 +167,9 @@ extension BusinessMainCoordinator: SelectButtonBusiness {
     
     func didSelectSettingsType(webViewType: WebViewType) {
         showWebViewController(for: webViewType)
+    }
+    
+    func didSignOut() {
+        showWelcomeScreen()
     }
 }

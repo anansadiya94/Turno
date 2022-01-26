@@ -91,6 +91,10 @@ extension UserMainCoordinator {
         let screen = ScreenFactory.makeWebViewScreen(webViewType: type)
         pushViewBySettingsInnerViewController(screen: screen)
     }
+    
+    func showWelcomeScreen() {
+        NotificationCenter.default.post(name: Settings.signOutUser, object: nil, userInfo: nil)
+    }
 }
 
 extension UserMainCoordinator: SelectButtonEntity {
@@ -118,5 +122,9 @@ extension UserMainCoordinator: SelectButtonEntity {
     
     func didSelectSettingsType(webViewType: WebViewType) {
         showWebViewController(for: webViewType)
+    }
+    
+    func didSignOut() {
+        showWelcomeScreen()
     }
 }

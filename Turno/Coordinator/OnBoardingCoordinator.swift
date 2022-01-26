@@ -80,7 +80,7 @@ extension OnBoardingCoordinator {
         window.rootViewController = screen
     }
     
-    func showWelcomeScreen() {
+    @objc func showWelcomeScreen() {
         let screen = ScreenFactory.makeWelcomeScreen(navigationController: navigationController,
                                                      analyticsManager: analyticsManager,
                                                      delegate: welcomeCoordinator)
@@ -118,5 +118,9 @@ private extension OnBoardingCoordinator {
                                                name: Settings.changeToUser, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showBusinessMainScreen),
                                                name: Settings.changeToBusiness, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showWelcomeScreen),
+                                               name: Settings.signOutUser, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showWelcomeScreen),
+                                               name: Settings.signOutBusiness, object: nil)
     }
 }

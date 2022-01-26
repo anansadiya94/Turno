@@ -91,6 +91,7 @@
 "force_update_title_key" = "نسخة جديدة متاحة";
 "force_update_message_key" = "هناك إصدار أحدث متوفر للتحميل! يرجى تحديث التطبيق عن طريق زيارة متجر Apple.";
 "force_update_action_key" = "تحديث";
+"sign_out_key" = "خروج";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "إجمالي وقت الخدمات هو:٪ @";

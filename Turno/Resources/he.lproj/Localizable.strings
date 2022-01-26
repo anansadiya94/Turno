@@ -90,6 +90,7 @@
 "force_update_title_key" = "גרסה חדשה זמינה";
 "force_update_message_key" = "יש גרסה חדשה יותר זמין להורדה! אנא עדכן את האפליקציה דרך ה Apple Store.";
 "force_update_action_key" = "עדכון";
+"sign_out_key" = "התנתק";
 
 /*  App Translations.xlsx - iOS - Static resources  */
 "total_services_time_key" = "זמן שירותים סהכ הוא: %@";

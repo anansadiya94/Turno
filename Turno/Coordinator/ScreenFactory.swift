@@ -27,6 +27,7 @@ protocol SelectButtonEntity: SelectGenericSettings {
                                     modelCheckTurnsAvailability: ModelCheckTurnsAvailability?)
     func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?)
     func didSelectChangeToBusiness()
+    func didSignOut()
 }
 
 protocol SelectButtonFavorites: AnyObject {
@@ -58,6 +59,7 @@ protocol SelectButtonBusiness: SelectGenericSettings {
     func didSelectConfirm(identifier: String?, name: String?, bookedServices: [Service]?, bookedSlot: EmptySlot?, customer: Customer?)
     func didSelectChangeToUser()
     func didSelectBlockedUsers()
+    func didSignOut()
 }
 
 struct ScreenFactory {

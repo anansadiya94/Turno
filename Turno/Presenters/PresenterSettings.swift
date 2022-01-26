@@ -93,4 +93,15 @@ class PresenterSettings: NSObject {
             businessDelegate.didSelectSettingsType(webViewType: webViewType)
         }
     }
+    
+    func signOut() {
+        Preferences.removePrefsUser()
+        Preferences.setPrefsAppState(value: .unregistered)
+        if let userDelegate = userDelegate {
+            userDelegate.didSignOut()
+        }
+        if let businessDelegate = businessDelegate {
+            businessDelegate.didSignOut()
+        }
+    }
 }

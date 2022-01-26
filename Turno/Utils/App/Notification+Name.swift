@@ -32,5 +32,7 @@ struct BlockedUsers {
 
 struct Settings {
     static let changeToUser = Notification.Name(kNotificationChangeToUserTapped)
+    static let signOutUser = Notification.Name(kNotificationSignOutUserTapped)
     static let changeToBusiness = Notification.Name(kNotificationChangeToBusinessTapped)
+    static let signOutBusiness = Notification.Name(kNotificationSignOutBusinessTapped)
 }
