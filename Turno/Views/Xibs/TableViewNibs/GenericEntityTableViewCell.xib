@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,7 +43,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="gL3-MH-zQF" firstAttribute="centerY" secondItem="J3y-XU-Wu9" secondAttribute="centerY" id="7Lj-Ae-eHe"/>
                                 <constraint firstItem="J3y-XU-Wu9" firstAttribute="centerX" secondItem="dnn-oL-82Z" secondAttribute="centerX" id="Zsd-jd-W5k"/>
@@ -63,6 +65,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="TGw-MY-uPC"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bDU-gz-Sl7" secondAttribute="bottom" constant="8" id="4IM-z8-bRJ"/>
@@ -71,7 +74,6 @@
                 <constraint firstItem="bDU-gz-Sl7" firstAttribute="leading" secondItem="hVI-Kg-h7u" secondAttribute="leading" constant="16" id="k08-11-Az1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="TGw-MY-uPC"/>
             <connections>
                 <outlet property="baseView" destination="bDU-gz-Sl7" id="7FE-i3-kzh"/>
                 <outlet property="favoriteButton" destination="gL3-MH-zQF" id="Syg-5q-kcm"/>
@@ -84,5 +86,8 @@
     </objects>
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -51,7 +51,7 @@ class GenericEntityTableViewCell: UITableViewCell {
         self.identifier = model.identifier
         setThumbnailImageView(url: model.image)
         titleLabel.labelTheme = BoldTheme(label: model.name ?? "",
-                                          fontSize: 30,
+                                          fontSize: 25,
                                           textColor: .white,
                                           textAlignment: .center)
         favoriteButton.isLiked = model.isFavorite ?? false
