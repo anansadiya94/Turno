@@ -20,13 +20,12 @@ class ForceUpdateManager: ForceUpdateManagerProtocol {
     }
     
     func shouldForceUpdate(completion: @escaping (Bool) -> Void) {
-        // TODO: Remove hardcoded value!
-//        guard let currentVersion = Bundle.main.infoDictionary?[Constants.shortVersionBundleKey] as? String else {
-//            completion(false)
-//            return
-//        }
+        guard let currentVersion = Bundle.main.infoDictionary?[Constants.shortVersionBundleKey] as? String else {
+            completion(false)
+            return
+        }
         
-        let modelForceUpdateTask = ModelForceUpdateTask(currentVersion: "1.0", osType: 0)
+        let modelForceUpdateTask = ModelForceUpdateTask(currentVersion: currentVersion, osType: 0)
         shouldForceUpdate(modelForceUpdateTask: modelForceUpdateTask, completion: completion)
     }
     
