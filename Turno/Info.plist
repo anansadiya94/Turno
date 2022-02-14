@@ -75,5 +75,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>We may use your data to improve your user experience.</string>
 </dict>
 </plist>

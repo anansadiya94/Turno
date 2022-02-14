@@ -89,6 +89,7 @@ struct CommonAnalyticsValues {
 }
 
 protocol AnalyticsManagerProtocol {
+    func removeInstance()
     func track(eventKey: AnalyticsKeys, withProperties properties: [AnalyticsEventPropertyKeys: String]?)
     func trackAlert(alertTitle: String?, alertMessage: String?, screenName: String)
     func trackConnectionFailedAlert(screenName: String)
@@ -99,6 +100,10 @@ protocol AnalyticsManagerProtocol {
 class AnalyticsManager: AnalyticsManagerProtocol {
     init() {
         Mixpanel.initialize(token: "74984b10074f7d370086f5a157e539d9")
+    }
+    
+    func removeInstance() {
+        Mixpanel.removeInstance(name: "74984b10074f7d370086f5a157e539d9")
     }
     
     func track(eventKey: AnalyticsKeys, withProperties properties: [AnalyticsEventPropertyKeys: String]?) {

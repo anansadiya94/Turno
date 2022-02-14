@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AppTrackingTransparency
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,8 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         forceUpdateManager: forceUpdateManager)
         appCoordinator?.start()
         
-        FirebaseApp.configure()
-        
         if Preferences.getPrefsUser()?.userId != nil {
             let pushManager = PushNotificationManager(networkManager: networkManager,
                                                       analyticsManager: analyticsManager)
@@ -41,6 +40,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        DispatchQueue.main.async { [weak self] in
+            if #available(iOS 14, *) {
+                ATTrackingManager.requestTrackingAuthorization(completionHandler: { [weak self] status in
+                    DispatchQueue.main.async {
+                        if case .authorized = status {
+                            self?.configureFirebase()
+                        } else {
+                            self?.analyticsManager.removeInstance()
+                        }
+                    }
+                })
+            } else {
+                self?.configureFirebase()
+            }
+        }
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -62,5 +79,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         analyticsManager.peopleSet(properties: [
             AnalyticsPeoplePropertyKeys.deviceLanguage: Locale.current.languageCode?.capitalized
         ])
+    }
+    
+    private func configureFirebase() {
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
     }
 }
