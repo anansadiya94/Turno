@@ -18,6 +18,7 @@ class BusinessHomeViewController: DayViewController {
     
     var waitingView: LoadingViewController?
     private var isShownPopup = false
+    private var toastLabel: CustomLabel?
     
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -42,6 +43,12 @@ class BusinessHomeViewController: DayViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenterHome.trackScreen()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        toastLabel?.removeFromSuperview()
+        toastLabel = nil
     }
     
     // MARK: - DayViewController methods
@@ -103,6 +110,13 @@ class BusinessHomeViewController: DayViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"),
                                                            style: .plain, target: self, action: #selector(refreshTapped))
+    }
+    
+    private func setToast() {
+        toastLabel = CustomLabel()
+        toastLabel?.layer.cornerRadius = 10
+        toastLabel?.clipsToBounds = true
+        toastLabel?.backgroundColor = UIColor.primary
     }
     
     private func createEvent(turn: Turn?, data: String, startDate: Date, endDate: Date) -> Event {
@@ -266,12 +280,9 @@ extension BusinessHomeViewController {
     }
     
     func showToast(message: String) {
-        let toastLabel = CustomLabel()
+        setToast()
+        guard let toastLabel = toastLabel else { return }
         toastLabel.labelTheme = RegularTheme(label: "   \(message)   ", fontSize: 12.0, textColor: .white, textAlignment: .center)
-        toastLabel.layer.cornerRadius = 10
-        toastLabel.clipsToBounds = true
-        toastLabel.backgroundColor = UIColor.primary
-        
         guard let optionalWindow = UIApplication.shared.delegate?.window, let window = optionalWindow else { return }
         window.addSubview(toastLabel)
         toastLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -281,10 +292,10 @@ extension BusinessHomeViewController {
             toastLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90.0)
         ])
         
-        UIView.animate(withDuration: 2.0, delay: 0.2, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {_ in
-            toastLabel.removeFromSuperview()
+        UIView.animate(withDuration: 2.0, delay: 0.2, options: .curveEaseOut, animations: { [weak self] in
+            self?.toastLabel?.alpha = 0.0
+        }, completion: { [weak self] _ in
+            self?.toastLabel?.removeFromSuperview()
         })
     }
 }
