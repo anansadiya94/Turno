@@ -156,9 +156,11 @@ class ConfirmationView: UIView {
         tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
         
+        let tableViewBottomAnchor = confirmMessageLabel.isHidden ? cancelButton.topAnchor : confirmMessageLabel.topAnchor
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor),
-            tableView.bottomAnchor.constraint(equalTo: confirmMessageLabel.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: tableViewBottomAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
             tableView.rightAnchor.constraint(equalTo: rightAnchor, constant: -16)
         ])
