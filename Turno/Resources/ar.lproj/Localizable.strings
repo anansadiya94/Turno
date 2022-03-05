@@ -94,6 +94,6 @@
 "sign_out_key" = "خروج";
 
 /*  App Translations.xlsx - iOS - Static resources  */
-"total_services_time_key" = "إجمالي وقت الخدمات هو:٪ @";
-"block_user_by_name_key" = "هل أنت متأكد أنك تريد حظر٪ @؟";
+"total_services_time_key" = "إجمالي وقت الخدمات هو: %@";
+"block_user_by_name_key" = "هل أنت متأكد أنك تريد حظر %@؟";
 "user_by_phone_number_key" = "هل هذا رقم هاتف %@؟";

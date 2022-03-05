@@ -22,11 +22,11 @@ enum SettingsRows {
     var image: String {
         switch self {
         case .blockedUsers: return "lock"
-        case .notifications: return "bell.fill"
+        case .notifications: return "bell"
         case .about: return "info"
-        case .contactUs: return "lock"
+        case .contactUs: return "phone"
         case .share: return "square.and.arrow.up"
-        case .termsOfUse: return "lock"
+        case .termsOfUse: return "doc.plaintext"
         case .signOut: return "arrow.right.square"
         case .changeToBusiness: return "building.2"
         case .changeToUser: return "person"

@@ -16,6 +16,10 @@ class ConfirmationViewController: ParentViewController {
     
     var bookedServices: [Service]?
     
+    override var navBarTitle: String {
+        return LocalizedConstants.add_appointment_key.localized
+    }
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +91,6 @@ extension ConfirmationViewController: PresenterConfirmationView {
         let endTimeDate = bookedSlot?.slot?.toString().calculateEndDate(adding: bookedServicesDuration)
         let endTime = endTimeDate?.toDisplayableDate(type: .hour)
         DispatchQueue.main.async {
-            self.navigationItem.title = name
             self.addRightBarButton(viewType: confirmationViewType)
             self.confirmationView.setHeaderStackViewData(day: day,
                                                          startTime: startTime,

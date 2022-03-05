@@ -136,7 +136,7 @@ class PresenterBusinessHome {
         }
         self.isFetching = true
         
-        let modelTask = ModelMyBookingTask(lastStatusCheck: lastStatusCheck?.description)
+        let modelTask = ModelMyBookingTask(lastStatusCheck: lastStatusCheck?.toString())
         networkManager.getMyBookings(modelTask: modelTask) { [weak self] modelMyBookings, error in
             guard let self = self else { return }
             self.isFetching = false

@@ -18,6 +18,10 @@ class CheckAvailabilityViewController: ParentViewController {
     var modelAvailableTurnDay: [ModelAvailableTurnDay] = []
     var emptySlots: [EmptySlot] = []
     
+    override var navBarTitle: String {
+        return LocalizedConstants.add_appointment_key.localized
+    }
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +91,6 @@ extension CheckAvailabilityViewController: PresenterCheckAvailabilityView {
             }
         }
         DispatchQueue.main.async {
-            self.navigationItem.title = name
             self.checkAvailabilityView.setTotalServicesTimeLabel(to: totalServicesTime)
             self.checkAvailabilityView.daysCollectionView?.reloadData()
             self.checkAvailabilityView.hoursCollectionView?.reloadData()

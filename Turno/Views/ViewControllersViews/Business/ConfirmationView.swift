@@ -182,7 +182,9 @@ class ConfirmationView: UIView {
         case .user:
             confirmMessageLabel.isHidden = false
             confirmButton.isHidden = false
+            tableView.bottomAnchor.constraint(equalTo: confirmMessageLabel.topAnchor).isActive = true
         case .business:
+            tableView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor).isActive = true
             cancelButton.isHidden = false
             callNow.isHidden = false
         }
