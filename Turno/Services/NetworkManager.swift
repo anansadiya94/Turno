@@ -236,7 +236,9 @@ extension NetworkManager: NetworkManagerProtocol {
                     case 200:
                         completion(modelList, nil)
                     default:
-                        completion(nil, AppError(title: modelList.title ?? "", message: modelList.message ?? ""))
+                        completion(nil, AppError(title: modelList.title ?? "",
+                                                 message: modelList.message ?? "",
+                                                 code: value.statusCode))
                     }
                 } catch let error {
                     // LOG ERROR!

@@ -11,4 +11,11 @@ import Foundation
 struct AppError: Error {
     let title: String?
     let message: String?
+    let code: Int?
+    
+    init(title: String?, message: String?, code: Int? = nil) {
+        self.title = title
+        self.message = message
+        self.code = code
+    }
 }

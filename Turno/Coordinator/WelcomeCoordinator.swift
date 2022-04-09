@@ -81,7 +81,7 @@ extension WelcomeCoordinator {
     }
     
     func showPrivacyPolicy() {
-        let screen = ScreenFactory.makeWebViewScreen(webViewType: .termsOfUse)
+        let screen = ScreenFactory.makeWebViewScreen(webViewType: .privacyAndPolicy)
         
         // Push view controller with a present animation.
         screen.navigationItem.leftBarButtonItem = UIBarButtonItem(title: LocalizedConstants.close_key.localized,

@@ -130,7 +130,7 @@ class PresenterAddAppointment {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         withButton: LocalizedConstants.ok_key.localized,
                                          button2: nil,
                                          completion: nil)
                 return
@@ -142,7 +142,7 @@ class PresenterAddAppointment {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         withButton: LocalizedConstants.ok_key.localized,
                                          button2: nil,
                                          completion: nil)
                 return
@@ -164,7 +164,7 @@ class PresenterAddAppointment {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.no_available_dates_title_key.localized,
                                          withText: LocalizedConstants.no_available_dates_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         withButton: LocalizedConstants.ok_key.localized,
                                          button2: nil,
                                          completion: nil)
             }

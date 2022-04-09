@@ -41,6 +41,8 @@ class PresenterBusiness {
         static let yesAnalyticValue = LocalizedConstants.yes_key.enLocalized
         static let noAvailableDatesTitleAnalyticValue = LocalizedConstants.no_available_dates_title_key.enLocalized
         static let noAvailableDatesMessageAnalyticValue = LocalizedConstants.no_available_dates_message_key.enLocalized
+        static let cancelAnalyticValue = LocalizedConstants.cancel_key.enLocalized
+        static let callNowAnalyticValue = LocalizedConstants.call_now_key.enLocalized
     }
     
     // MARK: - init Methods
@@ -71,7 +73,8 @@ class PresenterBusiness {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
@@ -82,7 +85,8 @@ class PresenterBusiness {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized, button2: nil,
+                                         withButton: LocalizedConstants.ok_key.localized,
+                                         button2: nil,
                                          completion: nil)
                 return
             }
@@ -99,9 +103,9 @@ class PresenterBusiness {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized,
-                                         button2: nil) { _, _ in
-                }
+                                         withButton: LocalizedConstants.ok_key.localized,
+                                         button2: nil,
+                                         completion: nil)
                 return
             }
             if let error = error as? AppError {
@@ -111,9 +115,9 @@ class PresenterBusiness {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: error.title,
                                          withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized,
-                                         button2: nil) { _, _ in
-                }
+                                         withButton: LocalizedConstants.ok_key.localized,
+                                         button2: nil,
+                                         completion: nil)
                 return
             }
             if let modelList = modelList {
@@ -158,7 +162,7 @@ class PresenterBusiness {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.connection_failed_error_title_key.localized,
                                          withText: LocalizedConstants.connection_failed_error_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         withButton: LocalizedConstants.ok_key.localized,
                                          button2: nil,
                                          completion: nil)
                 return
@@ -167,12 +171,37 @@ class PresenterBusiness {
                 self.analyticsManager.trackAlert(alertTitle: error.title,
                                                  alertMessage: error.message,
                                                  screenName: Constants.screenName)
-                self.view?.stopWaitingView()
-                self.view?.showPopupView(withTitle: error.title,
-                                         withText: error.message,
-                                         withButton: LocalizedConstants.ok_key.localized.localized,
-                                         button2: nil,
-                                         completion: nil)
+                if error.code == 401 {
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: error.title,
+                                             withText: error.message,
+                                             withButton: LocalizedConstants.cancel_key.localized,
+                                             button2: LocalizedConstants.call_now_key.localized) { [weak self] cancel, call in
+                        guard let self = self else { return }
+                        if cancel == true {
+                            self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                                .actionText: Constants.cancelAnalyticValue,
+                                .screenName: Constants.screenName
+                            ])
+                        }
+                        if call == true {
+                            self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                                .actionText: Constants.callNowAnalyticValue,
+                                .screenName: Constants.screenName
+                            ])
+                            if let phone = self.model?.phone {
+                                self.call(phone)
+                            }
+                        }
+                    }
+                } else {
+                    self.view?.stopWaitingView()
+                    self.view?.showPopupView(withTitle: error.title,
+                                             withText: error.message,
+                                             withButton: LocalizedConstants.ok_key.localized,
+                                             button2: nil,
+                                             completion: nil)
+                }
                 return
             }
             if let modelCheckTurnsAvailability = modelCheckTurnsAvailability,
@@ -189,7 +218,7 @@ class PresenterBusiness {
                 self.view?.stopWaitingView()
                 self.view?.showPopupView(withTitle: LocalizedConstants.no_available_dates_title_key.localized,
                                          withText: LocalizedConstants.no_available_dates_message_key.localized,
-                                         withButton: LocalizedConstants.ok_key.localized.localized,
+                                         withButton: LocalizedConstants.ok_key.localized,
                                          button2: nil,
                                          completion: nil)
             }
@@ -222,21 +251,21 @@ class PresenterBusiness {
                             withButton: LocalizedConstants.no_key.localized,
                             button2: LocalizedConstants.yes_key.localized,
                             completion: { [weak self] no, yes in
-                                guard let self = self else { return }
-                                if no == true {
-                                    self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
-                                        .actionText: Constants.noAnalyticValue,
-                                        .screenName: Constants.screenName
-                                    ])
-                                }
-                                if yes == true {
-                                    self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
-                                        .actionText: Constants.yesAnalyticValue,
-                                        .screenName: Constants.screenName
-                                    ])
-                                    self.cancelTurnConfirmed(turnId: turnId)
-                                }
-                            })
+            guard let self = self else { return }
+            if no == true {
+                self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                    .actionText: Constants.noAnalyticValue,
+                    .screenName: Constants.screenName
+                ])
+            }
+            if yes == true {
+                self.analyticsManager.track(eventKey: .alertActionTapped, withProperties: [
+                    .actionText: Constants.yesAnalyticValue,
+                    .screenName: Constants.screenName
+                ])
+                self.cancelTurnConfirmed(turnId: turnId)
+            }
+        })
     }
     
     func appointmentConfirmed(bookedTurn: Turn) {
