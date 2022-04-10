@@ -69,7 +69,7 @@ class BusinessHomeViewController: DayViewController {
                 if let startDateHour = startDateHour,
                    let endDateHour = endDateHour,
                    let userName = turn.userName {
-                    data = "\(startDateHour):\(endDateHour) - \(userName)"
+                    data = "\(startDateHour) - \(endDateHour) | \(userName)"
                 }
                 
                 events.append(createEvent(turn: turn,
