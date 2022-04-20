@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.6.1)
-  - CalendarKit (1.0.12)
+  - CalendarKit (1.1.4)
   - Firebase/CoreOnly (8.15.0):
     - FirebaseCore (= 8.15.0)
   - Firebase/Crashlytics (8.15.0):
@@ -89,7 +89,7 @@ PODS:
   - SwiftLint (0.47.0)
 
 DEPENDENCIES:
-  - CalendarKit (= 1.0.12)
+  - CalendarKit
   - Firebase/Crashlytics
   - Firebase/Messaging
   - Firebase/RemoteConfig
@@ -123,7 +123,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
-  CalendarKit: 3da636e7e5ebfd6f75791b4d727e9531b50a896c
+  CalendarKit: b858714286ba4f2b19544d79d42c3512949f1da5
   Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
   FirebaseABTesting: 10cbce8db9985ae2e3847ea44e9947dd18f94e10
   FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
@@ -142,6 +142,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: 96db666da694f979ebaafc3060834648b6f2907c
+PODFILE CHECKSUM: 350de2dbeb3eee4796c04802a4114561e17fd1c9
 
 COCOAPODS: 1.10.2

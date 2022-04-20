@@ -122,8 +122,7 @@ class BusinessHomeViewController: DayViewController {
     private func createEvent(turn: Turn?, data: String, startDate: Date, endDate: Date) -> Event {
         let event = Event()
         event.userInfo = turn
-        event.startDate = startDate
-        event.endDate = endDate
+        event.dateInterval = DateInterval(start: startDate, end: endDate)
         event.color = .primary
         event.text = data
         
@@ -187,11 +186,11 @@ extension BusinessHomeViewController: PresenterBusinessHomeView {
         }
         DispatchQueue.main.async {
             self.navigationItem.title = modelBusiness.name
-            self.reloadData()
             if let turns = self.turns, turns.isEmpty {
                 self.handleEmptyState()
             }
         }
+        reloadData()
     }
     
     func startWaitingView() {
@@ -208,9 +207,7 @@ extension BusinessHomeViewController: PresenterBusinessHomeView {
     
     func appointmentConfirmed(bookedTurn: Turn) {
         turns?.append(bookedTurn)
-        DispatchQueue.main.async {
-            self.reloadData()
-        }
+        reloadData()
     }
 }
 
