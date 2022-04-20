@@ -1,41 +1,41 @@
 PODS:
-  - Alamofire (5.5.0)
+  - Alamofire (5.6.1)
   - CalendarKit (1.0.12)
-  - Firebase/CoreOnly (8.14.0):
-    - FirebaseCore (= 8.14.0)
-  - Firebase/Crashlytics (8.14.0):
+  - Firebase/CoreOnly (8.15.0):
+    - FirebaseCore (= 8.15.0)
+  - Firebase/Crashlytics (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 8.14.0)
-  - Firebase/Messaging (8.14.0):
+    - FirebaseCrashlytics (~> 8.15.0)
+  - Firebase/Messaging (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 8.14.0)
-  - Firebase/RemoteConfig (8.14.0):
+    - FirebaseMessaging (~> 8.15.0)
+  - Firebase/RemoteConfig (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseRemoteConfig (~> 8.14.0)
-  - FirebaseABTesting (8.14.0):
+    - FirebaseRemoteConfig (~> 8.15.0)
+  - FirebaseABTesting (8.15.0):
     - FirebaseCore (~> 8.0)
-  - FirebaseCore (8.14.0):
+  - FirebaseCore (8.15.0):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
-  - FirebaseCoreDiagnostics (8.14.0):
+  - FirebaseCoreDiagnostics (8.15.0):
     - GoogleDataTransport (~> 9.1)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
-  - FirebaseCrashlytics (8.14.0):
+  - FirebaseCrashlytics (8.15.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
     - GoogleDataTransport (~> 9.1)
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebaseInstallations (8.14.0):
+  - FirebaseInstallations (8.15.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebaseMessaging (8.14.0):
+  - FirebaseMessaging (8.15.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
     - GoogleDataTransport (~> 9.1)
@@ -44,7 +44,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - nanopb (~> 2.30908.0)
-  - FirebaseRemoteConfig (8.14.0):
+  - FirebaseRemoteConfig (8.15.0):
     - FirebaseABTesting (~> 8.0)
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
@@ -71,11 +71,11 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
-  - Kingfisher (7.2.0)
+  - Kingfisher (7.2.1)
   - lottie-ios (3.3.0)
-  - Mixpanel-swift (3.1.7):
-    - Mixpanel-swift/Complete (= 3.1.7)
-  - Mixpanel-swift/Complete (3.1.7)
+  - Mixpanel-swift (3.2.0):
+    - Mixpanel-swift/Complete (= 3.2.0)
+  - Mixpanel-swift/Complete (3.2.0)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
@@ -122,21 +122,21 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   CalendarKit: 3da636e7e5ebfd6f75791b4d727e9531b50a896c
-  Firebase: 7e8fe528c161b9271d365217a74c16aaf834578e
-  FirebaseABTesting: aaa0e096c9fc9972ce6806d596e8fcc077d4371f
-  FirebaseCore: b84a44ee7ba999e0f9f76d198a9c7f60a797b848
-  FirebaseCoreDiagnostics: fd0c8490f34287229c1d6c103d3a55f81ec85712
-  FirebaseCrashlytics: 079ef36f5c4b7161188928faec40fa276ebefd84
-  FirebaseInstallations: 7d1d967a307c12f1aadd76844fc321cef699b1ce
-  FirebaseMessaging: 5ebc42d281567658a2cb72b9ef3506e4a1a1a6e4
-  FirebaseRemoteConfig: a5d9188d8f57f602636f111eca6460ebe32b9b71
+  Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
+  FirebaseABTesting: 10cbce8db9985ae2e3847ea44e9947dd18f94e10
+  FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
+  FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
+  FirebaseCrashlytics: feb07e4e9187be3c23c6a846cce4824e5ce2dd0b
+  FirebaseInstallations: 40bd9054049b2eae9a2c38ef1c3dd213df3605cd
+  FirebaseMessaging: 5e5118a2383b3531e730d974680954c679ca0a13
+  FirebaseRemoteConfig: 2d6e2cfdb49af79535c8af8a80a4a5009038ec2b
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
-  Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
+  Kingfisher: 7c084bebf7d548c623ad41bcf765fb200efed369
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
-  Mixpanel-swift: ef23b580149b352a3d6f383cdb767ed44f62a3ea
+  Mixpanel-swift: 7c0b15c3ea96a997a989737612a3e62e72c1c561
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72

@@ -80,9 +80,9 @@ class PresenterBusinessHome {
         self.view?.startWaitingView()
         // FIRST CALL
         dispatchGroup.enter()
-        networkManager.getMyBusiness { (modelBusiness, error) in
+        networkManager.getMyBusiness { [weak self] modelBusiness, error in
             if let modelBusiness = modelBusiness {
-                self.modelBusiness = modelBusiness
+                self?.modelBusiness = modelBusiness
             } else {
                 fetchError = error
             }
@@ -92,10 +92,10 @@ class PresenterBusinessHome {
         // SECOND CALL
         dispatchGroup.enter()
         let modelTask = ModelMyBookingTask(lastStatusCheck: "")
-        networkManager.getMyBookings(modelTask: modelTask) { (modelMyBookings, error) in
+        networkManager.getMyBookings(modelTask: modelTask) { [weak self] modelMyBookings, error in
             if let modelMyBookings = modelMyBookings {
-                self.modelMyBookings = modelMyBookings
-                self.lastStatusCheck = Date()
+                self?.modelMyBookings = modelMyBookings
+                self?.lastStatusCheck = Date()
             } else {
                 fetchError = error
             }

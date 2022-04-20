@@ -187,11 +187,11 @@ extension BusinessHomeViewController: PresenterBusinessHomeView {
         }
         DispatchQueue.main.async {
             self.navigationItem.title = modelBusiness.name
+            self.reloadData()
+            if let turns = self.turns, turns.isEmpty {
+                self.handleEmptyState()
+            }
         }
-        if let turns = self.turns, turns.isEmpty {
-            handleEmptyState()
-        }
-        reloadData()
     }
     
     func startWaitingView() {
@@ -208,7 +208,9 @@ extension BusinessHomeViewController: PresenterBusinessHomeView {
     
     func appointmentConfirmed(bookedTurn: Turn) {
         turns?.append(bookedTurn)
-        reloadData()
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
     }
 }
 

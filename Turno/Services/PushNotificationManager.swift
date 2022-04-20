@@ -98,7 +98,7 @@ extension PushNotificationManager: UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        completionHandler([[.alert, .sound]])
+        completionHandler([[.list, .sound]])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,

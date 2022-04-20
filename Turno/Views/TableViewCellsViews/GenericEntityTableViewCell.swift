@@ -49,6 +49,7 @@ class GenericEntityTableViewCell: UITableViewCell {
     // MARK: - Public Interface
     func config(model: ModelBusiness) {
         self.identifier = model.identifier
+        thumbnailImage.image = UIImage(named: kDefaultImage)
         setThumbnailImageView(url: model.image)
         titleLabel.labelTheme = BoldTheme(label: model.name ?? "",
                                           fontSize: 25,
