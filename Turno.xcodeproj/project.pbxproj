@@ -169,7 +169,6 @@
 		9EF00AE524E0400D006636DF /* AvailableTurnHourCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF00AE324E0400D006636DF /* AvailableTurnHourCollectionViewCell.xib */; };
 		9EF54EB125029738000DC352 /* UITableView+EmpyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF54EB025029738000DC352 /* UITableView+EmpyMessage.swift */; };
 		B4AD2AA673D0E8FDDD1649AA /* Pods_Turno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60536D8BBF639461D5CB90FC /* Pods_Turno.framework */; };
-		E10AC4CE26EF93E0002CC3B8 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AC4CD26EF93E0002CC3B8 /* RemoteConfigManager.swift */; };
 		E10D790B2766622F00097158 /* NoTurnsFoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10D79092766622F00097158 /* NoTurnsFoundTableViewCell.swift */; };
 		E10D790C2766622F00097158 /* NoTurnsFoundTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10D790A2766622F00097158 /* NoTurnsFoundTableViewCell.xib */; };
 		E172B9CE25FB445A005E32D9 /* OneTimeCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */; };
@@ -353,7 +352,6 @@
 		9EF00AE324E0400D006636DF /* AvailableTurnHourCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvailableTurnHourCollectionViewCell.xib; sourceTree = "<group>"; };
 		9EF54EB025029738000DC352 /* UITableView+EmpyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+EmpyMessage.swift"; sourceTree = "<group>"; };
 		C163364AA1CFF3575881BBA7 /* Pods-Turno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turno.debug.xcconfig"; path = "Target Support Files/Pods-Turno/Pods-Turno.debug.xcconfig"; sourceTree = "<group>"; };
-		E10AC4CD26EF93E0002CC3B8 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
 		E10D79092766622F00097158 /* NoTurnsFoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTurnsFoundTableViewCell.swift; sourceTree = "<group>"; };
 		E10D790A2766622F00097158 /* NoTurnsFoundTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoTurnsFoundTableViewCell.xib; sourceTree = "<group>"; };
 		E172B9CD25FB445A005E32D9 /* OneTimeCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeTextField.swift; sourceTree = "<group>"; };
@@ -547,7 +545,6 @@
 				9E4CACE62494D92D00AA72E0 /* NetworkManager.swift */,
 				9E0E26E22527A1F50062CFC3 /* ServiceTimeCalculation.swift */,
 				E1A8BBB226C17C4C00E0CEF1 /* AnalyticsManager.swift */,
-				E10AC4CD26EF93E0002CC3B8 /* RemoteConfigManager.swift */,
 				E1FEE23E2764AE2C00A8B5CB /* ForceUpdateManager.swift */,
 				E1D6A9542603F64300691CBD /* PushNotificationManager.swift */,
 			);
@@ -1178,7 +1175,6 @@
 				9EF00ADD24E0366A006636DF /* ModelCheckTurnsAvailability.swift in Sources */,
 				9E6184D124C5F4E00006C095 /* BusinessAppointmentTableViewCell.swift in Sources */,
 				9EB17D7424850EF7004E5FBD /* LocalizableConstants.swift in Sources */,
-				E10AC4CE26EF93E0002CC3B8 /* RemoteConfigManager.swift in Sources */,
 				9E0B75AB248986CD00B25313 /* PresenterWelcome.swift in Sources */,
 				9E0B75B024898DC100B25313 /* CustomButtonTheme.swift in Sources */,
 				9EA657C224880CE900F7952A /* ErrorsConstants.swift in Sources */,

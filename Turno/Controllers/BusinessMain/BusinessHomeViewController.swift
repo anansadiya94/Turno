@@ -189,6 +189,7 @@ extension BusinessHomeViewController: PresenterBusinessHomeView {
             if let turns = self.turns, turns.isEmpty {
                 self.handleEmptyState()
             }
+            self.dayView.scrollToFirstEventIfNeeded(animated: true)
         }
         reloadData()
     }
